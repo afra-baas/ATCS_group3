@@ -1,4 +1,0 @@
-ERROR: Could not find a version that satisfies the requirement tranformers (from versions: none)
-ERROR: No matching distribution found for tranformers
-/home/lcur1101/.conda/envs/dl2022/bin/python: can't open file '/home/lcur1101/LLama_API.py': [Errno 2] No such file or directory
-srun: error: r34n1: task 0: Exited with exit code 2

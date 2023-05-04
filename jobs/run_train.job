@@ -6,7 +6,7 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
 #SBATCH --time=06:00:00
-#SBATCH --mem=4000M
+#SBATCH --mem=60000M
 #SBATCH --output=job_logs/slurm_output_train_%A.out
 
 module purge
@@ -17,8 +17,7 @@ module load Anaconda3/2021.05
 cd $HOME
 # Activate your environment
 source activate dl2022
-pip install tranformers
 
 #run
-srun python LLama_API.py
+srun python ATCS_group3/code/LLama_API.py
 

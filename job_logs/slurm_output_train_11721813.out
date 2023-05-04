@@ -1,0 +1,7 @@
+No config specified, defaulting to: sst/default
+Found cached dataset sst (/home/lcur1101/.cache/huggingface/datasets/sst/default/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff)
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/optimization.py:391: FutureWarning: This implementation of AdamW is deprecated and will be removed in a future version. Use the PyTorch implementation torch.optim.AdamW instead, or set `no_deprecation_warning=True` to disable this warning
+  warnings.warn(
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11721813.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: r33n6: task 0: Out Of Memory
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11721813.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.
