@@ -2,7 +2,7 @@ from typing import Any
 from transformers import AutoTokenizer, AutoModelForCausalLM, AutoModelForSeq2SeqLM
 import torch
 
-class CL_model():
+class CL_bloom():
     def __init__(self, model_name = "bigscience/bloom-560m", device = "cpu"):
         """
         Initializes model
