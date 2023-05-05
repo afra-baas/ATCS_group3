@@ -1,5 +1,0 @@
-No config specified, defaulting to: sst/default
-Found cached dataset sst (/home/lcur1101/.cache/huggingface/datasets/sst/default/1.0.0/b8a7889ef01c5d3ae8c379b84cc4080f8aad3ac2bc538701cbe0ac6416fb76ff)
-slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11721485.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
-srun: error: r28n4: task 0: Out Of Memory
-slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11721485.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

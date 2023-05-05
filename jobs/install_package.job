@@ -24,6 +24,7 @@ source activate dl2022
 # pip install pytorch-lightning
 # conda install -c conda-forge transformers
 # pip install transformers
-pip install datasets
+# pip install datasets
+pip install torchtext
 
 
