@@ -6,9 +6,11 @@ authors = ["Amity Aharoni <aharoni.amittai@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.8,<3.10"
 torch = "^2.0.0"
 pytorch-lightning = "^2.0.2"
+huggingface = "^0.0.1"
+promptsource = "^0.2.3"
 
 
 [build-system]

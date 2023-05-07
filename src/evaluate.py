@@ -1,46 +1,51 @@
-import argparse
 import torch
-import pytorch_lightning as pl
-# from dataset import SentimentDataset
-# from model import SentimentClassifier
+from promptsource.tasks import SentimentAnalysis
+from promptsource.prompts import Template, Constant, PromptSource
 
-def predict(model, dataloader, device):
-    # Set model to evaluation mode
+def evaluate_model_with_prompts(model, dataloader, language="en", num_prompts=5, product_item="this product"):
+    # set the model to evaluation mode
     model.eval()
     
-    # Disable gradient computation for inference
-    with torch.no_grad():
-        for batch in dataloader:
-            # Move batch to the specified device
-            batch = {key: value.to(device) for key, value in batch.items()}
-            
-            # Perform forward pass and get predictions
-            logits = model(batch['input_ids'], batch['attention_mask'])
-            predictions = torch.argmax(logits, dim=1)
-            
-            # Print predictions
-            print(predictions)
-            
-if __name__ == '__main__':
-    # Define command-line arguments
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--model_path', type=str, required=True,
-                        help='path to trained model')
-    parser.add_argument('--prompt', type=str, required=True,
-                        help='prompt to use for prediction')
-    parser.add_argument('--batch_size', type=int, default=32,
-                        help='batch size for inference')
-    args = parser.parse_args()
+    # initialize variables for accuracy and total predictions
+    total_preds = 0
+    total_acc = 0
     
-    # Load trained model
-    model = SentimentClassifier.load_from_checkpoint(args.model_path)
+    # define the SentimentAnalysis task and prompt template
+    task = SentimentAnalysis(languages=[language])
+    template = Template(["How do you feel about {item}?", "Wat vind je van {item}?"])
+    item = Constant(product_item)
+    prompt_source = PromptSource(template, item)
     
-    # Initialize dataset and dataloader
-    dataset = SentimentDataset(args.prompt)
-    dataloader = torch.utils.data.DataLoader(dataset, batch_size=args.batch_size)
+    # loop through the dataloader
+    for data in dataloader:
+        # extract the input text and target labels from the batch
+        input_text, labels = data
+        
+        # generate prompts for the product item in the specified language
+        prompts = prompt_source.generate(num_prompts)
+        
+        # encode the input text using the prompts
+        input_text = [prompt + text for prompt in prompts for text in input_text]
+        
+        # convert the input and labels to tensors
+        input_ids = torch.tensor(tokenizer.batch_encode_plus(input_text, 
+                                                             padding=True, 
+                                                             truncation=True)['input_ids'])
+        labels = torch.tensor(labels)
+        
+        # pass the input_ids through the model
+        with torch.no_grad():
+            outputs = model(input_ids)
+        
+        # get the predicted labels
+        _, preds = torch.max(outputs, dim=1)
+        
+        # calculate the accuracy and total predictions
+        total_acc += torch.sum(preds == labels)
+        total_preds += len(labels)
     
-    # Determine device to use for inference
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
+    # calculate the overall accuracy
+    accuracy = total_acc / total_preds
     
-    # Generate predictions
-    predict(model, dataloader, device)
+    # return the accuracy
+    return accuracy
