@@ -1,0 +1,19 @@
+Token indices sequence length is longer than the specified maximum sequence length for this model (537 > 512). Running this sequence through the model will result in indexing errors
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 153, in <module>
+    acc = pipeline(Datasetpath, prompt_instructions,
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 112, in pipeline
+    answers_probs, pred_answer = model(prompt, list(label_map.keys()))
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 25, in __call__
+    output = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 1108, in forward
+    outputs = self.roberta(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 820, in forward
+    buffered_token_type_ids_expanded = buffered_token_type_ids.expand(batch_size, seq_length)
+RuntimeError: The expanded size of the tensor (537) must match the existing size (514) at non-singleton dimension 1.  Target sizes: [1, 537].  Tensor sizes: [1, 514]
+srun: error: r29n3: task 0: Exited with exit code 1

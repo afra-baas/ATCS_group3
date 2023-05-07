@@ -15,6 +15,7 @@ def label_mapping(labels, map):
     """
     output = []
     for label in labels:
+        label = str(label.item())
         if label not in map:
             print(f"couldn't find {label} in the mapping")
             output.append(None)
@@ -42,6 +43,26 @@ def prompt_generator(prompt_instructions, prompt_querry, sentences):
     return output
 
 
+def evaluate(predictions, targets):
+    """
+    Computes accuracy given predicted and target labels
+    input:
+        predictions: a list of predicted labels
+        targets: a list of true labels
+    output:
+        accuracy: float value of the classification accuracy
+    """
+    correct = 0
+    total = len(predictions)
+
+    for i in range(total):
+        if predictions[i] == targets[i]:
+            correct += 1
+
+    accuracy = correct / total
+    return accuracy
+
+
 def pipeline(Datasetpath, prompt_instructions, prompt_querry, label_map, LM_model, task):
 
     # Initilize model
@@ -51,7 +72,8 @@ def pipeline(Datasetpath, prompt_instructions, prompt_querry, label_map, LM_mode
     # sentences, labels = Dataloader(datasetpath)
 
     if task == 'SA':
-        train_dataloader = create_dataloader(32, "French", "train")
+        train_dataloader = create_dataloader(
+            32, "French", "train", model.tokenizer)
     elif task == 'NLI':
         # Load the XNLI dataset for all_languages
         dataset = load_dataset("xnli", 'fr')  # "all_languages")
@@ -65,10 +87,14 @@ def pipeline(Datasetpath, prompt_instructions, prompt_querry, label_map, LM_mode
     else:
         print('This task evaluation is not implemented')
 
-    for batch in train_dataloader:
-        print('sentences, labels: ', sentences, labels)
-        break
+    # for batch in train_dataloader:
+    #     sentences, labels = batch
+    #     print('sentences, labels: ', sentences, labels)
+    #     break
 
+    answers_probs_all = []
+    pred_answer_all = []
+    mapped_labels_all = []
     for batch in train_dataloader:
         sentences, labels = batch
 
@@ -79,29 +105,42 @@ def pipeline(Datasetpath, prompt_instructions, prompt_querry, label_map, LM_mode
         # map labels
         mapped_labels = label_mapping(labels, label_map)
 
-        # ToDo classificaton
-        logits = model(prompts, list(label_map.keys()))
+        answers_probs_batch = []
+        pred_answer_batch = []
+        for prompt in prompts:
+            # ToDo classificaton
+            answers_probs, pred_answer = model(prompt, list(label_map.keys()))
+            answers_probs_batch.append(answers_probs)
+            pred_answer_batch.append(pred_answer)
 
-        # ToDo Evaluation:
-        acc = eval(logits, mapped_labels)
-        print('acc', acc)
+        answers_probs_all.extend(answers_probs_batch)
+        pred_answer_all.extend(pred_answer_batch)
+        mapped_labels_all.extend(mapped_labels)
+
+    # ToDo Evaluation:
+    acc = evaluate(pred_answer_all, mapped_labels_all)
+    print('acc', acc)
 
     return acc
 
 
-def __main__():
+if __name__ == "__main__":
 
     Datasetpath = ''
     LM_model = 'xlm-roberta-base'
     task = 'SA'
 
     if task == 'SA':
-        prompt_instructions = [
-            'Can you please tell me the sentiment of this review', ' Give me the sentiment of this review now']
-        prompt_querry = ['is it positive or nagative?',
-                         ' positive or negative?']
-        label_map = {5: ' positive', 4: ' positive', 3: ' positive',
-                     2: ' negative', 1: ' negative',  0: ' negative'}
+        # prompt_instructions = [
+        #     'Can you please tell me the sentiment of this review', ' Give me the sentiment of this review now']
+        # prompt_querry = ['is it positive or nagative?',
+        #                  ' positive or negative?']
+
+        prompt_instructions = 'Can you please tell me the sentiment of this review'
+        prompt_querry = 'is it positive or nagative?'
+
+        label_map = {'5': ' positive', '4': ' positive', '3': ' positive',
+                     '2': ' negative', '1': ' negative',  '0': ' negative'}
     elif task == 'NLI':
         prompt_instructions = ['', ' ']
         prompt_querry = [' ', ' ']

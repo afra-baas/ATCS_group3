@@ -19,5 +19,5 @@ cd $HOME
 source activate dl2022
 
 #run
-srun python ATCS_group3/code/Roberta_model.py
+srun python ATCS_group3/code/main_model.py
 

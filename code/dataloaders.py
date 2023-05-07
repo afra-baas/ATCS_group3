@@ -38,7 +38,6 @@ class MARCDataset(torch.utils.data.Dataset):
         self.tokenizer = tokenizer
 
     def __getitem__(self, idx):
-        file_path = self.data_path
         with open(self.data_path, 'r', encoding='utf-8') as f:
             for i, line in enumerate(f):
                 if i == idx:
@@ -56,17 +55,17 @@ class MARCDataset(torch.utils.data.Dataset):
         return num_lines
 
 
-def create_dataloader(batch_size, language, dataset_type):
+def create_dataloader(batch_size, language, dataset_type, tokenizer):
 
     current_dir = os.getcwd()
     languages = {"English": 'en', "German": 'de', "Spanish": 'es',
                  "French": 'fr', "Japanese": "ja", "Chinese": "zh"}
-    data_path = current_dir + '/marc_data/dataset_{}_{}.json'.format(
+    data_path = current_dir + '/ATCS_group3/marc_data/dataset_{}_{}.json'.format(
         languages[language], dataset_type)
     print(data_path)
-    tokenizer = torchtext.data.utils.get_tokenizer('basic_english')
+    # tokenizer = torchtext.data.utils.get_tokenizer('basic_english')
     marc_dataset = MARCDataset(data_path, tokenizer)
-    print(marc_dataset[0])
+    # print(marc_dataset[0])
     marc_dataloader = torch.utils.data.DataLoader(
         marc_dataset, batch_size=batch_size, shuffle=True)
     return marc_dataloader
