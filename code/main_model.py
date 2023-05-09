@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForMaskedLM
+from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForCausalLM
 import torch
 
 
@@ -7,59 +7,48 @@ class Classifier():
         # 'xlm-roberta-base'
         # "bigscience/bloom-560m"
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModelForMaskedLM.from_pretrained(model_name)
-        self.device = torch.device("cuda" if device == "cuda" else "cpu")
+        if model_name == 'xlm-roberta-base':
+            self.model = AutoModelForMaskedLM.from_pretrained(model_name)
+        else:
+            self.model = AutoModelForCausalLM.from_pretrained(model_name)
+        self.device = torch.device(
+            "cuda" if torch.cuda.is_available() else "cpu")
+        # self.device = torch.device("cuda" if device == "cuda" else "cpu")
+        print('self.device ', self.device)
 
     def __call__(self, prompt, possible_answers):
+        """
+        Generate probabilites for each promt and each possible answer.
+        Input: 
+            prompt: list of strings where each string is a seperate prompt
+            possible_answers: list of strings where each string is an answer we want the logits from
 
-        # define the possible answers
-        # possible_answers = ['positive', 'negative']
-
-        # sample = 'I really liked this movie'
-        # prompt = f"is this review positive or negative:  {sample}"
-
-        # inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
-        inputs = self.tokenizer(prompt, return_tensors="pt", max_length=512, truncation=True).to(self.device)
-        possible_answers_ids = [self.tokenizer.encode(
+        Output:
+            answer_probs: tensor of shape (len(prompt), len(possible_answer)) where the values are the logits for each answer per prompt
+        """
+        # tokenize input and possible answers
+        inputs = self.tokenizer(
+            prompt, return_tensors="pt", padding=True).to(self.device)
+        possible_answers_ids = [self.tokenizer(
             answer) for answer in possible_answers]
 
-        output = self.model(**inputs, labels=inputs["input_ids"])
-        # print('output ', output)
-        logits = output.logits[:, -1, :]
+        # generate outputs
+        outputs = self.model(**inputs, labels=inputs["input_ids"])
 
-        # Get the probabilities of all tokens in the vocabulary
-        probabilities = logits.softmax(dim=-1)
-        # calculate the probabilities of possible answers
-        answers_probs = []
-        for idx, answer_id in enumerate(possible_answers_ids):
-            probs = probabilities[0, answer_id[-1]].item()
-            answers_probs.append(probs)
-        # print('answers_probs', answers_probs)
+        # get the logits of the last token
+        logits = outputs.logits[:, -1]
+        # loop over all possible answers for every promt and store the logits
+        answers_probs = torch.zeros(len(prompt), len(
+            possible_answers_ids)).to(self.device)
 
-        # # loop over all possible answers for every promt and store the logits
-        # answers_probs = torch.zeros(len(prompt), len(
-        #     possible_answers_ids)).to(self.device)
-        # print('answers_probs ', answers_probs)
-        # for idx, answer in enumerate(possible_answers_ids):
-        #     id = answer["input_ids"]
-        #     probs = logits[:, id][0]
-        #     answers_probs[:, idx] = probs
+        for idx, answer in enumerate(possible_answers_ids):
+            id = answer["input_ids"]
+            probs = logits[:, id]
+            answers_probs[:, idx] = probs.T
 
-        # determine the predicted answer
-        pred_answer = possible_answers[answers_probs.index(max(answers_probs))]
-        # print('pred_answer', pred_answer)
-
-        # get the true answer
-        # true_answer = 'positive' if labels.item() else 'negative'
+        # pred_answer = possible_answers[answers_probs.index(max(answers_probs))]
+        pred_answer_indices = answers_probs.argmax(dim=1)
+        pred_answer = [possible_answers[i] for i in pred_answer_indices]
+        print('pred_answer', pred_answer)
 
         return answers_probs, pred_answer
-
-
-# if __name__ == "__main__":
-
-#     LM_model = 'xlm-roberta-base'
-#     model = Classifier(LM_model)
-#     prompt = 'what is the sentiment of this review: i like trains'
-#     possible_answers = ['positive', 'negative']
-#     answers_probs, pred_answer = model(prompt, possible_answers)
-#     print(answers_probs, pred_answer)
