@@ -21,10 +21,14 @@ from prompt_generator import prompt_generator
 # # output = model(prompt, possible_answers)
 # # print(output)
 
-prompt_instruction = "this is a test"
-prompt_querry = "this a another test"
-sentences = ["test 1", "test 2"]
+prompt_instruction = "I want you to give me the sentiment of the follow review:"
+# prompt_instruction = ""
+prompt_querry = "Is this review positive or negative?"
+# prompt_querry = ""
+sentences = ["This movie was amazing.", "This must be the worst movie I have every seen.", "Could have been better, could have been worse."]
 
 output = prompt_generator(prompt_instruction, prompt_querry, sentences)
-for sentence in output:
-    print(sentence)
+print(output)
+possible_answers = ["positive", "negative"]
+model = CL_bloom()
+print(model(output, possible_answers))

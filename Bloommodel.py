@@ -27,7 +27,7 @@ class CL_bloom():
             answer_probs: tensor of shape (len(prompt), len(possible_answer)) where the values are the logits for each answer per prompt
         """
         #tokenize input and possible answers
-        inputs = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+        inputs = self.tokenizer(prompt, return_tensors="pt", padding=True).to(self.device)
         possible_answers_ids = [self.tokenizer(answer) for answer in possible_answers]
 
         #generate outputs
@@ -35,12 +35,12 @@ class CL_bloom():
 
         #get the logits of the last token
         logits = outputs.logits[:, -1]
-
         #loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(self.device)
+        
         for idx, answer in enumerate(possible_answers_ids):
             id = answer["input_ids"]
-            probs = logits[:, id][0]
-            answers_probs[:, idx] = probs
+            probs = logits[:, id]
+            answers_probs[:, idx] = probs.T
 
         return answers_probs
