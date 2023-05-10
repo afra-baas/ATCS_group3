@@ -15,21 +15,12 @@ def nli_dataset():
 
 @pytest.fixture
 def xnli_dataset():
-    dataset = load_dataset("xnli", "fr")
-    return NLIDataset(dataset['train'])
-
-def test_nli_dataset_length(nli_dataset):
-    assert len(nli_dataset) == 3
-
-def test_nli_dataset_getitem(nli_dataset):
-    premise, hypothesis, label = nli_dataset[0]
-    assert premise == "This is a premise"
-    assert hypothesis == "This is a hypothesis"
-    assert label == 1
+    return NLIDataset()
 
 def test_xnli_dataset(xnli_dataset):
-    assert len(xnli_dataset) > 0
-    assert len(xnli_dataset[0]) == 3
-    assert isinstance(xnli_dataset[0][0], str)
-    assert isinstance(xnli_dataset[0][1], str)
-    assert isinstance(xnli_dataset[0][2], int)
+    train_dataset = xnli_dataset['train']
+    assert len(train_dataset) > 0
+    assert len(train_dataset[0]) == len(train_dataset[1])
+    assert isinstance(train_dataset[0][0], str)
+    assert isinstance(train_dataset[1][0], str)
+    assert isinstance(train_dataset[2][0], int)
