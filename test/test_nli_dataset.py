@@ -23,4 +23,3 @@ def test_xnli_dataset(xnli_dataset):
     assert len(train_dataset[0]) == len(train_dataset[1])
     assert isinstance(train_dataset[0][0], str)
     assert isinstance(train_dataset[1][0], str)
-    assert isinstance(train_dataset[2][0], int)

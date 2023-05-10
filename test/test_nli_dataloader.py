@@ -1,8 +1,6 @@
 import pytest
 from datasets import load_dataset
 from torch.utils.data import DataLoader
-from transformers import AutoTokenizer
-from src.data.NLI.dataset import NLIDataset
 from src.data.NLI.dataloader import NLIDataLoader
 
 @pytest.fixture(scope="module")
