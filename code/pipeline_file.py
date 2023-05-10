@@ -5,7 +5,7 @@ from datasets import load_dataset
 from datetime import datetime
 
 
-def label_mapping(labels, map):
+def label_mapping(labels):
     """
     Maps labels from data loader to the desired labels.
     input:
@@ -14,6 +14,14 @@ def label_mapping(labels, map):
     output:
         output: a list of mapped labels.
     """
+
+    if task == 'SA':
+        map = {'5': 'positive', '4': 'positive', '3': 'positive',
+               '2': 'negative', '1': 'negative',  '0': 'negative'}
+    elif task == 'NLI':
+        map = {'0': 'entailment', '1': 'neutral',
+               '2': 'contradiction'}
+
     output = []
     for label in labels:
         label = str(label.item())
@@ -22,10 +30,35 @@ def label_mapping(labels, map):
             output.append(None)
         else:
             output.append(map[label])
+
+    possible_answers = list(set(map.values()))
+    return output, possible_answers
+
+
+def prompt_generator(sentences):
+    """
+    Generates a promt for every sentence according to the instructions provided
+    input:
+        prompt_instructions: a str with the general prompt instructions.
+        prompt_querry: a str with the question we want to ask the language model
+        sentences: a list with all the input sentences
+    output:
+        output: a list with all sentences transformed to the desired prompt.
+    """
+
+    prompt_instructions = 'Can you please tell me the sentiment of this review'
+    prompt_querry = 'is it positive or nagative?'
+
+    output = []
+    for sentence in sentences:
+        prompt = "We will give you a set of instructions an input sentence and a querry. "
+        prompt += "You should answer the querry based on the input sentence accord to the instructions provided. \n"
+        prompt += f"instructions: {prompt_instructions} \ninput sentence: {sentence} \nquerry: {prompt_querry} \nanswer: "
+        output.append(prompt)
     return output
 
 
-def prompt_generator(prompt_instructions, prompt_querry, sentences):
+def nli_prompt_generator(sentences):
     """
     Generates a promt for every sentence according to the instructions provided
     input:
@@ -36,11 +69,10 @@ def prompt_generator(prompt_instructions, prompt_querry, sentences):
         output: a list with all sentences transformed to the desired prompt.
     """
     output = []
-    for sentence in sentences:
-        promt = "We will give you a set of instructions an input sentence and a querry. "
-        promt += "You should answer the querry based on the input sentence accord to the instructions provided. \n"
-        promt += f"instructions: {prompt_instructions} \ninput sentence: {sentence} \nquerry: {prompt_querry} \nanswer: "
-        output.append(promt)
+    premises, hypotheses = zip(*sentences)
+    for i in range(len(sentences)):
+        prompt = f"{premises[i]} \n Question: {hypotheses[i]} True, False, or Neither?"
+        output.append(prompt)
     return output
 
 
@@ -57,8 +89,6 @@ def evaluate(predictions, targets):
     total = len(predictions)
 
     for i in range(total):
-        # print(predictions[i], targets[i], type(predictions[i]),
-        #       type(targets[i]), predictions[i] == targets[i])
         if predictions[i] == targets[i]:
             correct += 1
 
@@ -66,19 +96,19 @@ def evaluate(predictions, targets):
     return accuracy
 
 
-def pipeline(prompt_instructions, prompt_querry, label_map, LM_model, task):
+def pipeline(LM_model, task, prompt_gen):
 
     # Initilize model
     model = Classifier(LM_model)
-
+    batch_size = 16
     if task == 'SA':
         train_dataloader = create_dataloader(
-            32, "French", "train", model.tokenizer)
+            "French", "train", model.tokenizer, batch_size)
     elif task == 'NLI':
         # Load the XNLI dataset for all_languages
         dataset = load_dataset("xnli", 'fr')  # "all_languages")
         train_dataloader = create_dataloader_nli(
-            dataset['train'], model.tokenizer)
+            dataset['train'], model.tokenizer, batch_size)
     # elif task == 'SA2':
         # dataset = load_dataset('benjaminvdb/DBRD')
         # dataset = load_dataset('sst')
@@ -95,8 +125,7 @@ def pipeline(prompt_instructions, prompt_querry, label_map, LM_model, task):
 
         start_time = datetime.now()
         # Generate promts
-        prompts = prompt_generator(
-            prompt_instructions, prompt_querry, sentences)
+        prompts = prompt_gen(sentences)
         print(f'Batch number: {i} , batch size : {len(prompts)}')
 
         end_time = datetime.now()
@@ -105,7 +134,7 @@ def pipeline(prompt_instructions, prompt_querry, label_map, LM_model, task):
 
         start_time = datetime.now()
         # map labels
-        mapped_labels = label_mapping(labels, label_map)
+        mapped_labels, possible_answers = label_mapping(labels)
 
         end_time = datetime.now()
         duration = end_time - start_time
@@ -114,7 +143,15 @@ def pipeline(prompt_instructions, prompt_querry, label_map, LM_model, task):
         # Classification
         start_time = datetime.now()
         answers_probs_batch, pred_answer_batch = model(
-            prompts, ['positive', 'negative'])
+            prompts, possible_answers)
+
+        # answers_probs_batch = []
+        # pred_answer_batch = []
+        # for prompt in prompts:
+        #     # ToDo classificaton
+        #     answers_probs, pred_answer = model(prompt, possible_answers)
+        #     answers_probs_batch.append(answers_probs)
+        #     pred_answer_batch.append(pred_answer)
 
         end_time = datetime.now()
         duration = end_time - start_time
@@ -147,33 +184,15 @@ def pipeline(prompt_instructions, prompt_querry, label_map, LM_model, task):
 
 if __name__ == "__main__":
 
-    LM_model = 'xlm-roberta-base'
-    # LM_model = 'bigscience/bloom-560m'
+    # LM_model = 'xlm-roberta-base'
+    LM_model = 'bigscience/bloom-560m'
+    # task = 'NLI'
     task = 'SA'
+    print('task ', task)
 
-    if task == 'SA':
-        prompt_instructions = 'Can you please tell me the sentiment of this review'
-        prompt_querry = 'is it positive or nagative?'
-
-        label_map = {'5': 'positive', '4': 'positive', '3': 'positive',
-                     '2': 'negative', '1': 'negative',  '0': 'negative'}
-    elif task == 'NLI':
-        prompt_instructions = ['', ' ']
-        prompt_querry = [' ', ' ']
-        label_map = {'': ' ', ' ': ' '}
-    else:
-        prompt_instructions = [' ']
-        prompt_querry = [' ']
-        label_map = {'': ' '}
-
-    acc = pipeline(prompt_instructions,
-                   prompt_querry, label_map, LM_model, task)
+    acc = pipeline(LM_model, task, prompt_generator)
 
     # parser = argparse.ArgumentParser(description='Description of your program')
-    # parser.add_argument('--datasetpath', type=str, help='Path to the dataset')
-    # parser.add_argument('--lm_model', type=str,
-    #                     help='Path to the language model')
+    # parser.add_argument('--lm_model', type=str,help='Path to the language model')
     # args = parser.parse_args()
-
-    # acc = pipeline(args.Datasetpath, prompt_instructions,
-    #                prompt_querry, label_map, args.LM_model)
+    # acc = pipeline(args.LM_model)

@@ -1,0 +1,166 @@
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+Batch number: 0 , batch size : 8
+Time taken to execute prompt gen: 0:00:00.000464
+Time taken to execute mapping: 0:00:00.000194
+possible_answers  ['positive', 'negative']
+logits  torch.Size([8, 250880])
+answers_probs  torch.Size([8, 2])
+answer_logits  torch.Size([8, 1])
+tensor([[333.2543],
+        [348.9844],
+        [351.0691],
+        [355.9622],
+        [355.3950],
+        [346.7603],
+        [351.9095],
+        [351.7565]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+answer_logits  torch.Size([8, 1])
+tensor([[332.6665],
+        [348.5619],
+        [350.6255],
+        [356.0113],
+        [354.9572],
+        [346.3023],
+        [351.2416],
+        [352.0408]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+pred_answer ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:01.290645
+pred_answer  ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'negative']
+Batch acc:  0.625
+
+Batch number: 1 , batch size : 8
+Time taken to execute prompt gen: 0:00:00.000036
+Time taken to execute mapping: 0:00:00.000544
+possible_answers  ['positive', 'negative']
+logits  torch.Size([8, 250880])
+answers_probs  torch.Size([8, 2])
+answer_logits  torch.Size([8, 1])
+tensor([[350.1182],
+        [349.4632],
+        [352.7738],
+        [344.7447],
+        [349.2878],
+        [348.1469],
+        [348.5987],
+        [350.4479]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+answer_logits  torch.Size([8, 1])
+tensor([[349.3944],
+        [349.5190],
+        [352.2169],
+        [344.4089],
+        [349.5835],
+        [348.1711],
+        [348.5713],
+        [350.3111]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+pred_answer ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.306566
+pred_answer  ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'negative', 'positive', 'positive', 'positive', 'negative', 'positive', 'negative']
+Batch acc:  0.625
+
+Batch number: 1 , batch size : 8
+Time taken to execute prompt gen: 0:00:00.000019
+Time taken to execute mapping: 0:00:00.000166
+possible_answers  ['positive', 'negative']
+logits  torch.Size([8, 250880])
+answers_probs  torch.Size([8, 2])
+answer_logits  torch.Size([8, 1])
+tensor([[339.6474],
+        [352.6871],
+        [350.5694],
+        [348.2375],
+        [345.8906],
+        [338.6179],
+        [351.8087],
+        [351.1737]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+answer_logits  torch.Size([8, 1])
+tensor([[338.6772],
+        [351.9438],
+        [350.9521],
+        [347.7111],
+        [345.6529],
+        [338.5990],
+        [351.4579],
+        [350.6997]], device='cuda:0', grad_fn=<UnsqueezeBackward0>)
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+pred_answer ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.342938
+pred_answer  ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+Batch acc:  1.0
+
+Batch number: 1 , batch size : 8
+Time taken to execute prompt gen: 0:00:00.000018
+Time taken to execute mapping: 0:00:00.000166
+possible_answers  ['positive', 'negative']
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 185, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 145, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 40, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 938, in forward
+    loss = loss_fct(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 912.00 MiB (GPU 0; 23.65 GiB total capacity; 21.16 GiB already allocated; 547.56 MiB free; 22.37 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r29n3: task 0: Exited with exit code 1

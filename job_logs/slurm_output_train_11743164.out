@@ -1,0 +1,59 @@
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+init marc done
+num_lines  200000
+num_lines  200000
+num_lines  200000
+num_lines  200000
+Batch number: 0 , batch size : 16
+Time taken to execute prompt gen: 0:00:00.000050
+Time taken to execute mapping: 0:00:00.000248
+possible_answers  {'negative', 'positive'}
+logits  torch.Size([16, 250880])
+answers_probs  torch.Size([16, 2])
+answer_logits  torch.Size([16, 1])
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+answer_logits  torch.Size([16, 1])
+tensor([[1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.],
+        [1.]], device='cuda:0', grad_fn=<SoftmaxBackward0>)
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 186, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 146, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 63, in __call__
+    pred_answer = [possible_answers[i] for i in pred_answer_indices]
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 63, in <listcomp>
+    pred_answer = [possible_answers[i] for i in pred_answer_indices]
+TypeError: 'set' object is not subscriptable
+srun: error: r28n3: task 0: Exited with exit code 1

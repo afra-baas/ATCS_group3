@@ -1,0 +1,29 @@
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+init marc done
+num_lines  200000
+num_lines  200000
+num_lines  200000
+num_lines  200000
+Batch number: 0 , batch size : 16
+Time taken to execute prompt gen: 0:00:00.000039
+Time taken to execute mapping: 0:00:00.000190
+possible_answers  ['negative', 'positive']
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 185, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 145, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 40, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 926, in forward
+    lm_logits = self.lm_head(hidden_states)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/linear.py", line 114, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 3.75 GiB (GPU 0; 23.65 GiB total capacity; 18.32 GiB already allocated; 3.65 GiB free; 19.25 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r28n3: task 0: Exited with exit code 1

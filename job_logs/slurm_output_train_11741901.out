@@ -1,0 +1,29 @@
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+init marc done
+num_lines  200000
+num_lines  200000
+num_lines  200000
+num_lines  200000
+Batch number: 0 , batch size : 32
+Time taken to execute prompt gen: 0:00:00.000049
+Time taken to execute mapping: 0:00:00.000190
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 169, in <module>
+    acc = pipeline(prompt_instructions,
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 116, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 39, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/xlm_roberta/modeling_xlm_roberta.py", line 1129, in forward
+    masked_lm_loss = loss_fct(prediction_scores.view(-1, self.config.vocab_size), labels.view(-1))
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 9.66 GiB (GPU 0; 23.65 GiB total capacity; 18.36 GiB already allocated; 4.34 GiB free; 18.57 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r28n3: task 0: Exited with exit code 1

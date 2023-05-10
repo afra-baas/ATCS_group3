@@ -4,17 +4,20 @@ import torch
 
 class Classifier():
     def __init__(self, model_name, device="cpu"):
-        # 'xlm-roberta-base'
-        # "bigscience/bloom-560m"
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        if model_name == 'xlm-roberta-base':
-            self.model = AutoModelForMaskedLM.from_pretrained(model_name)
-        else:
-            self.model = AutoModelForCausalLM.from_pretrained(model_name)
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
         # self.device = torch.device("cuda" if device == "cuda" else "cpu")
         print('self.device ', self.device)
+
+        # 'xlm-roberta-base'
+        # "bigscience/bloom-560m"
+        self.tokenizer = AutoTokenizer.from_pretrained(
+            model_name, device=self.device)
+        if model_name == 'xlm-roberta-base':
+            self.model = AutoModelForMaskedLM.from_pretrained(model_name)
+        else:
+            self.model = AutoModelForCausalLM.from_pretrained(model_name)
+        self.model = self.model.to(self.device)
 
     def __call__(self, prompt, possible_answers):
         """
@@ -52,3 +55,14 @@ class Classifier():
         print('pred_answer', pred_answer)
 
         return answers_probs, pred_answer
+
+
+# if __name__ == "__main__":
+
+#     LM_model = 'bigscience/bloom-560m'
+#     model = Classifier(LM_model)
+#     prompt = ['what is the sentiment of this review: i like trains a lot',
+#               'is the sentiment of this review positive or negative? i like trains']
+#     possible_answers = ['positive', 'negative']
+#     answers_probs, pred_answer = model(prompt, possible_answers)
+#     print(answers_probs, pred_answer)
