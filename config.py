@@ -1,4 +1,6 @@
 # Config file
+from transformers import AutoModelForMaskedLM, AutoModelForCausalLM
+
 data = {
     "NLI": {
         "dataset": "NLI",
@@ -16,8 +18,17 @@ data = {
 }
 
 model = {
-    "DEFAULT_MODEL": "xlm-roberta-base",
-    "SUPPORTED_MODELS": ["xlm-roberta-base", "bigscience/bloom-560m"],
+    "DEFAULT_MODEL": "xlm-roberta-base",    
+    "SUPPORTED_MODELS": {
+        "xlm-roberta-base": {
+            "model_constructor": AutoModelForMaskedLM.from_pretrained,
+            "model_name": "xlm-roberta-base",       # model name for huggingface
+        },
+        "bigscience/bloom-560m": {
+            "model_constructor": AutoModelForCausalLM.from_pretrained,
+            "model_name": "bigscience/bloom-560m",       # model name for huggingface
+        }
+    }
 }
 
 task = {

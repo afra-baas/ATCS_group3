@@ -17,14 +17,12 @@ class MARCDataLoader:
 
     def __init__(
         self,
-        tokenizer,
         data_path="",
         dataset_type="train",
         language="English",
         batch_size=32,
     ):
         # :param dataset: dataset to use
-        # :param tokenizer: tokenizer to use
         # :param batch_size: batch size
         self.tokenizer = tokenizer
         self.batch_size = batch_size

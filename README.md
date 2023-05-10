@@ -37,6 +37,9 @@ research project for the cource ATCS at UvA
     ├── models                # Loading model from huggingface
     │   ├── __init__.py
     │   └──  model.py
+    ├── prompts               # Generating prompts using the given template for each sentence
+    │   ├── __init__.py
+    │   └──  prompt.py        # A prompt class that generates prompts from a template
     ├── visualization
     │   ├── __init__.py
     │   └── visualize.py
