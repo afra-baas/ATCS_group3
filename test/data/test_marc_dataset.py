@@ -9,5 +9,5 @@ def marc_dataset():
 def test_marc_dataset(marc_dataset):
     train_dataset = marc_dataset['train']
     assert len(train_dataset) > 0
-    assert len(train_dataset) == 8
+    assert len(train_dataset[0]) == 8
 

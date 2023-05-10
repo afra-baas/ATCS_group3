@@ -10,7 +10,6 @@ data = {
     },
     "MARC": {
         "dataset": "MARC",
-        'path': './data/marc_data/',
         "DEFAULT_LN": "English",
         "dataset_type": "train",
         "batch_size": 32,
