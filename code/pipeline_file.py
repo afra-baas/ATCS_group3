@@ -100,7 +100,7 @@ def pipeline(LM_model, task, prompt_gen):
 
     # Initilize model
     model = Classifier(LM_model)
-    batch_size = 16
+    batch_size = 8
     if task == 'SA':
         train_dataloader = create_dataloader(
             "French", "train", model.tokenizer, batch_size)
@@ -120,13 +120,38 @@ def pipeline(LM_model, task, prompt_gen):
     pred_answer_all = []
     mapped_labels_all = []
     i = 0
+    model.model.eval()
     for batch in train_dataloader:
-        sentences, labels = batch
 
         start_time = datetime.now()
-        # Generate promts
-        prompts = prompt_gen(sentences)
-        print(f'Batch number: {i} , batch size : {len(prompts)}')
+        if task == 'SA':
+            sentences, labels = batch
+            # convert sentences tuple to list
+            # sentences = list(sentences)
+            # # truncate and pad sentences
+            # max_len = 20
+            # for i in range(len(sentences)):
+            #     if len(sentences[i]) > max_len:
+            #         sentences[i] = sentences[i][:max_len]
+            #     # else:
+            #     #     sentences[i] += [0] * (max_len - len(sentences[i]))
+
+            # print('sentence len : ', len(sentences[0]), sentences[0])
+            start_time = datetime.now()
+            # Generate promts
+            prompts = prompt_gen(sentences)
+            end_time = datetime.now()
+            duration = end_time - start_time
+            print(f"Time taken to execute pipeline function: {duration}")
+
+        else:
+            premise, hypotheses, labels = batch
+            start_time = datetime.now()
+            # Generate promts
+            prompts = prompt_gen(premise, hypotheses)
+            end_time = datetime.now()
+            duration = end_time - start_time
+            print(f"Time taken to execute pipeline function: {duration}")
 
         end_time = datetime.now()
         duration = end_time - start_time
@@ -142,6 +167,7 @@ def pipeline(LM_model, task, prompt_gen):
 
         # Classification
         start_time = datetime.now()
+        
         answers_probs_batch, pred_answer_batch = model(
             prompts, possible_answers)
 

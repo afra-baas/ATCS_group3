@@ -78,7 +78,7 @@ def create_dataloader(language, dataset_type, tokenizer, batch_size=32):
 
     # Get a random sample of 1000 items
     sample_texts, sample_labels = marc_dataset.get_random_sample(
-        sample_size=1000, seed=42)
+        sample_size=100, seed=42)
 
     # Create a new dataset and dataloader from the sample
     sample_dataset = [(text, label)

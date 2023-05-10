@@ -36,6 +36,7 @@ class Classifier():
             answer) for answer in possible_answers]
 
         # generate outputs
+        print('summary: ', torch.cuda.memory_summary(device=self.device))
         outputs = self.model(**inputs, labels=inputs["input_ids"])
 
         # get the logits of the last token
@@ -54,6 +55,7 @@ class Classifier():
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
         print('pred_answer', pred_answer)
 
+        torch.cuda.empty_cache()
         return answers_probs, pred_answer
 
 

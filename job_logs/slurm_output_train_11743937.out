@@ -1,0 +1,80 @@
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+sentence len :  20 s’use très vite . su
+Time taken to execute pipeline function: 0:00:00.000041
+Time taken to execute prompt gen: 0:00:00.000057
+Time taken to execute mapping: 0:00:00.000257
+pred_answer ['positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.758901
+pred_answer  ['positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive']
+mapped_labels  ['negative', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'negative', 'negative', 'positive', 'positive']
+Batch acc:  0.6875
+
+sentence len :  20 Je cherchais à fabri
+Time taken to execute pipeline function: 0:00:00.000018
+Time taken to execute prompt gen: 0:00:00.000024
+Time taken to execute mapping: 0:00:00.000088
+pred_answer ['positive', 'positive', 'negative', 'negative', 'negative', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.132465
+pred_answer  ['positive', 'positive', 'negative', 'negative', 'negative', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'negative', 'negative', 'negative', 'negative', 'negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive']
+Batch acc:  0.75
+
+sentence len :  20 La note donnée est l
+Time taken to execute pipeline function: 0:00:00.000027
+Time taken to execute prompt gen: 0:00:00.000032
+Time taken to execute mapping: 0:00:00.000078
+pred_answer ['negative', 'negative', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'negative', 'positive']
+Time taken to execute classification (32): 0:00:00.132242
+pred_answer  ['negative', 'negative', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'negative', 'positive']
+mapped_labels  ['positive', 'negative', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'negative', 'negative', 'negative']
+Batch acc:  0.5625
+
+sentence len :  20 Pas très confortable
+Time taken to execute pipeline function: 0:00:00.000011
+Time taken to execute prompt gen: 0:00:00.000017
+Time taken to execute mapping: 0:00:00.000080
+pred_answer ['positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.133109
+pred_answer  ['positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive']
+mapped_labels  ['negative', 'negative', 'positive', 'negative', 'negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive', 'negative', 'positive', 'negative', 'positive']
+Batch acc:  0.5625
+
+sentence len :  20 Très beau rideau ave
+Time taken to execute pipeline function: 0:00:00.000013
+Time taken to execute prompt gen: 0:00:00.000017
+Time taken to execute mapping: 0:00:00.000205
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 216, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 170, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 39, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 913, in forward
+    transformer_outputs = self.transformer(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 786, in forward
+    outputs = block(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 463, in forward
+    output = self.mlp(layernorm_output, residual)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 384, in forward
+    hidden_states = self.gelu_impl(self.dense_h_to_4h(hidden_states))
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 208, in forward
+    return bloom_gelu_forward(x)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 158, in bloom_gelu_forward
+    return x * 0.5 * (1.0 + torch.tanh(0.79788456 * x * (1 + 0.044715 * x * x)))
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 18.00 MiB (GPU 0; 23.65 GiB total capacity; 22.68 GiB already allocated; 13.56 MiB free; 22.89 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r36n2: task 0: Exited with exit code 1

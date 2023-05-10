@@ -1,0 +1,108 @@
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+sentence len :  20 Après quelques probl
+Time taken to execute pipeline function: 0:00:00.000034
+Time taken to execute prompt gen: 0:00:00.000045
+Time taken to execute mapping: 0:00:00.000197
+pred_answer ['positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.944183
+pred_answer  ['positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'negative', 'positive', 'negative', 'positive', 'positive', 'negative', 'positive']
+Batch acc:  0.75
+
+sentence len :  20 Style simple pas de 
+Time taken to execute pipeline function: 0:00:00.000015
+Time taken to execute prompt gen: 0:00:00.000020
+Time taken to execute mapping: 0:00:00.000374
+pred_answer ['positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'negative']
+Time taken to execute classification (32): 0:00:00.077951
+pred_answer  ['positive', 'positive', 'positive', 'positive', 'negative', 'positive', 'positive', 'negative']
+mapped_labels  ['negative', 'negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'negative']
+Batch acc:  0.625
+
+sentence len :  20 Je suis assez déçue 
+Time taken to execute pipeline function: 0:00:00.000009
+Time taken to execute prompt gen: 0:00:00.000014
+Time taken to execute mapping: 0:00:00.000168
+pred_answer ['negative', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.076136
+pred_answer  ['negative', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'positive']
+Batch acc:  0.75
+
+sentence len :  20 Le support et super 
+Time taken to execute pipeline function: 0:00:00.000008
+Time taken to execute prompt gen: 0:00:00.000013
+Time taken to execute mapping: 0:00:00.000166
+pred_answer ['positive', 'negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.074986
+pred_answer  ['positive', 'negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive']
+mapped_labels  ['positive', 'negative', 'positive', 'negative', 'negative', 'positive', 'positive', 'positive']
+Batch acc:  0.875
+
+sentence len :  20 Le tableau est très 
+Time taken to execute pipeline function: 0:00:00.000008
+Time taken to execute prompt gen: 0:00:00.000012
+Time taken to execute mapping: 0:00:00.000176
+pred_answer ['positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive']
+Time taken to execute classification (32): 0:00:00.071416
+pred_answer  ['positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive']
+mapped_labels  ['positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative', 'positive']
+Batch acc:  1.0
+
+sentence len :  20 J ai été débité deux
+Time taken to execute pipeline function: 0:00:00.000012
+Time taken to execute prompt gen: 0:00:00.000017
+Time taken to execute mapping: 0:00:00.000041
+pred_answer ['negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative']
+Time taken to execute classification (32): 0:00:00.071200
+pred_answer  ['negative', 'positive', 'negative', 'positive', 'positive', 'positive', 'positive', 'negative']
+mapped_labels  ['negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'negative', 'positive']
+Batch acc:  0.375
+
+sentence len :  20 pour un cadeau d enf
+Time taken to execute pipeline function: 0:00:00.000008
+Time taken to execute prompt gen: 0:00:00.000012
+Time taken to execute mapping: 0:00:00.000031
+pred_answer ['negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'negative']
+Time taken to execute classification (32): 0:00:00.071405
+pred_answer  ['negative', 'positive', 'positive', 'negative', 'negative', 'positive', 'positive', 'negative']
+mapped_labels  ['negative', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive', 'negative']
+Batch acc:  0.875
+
+sentence len :  20 Fait son travail, pa
+Time taken to execute pipeline function: 0:00:00.000008
+Time taken to execute prompt gen: 0:00:00.000013
+Time taken to execute mapping: 0:00:00.000042
+pred_answer ['positive', 'negative', 'positive', 'negative', 'positive', 'negative', 'positive', 'positive']
+Time taken to execute classification (32): 0:00:00.070038
+pred_answer  ['positive', 'negative', 'positive', 'negative', 'positive', 'negative', 'positive', 'positive']
+mapped_labels  ['positive', 'positive', 'positive', 'negative', 'positive', 'negative', 'negative', 'positive']
+Batch acc:  0.75
+
+sentence len :  20 très fragile :ferme 
+Time taken to execute pipeline function: 0:00:00.000008
+Time taken to execute prompt gen: 0:00:00.000012
+Time taken to execute mapping: 0:00:00.000031
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 216, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 170, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 39, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 938, in forward
+    loss = loss_fct(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 536.00 MiB (GPU 0; 23.65 GiB total capacity; 22.50 GiB already allocated; 87.56 MiB free; 22.82 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r36n5: task 0: Exited with exit code 1
