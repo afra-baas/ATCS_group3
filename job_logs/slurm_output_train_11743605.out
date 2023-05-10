@@ -1,0 +1,27 @@
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  SA
+self.device  cuda
+/home/lcur1101/ATCS_group3/marc_data/dataset_fr_train.json
+Batch number: 0 , batch size : 16
+Time taken to execute prompt gen: 0:00:00.000087
+Time taken to execute mapping: 0:00:00.000242
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 191, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 145, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 39, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 938, in forward
+    loss = loss_fct(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.75 GiB (GPU 0; 23.65 GiB total capacity; 19.32 GiB already allocated; 2.75 GiB free; 20.15 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r36n2: task 0: Exited with exit code 1

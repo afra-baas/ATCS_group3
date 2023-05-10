@@ -183,8 +183,6 @@ def pipeline(LM_model, task, prompt_gen):
 
 
 if __name__ == "__main__":
-
-    # LM_model = 'xlm-roberta-base'
     LM_model = 'bigscience/bloom-560m'
     # task = 'NLI'
     task = 'SA'
