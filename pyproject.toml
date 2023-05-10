@@ -10,6 +10,9 @@ python = "^3.8,<3.10"
 torch = "^2.0.0"
 pytorch-lightning = "^2.0.2"
 huggingface = "^0.0.1"
+torchtext = "^0.15.2"
+pytest = "^7.3.1"
+black = "21.12b0"
 promptsource = "^0.2.3"
 
 
