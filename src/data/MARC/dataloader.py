@@ -24,7 +24,6 @@ class MARCDataLoader:
     ):
         # :param dataset: dataset to use
         # :param batch_size: batch size
-        self.tokenizer = tokenizer
         self.batch_size = batch_size
         self.dataset_type = dataset_type
         try:

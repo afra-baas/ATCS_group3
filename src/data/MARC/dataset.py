@@ -1,27 +1,23 @@
 import os
 import json
 import torch
-from torch.utils.data import DataLoader
-import torchtext
-import torch.nn.utils.rnn as rnn_utils
+
+from datasets import load_dataset
 
 
 class MARCDataset(torch.utils.data.Dataset):
-    def __init__(self, data_path):
-        self.data_path = data_path
+    def __init__(self, language="fr"):
+        # :param dataset: dataset to use
+        # :param tokenizer: tokenizer to use
+        self.language = language
+        self.dataset = load_dataset("amazon_reviews_multi", language).with_format(
+            "torch"
+        )
 
-    def __getitem__(self, idx):
-        with open(self.data_path, "r", encoding="utf-8") as f:
-            for i, line in enumerate(f):
-                if i == idx:
-                    data = json.loads(line)
-                    break
-        label = int(data["stars"])
-        text = data["review_body"]
+    def __getitem__(self, idx: int):
+        label = self.dataset['starts']
+        text = self.dataset['text']
         return text, label
 
     def __len__(self):
-        with open(self.data_path, "r", encoding="utf-8") as f:
-            num_lines = sum([1 for line in f])
-        print("num_lines ", num_lines)
-        return int(num_lines)
+        return len(self.dataset)

@@ -16,5 +16,7 @@ class NLIDataLoader:
     def get_dataloader(self, data_type="train") -> DataLoader:
         # :param data_type: type of data to load. Default to train because we want a large dataset
         # :return: DataLoader for the dataset
-        dataloader = DataLoader(self.dataset.dataset[data_type], batch_size=self.batch_size, shuffle=True)
+        dataloader = DataLoader(
+            self.dataset.dataset[data_type], batch_size=self.batch_size, shuffle=True
+        )
         return dataloader
