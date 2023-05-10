@@ -1,28 +1,13 @@
-import os
-import json
+from typing import Tuple
+
 import torch
-from torch.utils.data import DataLoader
-from transformers import AutoTokenizer
-import torchtext
+from torch.utils.data import DataLoader, Dataset
+from datasets import load_dataset
 import torch.nn.utils.rnn as rnn_utils
 
-# Define the dataset class
-class NLIDataset(torch.utils.data.Dataset):
-    def __init__(self, dataset, tokenizer):
-        # :param dataset: dataset to use
-        # :param tokenizer: tokenizer to use
-        self.dataset = dataset
-        self.tokenizer = tokenizer
+from src.data.hf_dataset import HFDataset
 
-    def __len__(self):
-        return len(self.dataset)
 
-    def __getitem__(self, idx: int) -> tuple(str, str, int):
-        # :param idx: index of the sample to fetch
-        # :return: tuple (text, label) for the given index
-        premise = self.dataset[idx]["premise"]
-        hypothese = self.dataset[idx]["hypothesis"]
-        label = self.dataset[idx]["label"]
-        # inputs = self.tokenizer(
-        #     text, padding='max_length', truncation=True, max_length=128, return_tensors='pt')
-        return premise, hypothese, label
+class NLIDataset(HFDataset):
+    language = "fr"
+    dataset_name = "xnli"
