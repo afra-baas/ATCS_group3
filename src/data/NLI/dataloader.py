@@ -4,15 +4,13 @@ from datasets import load_dataset
 
 # Define the DataLoader class for NLI
 class NLIDataLoader:
-    def __init__(self, tokenizer, dataset, batch_size=32):
+    def __init__(self, dataset, batch_size=32):
         # :param dataset: dataset to use
         # :param tokenizer: tokenizer to use
         # :param batch_size: batch size
-        self.dataset = dataset["train"]
-        self.tokenizer = tokenizer
         self.batch_size = batch_size
         print("Loading NLI dataset")
-        self.dataset = NLIDataset(self.dataset, self.tokenizer)
+        self.dataset = NLIDataset(dataset)
         print("NLI dataset loaded")
 
     def get_dataloader(self):

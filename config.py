@@ -4,14 +4,14 @@ from transformers import AutoModelForMaskedLM, AutoModelForCausalLM
 data = {
     "NLI": {
         "dataset": "NLI",
-        "language": "French",
+        "DEFAULT_LN": "French",
         "dataset_type": "train",
         "batch_size": 32,
     },
     "MARC": {
         "dataset": "MARC",
         'path': './data/marc_data/',
-        "language": "English",
+        "DEFAULT_LN": "English",
         "dataset_type": "train",
         "batch_size": 32,
     }
