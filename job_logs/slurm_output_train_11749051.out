@@ -1,0 +1,77 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Loading cached processed dataset at /home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609/cache-9fdab9f62a064919.arrow
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  SA
+self.device  cuda
+Batch: 0 , batch size: 32, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000079
+Time taken to execute prompt gen: 0:00:00.000094
+Time taken to execute mapping: 0:00:00.000393
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Active memory         |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2134 MiB |   2134 MiB |   2134 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      2 MiB |      2 MiB |      2 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 635904 B   |  18404 KiB | 395260 KiB | 394639 KiB |
+|       from large pool |      0 B   |  16384 KiB | 393216 KiB | 393216 KiB |
+|       from small pool | 635904 B   |   2044 KiB |   2044 KiB |   1423 KiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      74    |      74    |      74    |       0    |
+|       from large pool |      73    |      73    |      73    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       1    |       2    |      25    |      24    |
+|       from large pool |       0    |       1    |      24    |      24    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 192, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 157, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 45, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 938, in forward
+    loss = loss_fct(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 9.72 GiB (GPU 0; 23.65 GiB total capacity; 17.68 GiB already allocated; 4.88 GiB free; 18.03 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r36n5: task 0: Exited with exit code 1

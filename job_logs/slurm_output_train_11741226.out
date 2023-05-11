@@ -1,0 +1,3 @@
+srun: error: r34n3: task 0: Out Of Memory
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11741226.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11741226.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

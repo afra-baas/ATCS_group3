@@ -1,0 +1,309 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+task  SA
+self.device  cuda
+Map:   0%|          | 0/200000 [00:00<?, ? examples/s]Map:   0%|          | 1000/200000 [00:00<00:24, 7964.33 examples/s]Map:   1%|          | 2000/200000 [00:00<00:32, 6084.29 examples/s]Map:   2%|▏         | 3468/200000 [00:00<00:21, 8989.92 examples/s]Map:   2%|▏         | 4954/200000 [00:00<00:18, 10833.56 examples/s]Map:   3%|▎         | 6953/200000 [00:00<00:16, 11741.90 examples/s]Map:   4%|▍         | 8909/200000 [00:00<00:15, 12146.54 examples/s]Map:   5%|▌         | 10961/200000 [00:01<00:17, 10535.73 examples/s]Map:   6%|▋         | 12940/200000 [00:01<00:16, 11249.80 examples/s]Map:   7%|▋         | 14930/200000 [00:01<00:15, 11770.09 examples/s]Map:   8%|▊         | 16933/200000 [00:01<00:15, 12202.46 examples/s]Map:   9%|▉         | 18366/200000 [00:01<00:17, 10247.74 examples/s]Map:  10%|▉         | 19963/200000 [00:01<00:15, 11262.59 examples/s]Map:  11%|█         | 21962/200000 [00:01<00:15, 11812.68 examples/s]Map:  12%|█▏        | 23948/200000 [00:02<00:14, 12140.60 examples/s]Map:  13%|█▎        | 25960/200000 [00:02<00:13, 12477.83 examples/s]Map:  14%|█▍        | 27604/200000 [00:02<00:16, 10649.87 examples/s]Map:  14%|█▍        | 29000/200000 [00:02<00:15, 10800.35 examples/s]Map:  15%|█▌        | 30473/200000 [00:02<00:14, 11642.89 examples/s]Map:  16%|█▌        | 31955/200000 [00:02<00:13, 12296.58 examples/s]Map:  17%|█▋        | 33936/200000 [00:02<00:13, 12503.66 examples/s]Map:  18%|█▊        | 35919/200000 [00:03<00:12, 12646.87 examples/s]Map:  19%|█▉        | 37937/200000 [00:03<00:12, 12848.13 examples/s]Map:  20%|█▉        | 39391/200000 [00:03<00:15, 10438.34 examples/s]Map:  20%|██        | 40953/200000 [00:03<00:13, 11418.35 examples/s]Map:  21%|██▏       | 42958/200000 [00:03<00:13, 11891.15 examples/s]Map:  22%|██▏       | 44967/200000 [00:03<00:12, 12238.67 examples/s]Map:  23%|██▎       | 46955/200000 [00:04<00:12, 12513.40 examples/s]Map:  24%|██▍       | 48451/200000 [00:04<00:14, 10484.27 examples/s]Map:  25%|██▍       | 49952/200000 [00:04<00:13, 11291.03 examples/s]Map:  26%|██▌       | 51926/200000 [00:04<00:12, 11811.46 examples/s]Map:  27%|██▋       | 53950/200000 [00:04<00:11, 12225.20 examples/s]Map:  28%|██▊       | 55955/200000 [00:04<00:11, 12497.65 examples/s]Map:  29%|██▊       | 57419/200000 [00:05<00:13, 10418.19 examples/s]Map:  29%|██▉       | 58969/200000 [00:05<00:12, 11358.11 examples/s]Map:  30%|███       | 60956/200000 [00:05<00:11, 11847.02 examples/s]Map:  31%|███▏      | 62954/200000 [00:05<00:11, 12252.38 examples/s]Map:  32%|███▏      | 64505/200000 [00:05<00:13, 10416.90 examples/s]Map:  33%|███▎      | 65921/200000 [00:05<00:12, 11126.88 examples/s]Map:  34%|███▍      | 67925/200000 [00:05<00:11, 11729.18 examples/s]Map:  35%|███▍      | 69927/200000 [00:06<00:10, 12042.82 examples/s]Map:  36%|███▌      | 71966/200000 [00:06<00:10, 12388.97 examples/s]Map:  37%|███▋      | 73333/200000 [00:06<00:12, 10287.48 examples/s]Map:  37%|███▋      | 74967/200000 [00:06<00:11, 11310.36 examples/s]Map:  38%|███▊      | 76934/200000 [00:06<00:10, 11788.66 examples/s]Map:  39%|███▉      | 78959/200000 [00:06<00:09, 12211.83 examples/s]Map:  40%|████      | 80918/200000 [00:07<00:09, 12454.25 examples/s]Map:  41%|████▏     | 82604/200000 [00:07<00:11, 10645.43 examples/s]Map:  42%|████▏     | 84000/200000 [00:07<00:10, 10799.73 examples/s]Map:  43%|████▎     | 85462/200000 [00:07<00:09, 11617.06 examples/s]Map:  43%|████▎     | 86970/200000 [00:07<00:09, 12373.22 examples/s]Map:  44%|████▍     | 88926/200000 [00:07<00:08, 12592.90 examples/s]Map:  45%|████▌     | 90941/200000 [00:07<00:08, 12760.56 examples/s]Map:  46%|████▋     | 92970/200000 [00:08<00:08, 12908.96 examples/s]Map:  47%|████▋     | 94476/200000 [00:08<00:09, 10692.40 examples/s]Map:  48%|████▊     | 95960/200000 [00:08<00:09, 11515.90 examples/s]Map:  49%|████▉     | 97948/200000 [00:08<00:08, 11969.75 examples/s]Map:  50%|████▉     | 99954/200000 [00:08<00:08, 12298.50 examples/s]Map:  51%|█████     | 101925/200000 [00:08<00:07, 12493.95 examples/s]Map:  52%|█████▏    | 103415/200000 [00:08<00:09, 10490.12 examples/s]Map:  52%|█████▏    | 104948/200000 [00:09<00:08, 11420.18 examples/s]Map:  53%|█████▎    | 106977/200000 [00:09<00:07, 11910.72 examples/s]Map:  54%|█████▍    | 108915/200000 [00:09<00:07, 11961.28 examples/s]Map:  55%|█████▌    | 110922/200000 [00:09<00:07, 12153.49 examples/s]Map:  56%|█████▌    | 112374/200000 [00:09<00:08, 10189.49 examples/s]Map:  57%|█████▋    | 113906/200000 [00:09<00:07, 10971.90 examples/s]Map:  58%|█████▊    | 115945/200000 [00:10<00:07, 11606.52 examples/s]Map:  59%|█████▉    | 117920/200000 [00:10<00:06, 12029.66 examples/s]Map:  60%|█████▉    | 119505/200000 [00:10<00:07, 10336.55 examples/s]Map:  60%|██████    | 120957/200000 [00:10<00:07, 11172.83 examples/s]Map:  61%|██████▏   | 122964/200000 [00:10<00:06, 11744.74 examples/s]Map:  62%|██████▏   | 124963/200000 [00:10<00:06, 12134.40 examples/s]Map:  63%|██████▎   | 126963/200000 [00:10<00:05, 12432.67 examples/s]Map:  64%|██████▍   | 128371/200000 [00:11<00:06, 10372.64 examples/s]Map:  65%|██████▍   | 129951/200000 [00:11<00:06, 11284.32 examples/s]Map:  66%|██████▌   | 131934/200000 [00:11<00:05, 11831.02 examples/s]Map:  67%|██████▋   | 133918/200000 [00:11<00:05, 12218.75 examples/s]Map:  68%|██████▊   | 135944/200000 [00:11<00:05, 12486.76 examples/s]Map:  69%|██████▉   | 137604/200000 [00:11<00:05, 10607.09 examples/s]Map:  70%|██████▉   | 139000/200000 [00:12<00:05, 10838.55 examples/s]Map:  70%|███████   | 140417/200000 [00:12<00:05, 11553.21 examples/s]Map:  71%|███████   | 141946/200000 [00:12<00:04, 12299.16 examples/s]Map:  72%|███████▏  | 143977/200000 [00:12<00:04, 12568.03 examples/s]Map:  73%|███████▎  | 145976/200000 [00:12<00:04, 12725.09 examples/s]Map:  74%|███████▍  | 147958/200000 [00:12<00:04, 12836.78 examples/s]Map:  75%|███████▍  | 149450/200000 [00:12<00:04, 10633.24 examples/s]Map:  75%|███████▌  | 150946/200000 [00:13<00:04, 11427.76 examples/s]Map:  76%|███████▋  | 152929/200000 [00:13<00:03, 11887.74 examples/s]Map:  77%|███████▋  | 154923/200000 [00:13<00:03, 12256.35 examples/s]Map:  78%|███████▊  | 156921/200000 [00:13<00:03, 12470.94 examples/s]Map:  79%|███████▉  | 158386/200000 [00:13<00:04, 10358.92 examples/s]Map:  80%|███████▉  | 159968/200000 [00:13<00:03, 11328.59 examples/s]Map:  81%|████████  | 161967/200000 [00:14<00:03, 11873.35 examples/s]Map:  82%|████████▏ | 163940/200000 [00:14<00:02, 12107.81 examples/s]Map:  83%|████████▎ | 165952/200000 [00:14<00:02, 12369.52 examples/s]Map:  84%|████████▎ | 167456/200000 [00:14<00:03, 9747.23 examples/s] Map:  84%|████████▍ | 168952/200000 [00:14<00:02, 10649.09 examples/s]Map:  85%|████████▌ | 170915/200000 [00:14<00:02, 11293.05 examples/s]Map:  86%|████████▋ | 172913/200000 [00:14<00:02, 11811.98 examples/s]Map:  87%|████████▋ | 174505/200000 [00:15<00:02, 10195.44 examples/s]Map:  88%|████████▊ | 175965/200000 [00:15<00:02, 11047.27 examples/s]Map:  89%|████████▉ | 177956/200000 [00:15<00:01, 11597.21 examples/s]Map:  90%|████████▉ | 179953/200000 [00:15<00:01, 12023.37 examples/s]Map:  91%|█████████ | 181934/200000 [00:15<00:01, 12280.93 examples/s]Map:  92%|█████████▏| 183360/200000 [00:15<00:01, 10280.99 examples/s]Map:  92%|█████████▏| 184941/200000 [00:16<00:01, 11245.13 examples/s]Map:  93%|█████████▎| 186904/200000 [00:16<00:01, 11745.05 examples/s]Map:  94%|█████████▍| 188939/200000 [00:16<00:00, 12129.29 examples/s]Map:  95%|█████████▌| 190955/200000 [00:16<00:00, 12408.83 examples/s]Map:  96%|█████████▋| 192604/200000 [00:16<00:00, 10539.51 examples/s]Map:  97%|█████████▋| 194000/200000 [00:16<00:00, 10758.70 examples/s]Map:  98%|█████████▊| 195402/200000 [00:16<00:00, 11453.89 examples/s]Map:  98%|█████████▊| 196957/200000 [00:17<00:00, 12305.48 examples/s]Map:  99%|█████████▉| 198928/200000 [00:17<00:00, 12471.45 examples/s]                                                                      /home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+Time taken to execute pipeline function: 0:00:00.000046
+Time taken to execute prompt gen: 0:00:00.000065
+Time taken to execute mapping: 0:00:00.000672
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Active memory         |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2134 MiB |   2134 MiB |   2134 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      2 MiB |      2 MiB |      2 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 785408 B   |  18404 KiB | 395260 KiB | 394493 KiB |
+|       from large pool |      0 B   |  16384 KiB | 393216 KiB | 393216 KiB |
+|       from small pool | 785408 B   |   2044 KiB |   2044 KiB |   1277 KiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      74    |      74    |      74    |       0    |
+|       from large pool |      73    |      73    |      73    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       1    |       2    |      25    |      24    |
+|       from large pool |       0    |       1    |      24    |      24    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+Time taken to execute classification (32): 0:00:05.295325
+pred_answer  ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+mapped_labels  ['positive', 'negative', 'negative', 'positive', 'negative', 'positive', 'positive', 'positive']
+Batch acc:  0.375
+
+Time taken to execute pipeline function: 0:00:00.000017
+Time taken to execute prompt gen: 0:00:00.000026
+Time taken to execute mapping: 0:00:00.000082
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   5705 MiB |   8278 MiB |   9844 MiB |   4138 MiB |
+|       from large pool |   5703 MiB |   8276 MiB |   9744 MiB |   4041 MiB |
+|       from small pool |      1 MiB |      3 MiB |     99 MiB |     97 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   5705 MiB |   8278 MiB |   9844 MiB |   4138 MiB |
+|       from large pool |   5703 MiB |   8276 MiB |   9744 MiB |   4041 MiB |
+|       from small pool |      1 MiB |      3 MiB |     99 MiB |     97 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   5665 MiB |   8238 MiB |   9780 MiB |   4115 MiB |
+|       from large pool |   5663 MiB |   8236 MiB |   9681 MiB |   4018 MiB |
+|       from small pool |      1 MiB |      3 MiB |     99 MiB |     97 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   5866 MiB |   8438 MiB |   8438 MiB |   2572 MiB |
+|       from large pool |   5862 MiB |   8434 MiB |   8434 MiB |   2572 MiB |
+|       from small pool |      4 MiB |      4 MiB |      4 MiB |      0 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 164772 KiB | 182327 KiB |   3961 MiB |   3800 MiB |
+|       from large pool | 162560 KiB | 180540 KiB |   3857 MiB |   3699 MiB |
+|       from small pool |   2211 KiB |   2229 KiB |    103 MiB |    101 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     933    |    1036    |    1437    |     504    |
+|       from large pool |     630    |     635    |     899    |     269    |
+|       from small pool |     303    |     403    |     538    |     235    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     933    |    1036    |    1437    |     504    |
+|       from large pool |     630    |     635    |     899    |     269    |
+|       from small pool |     303    |     403    |     538    |     235    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |     238    |     242    |     242    |       4    |
+|       from large pool |     236    |     240    |     240    |       4    |
+|       from small pool |       2    |       2    |       2    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |     175    |     175    |     496    |     321    |
+|       from large pool |     122    |     125    |     377    |     255    |
+|       from small pool |      53    |      53    |     119    |      66    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['positive', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+Time taken to execute classification (32): 0:00:00.127514
+pred_answer  ['positive', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+mapped_labels  ['positive', 'positive', 'positive', 'negative', 'negative', 'positive', 'negative', 'negative']
+Batch acc:  0.625
+
+Time taken to execute pipeline function: 0:00:00.000015
+Time taken to execute prompt gen: 0:00:00.000024
+Time taken to execute mapping: 0:00:00.000076
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   9400 MiB |  12088 MiB |  17889 MiB |   8489 MiB |
+|       from large pool |   9397 MiB |  12086 MiB |  17692 MiB |   8294 MiB |
+|       from small pool |      2 MiB |      3 MiB |    197 MiB |    194 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   9400 MiB |  12088 MiB |  17889 MiB |   8489 MiB |
+|       from large pool |   9397 MiB |  12086 MiB |  17692 MiB |   8294 MiB |
+|       from small pool |      2 MiB |      3 MiB |    197 MiB |    194 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   9312 MiB |  12001 MiB |  17747 MiB |   8434 MiB |
+|       from large pool |   9310 MiB |  11998 MiB |  17550 MiB |   8240 MiB |
+|       from small pool |      2 MiB |      3 MiB |    197 MiB |    194 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   9656 MiB |  12340 MiB |  14912 MiB |   5256 MiB |
+|       from large pool |   9652 MiB |  12336 MiB |  14908 MiB |   5256 MiB |
+|       from small pool |      4 MiB |      4 MiB |      4 MiB |      0 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 261989 KiB | 278728 KiB |   7591 MiB |   7335 MiB |
+|       from large pool | 260397 KiB | 277613 KiB |   7390 MiB |   7136 MiB |
+|       from small pool |   1591 KiB |   2229 KiB |    200 MiB |    199 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |    1570    |    1673    |    2578    |    1008    |
+|       from large pool |    1162    |    1167    |    1700    |     538    |
+|       from small pool |     408    |     508    |     878    |     470    |
+|---------------------------------------------------------------------------|
+| Active allocs         |    1570    |    1673    |    2578    |    1008    |
+|       from large pool |    1162    |    1167    |    1700    |     538    |
+|       from small pool |     408    |     508    |     878    |     470    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |     404    |     408    |     412    |       8    |
+|       from large pool |     402    |     406    |     410    |       8    |
+|       from small pool |       2    |       2    |       2    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |     276    |     276    |     889    |     613    |
+|       from large pool |     191    |     192    |     709    |     518    |
+|       from small pool |      85    |      85    |     180    |      95    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+Time taken to execute classification (32): 0:00:00.136832
+pred_answer  ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+mapped_labels  ['positive', 'positive', 'positive', 'negative', 'negative', 'positive', 'negative', 'positive']
+Batch acc:  0.375
+
+Time taken to execute pipeline function: 0:00:00.000017
+Time taken to execute prompt gen: 0:00:00.000043
+Time taken to execute mapping: 0:00:00.000072
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |  13678 MiB |  16923 MiB |  27504 MiB |  13825 MiB |
+|       from large pool |  13675 MiB |  16919 MiB |  27209 MiB |  13533 MiB |
+|       from small pool |      3 MiB |      4 MiB |    295 MiB |    292 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |  13678 MiB |  16923 MiB |  27504 MiB |  13825 MiB |
+|       from large pool |  13675 MiB |  16919 MiB |  27209 MiB |  13533 MiB |
+|       from small pool |      3 MiB |      4 MiB |    295 MiB |    292 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |  13578 MiB |  16822 MiB |  27349 MiB |  13770 MiB |
+|       from large pool |  13575 MiB |  16819 MiB |  27053 MiB |  13478 MiB |
+|       from small pool |      3 MiB |      4 MiB |    295 MiB |    292 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |  14282 MiB |  17526 MiB |  22782 MiB |   8500 MiB |
+|       from large pool |  14278 MiB |  17520 MiB |  22776 MiB |   8498 MiB |
+|       from small pool |      4 MiB |      6 MiB |      6 MiB |      2 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory | 617685 KiB | 628172 KiB |   9879 MiB |   9276 MiB |
+|       from large pool | 616885 KiB | 627861 KiB |   9580 MiB |   8978 MiB |
+|       from small pool |    800 KiB |   2276 KiB |    298 MiB |    297 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |    2207    |    2310    |    3719    |    1512    |
+|       from large pool |    1694    |    1699    |    2501    |     807    |
+|       from small pool |     513    |     613    |    1218    |     705    |
+|---------------------------------------------------------------------------|
+| Active allocs         |    2207    |    2310    |    3719    |    1512    |
+|       from large pool |    1694    |    1699    |    2501    |     807    |
+|       from small pool |     513    |     613    |    1218    |     705    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |     693    |     698    |     706    |      13    |
+|       from large pool |     691    |     695    |     703    |      12    |
+|       from small pool |       2    |       3    |       3    |       1    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |     542    |     543    |    1556    |    1014    |
+|       from large pool |     427    |     430    |    1217    |     790    |
+|       from small pool |     115    |     116    |     339    |     224    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+Time taken to execute classification (32): 0:00:00.159810
+pred_answer  ['negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative', 'negative']
+mapped_labels  ['positive', 'negative', 'positive', 'positive', 'negative', 'positive', 'positive', 'positive']
+Batch acc:  0.25
+
+Time taken to execute pipeline function: 0:00:00.000015
+Time taken to execute prompt gen: 0:00:00.000025
+Time taken to execute mapping: 0:00:00.000078
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |  18660 MiB |  22481 MiB |  38956 MiB |  20295 MiB |
+|       from large pool |  18656 MiB |  22477 MiB |  38561 MiB |  19905 MiB |
+|       from small pool |      4 MiB |      5 MiB |    394 MiB |    390 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |  18660 MiB |  22481 MiB |  38956 MiB |  20295 MiB |
+|       from large pool |  18656 MiB |  22477 MiB |  38561 MiB |  19905 MiB |
+|       from small pool |      4 MiB |      5 MiB |    394 MiB |    390 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |  18514 MiB |  22333 MiB |  38723 MiB |  20209 MiB |
+|       from large pool |  18510 MiB |  22329 MiB |  38329 MiB |  19819 MiB |
+|       from small pool |      4 MiB |      5 MiB |    394 MiB |    390 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |  19598 MiB |  23412 MiB |  31912 MiB |  12314 MiB |
+|       from large pool |  19592 MiB |  23406 MiB |  31904 MiB |  12312 MiB |
+|       from small pool |      6 MiB |      6 MiB |      8 MiB |      2 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |    937 MiB |    940 MiB |  12539 MiB |  11602 MiB |
+|       from large pool |    935 MiB |    939 MiB |  12141 MiB |  11206 MiB |
+|       from small pool |      1 MiB |      2 MiB |    397 MiB |    396 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |    2844    |    2947    |    4860    |    2016    |
+|       from large pool |    2226    |    2231    |    3302    |    1076    |
+|       from small pool |     618    |     718    |    1558    |     940    |
+|---------------------------------------------------------------------------|
+| Active allocs         |    2844    |    2947    |    4860    |    2016    |
+|       from large pool |    2226    |    2231    |    3302    |    1076    |
+|       from small pool |     618    |     718    |    1558    |     940    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |     977    |     981    |     994    |      17    |
+|       from large pool |     974    |     978    |     990    |      16    |
+|       from small pool |       3    |       3    |       4    |       1    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |     786    |     786    |    2036    |    1250    |
+|       from large pool |     647    |     648    |    1632    |     985    |
+|       from small pool |     139    |     139    |     404    |     265    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 204, in <module>
+    acc = pipeline(LM_model, task, prompt_generator)
+  File "/home/lcur1101/ATCS_group3/code/pipeline_file.py", line 161, in pipeline
+    answers_probs_batch, pred_answer_batch = model(
+  File "/home/lcur1101/ATCS_group3/code/main_model.py", line 40, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 913, in forward
+    transformer_outputs = self.transformer(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 786, in forward
+    outputs = block(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 439, in forward
+    attn_outputs = self.self_attention(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 332, in forward
+    attn_weights = torch.masked_fill(attention_scores, attention_mask, torch.finfo(attention_scores.dtype).min)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 24.00 MiB (GPU 0; 23.65 GiB total capacity; 21.90 GiB already allocated; 5.56 MiB free; 22.90 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r36n5: task 0: Exited with exit code 1
