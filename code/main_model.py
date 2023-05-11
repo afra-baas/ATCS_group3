@@ -9,7 +9,6 @@ class Classifier():
         # self.device = torch.device("cuda" if device == "cuda" else "cpu")
         print('self.device ', self.device)
 
-        # 'xlm-roberta-base'
         # "bigscience/bloom-560m"
         self.tokenizer = AutoTokenizer.from_pretrained(
             model_name, device=self.device)
@@ -29,6 +28,11 @@ class Classifier():
         Output:
             answer_probs: tensor of shape (len(prompt), len(possible_answer)) where the values are the logits for each answer per prompt
         """
+
+        self.model.eval()
+        for param in self.model.parameters():
+            param.requires_grad = False
+
         # tokenize input and possible answers
         inputs = self.tokenizer(
             prompt, return_tensors="pt", padding=True).to(self.device)
@@ -55,9 +59,7 @@ class Classifier():
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
         print('pred_answer', pred_answer)
 
-        del logits
-
-        # torch.cuda.empty_cache()
+        torch.cuda.empty_cache()
         return answers_probs, pred_answer
 
 

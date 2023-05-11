@@ -59,7 +59,24 @@ def prompt_generator(sentences):
     return output
 
 
-def nli_prompt_generator(sentences):
+# def nli_prompt_generator(sentences):
+#     """
+#     Generates a promt for every sentence according to the instructions provided
+#     input:
+#         prompt_instructions: a str with the general prompt instructions.
+#         prompt_querry: a str with the question we want to ask the language model
+#         sentences: a list with all the input sentences
+#     output:
+#         output: a list with all sentences transformed to the desired prompt.
+#     """
+#     output = []
+#     premises, hypotheses = zip(*sentences)
+#     for i in range(len(sentences)):
+#         prompt = f"{premises[i]} \n Question: {hypotheses[i]} True, False, or Neither?"
+#         output.append(prompt)
+#     return output
+
+def nli_prompt_generator(premises, hypotheses):
     """
     Generates a promt for every sentence according to the instructions provided
     input:
@@ -70,8 +87,7 @@ def nli_prompt_generator(sentences):
         output: a list with all sentences transformed to the desired prompt.
     """
     output = []
-    premises, hypotheses = zip(*sentences)
-    for i in range(len(sentences)):
+    for i in range(len(premises)):
         prompt = f"{premises[i]} \n Question: {hypotheses[i]} True, False, or Neither?"
         output.append(prompt)
     return output
@@ -102,12 +118,11 @@ def pipeline(LM_model, task, prompt_gen):
     # Initilize model
     model = Classifier(LM_model)
     batch_size = 8
+    sample_size = 100
     if task == 'SA':
-        train_dataloader = create_dataloader(batch_size)
+        train_dataloader = create_dataloader(sample_size, batch_size)
     elif task == 'NLI':
-        # Load the XNLI dataset for all_languages
-        dataset = load_dataset("xnli", 'fr')  # "all_languages")
-        train_dataloader = create_dataloader_nli(batch_size)
+        train_dataloader = create_dataloader_nli(sample_size, batch_size)
     else:
         print('This task evaluation is not implemented')
 
@@ -115,23 +130,12 @@ def pipeline(LM_model, task, prompt_gen):
     pred_answer_all = []
     mapped_labels_all = []
     i = 0
-    model.model.eval()
     for batch in train_dataloader:
-
+        print(
+            f'Batch: {i} , batch size: {batch_size}, sample_size: {sample_size}')
         start_time = datetime.now()
         if task == 'SA':
             sentences, labels = batch
-            # convert sentences tuple to list
-            # sentences = list(sentences)
-            # # truncate and pad sentences
-            # max_len = 20
-            # for i in range(len(sentences)):
-            #     if len(sentences[i]) > max_len:
-            #         sentences[i] = sentences[i][:max_len]
-            #     # else:
-            #     #     sentences[i] += [0] * (max_len - len(sentences[i]))
-
-            # print('sentence len : ', len(sentences[0]), sentences[0])
             start_time = datetime.now()
             # Generate promts
             prompts = prompt_gen(sentences)
@@ -162,7 +166,6 @@ def pipeline(LM_model, task, prompt_gen):
 
         # Classification
         start_time = datetime.now()
-
         answers_probs_batch, pred_answer_batch = model(
             prompts, possible_answers)
 
@@ -179,15 +182,7 @@ def pipeline(LM_model, task, prompt_gen):
         acc = evaluate(pred_answer_batch, mapped_labels)
         print('Batch acc: ', acc)
         print()
-
-        del batch
-        del answers_probs_batch
-        del pred_answer_batch
-        torch.cuda.empty_cache()
-
-        i = +1
-        if i > 2:
-            break
+        i += 1
 
     start_time = datetime.now()
     # Evaluation
