@@ -17,11 +17,15 @@ def label_mapping(labels):
     """
 
     if task == 'SA':
-        map = {'5': 'positive', '4': 'positive', '3': 'positive',
-               '2': 'negative', '1': 'negative',  '0': 'negative'}
+        map = {'5': 'yes', '4': 'yes', '3': 'yes',
+               '2': 'no', '1': 'no',  '0': 'no'}
     elif task == 'NLI':
-        map = {'0': 'entailment', '1': 'neutral',
-               '2': 'contradiction'}
+        # map = {'0': 'entailment', '1': 'neutral',
+        #        '2': 'contradiction'}
+        # map = {'0': 'true', '1': 'neither',
+        #        '2': 'false'}
+        map = {'0': 'yes', '1': 'maybe',
+               '2': 'no'}
 
     output = []
     for label in labels:
@@ -47,8 +51,11 @@ def prompt_generator(sentences):
         output: a list with all sentences transformed to the desired prompt.
     """
 
-    prompt_instructions = 'Can you please tell me the sentiment of this review'
-    prompt_querry = 'is it positive or nagative?'
+    # prompt_instructions = 'Can you please tell me the sentiment of this review'
+    # prompt_querry = 'is it positive or nagative?'
+
+    prompt_instructions = 'Tell me if the sentiment of this review is positive'
+    prompt_querry = 'yes or no?'
 
     output = []
     for sentence in sentences:
@@ -88,7 +95,9 @@ def nli_prompt_generator(premises, hypotheses):
     """
     output = []
     for i in range(len(premises)):
-        prompt = f"{premises[i]} \n Question: {hypotheses[i]} True, False, or Neither?"
+        # prompt = f"{premises[i]} \n Question: {hypotheses[i]} True, False, or Neither?"
+        # prompt = f"{premises[i]} \n Question: {hypotheses[i]} true, false, or neither?"
+        prompt = f"{premises[i]} \n Question: {hypotheses[i]} yes, no, or maybe?"
         output.append(prompt)
     return output
 
@@ -117,7 +126,7 @@ def pipeline(LM_model, task, prompt_gen):
 
     # Initilize model
     model = Classifier(LM_model)
-    batch_size = 8
+    batch_size = 16
     sample_size = 100
     if task == 'SA':
         train_dataloader = create_dataloader(sample_size, batch_size)
@@ -197,11 +206,11 @@ def pipeline(LM_model, task, prompt_gen):
 
 if __name__ == "__main__":
     LM_model = 'bigscience/bloom-560m'
-    # task = 'NLI'
-    task = 'SA'
+    task = 'NLI'
+    # task = 'SA'
     print('task ', task)
 
-    acc = pipeline(LM_model, task, prompt_generator)
+    acc = pipeline(LM_model, task, nli_prompt_generator)
 
     # parser = argparse.ArgumentParser(description='Description of your program')
     # parser.add_argument('--lm_model', type=str,help='Path to the language model')

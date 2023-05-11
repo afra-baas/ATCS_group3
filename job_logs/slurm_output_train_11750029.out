@@ -1,0 +1,761 @@
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/utils/data/dataloader.py:561: UserWarning: This DataLoader will create 4 worker processes in total. Our suggested max number of worker in current system is 3, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
+  warnings.warn(_create_warning_msg(
+task  NLI
+self.device  cuda
+Batch: 0 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000076
+Time taken to execute prompt gen: 0:00:00.000111
+Time taken to execute mapping: 0:00:00.000438
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Active memory         |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2133 MiB |   2133 MiB |   2133 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      1 MiB |      1 MiB |      1 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2134 MiB |   2134 MiB |   2134 MiB |      0 B   |
+|       from large pool |   2132 MiB |   2132 MiB |   2132 MiB |      0 B   |
+|       from small pool |      2 MiB |      2 MiB |      2 MiB |      0 B   |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |    776 KiB |  18404 KiB | 395260 KiB | 394484 KiB |
+|       from large pool |      0 KiB |  16384 KiB | 393216 KiB | 393216 KiB |
+|       from small pool |    776 KiB |   2044 KiB |   2044 KiB |   1268 KiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     295    |     295    |     295    |       0    |
+|       from large pool |      97    |      97    |      97    |       0    |
+|       from small pool |     198    |     198    |     198    |       0    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      74    |      74    |      74    |       0    |
+|       from large pool |      73    |      73    |      73    |       0    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       1    |       2    |      25    |      24    |
+|       from large pool |       0    |       1    |      24    |      24    |
+|       from small pool |       1    |       1    |       1    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.703948
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'maybe', 'maybe', 'maybe', 'yes', 'yes', 'maybe', 'no']
+Batch acc:  0.125
+
+Batch: 1 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000022
+Time taken to execute prompt gen: 0:00:00.000043
+Time taken to execute mapping: 0:00:00.000083
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   3670 MiB |   6375 MiB |   4233 MiB |
+|       from large pool |   2140 MiB |   3669 MiB |   6277 MiB |   4137 MiB |
+|       from small pool |      1 MiB |      2 MiB |     97 MiB |     96 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   3670 MiB |   6375 MiB |   4233 MiB |
+|       from large pool |   2140 MiB |   3669 MiB |   6277 MiB |   4137 MiB |
+|       from small pool |      1 MiB |      2 MiB |     97 MiB |     96 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   3669 MiB |   6366 MiB |   4224 MiB |
+|       from large pool |   2140 MiB |   3668 MiB |   6268 MiB |   4128 MiB |
+|       from small pool |      1 MiB |      2 MiB |     97 MiB |     96 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2738 MiB |   3752 MiB |   3752 MiB |   1014 MiB |
+|       from large pool |   2736 MiB |   3748 MiB |   3748 MiB |   1012 MiB |
+|       from small pool |      2 MiB |      4 MiB |      4 MiB |      2 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12870 KiB |  50057 KiB |   3764 MiB |   3752 MiB |
+|       from large pool |  12096 KiB |  49344 KiB |   3666 MiB |   3654 MiB |
+|       from small pool |    774 KiB |   2044 KiB |     98 MiB |     97 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     297    |     357    |    1124    |     827    |
+|       from large pool |      98    |     157    |     704    |     606    |
+|       from small pool |     199    |     203    |     420    |     221    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     297    |     357    |    1124    |     827    |
+|       from large pool |      98    |     157    |     704    |     606    |
+|       from small pool |     199    |     203    |     420    |     221    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |      87    |       6    |
+|       from large pool |      80    |      85    |      85    |       5    |
+|       from small pool |       1    |       2    |       2    |       1    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       3    |      10    |     574    |     571    |
+|       from large pool |       1    |       8    |     419    |     418    |
+|       from small pool |       2    |       3    |     155    |     153    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.080178
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['yes', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'no', 'yes']
+Batch acc:  0.125
+
+Batch: 2 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000017
+Time taken to execute prompt gen: 0:00:00.000022
+Time taken to execute mapping: 0:00:00.000166
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   3744 MiB |  10806 MiB |   8664 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  10612 MiB |   8472 MiB |
+|       from small pool |      1 MiB |      2 MiB |    193 MiB |    192 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   3744 MiB |  10806 MiB |   8664 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  10612 MiB |   8472 MiB |
+|       from small pool |      1 MiB |      2 MiB |    193 MiB |    192 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   3743 MiB |  10795 MiB |   8654 MiB |
+|       from large pool |   2140 MiB |   3741 MiB |  10601 MiB |   8461 MiB |
+|       from small pool |      1 MiB |      2 MiB |    193 MiB |    192 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3244 MiB |   4242 MiB |   5256 MiB |   2012 MiB |
+|       from large pool |   3242 MiB |   4238 MiB |   5250 MiB |   2008 MiB |
+|       from small pool |      2 MiB |      4 MiB |      6 MiB |      4 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12871 KiB | 534787 KiB |  13585 MiB |  13572 MiB |
+|       from large pool |  12096 KiB | 534080 KiB |  13390 MiB |  13378 MiB |
+|       from small pool |    775 KiB |   2044 KiB |    194 MiB |    193 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     298    |     358    |    1952    |    1654    |
+|       from large pool |      98    |     157    |    1310    |    1212    |
+|       from small pool |     200    |     204    |     642    |     442    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     298    |     358    |    1952    |    1654    |
+|       from large pool |      98    |     157    |    1310    |    1212    |
+|       from small pool |     200    |     204    |     642    |     442    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      82    |      87    |      91    |       9    |
+|       from large pool |      81    |      85    |      88    |       7    |
+|       from small pool |       1    |       2    |       3    |       2    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      15    |    1007    |    1003    |
+|       from large pool |       1    |      12    |     747    |     746    |
+|       from small pool |       3    |       4    |     260    |     257    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.072013
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'no', 'no', 'maybe', 'yes', 'no', 'no', 'maybe']
+Batch acc:  0.5
+
+Batch: 3 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000013
+Time taken to execute prompt gen: 0:00:00.000018
+Time taken to execute mapping: 0:00:00.000185
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   3744 MiB |  15099 MiB |  12957 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  14809 MiB |  12668 MiB |
+|       from small pool |      1 MiB |      2 MiB |    290 MiB |    288 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   3744 MiB |  15099 MiB |  12957 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  14809 MiB |  12668 MiB |
+|       from small pool |      1 MiB |      2 MiB |    290 MiB |    288 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   3743 MiB |  15088 MiB |  12947 MiB |
+|       from large pool |   2140 MiB |   3741 MiB |  14798 MiB |  12658 MiB |
+|       from small pool |      1 MiB |      2 MiB |    290 MiB |    288 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2760 MiB |   4242 MiB |   5742 MiB |   2982 MiB |
+|       from large pool |   2758 MiB |   4238 MiB |   5734 MiB |   2976 MiB |
+|       from small pool |      2 MiB |      4 MiB |      8 MiB |      6 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12870 KiB | 534787 KiB |  24675 MiB |  24662 MiB |
+|       from large pool |  12096 KiB | 534080 KiB |  24384 MiB |  24372 MiB |
+|       from small pool |    774 KiB |   2044 KiB |    290 MiB |    290 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     299    |     359    |    2780    |    2481    |
+|       from large pool |      98    |     157    |    1916    |    1818    |
+|       from small pool |     201    |     205    |     864    |     663    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     299    |     359    |    2780    |    2481    |
+|       from large pool |      98    |     157    |    1916    |    1818    |
+|       from small pool |     201    |     205    |     864    |     663    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |      93    |      12    |
+|       from large pool |      80    |      85    |      89    |       9    |
+|       from small pool |       1    |       2    |       4    |       3    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      15    |    1483    |    1479    |
+|       from large pool |       1    |      12    |    1117    |    1116    |
+|       from small pool |       3    |       5    |     366    |     363    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.070399
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['no', 'yes', 'yes', 'maybe', 'no', 'no', 'yes', 'no']
+Batch acc:  0.5
+
+Batch: 4 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000017
+Time taken to execute prompt gen: 0:00:00.000022
+Time taken to execute mapping: 0:00:00.000063
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   3744 MiB |  19333 MiB |  17191 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  18946 MiB |  16806 MiB |
+|       from small pool |      1 MiB |      2 MiB |    386 MiB |    385 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   3744 MiB |  19333 MiB |  17191 MiB |
+|       from large pool |   2140 MiB |   3743 MiB |  18946 MiB |  16806 MiB |
+|       from small pool |      1 MiB |      2 MiB |    386 MiB |    385 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   3743 MiB |  19313 MiB |  17172 MiB |
+|       from large pool |   2140 MiB |   3741 MiB |  18927 MiB |  16786 MiB |
+|       from small pool |      1 MiB |      2 MiB |    386 MiB |    385 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2760 MiB |   4242 MiB |   6696 MiB |   3936 MiB |
+|       from large pool |   2758 MiB |   4238 MiB |   6686 MiB |   3928 MiB |
+|       from small pool |      2 MiB |      4 MiB |     10 MiB |      8 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12863 KiB | 547719 KiB |  36281 MiB |  36269 MiB |
+|       from large pool |  12096 KiB | 547008 KiB |  35894 MiB |  35882 MiB |
+|       from small pool |    767 KiB |   2044 KiB |    387 MiB |    386 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     300    |     360    |    3608    |    3308    |
+|       from large pool |      98    |     157    |    2522    |    2424    |
+|       from small pool |     202    |     206    |    1086    |     884    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     300    |     360    |    3608    |    3308    |
+|       from large pool |      98    |     157    |    2522    |    2424    |
+|       from small pool |     202    |     206    |    1086    |     884    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |      96    |      15    |
+|       from large pool |      80    |      85    |      91    |      11    |
+|       from small pool |       1    |       2    |       5    |       4    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      15    |    1980    |    1976    |
+|       from large pool |       1    |      12    |    1506    |    1505    |
+|       from small pool |       3    |       5    |     474    |     471    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.121060
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['no', 'yes', 'no', 'no', 'no', 'maybe', 'no', 'no']
+Batch acc:  0.75
+
+Batch: 5 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000012
+Time taken to execute prompt gen: 0:00:00.000016
+Time taken to execute mapping: 0:00:00.000032
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   4896 MiB |  27055 MiB |  24913 MiB |
+|       from large pool |   2140 MiB |   4895 MiB |  26572 MiB |  24432 MiB |
+|       from small pool |      1 MiB |      2 MiB |    483 MiB |    481 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   4896 MiB |  27055 MiB |  24913 MiB |
+|       from large pool |   2140 MiB |   4895 MiB |  26572 MiB |  24432 MiB |
+|       from small pool |      1 MiB |      2 MiB |    483 MiB |    481 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   4894 MiB |  27026 MiB |  24884 MiB |
+|       from large pool |   2140 MiB |   4893 MiB |  26543 MiB |  24403 MiB |
+|       from small pool |      1 MiB |      2 MiB |    482 MiB |    481 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3626 MiB |   5344 MiB |   9280 MiB |   5654 MiB |
+|       from large pool |   3624 MiB |   5340 MiB |   9268 MiB |   5644 MiB |
+|       from small pool |      2 MiB |      4 MiB |     12 MiB |     10 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12870 KiB | 568162 KiB |  48679 MiB |  48666 MiB |
+|       from large pool |  12096 KiB | 567552 KiB |  48195 MiB |  48183 MiB |
+|       from small pool |    774 KiB |   2044 KiB |    483 MiB |    483 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     301    |     361    |    4436    |    4135    |
+|       from large pool |      98    |     157    |    3128    |    3030    |
+|       from small pool |     203    |     207    |    1308    |    1105    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     301    |     361    |    4436    |    4135    |
+|       from large pool |      98    |     157    |    3128    |    3030    |
+|       from small pool |     203    |     207    |    1308    |    1105    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      82    |      87    |     100    |      18    |
+|       from large pool |      81    |      85    |      94    |      13    |
+|       from small pool |       1    |       2    |       6    |       5    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       5    |      16    |    2411    |    2406    |
+|       from large pool |       1    |      12    |    1830    |    1829    |
+|       from small pool |       4    |       6    |     581    |     577    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.063334
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'no', 'yes', 'maybe', 'yes', 'no', 'no', 'maybe']
+Batch acc:  0.375
+
+Batch: 6 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000026
+Time taken to execute prompt gen: 0:00:00.000030
+Time taken to execute mapping: 0:00:00.000033
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   4896 MiB |  30525 MiB |  28384 MiB |
+|       from large pool |   2140 MiB |   4895 MiB |  29946 MiB |  27806 MiB |
+|       from small pool |      1 MiB |      2 MiB |    579 MiB |    578 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   4896 MiB |  30525 MiB |  28384 MiB |
+|       from large pool |   2140 MiB |   4895 MiB |  29946 MiB |  27806 MiB |
+|       from small pool |      1 MiB |      2 MiB |    579 MiB |    578 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   4894 MiB |  30440 MiB |  28298 MiB |
+|       from large pool |   2140 MiB |   4893 MiB |  29861 MiB |  27720 MiB |
+|       from small pool |      1 MiB |      2 MiB |    579 MiB |    577 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2740 MiB |   5344 MiB |   9282 MiB |   6542 MiB |
+|       from large pool |   2738 MiB |   5340 MiB |   9268 MiB |   6530 MiB |
+|       from small pool |      2 MiB |      4 MiB |     14 MiB |     12 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12861 KiB | 626178 KiB |  57914 MiB |  57902 MiB |
+|       from large pool |  12096 KiB | 625408 KiB |  57334 MiB |  57322 MiB |
+|       from small pool |    765 KiB |   2044 KiB |    580 MiB |    579 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     302    |     362    |    5264    |    4962    |
+|       from large pool |      98    |     157    |    3734    |    3636    |
+|       from small pool |     204    |     208    |    1530    |    1326    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     302    |     362    |    5264    |    4962    |
+|       from large pool |      98    |     157    |    3734    |    3636    |
+|       from small pool |     204    |     208    |    1530    |    1326    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      80    |      87    |     101    |      21    |
+|       from large pool |      79    |      85    |      94    |      15    |
+|       from small pool |       1    |       2    |       7    |       6    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       6    |      16    |    2917    |    2911    |
+|       from large pool |       1    |      12    |    2224    |    2223    |
+|       from small pool |       5    |       6    |     693    |     688    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.125254
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'no', 'maybe', 'maybe', 'maybe', 'no', 'no', 'no']
+Batch acc:  0.5
+
+Batch: 7 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000024
+Time taken to execute prompt gen: 0:00:00.000028
+Time taken to execute mapping: 0:00:00.000037
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  38815 MiB |  36673 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  38139 MiB |  35999 MiB |
+|       from small pool |      1 MiB |      2 MiB |    676 MiB |    674 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  38815 MiB |  36673 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  38139 MiB |  35999 MiB |
+|       from small pool |      1 MiB |      2 MiB |    676 MiB |    674 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  38727 MiB |  36585 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  38051 MiB |  35911 MiB |
+|       from small pool |      1 MiB |      2 MiB |    675 MiB |    674 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3668 MiB |   5510 MiB |  12052 MiB |   8384 MiB |
+|       from large pool |   3666 MiB |   5506 MiB |  12036 MiB |   8370 MiB |
+|       from small pool |      2 MiB |      4 MiB |     16 MiB |     14 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12864 KiB | 626178 KiB |  68840 MiB |  68828 MiB |
+|       from large pool |  12096 KiB | 625408 KiB |  68163 MiB |  68152 MiB |
+|       from small pool |    768 KiB |   2044 KiB |    676 MiB |    676 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     303    |     363    |    6092    |    5789    |
+|       from large pool |      98    |     157    |    4340    |    4242    |
+|       from small pool |     205    |     209    |    1752    |    1547    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     303    |     363    |    6092    |    5789    |
+|       from large pool |      98    |     157    |    4340    |    4242    |
+|       from small pool |     205    |     209    |    1752    |    1547    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |     105    |      24    |
+|       from large pool |      80    |      85    |      97    |      17    |
+|       from small pool |       1    |       2    |       8    |       7    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       5    |      17    |    3411    |    3406    |
+|       from large pool |       1    |      12    |    2558    |    2557    |
+|       from small pool |       4    |       8    |     853    |     849    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.096813
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['yes', 'maybe', 'yes', 'no', 'yes', 'no', 'no', 'no']
+Batch acc:  0.5
+
+Batch: 8 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000012
+Time taken to execute prompt gen: 0:00:00.000018
+Time taken to execute mapping: 0:00:00.000036
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  44988 MiB |  42847 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  44216 MiB |  42076 MiB |
+|       from small pool |      1 MiB |      2 MiB |    772 MiB |    771 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  44988 MiB |  42847 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  44216 MiB |  42076 MiB |
+|       from small pool |      1 MiB |      2 MiB |    772 MiB |    771 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  44883 MiB |  42742 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  44111 MiB |  41971 MiB |
+|       from small pool |      1 MiB |      2 MiB |    772 MiB |    771 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3668 MiB |   5510 MiB |  13434 MiB |   9766 MiB |
+|       from large pool |   3666 MiB |   5506 MiB |  13416 MiB |   9750 MiB |
+|       from small pool |      2 MiB |      4 MiB |     18 MiB |     16 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12869 KiB | 773323 KiB |  80053 MiB |  80040 MiB |
+|       from large pool |  12096 KiB | 772544 KiB |  79280 MiB |  79268 MiB |
+|       from small pool |    773 KiB |   2044 KiB |    773 MiB |    772 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     304    |     364    |    6920    |    6616    |
+|       from large pool |      98    |     157    |    4946    |    4848    |
+|       from small pool |     206    |     210    |    1974    |    1768    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     304    |     364    |    6920    |    6616    |
+|       from large pool |      98    |     157    |    4946    |    4848    |
+|       from small pool |     206    |     210    |    1974    |    1768    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |     108    |      27    |
+|       from large pool |      80    |      85    |      99    |      19    |
+|       from small pool |       1    |       2    |       9    |       8    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      17    |    3860    |    3856    |
+|       from large pool |       1    |      12    |    2897    |    2896    |
+|       from small pool |       3    |       8    |     963    |     960    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.066192
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['no', 'maybe', 'yes', 'no', 'maybe', 'maybe', 'maybe', 'maybe']
+Batch acc:  0.25
+
+Batch: 9 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000013
+Time taken to execute prompt gen: 0:00:00.000019
+Time taken to execute mapping: 0:00:00.000039
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  48748 MiB |  46606 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  47879 MiB |  45739 MiB |
+|       from small pool |      1 MiB |      2 MiB |    868 MiB |    867 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  48748 MiB |  46606 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  47879 MiB |  45739 MiB |
+|       from small pool |      1 MiB |      2 MiB |    868 MiB |    867 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  48634 MiB |  46493 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  47765 MiB |  45625 MiB |
+|       from small pool |      1 MiB |      2 MiB |    868 MiB |    867 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   2740 MiB |   5510 MiB |  13436 MiB |  10696 MiB |
+|       from large pool |   2738 MiB |   5506 MiB |  13416 MiB |  10678 MiB |
+|       from small pool |      2 MiB |      4 MiB |     20 MiB |     18 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12861 KiB | 773323 KiB |  92258 MiB |  92246 MiB |
+|       from large pool |  12096 KiB | 772544 KiB |  91389 MiB |  91377 MiB |
+|       from small pool |    765 KiB |   2044 KiB |    869 MiB |    868 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     305    |     365    |    7748    |    7443    |
+|       from large pool |      98    |     157    |    5552    |    5454    |
+|       from small pool |     207    |     211    |    2196    |    1989    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     305    |     365    |    7748    |    7443    |
+|       from large pool |      98    |     157    |    5552    |    5454    |
+|       from small pool |     207    |     211    |    2196    |    1989    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      80    |      87    |     109    |      29    |
+|       from large pool |      79    |      85    |      99    |      20    |
+|       from small pool |       1    |       2    |      10    |       9    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      17    |    4380    |    4376    |
+|       from large pool |       1    |      12    |    3257    |    3256    |
+|       from small pool |       3    |       8    |    1123    |    1120    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.113421
+pred_answer  ['no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'no', 'yes', 'maybe', 'no', 'no', 'yes', 'yes']
+Batch acc:  0.25
+
+Batch: 10 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000013
+Time taken to execute prompt gen: 0:00:00.000019
+Time taken to execute mapping: 0:00:00.000039
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  55900 MiB |  53758 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  54935 MiB |  52794 MiB |
+|       from small pool |      1 MiB |      2 MiB |    965 MiB |    964 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  55900 MiB |  53758 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  54935 MiB |  52794 MiB |
+|       from small pool |      1 MiB |      2 MiB |    965 MiB |    964 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  55777 MiB |  53635 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  54812 MiB |  52672 MiB |
+|       from small pool |      1 MiB |      2 MiB |    965 MiB |    963 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3544 MiB |   5510 MiB |  15838 MiB |  12294 MiB |
+|       from large pool |   3542 MiB |   5506 MiB |  15816 MiB |  12274 MiB |
+|       from small pool |      2 MiB |      4 MiB |     22 MiB |     20 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12866 KiB | 773323 KiB | 104876 MiB | 104864 MiB |
+|       from large pool |  12096 KiB | 772544 KiB | 103910 MiB | 103899 MiB |
+|       from small pool |    770 KiB |   2044 KiB |    966 MiB |    965 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     306    |     366    |    8576    |    8270    |
+|       from large pool |      98    |     157    |    6158    |    6060    |
+|       from small pool |     208    |     212    |    2418    |    2210    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     306    |     366    |    8576    |    8270    |
+|       from large pool |      98    |     157    |    6158    |    6060    |
+|       from small pool |     208    |     212    |    2418    |    2210    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |     113    |      32    |
+|       from large pool |      80    |      85    |     102    |      22    |
+|       from small pool |       1    |       2    |      11    |      10    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      17    |    4876    |    4872    |
+|       from large pool |       1    |      12    |    3596    |    3595    |
+|       from small pool |       3    |       8    |    1280    |    1277    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.076809
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['yes', 'maybe', 'no', 'maybe', 'yes', 'maybe', 'no', 'yes']
+Batch acc:  0.25
+
+Batch: 11 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000038
+Time taken to execute prompt gen: 0:00:00.000054
+Time taken to execute mapping: 0:00:00.000106
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  60611 MiB |  58469 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  59549 MiB |  57409 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1061 MiB |   1060 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  60611 MiB |  58469 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  59549 MiB |  57409 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1061 MiB |   1060 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  60479 MiB |  58338 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  59418 MiB |  57278 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1061 MiB |   1060 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3544 MiB |   5510 MiB |  16900 MiB |  13356 MiB |
+|       from large pool |   3542 MiB |   5506 MiB |  16876 MiB |  13334 MiB |
+|       from small pool |      2 MiB |      4 MiB |     24 MiB |     22 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12864 KiB |    790 MiB | 116324 MiB | 116311 MiB |
+|       from large pool |  12096 KiB |    789 MiB | 115261 MiB | 115249 MiB |
+|       from small pool |    768 KiB |      1 MiB |   1062 MiB |   1061 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     307    |     367    |    9404    |    9097    |
+|       from large pool |      98    |     157    |    6764    |    6666    |
+|       from small pool |     209    |     213    |    2640    |    2431    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     307    |     367    |    9404    |    9097    |
+|       from large pool |      98    |     157    |    6764    |    6666    |
+|       from small pool |     209    |     213    |    2640    |    2431    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |     116    |      35    |
+|       from large pool |      80    |      85    |     104    |      24    |
+|       from small pool |       1    |       2    |      12    |      11    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      17    |    5340    |    5336    |
+|       from large pool |       1    |      12    |    3953    |    3952    |
+|       from small pool |       3    |       8    |    1387    |    1384    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.088477
+pred_answer  ['no', 'no', 'no', 'no', 'no', 'no', 'no', 'no']
+mapped_labels  ['maybe', 'yes', 'no', 'no', 'yes', 'maybe', 'no', 'yes']
+Batch acc:  0.375
+
+Batch: 12 , batch size: 8, sample_size: 100
+Time taken to execute pipeline function: 0:00:00.000011
+Time taken to execute prompt gen: 0:00:00.000017
+Time taken to execute mapping: 0:00:00.000029
+summary:  |===========================================================================|
+|                  PyTorch CUDA memory summary, device ID 0                 |
+|---------------------------------------------------------------------------|
+|            CUDA OOMs: 0            |        cudaMalloc retries: 0         |
+|===========================================================================|
+|        Metric         | Cur Usage  | Peak Usage | Tot Alloc  | Tot Freed  |
+|---------------------------------------------------------------------------|
+| Allocated memory      |   2141 MiB |   5091 MiB |  65753 MiB |  63611 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  64595 MiB |  62455 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1158 MiB |   1156 MiB |
+|---------------------------------------------------------------------------|
+| Active memory         |   2141 MiB |   5091 MiB |  65753 MiB |  63611 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  64595 MiB |  62455 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1158 MiB |   1156 MiB |
+|---------------------------------------------------------------------------|
+| Requested memory      |   2141 MiB |   5090 MiB |  65594 MiB |  63453 MiB |
+|       from large pool |   2140 MiB |   5089 MiB |  64437 MiB |  62297 MiB |
+|       from small pool |      1 MiB |      2 MiB |   1157 MiB |   1156 MiB |
+|---------------------------------------------------------------------------|
+| GPU reserved memory   |   3544 MiB |   5510 MiB |  18054 MiB |  14510 MiB |
+|       from large pool |   3542 MiB |   5506 MiB |  18028 MiB |  14486 MiB |
+|       from small pool |      2 MiB |      4 MiB |     26 MiB |     24 MiB |
+|---------------------------------------------------------------------------|
+| Non-releasable memory |  12865 KiB |    790 MiB | 127935 MiB | 127922 MiB |
+|       from large pool |  12096 KiB |    789 MiB | 126776 MiB | 126764 MiB |
+|       from small pool |    769 KiB |      1 MiB |   1158 MiB |   1158 MiB |
+|---------------------------------------------------------------------------|
+| Allocations           |     308    |     368    |   10232    |    9924    |
+|       from large pool |      98    |     157    |    7370    |    7272    |
+|       from small pool |     210    |     214    |    2862    |    2652    |
+|---------------------------------------------------------------------------|
+| Active allocs         |     308    |     368    |   10232    |    9924    |
+|       from large pool |      98    |     157    |    7370    |    7272    |
+|       from small pool |     210    |     214    |    2862    |    2652    |
+|---------------------------------------------------------------------------|
+| GPU reserved segments |      81    |      87    |     119    |      38    |
+|       from large pool |      80    |      85    |     106    |      26    |
+|       from small pool |       1    |       2    |      13    |      12    |
+|---------------------------------------------------------------------------|
+| Non-releasable allocs |       4    |      17    |    5859    |    5855    |
+|       from large pool |       1    |      12    |    4314    |    4313    |
+|       from small pool |       3    |       8    |    1545    |    1542    |
+|---------------------------------------------------------------------------|
+| Oversize allocations  |       0    |       0    |       0    |       0    |
+|---------------------------------------------------------------------------|
+| Oversize GPU segments |       0    |       0    |       0    |       0    |
+|===========================================================================|
+
+pred_answer ['no', 'no', 'no', 'no']
+Time taken to execute classification (32): 0:00:00.078968
+pred_answer  ['no', 'no', 'no', 'no']
+mapped_labels  ['yes', 'no', 'maybe', 'maybe']
+Batch acc:  0.25
+
+acc:  0.37
+Time taken to execute eval: 0:00:00.000039
