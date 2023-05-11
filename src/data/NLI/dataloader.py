@@ -6,10 +6,11 @@ from src.data.hf_dataloader import HFDataloader
 
 # Define the DataLoader class for NLI
 class NLIDataLoader(HFDataloader):
-    data_name = "MARC"
+    data_name = "NLI"
     language = "fr"
-    supported_tasks = []
+    supported_tasks = ["NLI", "Empty"]
     dataset_class = NLIDataset
+    default_task = "NLI"
 
     def collate_fn(self, x):
-        return [([row["premise"], row["hypothesis"]], row["label"]) for row in x]
+        return [(self.prompt([row["premise"], row["hypothesis"]]), row["label"]) for row in x]

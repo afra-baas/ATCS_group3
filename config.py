@@ -1,18 +1,24 @@
 # Config file
 from transformers import AutoModelForMaskedLM, AutoModelForCausalLM
 
+from src.prompts.empty_prompt import EmptyPrompt
+from src.prompts.nli_prompt import NLIPrompt
+from src.prompts.sa_prompt import SAPrompt
+
 data = {
     "NLI": {
         "dataset": "NLI",
         "DEFAULT_LN": "French",
         "dataset_type": "train",
         "batch_size": 32,
+        "supported_tasks": ["NLI"]
     },
     "MARC": {
         "dataset": "MARC",
         "DEFAULT_LN": "English",
         "dataset_type": "train",
         "batch_size": 32,
+        "supported_tasks": ["SA"]
     }
 }
 
@@ -30,7 +36,21 @@ model = {
     }
 }
 
-task = {
+task_config = {
     "DEFAULT_TASK": "SA",
-    "SUPPORTED_TASKS": ["SA", "NLI"],
+    "SUPPORTED_TASKS": {
+        "SA": {
+            "label_map": {'5': 'positive', '4': 'positive', '3': 'positive',
+                     '2': 'negative', '1': 'negative',  '0': 'negative'},
+            "prompt_class": SAPrompt
+        }, 
+        "NLI": {
+            "label_map": {'': ''},
+            "prompt_class": NLIPrompt
+        },
+        "Empty": {
+            "label_map": {'': ' '},
+            "prompt_class": EmptyPrompt
+        }
+    },
 }
