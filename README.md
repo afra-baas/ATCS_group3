@@ -14,8 +14,6 @@ research project for the cource ATCS at UvA
 ```
 .
 ├── README.md
-├── data
-│   └── test
 ├── models
 ├── notebooks
 ├── output
@@ -26,6 +24,8 @@ research project for the cource ATCS at UvA
     ├── evaulate.py
     ├── data                   # data processing - loading MARC from path and NLI from huggingface
     │   ├── __init__.py
+    │   ├── hf_dataloder.py
+    │   ├── hf_dataset.py
     │   ├── MARC
     │   │   ├── __init__.py
     │   │   ├── dataloader.py
@@ -49,3 +49,12 @@ research project for the cource ATCS at UvA
         ├── logger.py
         └── utils.py
 ```
+
+# Structure of the data
+The data is pulled from Huggingface datasets. The data is split into train, validation and test sets. The data is split into 2 different datasets:
+1. MARC
+2. NLI
+Both datasets are passed to a dataloader which
+1. Loads the data
+2. Collates the data into batches of size `batch_size` (default: 32)
+3. Each batch is a list of tuples (sentences, label) where `sentences` is a list of sentences and `label` is a list of labels for each sentence in `sentences`
