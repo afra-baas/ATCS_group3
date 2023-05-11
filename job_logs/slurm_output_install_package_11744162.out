@@ -1,0 +1,3 @@
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'llama/requirements.txt'
+Obtaining file:///home/lcur1101
+ERROR: file:///home/lcur1101 does not appear to be a Python project: neither 'setup.py' nor 'pyproject.toml' found.

@@ -55,7 +55,9 @@ class Classifier():
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
         print('pred_answer', pred_answer)
 
-        torch.cuda.empty_cache()
+        del logits
+
+        # torch.cuda.empty_cache()
         return answers_probs, pred_answer
 
 

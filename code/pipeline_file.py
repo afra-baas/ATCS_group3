@@ -3,6 +3,7 @@ from dataloaders import create_dataloader, create_dataloader_nli
 from main_model import Classifier
 from datasets import load_dataset
 from datetime import datetime
+import torch
 
 
 def label_mapping(labels):
@@ -102,17 +103,11 @@ def pipeline(LM_model, task, prompt_gen):
     model = Classifier(LM_model)
     batch_size = 8
     if task == 'SA':
-        train_dataloader = create_dataloader(
-            "French", "train", model.tokenizer, batch_size)
+        train_dataloader = create_dataloader(batch_size)
     elif task == 'NLI':
         # Load the XNLI dataset for all_languages
         dataset = load_dataset("xnli", 'fr')  # "all_languages")
-        train_dataloader = create_dataloader_nli(
-            dataset['train'], model.tokenizer, batch_size)
-    # elif task == 'SA2':
-        # dataset = load_dataset('benjaminvdb/DBRD')
-        # dataset = load_dataset('sst')
-        # dataloader = get_dataloader(dataset, tokenizer, batch_size=4096)
+        train_dataloader = create_dataloader_nli(batch_size)
     else:
         print('This task evaluation is not implemented')
 
@@ -167,7 +162,7 @@ def pipeline(LM_model, task, prompt_gen):
 
         # Classification
         start_time = datetime.now()
-        
+
         answers_probs_batch, pred_answer_batch = model(
             prompts, possible_answers)
 
@@ -197,8 +192,13 @@ def pipeline(LM_model, task, prompt_gen):
         if i > 2:
             break
 
+        del batch
+        del answers_probs_batch
+        del pred_answer_batch
+        torch.cuda.empty_cache()
+
     start_time = datetime.now()
-    # Evaluation:
+    # Evaluation
     acc = evaluate(pred_answer_all, mapped_labels_all)
     print('acc: ', acc)
     end_time = datetime.now()

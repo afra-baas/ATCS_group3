@@ -23,9 +23,11 @@ source activate dl2022
 # conda install -c anaconda scikit-learn
 # pip install pytorch-lightning
 # conda install -c conda-forge transformers
-pip install transformers
-pip show transformers
+# pip install transformers
+# pip show transformers
 # pip install datasets
 # pip install torchtext
 
+pip install -r llama/requirements.txt
+pip install -e .
 
