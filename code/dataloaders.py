@@ -34,61 +34,27 @@ def create_dataloader_nli(dataset, batch_size=32):
     return dataloader
 
 
-# class MARCDataset(torch.utils.data.Dataset):
-#     def __init__(self, data_path, tokenizer):
-#         self.data_path = data_path
-#         self.tokenizer = tokenizer
-
-#     def __getitem__(self, idx):
-#         with open(self.data_path, 'r', encoding='utf-8') as f:
-#             for i, line in enumerate(f):
-#                 if i == idx:
-#                     data = json.loads(line)
-#                     break
-#         label = int(data['stars'])
-#         text = data['review_body']
-#         return text, label
-
-#     def __len__(self):
-#         with open(self.data_path, 'r', encoding='utf-8') as f:
-#             num_lines = sum([1 for line in f])
-#         print('num_lines ', num_lines)
-#         return int(num_lines)
-
-# def get_random_sample(self, sample_size=100, seed=42):
-#         with open(self.data_path, 'r', encoding='utf-8') as f:
-#             data_lines = f.readlines()
-#         random.seed(seed)
-#         sample_lines = random.sample(data_lines, sample_size)
-#         sample_dataset = [json.loads(line) for line in sample_lines]
-#         sample_labels = [int(data['stars']) for data in sample_dataset]
-#         sample_texts = [data['review_body'] for data in sample_dataset]
-#         return sample_texts, sample_labels
-
 class MARCDataset(torch.utils.data.Dataset):
-    def __init__(self, language="en"):
-        # :param dataset: dataset to use
-        # :param tokenizer: tokenizer to use
+    def __init__(self, split="train", language="en"):
         self.language = language
-        self.dataset = load_dataset("amazon_reviews_multi", language).with_format(
-            "torch"
+        self.dataset = load_dataset("amazon_reviews_multi", language, split=split).map(
+            lambda x: {"text": x["review_body"], "label": int(x["stars"])},
+            remove_columns=["stars"]
         )
 
-    def __getitem__(self, idx: int):
-        label = self.dataset['starts']
-        text = self.dataset['text']
-        return text, label
+    def __getitem__(self, idx):
+        return self.dataset[idx]["text"], self.dataset[idx]["label"]
 
     def __len__(self):
         return len(self.dataset)
-    
+
     def get_random_sample(self, sample_size=100, seed=42):
         random.seed(seed)
-        sample_indices = random.sample(range(len(self.dataset)), sample_size)
-        sample_texts = [self.dataset[i]["review_body"] for i in sample_indices]
-        sample_labels = [self.dataset[i]["stars"] for i in sample_indices]
+        sample_indices = random.sample(
+            range(len(self.dataset)), min(sample_size, len(self.dataset)))
+        sample_texts = [self.dataset[i]["text"] for i in sample_indices]
+        sample_labels = [self.dataset[i]["label"] for i in sample_indices]
         return sample_texts, sample_labels
-
 
 
 def create_dataloader(batch_size=32):

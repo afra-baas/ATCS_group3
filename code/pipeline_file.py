@@ -166,14 +166,6 @@ def pipeline(LM_model, task, prompt_gen):
         answers_probs_batch, pred_answer_batch = model(
             prompts, possible_answers)
 
-        # answers_probs_batch = []
-        # pred_answer_batch = []
-        # for prompt in prompts:
-        #     # ToDo classificaton
-        #     answers_probs, pred_answer = model(prompt, possible_answers)
-        #     answers_probs_batch.append(answers_probs)
-        #     pred_answer_batch.append(pred_answer)
-
         end_time = datetime.now()
         duration = end_time - start_time
         print(f"Time taken to execute classification (32): {duration}")
@@ -188,14 +180,14 @@ def pipeline(LM_model, task, prompt_gen):
         print('Batch acc: ', acc)
         print()
 
-        i = +1
-        if i > 2:
-            break
-
         del batch
         del answers_probs_batch
         del pred_answer_batch
         torch.cuda.empty_cache()
+
+        i = +1
+        if i > 2:
+            break
 
     start_time = datetime.now()
     # Evaluation
