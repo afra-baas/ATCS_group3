@@ -1,5 +1,5 @@
 from torch.utils.data import DataLoader
-from config import task_config
+from config import task_config, data
 
 
 class HFDataloader:
@@ -7,15 +7,17 @@ class HFDataloader:
     Abstract class for dataloader
     """
 
-    data_name = ""
-    language = ""
-    supported_tasks = ["Empty"]
     dataset_class = None
-    default_task = "Empty"
+    dataloader_name = ""
 
     def __init__(self, language="fr", task="", batch_size=32):
         # :param language: language to load
         # :param batch_size: batch size
+        data_config = data[self.dataloader_name]
+        self.data_name = data_config["dataset"]
+        self.language = data_config["DEFAULT_LN"]
+        self.supported_tasks = data_config["supported_tasks"]
+        self.default_task = data_config["DEFAULT_TASK"]
         self.batch_size = batch_size
         self.language = language
         print(f"Loading {self.data_name} dataset for {self.language}")
@@ -31,6 +33,7 @@ class HFDataloader:
         except KeyError:
             print(f"Task {task} not supported")
             raise KeyError
+        self.label_to_meaning = self.task_config["label_map"]
         self.prompt = self.task_config["prompt_class"]()
 
     def get_dataloader(self, data_type="train") -> DataLoader:

@@ -58,3 +58,27 @@ Both datasets are passed to a dataloader which
 1. Loads the data
 2. Collates the data into batches of size `batch_size` (default: 32)
 3. Each batch is a list of tuples (sentences, label) where `sentences` is a list of sentences and `label` is a list of labels for each sentence in `sentences`
+
+# Defining a new prompt
+Each dataloader has a list of supported tasks. Tasks
+are associated with particular dataloaders because
+the task meaning is provided by the amount of sentences
+the dataloader sends to it and the labels it receives.
+A task contains two elements:
+1. A class of the prompt to be used. The prompt is used
+by the dataloader during preprocessing. Per
+batch item, the prompt takes the item's list of sentences
+and returns a string.
+2. A dictionary that connects the labels to meaningful names.
+
+To add a new task and prompt, add a new entry to the `task_config` list
+in the config file. The entry should be a dictionary with the following
+keys:
+1. `label_map`: A dictionary that maps the labels to meaningful names.
+2. `prompt`: A class that inherits from `Prompt` and implements the `generate_prompt` method.
+
+To define a new prompt, create a new class that inherits from `Prompt` and
+contains:
+1. `prompt_instructions` class variable: A string that describes the prompt instructions.
+2. `prompt_query` class variable: A string that describes the prompt query.
+3. `__call__` method: Takes a list of sentences and returns a string.
