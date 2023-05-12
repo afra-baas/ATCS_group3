@@ -1,5 +1,5 @@
 import argparse
-from config import data, model, task
+from config import data, model
 
 
 def main(args):

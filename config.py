@@ -7,18 +7,24 @@ from src.prompts.sa_prompt import SAPrompt
 
 data = {
     "NLI": {
-        "dataset": "NLI",
-        "DEFAULT_LN": "French",
+        "label_to_meaning": {0: 'entailment', 1: 'neutral',
+               2: 'contradiction'},
+        "dataset": "NLI", # dataset name for logging
+        "DEFAULT_LN": "French", # default language
         "dataset_type": "train",
         "batch_size": 32,
-        "supported_tasks": ["NLI"]
+        "supported_tasks": ["NLI", "Empty"],
+        "DEFAULT_TASK": "NLI"
     },
     "MARC": {
+        "label_to_meaning": {5: 'positive', 4: 'positive', 3: 'positive',
+               2: 'negative', 1: 'negative',  0: 'negative'},
         "dataset": "MARC",
         "DEFAULT_LN": "English",
         "dataset_type": "train",
         "batch_size": 32,
-        "supported_tasks": ["SA"]
+        "supported_tasks": ["SA", "Empty"],
+        "DEFAULT_TASK": "SA"
     }
 }
 
@@ -40,12 +46,13 @@ task_config = {
     "DEFAULT_TASK": "SA",
     "SUPPORTED_TASKS": {
         "SA": {
-            "label_map": {'5': 'positive', '4': 'positive', '3': 'positive',
-                     '2': 'negative', '1': 'negative',  '0': 'negative'},
+            "label_map": {5: 'positive', 4: 'positive', 3: 'positive',
+               2: 'negative', 1: 'negative',  0: 'negative'}, # label to meaning
             "prompt_class": SAPrompt
         }, 
         "NLI": {
-            "label_map": {'': ''},
+            "label_map": {0: 'entailment', 1: 'neutral',
+               2: 'contradiction'},
             "prompt_class": NLIPrompt
         },
         "Empty": {

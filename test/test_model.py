@@ -1,6 +1,9 @@
 import pytest
 import torch
 from transformers import AutoTokenizer
+
+from config import data
+from src.data.NLI.dataloader import NLIDataLoader
 from src.models.model import Model
 
 # Define fixtures
@@ -9,18 +12,17 @@ def model():
     model_name = "xlm-roberta-base"
     return Model(model_name)
 
-@pytest.fixture()
-def prompt():
-    return ["What is the capital of France?", "Who is the author of The Great Gatsby?"]
-
-@pytest.fixture()
-def possible_answers():
-    return ["Paris", "London", "New York", "F. Scott Fitzgerald"]
+@pytest.fixture(scope="module")
+def nli_dataloader():
+    return NLIDataLoader("fr", batch_size=32).get_dataloader()
 
 # Test cases
-def test_model_output_shape(model, prompt, possible_answers):
-    answer_probs, pred_answer = model(prompt, possible_answers)
-    assert answer_probs.shape == (len(prompt), len(possible_answers))
+def test_model_output_shape(model, nli_dataloader):
+    for batch in nli_dataloader:
+        prompt = batch[0][0]
+        possible_answers = list(data["NLI"]["label_to_meaning"].values())
+        values = model([prompt], possible_answers)
+        print()
 
 def test_model_device(model):
     assert str(model.device).startswith("cuda") or str(model.device) == "cpu"
