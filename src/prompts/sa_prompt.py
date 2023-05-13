@@ -5,7 +5,7 @@ from src.prompts.prompt import Prompt
 
 class SAPrompt(Prompt):
     prompt_instructions = 'Tell me if the sentiment of this review is positive'
-    prompt_querry = 'yes or no?'
+    prompt_query = 'yes or no?'
 
     # dict_sa_prompt= {' passive': ['audiuebf', 'dbfksjbfke'], 'active':[ 'hdbfjweb', 'dbfsiugi']}
     # dict_sa_prompt= {'common modal verb': ['give me the sentiment', 'can you give me the sentiment ', 'would you give me the sentiment ', 'you ought to give me the sentiment']} #-> acc_base , acc_would , acc_can

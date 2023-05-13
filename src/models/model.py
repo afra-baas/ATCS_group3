@@ -52,6 +52,7 @@ class Model:
         # loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(
             self.device
+
         )
 
         for idx, answer in enumerate(possible_answers_ids):

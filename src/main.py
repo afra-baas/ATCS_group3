@@ -1,5 +1,5 @@
 import argparse
-# from config import data, model, task
+# from config import data, model, task_config
 from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
