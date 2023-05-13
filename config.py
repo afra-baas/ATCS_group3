@@ -1,5 +1,5 @@
 # Config file
-from transformers import AutoModelForMaskedLM, AutoModelForCausalLM
+from transformers import AutoModelForMaskedLM, AutoModelForCausalLM, AutoModelForSeq2SeqLM
 
 from src.prompts.empty_prompt import EmptyPrompt
 from src.prompts.nli_prompt import NLIPrompt
@@ -27,11 +27,15 @@ model = {
     "SUPPORTED_MODELS": {
         "roberta": {
             "model_constructor": AutoModelForMaskedLM.from_pretrained,
-            "model_name": "xlm-roberta-base",       # model name for huggingface
+            "model_name": "xlm-roberta-base"       # model name for huggingface
         },
         "bloom": {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
-            "model_name": "bigscience/bloom-560m",       # model name for huggingface
+            "model_name": "bigscience/bloom-560m"       # model name for huggingface
+        },
+        "t0pp": {
+            "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
+            "model_name": 'bigscience/T0pp'  # model name for huggingface
         }
     }
 }

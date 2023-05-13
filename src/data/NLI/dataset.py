@@ -9,5 +9,5 @@ from src.data.hf_dataset import HFDataset
 
 
 class NLIDataset(HFDataset):
-    language = "fr"
+    language = "en"
     dataset_name = "xnli"

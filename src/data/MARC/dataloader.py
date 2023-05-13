@@ -8,7 +8,7 @@ import random
 
 class MARCDataLoader(HFDataloader):
     data_name = "MARC"
-    language = "fr"
+    language = "en"
     supported_tasks = ["SA"]
     dataset_class = MARCDataset
     default_task = "SA"
