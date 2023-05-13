@@ -2,9 +2,11 @@ import pytest
 from torch.utils.data import DataLoader
 from src.data.NLI.dataloader import NLIDataLoader
 
+
 @pytest.fixture(scope="module")
 def nli_dataloader():
-    return NLIDataLoader("fr", batch_size=32)
+    return NLIDataLoader("en", batch_size=32)
+
 
 def test_nli_dataloader(nli_dataloader):
     dataloader = nli_dataloader.get_dataloader()

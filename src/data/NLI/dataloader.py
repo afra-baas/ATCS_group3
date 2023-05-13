@@ -14,8 +14,8 @@ class NLIDataLoader(HFDataloader):
     dataset_class = NLIDataset
     default_task = "NLI"
 
-    def __init__(self, task, language="en", batch_size=32, sample_size=100, seed=42):
-        super().__init__(task=task, language=language,
+    def __init__(self, language="en", batch_size=32, sample_size=100, seed=42):
+        super().__init__(language=language,
                          batch_size=batch_size, sample_size=sample_size, seed=seed)
         # get a random smaller sample from dataset
         sample_pre, sample_hypo, sample_labels = self.get_random_sample(

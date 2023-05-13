@@ -5,7 +5,7 @@ from src.data.MARC.dataloader import MARCDataLoader
 
 @pytest.fixture(scope="module")
 def marc_dataloader():
-    return MARCDataLoader("fr", batch_size=32)
+    return MARCDataLoader("en", batch_size=32)
 
 def test_marc_dataloader(marc_dataloader):
     dataloader = marc_dataloader.get_dataloader()

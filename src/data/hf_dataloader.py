@@ -13,7 +13,7 @@ class HFDataloader:
     dataset_class = None
     default_task = "Empty"
 
-    def __init__(self, task, language="en", batch_size=32, sample_size=100, seed=42):
+    def __init__(self, language="en", batch_size=32, sample_size=100, seed=42):
         # :param language: language to load
         # :param batch_size: batch size
         self.batch_size = batch_size
@@ -21,8 +21,7 @@ class HFDataloader:
         print(f"Loading {self.data_name} dataset for {self.language}")
         self.dataset = self.dataset_class(language)
         print(f"{self.data_name} dataset loaded")
-        if not task:
-            task = self.default_task
+        task = self.default_task
         if task not in self.supported_tasks:
             print(f"Task {task} not supported for {self.data_name}")
             raise ValueError
