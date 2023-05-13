@@ -4,7 +4,7 @@ from transformers import AutoTokenizer
 
 from src.data.MARC.dataloader import MARCDataLoader
 from src.models.model import Model
-
+from config import model as model_config
 
 # Define fixtures
 @pytest.fixture()
@@ -27,6 +27,13 @@ def marc_dataloader():
 @pytest.fixture(scope="module")
 def possible_answers():
     return ['yes', 'no']
+
+def test_tokenizer_correct_tokenization(possible_answers):
+    for model_key, model_values in model_config['SUPPORTED_MODELS'].items():
+        tokenizer = AutoTokenizer.from_pretrained(model_values['model_name'])
+        for answer in possible_answers:
+            tokenization = tokenizer(answer)
+            assert len(tokenization.data['input_ids']) == 1
 
 # Test cases
 def test_model_output_shape(model, prompt, possible_answers):

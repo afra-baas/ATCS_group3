@@ -25,10 +25,10 @@ data = {
 model = {
     "DEFAULT_MODEL": "bloom",
     "SUPPORTED_MODELS": {
-        "roberta": {
-            "model_constructor": AutoModelForMaskedLM.from_pretrained,
-            "model_name": "xlm-roberta-base",       # model name for huggingface
-        },
+        # "roberta": {
+        #     "model_constructor": AutoModelForMaskedLM.from_pretrained,
+        #     "model_name": "xlm-roberta-base",       # model name for huggingface
+        # },
         "bloom": {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloom-560m",       # model name for huggingface
