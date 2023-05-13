@@ -1,35 +1,52 @@
 import argparse
-from config import data, model, task
+# from config import data, model, task
+from models.model import Model
+from data.MARC.dataloader import MARCDataLoader
+from data.NLI.dataloader import NLIDataLoader
+from eval import evaluate
 
 
-def main(args):
-    model = args.model
+def pipeline(args):
+    LM_model = args.LM_model
     task = args.task
 
-    if task == "SA":
-        prompt_instructions = "Can you please tell me the sentiment of this review"
-        prompt_querry = "is it positive or nagative?"
-
-        label_map = {
-            "5": "positive",
-            "4": "positive",
-            "3": "positive",
-            "2": "negative",
-            "1": "negative",
-            "0": "negative",
-        }
-    elif task == "NLI":
-        prompt_instructions = ["", " "]
-        prompt_querry = [" ", " "]
-        label_map = {"": " ", " ": " "}
-    # TODO: ask about this
+    # Initilize model
+    LM = Model(LM_model)
+    batch_size = 8
+    sample_size = 20
+    if task == 'SA':
+        train_dataloader = MARCDataLoader(sample_size, batch_size)
+    elif task == 'NLI':
+        train_dataloader = NLIDataLoader(sample_size, batch_size)
     else:
-        print("Task not listed, using empty strings")
-        prompt_instructions = [" "]
-        prompt_querry = [" "]
-        label_map = {"": " "}
+        print('This task evaluation is not implemented')
 
-    acc = pipeline(prompt_instructions, prompt_querry, label_map, model, task)
+    answers_probs_all = []
+    pred_answer_all = []
+    mapped_labels_all = []
+    i = 0
+
+    possible_answers = train_dataloader.possible_answers
+    for batch in train_dataloader:
+        print(
+            f'Batch: {i} , batch size: {batch_size}, sample_size: {sample_size}')
+        prompts, mapped_labels = batch
+
+        # Classification
+        answers_probs_batch, pred_answer_batch = LM(
+            prompts, possible_answers)
+        print(f'pred_answer {pred_answer_batch} , label: {mapped_labels}')
+
+        answers_probs_all.extend(answers_probs_batch)
+        pred_answer_all.extend(pred_answer_batch)
+        mapped_labels_all.extend(mapped_labels)
+
+        i += 1
+
+    # Evaluation
+    acc = evaluate(pred_answer_all, mapped_labels_all)
+    print('acc: ', acc)
+    return acc
 
 
 if __name__ == "__main__":
@@ -40,30 +57,11 @@ if __name__ == "__main__":
     #   LM_model: string
     #   task: string
     #
-    DEFAULT_MODEL = model["DEFAULT_MODEL"]
-    DEFAULT_TASK = task["DEFAULT_TASK"]
+    # DEFAULT_MODEL = model["DEFAULT_MODEL"]
+    # DEFAULT_TASK = task["DEFAULT_TASK"]
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--prompt_instructions",
-        type=str,
-        default="Can you please tell me the sentiment of this review",
-    )
-    parser.add_argument(
-        "--prompt_querry", type=str, default="is it positive or nagative?"
-    )
-    parser.add_argument(
-        "--label_map",
-        type=str,
-        default={
-            "5": "positive",
-            "4": "positive",
-            "3": "positive",
-            "2": "negative",
-            "1": "negative",
-            "0": "negative",
-        },
-    )
-    parser.add_argument("--LM_model", type=str, default=DEFAULT_MODEL)
-    parser.add_argument("--task", type=str, default=DEFAULT_TASK)
+    parser.add_argument("--LM_model", type=str,
+                        default='bloom')
+    parser.add_argument("--task", type=str, default='SA')
     args = parser.parse_args()
-    main(args)
+    pipeline(args)

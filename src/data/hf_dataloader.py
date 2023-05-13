@@ -13,7 +13,7 @@ class HFDataloader:
     dataset_class = None
     default_task = "Empty"
 
-    def __init__(self, language="fr", task="", batch_size=32):
+    def __init__(self, task, language="en", batch_size=32, sample_size=100, seed=42):
         # :param language: language to load
         # :param batch_size: batch size
         self.batch_size = batch_size
@@ -32,6 +32,8 @@ class HFDataloader:
             print(f"Task {task} not supported")
             raise KeyError
         self.prompt = self.task_config["prompt_class"]()
+        self.label_map = self.task_config["label_map"]()
+        self.possible_answers = self.task_config["possible_answers"]()
 
     def get_dataloader(self, data_type="train") -> DataLoader:
         # :return: DataLoader for the dataset with shape (batch_size, 2). The first element of the tuple is a list of sentences, the second is an int representing the label
