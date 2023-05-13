@@ -7,7 +7,7 @@ def nli_dataset():
     return NLIDataset().dataset
 
 def test_xnli_dataset(nli_dataset):
-    train_dataset = nli_dataset['train']
+    train_dataset = nli_dataset
     assert len(train_dataset) > 0
     assert len(train_dataset[0]) == 3
     assert isinstance(train_dataset[0]['hypothesis'], str)

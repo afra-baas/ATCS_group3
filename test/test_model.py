@@ -1,25 +1,39 @@
 import pytest
 import torch
 from transformers import AutoTokenizer
-from src.models.model import Model
 
+from src.data.MARC.dataloader import MARCDataLoader
+from src.models.model import Model
+from config import model as model_config
 
 # Define fixtures
 @pytest.fixture()
 def model():
-    model_name = "roberta"
+    model_name = "bloom"
     return Model(model_name)
 
-
-@pytest.fixture()
+@pytest.fixture(scope="module")
 def prompt():
-    return ["What is the capital of France?", "Who is the author of The Great Gatsby?"]
+    dataloader = MARCDataLoader("en", batch_size=32).get_dataloader()
+    for batch in dataloader:
+        prompt = batch[0][0]
+        break
+    return prompt
 
+@pytest.fixture(scope="module")
+def marc_dataloader():
+    return MARCDataLoader("en", batch_size=32)
 
-@pytest.fixture()
+@pytest.fixture(scope="module")
 def possible_answers():
-    return ["Paris", "London", "New York", "F. Scott Fitzgerald"]
+    return ['yes', 'no']
 
+def test_tokenizer_correct_tokenization(possible_answers):
+    for model_key, model_values in model_config['SUPPORTED_MODELS'].items():
+        tokenizer = AutoTokenizer.from_pretrained(model_values['model_name'])
+        for answer in possible_answers:
+            tokenization = tokenizer(answer)
+            assert len(tokenization.data['input_ids']) == 1
 
 # Test cases
 def test_model_output_shape(model, prompt, possible_answers):
