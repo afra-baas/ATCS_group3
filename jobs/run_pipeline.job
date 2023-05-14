@@ -5,7 +5,7 @@
 #SBATCH --job-name=AddPackageJob
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
-#SBATCH --time=1:00:00
+#SBATCH --time=0:30:00
 #SBATCH --mem=32000M
 #SBATCH --output=job_logs/slurm_output_train_%A.out
 
@@ -14,10 +14,20 @@ module load 2021
 module load Anaconda3/2021.05
 
 # Your job starts in the directory where you call sbatch
+# cd $HOME/ATCS_group3/jobs
 cd $HOME
 # Activate your environment
 source activate dl2022
 
 #run
-srun python ATCS_group3/code/pipeline_file.py
+# srun python ATCS_group3/src/main.py --LM_model bloom --task SA
+srun python ATCS_group3/src/main.py --LM_model bloom --task NLI
+# srun python ATCS_group3/src/main.py --LM_model bloomz --task SA
+# srun python ATCS_group3/src/main.py --LM_model bloomz --task NLI
+# srun python ATCS_group3/src/main.py --LM_model llama --task SA
+# srun python ATCS_group3/src/main.py --LM_model llama --task NLI
+# srun python ATCS_group3/src/main.py --LM_model t0pp --task SA
+# srun python ATCS_group3/src/main.py --LM_model t0pp --task NLI
+
+
 

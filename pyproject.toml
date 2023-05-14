@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "atcs-group3"
+version = "0.1.0"
+description = ""
+authors = ["Amity Aharoni <aharoni.amittai@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8,<3.10"
+torch = "^2.0.0"
+pytorch-lightning = "^2.0.2"
+huggingface = "^0.0.1"
+torchtext = "^0.15.2"
+pytest = "^7.3.1"
+black = "21.12b0"
+promptsource = "^0.2.3"
+setuptools = "^67.7.2"
+transformers = "^4.28.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

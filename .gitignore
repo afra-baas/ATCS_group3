@@ -1,0 +1,42 @@
+# Ignore data files
+data/train/
+data/validation/
+data/test/
+
+# Ignore model files
+/models/
+
+# Ignore output files
+output/
+
+# Ignore notebooks checkpoints
+notebooks/.ipynb_checkpoints/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore log files
+*.log
+
+# Ignore any local configuration files
+config.ini
+
+# Ignore virtual environment files
+venv/
+
+# Ignore PyCharm files
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Ignore Python-specific files
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore pytest cache files
+pytest_cache/
+
+poetry.lock
