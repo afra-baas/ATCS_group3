@@ -1,6 +1,6 @@
 from typing import List
 
-from src.prompts.prompt import Prompt
+from prompts.prompt import Prompt
 
 
 class SAPrompt(Prompt):

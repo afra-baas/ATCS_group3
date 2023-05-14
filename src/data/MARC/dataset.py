@@ -1,4 +1,4 @@
-from src.data.hf_dataset import HFDataset
+from data.hf_dataset import HFDataset
 
 
 class MARCDataset(HFDataset):

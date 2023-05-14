@@ -4,13 +4,17 @@ from transformers import AutoTokenizer
 
 from src.data.MARC.dataloader import MARCDataLoader
 from src.models.model import Model
-from config import model as model_config
+from src.config import model as model_config
+# from ATCS_group3.src.config import model as model_config
 
 # Define fixtures
+
+
 @pytest.fixture()
 def model():
     model_name = "bloom"
     return Model(model_name)
+
 
 @pytest.fixture(scope="module")
 def prompt():
@@ -20,13 +24,16 @@ def prompt():
         break
     return prompt
 
+
 @pytest.fixture(scope="module")
 def marc_dataloader():
     return MARCDataLoader("en", batch_size=32)
 
+
 @pytest.fixture(scope="module")
 def possible_answers():
     return ['yes', 'no']
+
 
 def test_tokenizer_correct_tokenization(possible_answers):
     for model_key, model_values in model_config['SUPPORTED_MODELS'].items():
@@ -36,6 +43,8 @@ def test_tokenizer_correct_tokenization(possible_answers):
             assert len(tokenization.data['input_ids']) == 1
 
 # Test cases
+
+
 def test_model_output_shape(model, prompt, possible_answers):
     answer_probs, pred_answer = model(prompt, possible_answers)
     assert answer_probs.shape == (len(prompt), len(possible_answers))

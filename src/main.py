@@ -15,9 +15,9 @@ def pipeline(args):
     batch_size = 8
     sample_size = 20
     if task == 'SA':
-        train_dataloader = MARCDataLoader(sample_size, batch_size)
+        train_dataloader = MARCDataLoader(sample_size=sample_size, batch_size=batch_size)
     elif task == 'NLI':
-        train_dataloader = NLIDataLoader(sample_size, batch_size)
+        train_dataloader = NLIDataLoader(sample_size=sample_size, batch_size=batch_size)
     else:
         print('This task evaluation is not implemented')
 

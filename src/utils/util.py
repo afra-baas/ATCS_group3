@@ -5,6 +5,7 @@ from datasets import load_dataset
 from datetime import datetime
 from typing import Dict
 from config import data, model
+# from ATCS_group3.src.config import data, model
 
 
 def label_mapping(labels: list, map: Dict[str, str]):

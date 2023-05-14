@@ -1,6 +1,7 @@
 from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForCausalLM
 import torch
 from typing import List
+# from ATCS_group3.src.config import model
 from config import model
 
 
@@ -18,6 +19,9 @@ class Model:
             )
         self.model_name = model_config["model_name"]
         self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        if model_name == 'llama':
+            self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+
         print(f"Loading model {self.model_name}")
         self.model = model_config["model_constructor"](self.model_name)
         print(f"Model {self.model_name} loaded")
@@ -45,18 +49,27 @@ class Model:
             answer) for answer in possible_answers]
 
         # generate outputs
-        outputs = self.model(**inputs, labels=inputs["input_ids"])
+        if self.model_name == 'llama':
+            outputs = self.model(
+                inputs["input_ids"], attention_mask=inputs["attention_mask"])
+        else:
+            outputs = self.model(**inputs, labels=inputs["input_ids"])
 
         # get the logits of the last token
         logits = outputs.logits[:, -1]
         # loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(
-            self.device
-
-        )
+            self.device)
 
         for idx, answer in enumerate(possible_answers_ids):
+            print(answer)
             id = answer["input_ids"]
+            if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
+                print(f'id: {id} -> {[id[0]]}')
+                id = [id[1]]
+            elif self.model_name == 'bigscience/T0pp' and len(id) == 2:
+                print(f'id: {id} -> {[id[0]]}')
+                id = [id[0]]
             probs = logits[:, id]
             answers_probs[:, idx] = probs.T
 

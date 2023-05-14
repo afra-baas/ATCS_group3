@@ -1,9 +1,9 @@
 # Config file
 from transformers import AutoModelForMaskedLM, AutoModelForCausalLM, AutoModelForSeq2SeqLM
 
-from src.prompts.empty_prompt import EmptyPrompt
-from src.prompts.nli_prompt import NLIPrompt
-from src.prompts.sa_prompt import SAPrompt
+from prompts.empty_prompt import EmptyPrompt
+from prompts.nli_prompt import NLIPrompt
+from prompts.sa_prompt import SAPrompt
 
 data = {
     "NLI": {
@@ -25,11 +25,15 @@ data = {
 model = {
     "DEFAULT_MODEL": "bloom",
     "SUPPORTED_MODELS": {
-        "roberta": {
-            "model_constructor": AutoModelForMaskedLM.from_pretrained,
+        "llama": {
+            "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "xlm-roberta-base"       # model name for huggingface
         },
         "bloom": {
+            "model_constructor": AutoModelForCausalLM.from_pretrained,
+            "model_name": "bigscience/bloom-560m"       # model name for huggingface
+        },
+        "bloomz": {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloom-560m"       # model name for huggingface
         },
@@ -44,12 +48,12 @@ task_config = {
     "DEFAULT_TASK": "SA",
     "SUPPORTED_TASKS": {
         "SA": {
-            "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
+            "label_map": {'5': 'yes', '4': 'yes', '3': 'yes', '2': 'no', '1': 'no',  '0': 'no'},
             "possible_answers": ['yes', 'no'],
             "prompt_class": SAPrompt
         },
         "NLI": {
-            "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
+            "label_map": {'0': 'yes', '1': 'maybe', '2': 'no'},
             "possible_answers": ['yes', 'no', 'maybe'],
             "prompt_class": NLIPrompt
         }  # ,
