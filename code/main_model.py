@@ -38,9 +38,11 @@ class Classifier():
             prompt, return_tensors="pt", padding=True).to(self.device)
         possible_answers_ids = [self.tokenizer(
             answer) for answer in possible_answers]
-
+        print(possible_answers)
+        exit()
         # generate outputs
-        print('summary: ', torch.cuda.memory_summary(device=self.device))
+        if  torch.cuda.is_available():
+            print('summary: ', torch.cuda.memory_summary(device=self.device))
         outputs = self.model(**inputs, labels=inputs["input_ids"])
 
         # get the logits of the last token

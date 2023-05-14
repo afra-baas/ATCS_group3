@@ -117,7 +117,7 @@ def pipeline(LM_model, task, prompt_gen):
 
     # Initilize model
     model = Classifier(LM_model)
-    batch_size = 8
+    batch_size = 1
     sample_size = 100
     if task == 'SA':
         train_dataloader = create_dataloader(sample_size, batch_size)
@@ -159,7 +159,6 @@ def pipeline(LM_model, task, prompt_gen):
         start_time = datetime.now()
         # map labels
         mapped_labels, possible_answers = label_mapping(labels)
-
         end_time = datetime.now()
         duration = end_time - start_time
         print(f"Time taken to execute mapping: {duration}")
@@ -201,8 +200,10 @@ if __name__ == "__main__":
     task = 'SA'
     print('task ', task)
 
-    acc = pipeline(LM_model, task, prompt_generator)
-
+    if task == "NLI":
+        acc = pipeline(LM_model, task, nli_prompt_generator)
+    else:
+        acc = pipeline(LM_model, task, prompt_generator)
     # parser = argparse.ArgumentParser(description='Description of your program')
     # parser.add_argument('--lm_model', type=str,help='Path to the language model')
     # args = parser.parse_args()
