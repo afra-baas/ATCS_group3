@@ -1,0 +1,59 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+----------- flan SA --------------
+Loading model google/flan-t5-base
+Model google/flan-t5-base loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 29.14it/s]100%|██████████| 3/3 [00:00<00:00, 29.07it/s]
+MARC dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no']
+pred_answer ['no', 'no', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no'] , label: ('yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no']
+pred_answer ['no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'no'] , label: ('no', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no')
+Batch: 2 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no']
+pred_answer ['no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no'] , label: ('no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no')
+Batch: 3 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes']
+pred_answer ['yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes'] , label: ('yes', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes')
+Batch: 4 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no']
+pred_answer ['no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no'] , label: ('no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no')
+Batch: 5 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'no', 'no']
+pred_answer ['yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'no', 'no'] , label: ('yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no')
+Batch: 6 , batch size: 16, sample_size: 100
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no', 'yes', 'yes', 'no']
+pred_answer ['no', 'yes', 'yes', 'no'] , label: ('yes', 'no', 'no', 'yes')
+acc:  0.81

@@ -37,9 +37,14 @@ model = {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloomz-560m"       # model name for huggingface
         },
-        "t0pp": {
+        # "t0pp": {
+        #     "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
+        #     # "model_name": 'bigscience/T0pp'  # model name for huggingface
+        #     "model_name": 'bigscience/T0_single_prompt'  # model name for huggingface
+        # },
+        "flan": {
             "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
-            "model_name": 'bigscience/T0pp'  # model name for huggingface
+            "model_name": 'google/flan-t5-base'  # model name for huggingface
         }
     }
 }

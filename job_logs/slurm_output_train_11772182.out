@@ -1,0 +1,253 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+----------- bloom SA --------------
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 29.61it/s]100%|██████████| 3/3 [00:00<00:00, 29.55it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'no')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes'] , label: ('yes', 'no', 'yes', 'yes')
+acc:  0.54
+----------- bloom NLI --------------
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  6.10it/s]100%|██████████| 3/3 [00:00<00:00, 17.45it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'yes', 'yes', 'maybe'] , label: ('maybe', 'yes', 'maybe', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'no', 'yes', 'yes', 'maybe', 'no', 'maybe', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'maybe', 'yes', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'no', 'maybe', 'maybe', 'maybe', 'maybe', 'yes'] , label: ('yes', 'no', 'no', 'no', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'no', 'maybe', 'no', 'maybe', 'yes', 'maybe', 'no')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'yes', 'yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'maybe', 'yes', 'maybe', 'yes', 'maybe', 'maybe', 'maybe'] , label: ('maybe', 'maybe', 'maybe', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'yes')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'yes', 'maybe', 'maybe', 'maybe', 'maybe', 'no', 'maybe', 'maybe', 'maybe', 'maybe', 'yes', 'yes', 'yes', 'maybe'] , label: ('maybe', 'no', 'maybe', 'no', 'maybe', 'no', 'yes', 'maybe', 'no', 'yes', 'no', 'no', 'maybe', 'no', 'no', 'maybe')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'yes', 'yes', 'maybe', 'maybe', 'yes', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'yes', 'yes', 'maybe', 'maybe', 'yes'] , label: ('yes', 'no', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'yes', 'no', 'maybe', 'no', 'no', 'no', 'maybe', 'yes', 'no')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'yes', 'yes', 'maybe', 'maybe', 'maybe', 'yes'] , label: ('yes', 'yes', 'no', 'yes', 'maybe', 'no', 'maybe', 'yes', 'yes', 'no', 'no', 'no', 'maybe', 'maybe', 'no', 'maybe')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'maybe', 'no', 'yes'] , label: ('yes', 'no', 'yes', 'maybe')
+acc:  0.26
+----------- bloomz SA --------------
+Loading model bigscience/bloomz-560m
+Model bigscience/bloomz-560m loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 332.56it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'yes')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'yes')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'no', 'yes')
+acc:  0.54
+----------- bloomz NLI --------------
+Loading model bigscience/bloomz-560m
+Model bigscience/bloomz-560m loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 307.64it/s]
+Asking to truncate to max_length but no maximum length is provided and the model has no predefined maximum length. Default to no truncation.
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'maybe'] , label: ('yes', 'yes', 'maybe', 'yes', 'maybe', 'yes', 'yes', 'maybe', 'yes', 'no', 'no', 'maybe', 'no', 'yes', 'maybe', 'maybe')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'maybe', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'yes'] , label: ('maybe', 'no', 'maybe', 'no', 'no', 'no', 'maybe', 'yes', 'yes', 'no', 'no', 'no', 'maybe', 'no', 'no', 'no')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'maybe', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'maybe', 'no', 'maybe', 'no', 'maybe', 'no', 'no', 'no', 'no', 'yes', 'maybe', 'maybe', 'maybe', 'maybe', 'maybe')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['maybe', 'yes', 'yes', 'yes', 'maybe', 'maybe', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('maybe', 'yes', 'maybe', 'yes', 'no', 'maybe', 'yes', 'no', 'yes', 'maybe', 'no', 'no', 'yes', 'yes', 'maybe', 'no')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'yes', 'no', 'maybe', 'maybe', 'no', 'maybe', 'maybe', 'no', 'yes', 'maybe', 'no', 'yes', 'yes', 'no')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe', 'yes', 'yes', 'maybe', 'yes'] , label: ('yes', 'no', 'no', 'yes', 'maybe', 'yes', 'no', 'maybe', 'no', 'no', 'maybe', 'no', 'maybe', 'maybe', 'no', 'maybe')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+answer  {'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes', 'maybe', 'maybe', 'yes'] , label: ('yes', 'maybe', 'no', 'maybe')
+acc:  0.33
+----------- flan SA --------------
+Loading model google/flan-t5-base
+Model google/flan-t5-base loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 311.44it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no'] , label: ('no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'no'] , label: ('yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes'] , label: ('yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'yes')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['no', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'yes', 'yes'] , label: ('yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'yes', 'no', 'no'] , label: ('no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['no', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no'] , label: ('no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'no')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+pred_answer ['yes', 'no', 'yes', 'yes'] , label: ('yes', 'no', 'yes', 'yes')
+acc:  0.82
+----------- flan NLI --------------
+Loading model google/flan-t5-base
+Model google/flan-t5-base loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 350.85it/s]
+NLI dataset loaded
+len dataset  100
+Batch: 0 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'no'] , label: ('no', 'yes', 'no', 'maybe', 'yes', 'maybe', 'maybe', 'yes', 'no', 'maybe', 'no', 'no', 'yes', 'maybe', 'maybe', 'no')
+Batch: 1 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes'] , label: ('no', 'maybe', 'no', 'yes', 'maybe', 'maybe', 'no', 'maybe', 'maybe', 'no', 'maybe', 'no', 'maybe', 'maybe', 'no', 'maybe')
+Batch: 2 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'yes'] , label: ('yes', 'maybe', 'yes', 'maybe', 'maybe', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'no', 'maybe', 'no')
+Batch: 3 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no'] , label: ('yes', 'maybe', 'yes', 'no', 'no', 'maybe', 'no', 'maybe', 'no', 'no', 'yes', 'yes', 'no', 'no', 'maybe', 'maybe')
+Batch: 4 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'no', 'no', 'maybe', 'maybe', 'yes', 'maybe', 'no', 'maybe', 'yes', 'yes', 'yes', 'yes', 'yes', 'maybe')
+Batch: 5 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no', 'no', 'yes'] , label: ('maybe', 'maybe', 'yes', 'yes', 'no', 'maybe', 'no', 'yes', 'maybe', 'no', 'maybe', 'no', 'maybe', 'maybe', 'no', 'yes')
+Batch: 6 , batch size: 16, sample_size: 100
+answer  {'input_ids': [4273], 'attention_mask': [1]}
+answer  {'input_ids': [150], 'attention_mask': [1]}
+answer  {'input_ids': [2087], 'attention_mask': [1]}
+pred_answer ['yes', 'no', 'no', 'no'] , label: ('yes', 'no', 'no', 'no')
+acc:  0.62

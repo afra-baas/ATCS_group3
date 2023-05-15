@@ -3,7 +3,7 @@ import torch
 from typing import List
 # from ATCS_group3.src.config import model
 from config import model
-
+from datetime import datetime
 
 class Model:
     def __init__(self, model_name: str):
@@ -28,7 +28,8 @@ class Model:
         
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
-        self.model.to(self.device)
+        # print('summary: ', torch.cuda.memory_summary(device=self.device))
+        # self.model.to(self.device)
         print(f"Moving model to {self.device}")
 
     def __call__(self, prompt: List[str], possible_answers):
@@ -44,14 +45,16 @@ class Model:
             param.requires_grad = False
 
         # tokenize input and possible answers
-        inputs = self.tokenizer(prompt, return_tensors="pt", padding=True).to(
-            self.device
-        )
+        inputs = self.tokenizer(prompt, return_tensors="pt", padding=True)
+        # inputs = self.tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
+        # print('inputs ', inputs)
+        
         possible_answers_ids = [self.tokenizer(
-            answer) for answer in possible_answers]
+            answer, add_special_tokens=False) for answer in possible_answers]
 
         # generate outputs
-        if self.model_name == 'llama':
+        # print('summary: ', torch.cuda.memory_summary(device=self.device))
+        if self.model_name == 'huggyllama/llama-7b':
             outputs = self.model(
                 inputs["input_ids"], attention_mask=inputs["attention_mask"])
         else:
@@ -59,26 +62,43 @@ class Model:
 
         # get the logits of the last token
         logits = outputs.logits[:, -1]
+
         # loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(
             self.device)
 
         for idx, answer in enumerate(possible_answers_ids):
-            print(answer)
+            print('answer ', answer)
+            if len(answer) == 0:
+                print('len answer was 0')
+                continue
+                
             id = answer["input_ids"]
             if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
-                print(f'id: {id} -> {[id[0]]}')
+                print(f'id: {id} -> {[id[1]]}')
                 id = [id[1]]
-            elif self.model_name == 'bigscience/T0pp' and len(id) == 2:
+            elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                 print(f'id: {id} -> {[id[0]]}')
                 id = [id[0]]
             probs = logits[:, id]
             answers_probs[:, idx] = probs.T
 
+            # Save logits to a text file
+            # timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+            task ='SA' if len(possible_answers)==2 else 'NLI'
+            log_file = f"{self.model_name}__{task}__{len(prompt)}.txt"
+            with open(log_file, "w") as f:
+                for idx, answer in enumerate(possible_answers_ids):
+                    f.write(f"Answer {idx}:\n")
+                    f.write(f"Answer ID: {answer['input_ids']}\n")
+                    f.write(f"Logits: {answers_probs[:, idx]}\n\n")
+            print(f"Logits saved to {log_file}")
+
+
         # pred_answer = possible_answers[answers_probs.index(max(answers_probs))]
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
-        print("pred_answer", pred_answer)
+        # print("pred_answer", pred_answer)
 
         torch.cuda.empty_cache()
         return answers_probs, pred_answer

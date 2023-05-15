@@ -6,9 +6,11 @@ from data.NLI.dataloader import NLIDataLoader
 from eval import evaluate
 import torch
 
+
 def pipeline(args):
     LM_model = args.LM_model
     task = args.task
+# def pipeline(LM_model, task):
     print("-----------", LM_model, task ,'--------------')
 
     # Initilize model
@@ -38,13 +40,14 @@ def pipeline(args):
             answers_probs_batch, pred_answer_batch = LM(
                 prompts, possible_answers)
         print(f'pred_answer {pred_answer_batch} , label: {mapped_labels}')
-
+        
         answers_probs_all.extend(answers_probs_batch)
         pred_answer_all.extend(pred_answer_batch)
         mapped_labels_all.extend(mapped_labels)
 
         i += 1
 
+    torch.cuda.empty_cache()
     # Evaluation
     acc = evaluate(pred_answer_all, mapped_labels_all)
     print('acc: ', acc)
@@ -61,9 +64,15 @@ if __name__ == "__main__":
     #
     # DEFAULT_MODEL = model["DEFAULT_MODEL"]
     # DEFAULT_TASK = task["DEFAULT_TASK"]
+
     parser = argparse.ArgumentParser()
     parser.add_argument("--LM_model", type=str,
-                        default='bloom')
+                        default='llama')
     parser.add_argument("--task", type=str, default='SA')
     args = parser.parse_args()
     pipeline(args)
+
+    # LM_models = ['bloom', 'bloomz', 'flan']
+    # for LM_model in LM_models:
+    #     for task in ['SA', 'NLI']:
+    #         pipeline(LM_model, task)

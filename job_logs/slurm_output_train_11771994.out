@@ -1,0 +1,190 @@
+----------- llama SA --------------
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:10<00:10, 10.45s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:14<00:00,  6.46s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:14<00:00,  7.06s/it]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Model huggyllama/llama-7b loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 378.86it/s]
+MARC dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+{'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+{'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('no',)
+acc:  0.5
+----------- llama NLI --------------
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:09<00:09,  9.81s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:13<00:00,  6.33s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:13<00:00,  6.85s/it]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+Model huggyllama/llama-7b loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  5.61it/s]100%|██████████| 3/3 [00:00<00:00, 16.14it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+{'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+{'input_ids': [1, 5505], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 5505] -> [5505]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+{'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+{'input_ids': [1, 5505], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 5505] -> [5505]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('maybe',)
+acc:  0.5
+----------- bloom SA --------------
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 336.15it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('no',)
+acc:  0.5
+----------- bloom NLI --------------
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 328.54it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+{'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+{'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['no']
+pred_answer ['no'] , label: ('maybe',)
+acc:  0.5
+----------- bloomz SA --------------
+Loading model bigscience/bloomz-560m
+Model bigscience/bloomz-560m loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 388.33it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('no',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+acc:  0.5
+----------- bloomz NLI --------------
+Loading model bigscience/bloomz-560m
+Model bigscience/bloomz-560m loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 372.73it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+{'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+{'input_ids': [137111], 'attention_mask': [1]}
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('maybe',)
+acc:  0.5
+----------- flan SA --------------
+Loading model google/flan-t5-base
+Model google/flan-t5-base loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 460.51it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+MARC dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['no']
+pred_answer ['no'] , label: ('no',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+acc:  1.0
+----------- flan NLI --------------
+Loading model google/flan-t5-base
+Model google/flan-t5-base loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 413.54it/s]
+NLI dataset loaded
+len dataset  2
+Batch: 0 , batch size: 1, sample_size: 2
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
+id: [2087, 1] -> [2087]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('yes',)
+Batch: 1 , batch size: 1, sample_size: 2
+{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
+id: [4273, 1] -> [4273]
+{'input_ids': [150, 1], 'attention_mask': [1, 1]}
+id: [150, 1] -> [150]
+{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
+id: [2087, 1] -> [2087]
+pred_answer ['yes']
+pred_answer ['yes'] , label: ('maybe',)
+acc:  0.5
