@@ -13,4 +13,4 @@ class HFDataset:
         self.language = language
         self.dataset = load_dataset(self.dataset_name, self.language).with_format(
             "torch"
-        )[data_type]
+        )

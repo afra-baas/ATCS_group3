@@ -1,0 +1,19 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 350.48it/s]
+MARC dataset loaded
+len dataset  4
+Batch: 0 , batch size: 2, sample_size: 4
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes']
+pred_answer ['yes', 'yes'] , label: ('no', 'yes')
+Batch: 1 , batch size: 2, sample_size: 4
+{'input_ids': [18260], 'attention_mask': [1]}
+{'input_ids': [1936], 'attention_mask': [1]}
+pred_answer ['yes', 'yes']
+pred_answer ['yes', 'yes'] , label: ('yes', 'no')
+acc:  0.5

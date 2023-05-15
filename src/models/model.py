@@ -6,7 +6,7 @@ from config import model
 
 
 class Model:
-    def __init__(self, model_name: str, device: str = "cpu"):
+    def __init__(self, model_name: str):
         """
         :param model_name: name of the model to use
         :param device: device to use
@@ -25,9 +25,11 @@ class Model:
         print(f"Loading model {self.model_name}")
         self.model = model_config["model_constructor"](self.model_name)
         print(f"Model {self.model_name} loaded")
-        print(f"Moving model to {device}")
+        
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
+        self.model.to(self.device)
+        print(f"Moving model to {self.device}")
 
     def __call__(self, prompt: List[str], possible_answers):
         """

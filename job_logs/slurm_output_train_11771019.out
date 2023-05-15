@@ -1,0 +1,5 @@
+----------- llama SA --------------
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11771019.0. Some of your processes may have been killed by the cgroup out-of-memory handler.
+srun: error: r28n3: task 0: Out Of Memory
+slurmstepd: error: Detected 1 oom-kill event(s) in StepId=11771019.batch. Some of your processes may have been killed by the cgroup out-of-memory handler.

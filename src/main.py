@@ -4,16 +4,17 @@ from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
 from eval import evaluate
-
+import torch
 
 def pipeline(args):
     LM_model = args.LM_model
     task = args.task
+    print("-----------", LM_model, task ,'--------------')
 
     # Initilize model
     LM = Model(LM_model)
-    batch_size = 8
-    sample_size = 20
+    batch_size = 16
+    sample_size = 100
     if task == 'SA':
         train_dataloader = MARCDataLoader(sample_size=sample_size, batch_size=batch_size)
     elif task == 'NLI':
@@ -33,8 +34,9 @@ def pipeline(args):
         prompts, mapped_labels = batch
 
         # Classification
-        answers_probs_batch, pred_answer_batch = LM(
-            prompts, possible_answers)
+        with torch.no_grad():
+            answers_probs_batch, pred_answer_batch = LM(
+                prompts, possible_answers)
         print(f'pred_answer {pred_answer_batch} , label: {mapped_labels}')
 
         answers_probs_all.extend(answers_probs_batch)

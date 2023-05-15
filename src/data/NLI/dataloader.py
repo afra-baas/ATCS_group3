@@ -15,4 +15,6 @@ class NLIDataLoader(HFDataloader):
     default_task = "NLI"
 
     def collate_fn(self, x):
-        return [(self.prompt([row["premise"], row["hypothesis"]]), self.label_map[row["label"]]) for row in x]
+        batch = [(self.prompt([row["premise"], row["hypothesis"]]),
+                  self.label_map[row["label"].item()]) for row in x]
+        return zip(*batch)

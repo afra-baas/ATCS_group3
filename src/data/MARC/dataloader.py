@@ -14,4 +14,9 @@ class MARCDataLoader(HFDataloader):
     default_task = "SA"
 
     def collate_fn(self, x):
-        return [(self.prompt([row["review_body"]]), self.label_map[row["stars"]]) for row in x]
+        # for row in x:
+        #     print('row ', row)
+        #     print(row["stars"].item())
+        batch = [(self.prompt([row["review_body"]]),
+                  self.label_map[row["stars"].item()]) for row in x]
+        return zip(*batch)

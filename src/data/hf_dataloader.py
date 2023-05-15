@@ -3,6 +3,7 @@ from torch.utils.data import DataLoader
 from config import task_config
 import random
 
+
 class HFDataloader:
     """
     Abstract class for dataloader
@@ -14,13 +15,13 @@ class HFDataloader:
     dataset_class = None
     default_task = "Empty"
 
-    def __init__(self, language="en", batch_size=32, sample_size=100, seed=42):
+    def __init__(self, language="en", batch_size=32, sample_size=100, seed=42, data_type='train'):
         # :param language: language to load
         # :param batch_size: batch size
         self.batch_size = batch_size
         self.language = language
         print(f"Loading {self.data_name} dataset for {self.language}")
-        self.dataset = self.dataset_class(language)#.dataset
+        self.dataset = self.dataset_class(language).dataset[data_type]
         print(f"{self.data_name} dataset loaded")
         task = self.default_task
         if task not in self.supported_tasks:
@@ -34,9 +35,20 @@ class HFDataloader:
         self.prompt = self.task_config["prompt_class"]()
         self.label_map = self.task_config["label_map"]
         self.possible_answers = self.task_config["possible_answers"]
-        self.dataset = self.get_random_sample(self.dataset, sample_size, seed)
+        self.dataset = self.get_random_sample(sample_size, seed)
+        print('len dataset ', len(self.dataset))
 
-    def get_dataloader(self, data_type="train") -> DataLoader:
+    # def get_dataloader(self, data_type="train") -> DataLoader:
+    #     # :return: DataLoader for the dataset with shape (batch_size, 2). The first element of the tuple is a list of sentences, the second is an int representing the label
+    #     dataloader = DataLoader(
+    #         self.dataset,
+    #         batch_size=self.batch_size,
+    #         shuffle=True,
+    #         collate_fn=self.collate_fn,
+    #     )
+    #     return dataloader
+
+    def __iter__(self):
         # :return: DataLoader for the dataset with shape (batch_size, 2). The first element of the tuple is a list of sentences, the second is an int representing the label
         dataloader = DataLoader(
             self.dataset,
@@ -44,7 +56,7 @@ class HFDataloader:
             shuffle=True,
             collate_fn=self.collate_fn,
         )
-        return dataloader
+        return iter(dataloader)
 
     def collate_fn(self, x):
         # To be implemented in child class
@@ -57,5 +69,5 @@ class HFDataloader:
         random.seed(seed)
         sample_indices = random.sample(
             range(len(self.dataset)), min(sample_size, len(self.dataset)))
-        return [self.dataset[i] for i in sample_indices]
-
+        dataset = [self.dataset[i] for i in sample_indices]
+        return dataset
