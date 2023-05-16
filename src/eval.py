@@ -16,6 +16,6 @@ def evaluate(predictions, targets):
     accuracy = correct / total
 
     # To do : significance measure
-    # Save results somewhere
+    # Save results somewhere -> there in the job_logs
 
     return accuracy

@@ -1,0 +1,8 @@
+----------- llama SA --------------
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:08<00:08,  8.86s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:11<00:00,  5.32s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:11<00:00,  5.85s/it]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Model huggyllama/llama-7b loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 30.79it/s]

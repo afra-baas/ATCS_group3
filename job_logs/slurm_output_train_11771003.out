@@ -1,25 +1,0 @@
------------ bloomz SA --------------
-Downloading (…)okenizer_config.json:   0%|          | 0.00/222 [00:00<?, ?B/s]Downloading (…)okenizer_config.json: 100%|██████████| 222/222 [00:00<00:00, 837kB/s]
-Downloading tokenizer.json:   0%|          | 0.00/14.5M [00:00<?, ?B/s]Downloading tokenizer.json: 100%|██████████| 14.5M/14.5M [00:00<00:00, 337MB/s]
-Downloading (…)cial_tokens_map.json:   0%|          | 0.00/85.0 [00:00<?, ?B/s]Downloading (…)cial_tokens_map.json: 100%|██████████| 85.0/85.0 [00:00<00:00, 341kB/s]
-Loading model bigscience/bloomz-560m
-Downloading (…)lve/main/config.json:   0%|          | 0.00/715 [00:00<?, ?B/s]Downloading (…)lve/main/config.json: 100%|██████████| 715/715 [00:00<00:00, 2.67MB/s]
-Downloading pytorch_model.bin:   0%|          | 0.00/1.12G [00:00<?, ?B/s]Downloading pytorch_model.bin:   6%|▌         | 62.9M/1.12G [00:00<00:01, 540MB/s]Downloading pytorch_model.bin:  11%|█         | 126M/1.12G [00:00<00:02, 494MB/s] Downloading pytorch_model.bin:  16%|█▌        | 178M/1.12G [00:00<00:01, 478MB/s]Downloading pytorch_model.bin:  21%|██        | 231M/1.12G [00:00<00:01, 485MB/s]Downloading pytorch_model.bin:  25%|██▌       | 283M/1.12G [00:00<00:01, 479MB/s]Downloading pytorch_model.bin:  30%|██▉       | 336M/1.12G [00:00<00:01, 469MB/s]Downloading pytorch_model.bin:  35%|███▍      | 388M/1.12G [00:00<00:01, 480MB/s]Downloading pytorch_model.bin:  39%|███▉      | 440M/1.12G [00:00<00:01, 432MB/s]Downloading pytorch_model.bin:  44%|████▍     | 493M/1.12G [00:01<00:01, 406MB/s]Downloading pytorch_model.bin:  48%|████▊     | 535M/1.12G [00:01<00:01, 394MB/s]Downloading pytorch_model.bin:  52%|█████▏    | 587M/1.12G [00:01<00:01, 421MB/s]Downloading pytorch_model.bin:  57%|█████▋    | 640M/1.12G [00:01<00:01, 430MB/s]Downloading pytorch_model.bin:  62%|██████▏   | 692M/1.12G [00:01<00:00, 442MB/s]Downloading pytorch_model.bin:  67%|██████▋   | 744M/1.12G [00:01<00:00, 394MB/s]Downloading pytorch_model.bin:  70%|███████   | 786M/1.12G [00:01<00:00, 369MB/s]Downloading pytorch_model.bin:  74%|███████▍  | 828M/1.12G [00:01<00:00, 357MB/s]Downloading pytorch_model.bin:  78%|███████▊  | 870M/1.12G [00:02<00:00, 371MB/s]Downloading pytorch_model.bin:  82%|████████▏ | 912M/1.12G [00:02<00:00, 360MB/s]Downloading pytorch_model.bin:  85%|████████▌ | 954M/1.12G [00:02<00:00, 365MB/s]Downloading pytorch_model.bin:  89%|████████▉ | 996M/1.12G [00:02<00:00, 376MB/s]Downloading pytorch_model.bin:  94%|█████████▎| 1.05G/1.12G [00:02<00:00, 398MB/s]Downloading pytorch_model.bin:  97%|█████████▋| 1.09G/1.12G [00:02<00:00, 404MB/s]Downloading pytorch_model.bin: 100%|██████████| 1.12G/1.12G [00:02<00:00, 416MB/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-Model bigscience/bloomz-560m loaded
-Moving model to cuda
-Loading MARC dataset for en
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 331.74it/s]
-MARC dataset loaded
-len dataset  4
-Batch: 0 , batch size: 2, sample_size: 4
-{'input_ids': [18260], 'attention_mask': [1]}
-{'input_ids': [1936], 'attention_mask': [1]}
-pred_answer ['yes', 'yes']
-pred_answer ['yes', 'yes'] , label: ('yes', 'yes')
-Batch: 1 , batch size: 2, sample_size: 4
-{'input_ids': [18260], 'attention_mask': [1]}
-{'input_ids': [1936], 'attention_mask': [1]}
-pred_answer ['yes', 'yes']
-pred_answer ['yes', 'yes'] , label: ('no', 'no')
-acc:  0.5

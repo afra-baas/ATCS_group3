@@ -1,22 +1,0 @@
-Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
------------ bloomz NLI --------------
-Loading model bigscience/bloomz-560m
-Model bigscience/bloomz-560m loaded
-Moving model to cuda
-Loading NLI dataset for en
-  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  6.68it/s]100%|██████████| 3/3 [00:00<00:00, 19.37it/s]
-NLI dataset loaded
-len dataset  4
-Batch: 0 , batch size: 2, sample_size: 4
-{'input_ids': [18260], 'attention_mask': [1]}
-{'input_ids': [1936], 'attention_mask': [1]}
-{'input_ids': [137111], 'attention_mask': [1]}
-pred_answer ['yes', 'yes']
-pred_answer ['yes', 'yes'] , label: ('yes', 'yes')
-Batch: 1 , batch size: 2, sample_size: 4
-{'input_ids': [18260], 'attention_mask': [1]}
-{'input_ids': [1936], 'attention_mask': [1]}
-{'input_ids': [137111], 'attention_mask': [1]}
-pred_answer ['yes', 'yes']
-pred_answer ['yes', 'yes'] , label: ('maybe', 'maybe')
-acc:  0.5

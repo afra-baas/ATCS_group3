@@ -1,120 +1,0 @@
------------ flan NLI --------------
-Loading model google/flan-t5-base
-Model google/flan-t5-base loaded
-Moving model to cuda
-Loading NLI dataset for en
-Downloading builder script:   0%|          | 0.00/8.78k [00:00<?, ?B/s]Downloading builder script: 100%|██████████| 8.78k/8.78k [00:00<00:00, 4.83MB/s]
-Downloading metadata:   0%|          | 0.00/36.6k [00:00<?, ?B/s]Downloading metadata: 100%|██████████| 36.6k/36.6k [00:00<00:00, 449kB/s]
-Downloading readme:   0%|          | 0.00/18.3k [00:00<?, ?B/s]Downloading readme: 100%|██████████| 18.3k/18.3k [00:00<00:00, 7.76MB/s]
-Downloading and preparing dataset xnli/en to /home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd...
-Downloading data files:   0%|          | 0/2 [00:00<?, ?it/s]
-Downloading data:   0%|          | 0.00/466M [00:00<?, ?B/s][A
-Downloading data:   2%|▏         | 11.5M/466M [00:00<00:03, 115MB/s][A
-Downloading data:   5%|▌         | 24.7M/466M [00:00<00:03, 125MB/s][A
-Downloading data:   8%|▊         | 37.8M/466M [00:00<00:03, 127MB/s][A
-Downloading data:  11%|█         | 51.1M/466M [00:00<00:03, 130MB/s][A
-Downloading data:  14%|█▎        | 64.1M/466M [00:00<00:03, 123MB/s][A
-Downloading data:  17%|█▋        | 77.1M/466M [00:00<00:03, 125MB/s][A
-Downloading data:  19%|█▉        | 90.0M/466M [00:00<00:02, 126MB/s][A
-Downloading data:  22%|██▏       | 103M/466M [00:00<00:02, 126MB/s] [A
-Downloading data:  25%|██▍       | 115M/466M [00:00<00:02, 126MB/s][A
-Downloading data:  27%|██▋       | 128M/466M [00:01<00:02, 126MB/s][A
-Downloading data:  30%|███       | 141M/466M [00:01<00:02, 127MB/s][A
-Downloading data:  33%|███▎      | 153M/466M [00:01<00:02, 125MB/s][A
-Downloading data:  36%|███▌      | 166M/466M [00:01<00:02, 126MB/s][A
-Downloading data:  38%|███▊      | 179M/466M [00:01<00:02, 127MB/s][A
-Downloading data:  41%|████      | 192M/466M [00:01<00:02, 127MB/s][A
-Downloading data:  44%|████▍     | 205M/466M [00:01<00:02, 127MB/s][A
-Downloading data:  47%|████▋     | 217M/466M [00:01<00:01, 127MB/s][A
-Downloading data:  49%|████▉     | 230M/466M [00:01<00:01, 127MB/s][A
-Downloading data:  52%|█████▏    | 243M/466M [00:01<00:01, 126MB/s][A
-Downloading data:  55%|█████▍    | 256M/466M [00:02<00:01, 127MB/s][A
-Downloading data:  58%|█████▊    | 269M/466M [00:02<00:01, 128MB/s][A
-Downloading data:  60%|██████    | 282M/466M [00:02<00:01, 128MB/s][A
-Downloading data:  63%|██████▎   | 295M/466M [00:02<00:01, 128MB/s][A
-Downloading data:  66%|██████▌   | 307M/466M [00:02<00:01, 128MB/s][A
-Downloading data:  69%|██████▉   | 320M/466M [00:02<00:01, 129MB/s][A
-Downloading data:  72%|███████▏  | 334M/466M [00:02<00:01, 129MB/s][A
-Downloading data:  74%|███████▍  | 347M/466M [00:02<00:00, 130MB/s][A
-Downloading data:  77%|███████▋  | 360M/466M [00:02<00:00, 130MB/s][A
-Downloading data:  80%|███████▉  | 373M/466M [00:02<00:00, 129MB/s][A
-Downloading data:  83%|████████▎ | 386M/466M [00:03<00:00, 129MB/s][A
-Downloading data:  86%|████████▌ | 399M/466M [00:03<00:00, 130MB/s][A
-Downloading data:  88%|████████▊ | 412M/466M [00:03<00:00, 121MB/s][A
-Downloading data:  91%|█████████ | 424M/466M [00:03<00:00, 118MB/s][A
-Downloading data:  94%|█████████▎| 436M/466M [00:03<00:00, 117MB/s][A
-Downloading data:  96%|█████████▌| 448M/466M [00:03<00:00, 114MB/s][A
-Downloading data:  99%|█████████▊| 460M/466M [00:03<00:00, 117MB/s][ADownloading data: 100%|██████████| 466M/466M [00:03<00:00, 125MB/s]
-Downloading data files:  50%|█████     | 1/2 [00:04<00:04,  4.32s/it]
-Downloading data:   0%|          | 0.00/17.9M [00:00<?, ?B/s][A
-Downloading data:  65%|██████▍   | 11.6M/17.9M [00:00<00:00, 116MB/s][ADownloading data: 100%|██████████| 17.9M/17.9M [00:00<00:00, 120MB/s]
-Downloading data files: 100%|██████████| 2/2 [00:04<00:00,  1.95s/it]Downloading data files: 100%|██████████| 2/2 [00:04<00:00,  2.31s/it]
-Extracting data files:   0%|          | 0/2 [00:00<?, ?it/s]Extracting data files:  50%|█████     | 1/2 [00:12<00:12, 12.62s/it]Extracting data files: 100%|██████████| 2/2 [00:13<00:00,  5.79s/it]Extracting data files: 100%|██████████| 2/2 [00:13<00:00,  6.82s/it]
-Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:   1%|          | 2588/392702 [00:00<00:15, 25315.68 examples/s]Generating train split:   1%|▏         | 5684/392702 [00:00<00:13, 28601.79 examples/s]Generating train split:   2%|▏         | 8737/392702 [00:00<00:13, 29471.70 examples/s]Generating train split:   3%|▎         | 11845/392702 [00:00<00:12, 30099.29 examples/s]Generating train split:   4%|▍         | 14941/392702 [00:00<00:12, 30404.58 examples/s]Generating train split:   5%|▍         | 18000/392702 [00:00<00:12, 30195.32 examples/s]Generating train split:   5%|▌         | 21100/392702 [00:00<00:12, 30451.79 examples/s]Generating train split:   6%|▌         | 24164/392702 [00:00<00:12, 30509.09 examples/s]Generating train split:   7%|▋         | 27226/392702 [00:00<00:11, 30541.29 examples/s]Generating train split:   8%|▊         | 30317/392702 [00:01<00:11, 30651.16 examples/s]Generating train split:   9%|▊         | 33392/392702 [00:01<00:11, 30679.82 examples/s]Generating train split:  10%|▉         | 38000/392702 [00:01<00:11, 30448.58 examples/s]Generating train split:  10%|█         | 41060/392702 [00:01<00:11, 30486.68 examples/s]Generating train split:  12%|█▏        | 45713/392702 [00:01<00:11, 30680.78 examples/s]Generating train split:  13%|█▎        | 50246/392702 [00:01<00:11, 30520.24 examples/s]Generating train split:  14%|█▍        | 54873/392702 [00:01<00:11, 30624.36 examples/s]Generating train split:  15%|█▍        | 57996/392702 [00:02<00:14, 23156.12 examples/s]Generating train split:  16%|█▌        | 61000/392702 [00:02<00:13, 24442.24 examples/s]Generating train split:  16%|█▋        | 64026/392702 [00:02<00:12, 25750.83 examples/s]Generating train split:  17%|█▋        | 67034/392702 [00:02<00:12, 26802.84 examples/s]Generating train split:  18%|█▊        | 70098/392702 [00:02<00:11, 27791.74 examples/s]Generating train split:  19%|█▊        | 73127/392702 [00:02<00:11, 28461.73 examples/s]Generating train split:  19%|█▉        | 76196/392702 [00:02<00:10, 29078.53 examples/s]Generating train split:  20%|██        | 79247/392702 [00:02<00:10, 29482.56 examples/s]Generating train split:  21%|██        | 82284/392702 [00:02<00:10, 29736.70 examples/s]Generating train split:  22%|██▏       | 85332/392702 [00:02<00:10, 29949.93 examples/s]Generating train split:  23%|██▎       | 89922/392702 [00:03<00:10, 30195.43 examples/s]Generating train split:  24%|██▎       | 92964/392702 [00:03<00:09, 30253.17 examples/s]Generating train split:  24%|██▍       | 96000/392702 [00:03<00:09, 30117.53 examples/s]Generating train split:  25%|██▌       | 99069/392702 [00:03<00:09, 30275.80 examples/s]Generating train split:  26%|██▌       | 102105/392702 [00:03<00:09, 30296.91 examples/s]Generating train split:  27%|██▋       | 105161/392702 [00:03<00:09, 30372.38 examples/s]Generating train split:  28%|██▊       | 109789/392702 [00:03<00:09, 30553.57 examples/s]Generating train split:  29%|██▊       | 112845/392702 [00:03<00:09, 30554.07 examples/s]Generating train split:  30%|██▉       | 117361/392702 [00:04<00:09, 30387.39 examples/s]Generating train split:  31%|███       | 120431/392702 [00:04<00:08, 30466.02 examples/s]Generating train split:  31%|███▏      | 123587/392702 [00:04<00:08, 30478.36 examples/s]Generating train split:  32%|███▏      | 126660/392702 [00:04<00:08, 30542.72 examples/s]Generating train split:  33%|███▎      | 131174/392702 [00:04<00:08, 30372.43 examples/s]Generating train split:  34%|███▍      | 134235/392702 [00:04<00:08, 30433.72 examples/s]Generating train split:  35%|███▍      | 137285/392702 [00:04<00:08, 30449.38 examples/s]Generating train split:  36%|███▌      | 140368/392702 [00:04<00:08, 30554.27 examples/s]Generating train split:  37%|███▋      | 145000/392702 [00:04<00:08, 30493.39 examples/s]Generating train split:  38%|███▊      | 149646/392702 [00:05<00:07, 30658.13 examples/s]Generating train split:  39%|███▉      | 154197/392702 [00:05<00:07, 30549.83 examples/s]Generating train split:  40%|████      | 158780/392702 [00:05<00:07, 30549.28 examples/s]Generating train split:  42%|████▏     | 163196/392702 [00:05<00:07, 30197.70 examples/s]Generating train split:  42%|████▏     | 166239/392702 [00:05<00:07, 30249.21 examples/s]Generating train split:  43%|████▎     | 169303/392702 [00:05<00:07, 30344.93 examples/s]Generating train split:  44%|████▍     | 172371/392702 [00:05<00:07, 30429.07 examples/s]Generating train split:  45%|████▍     | 175475/392702 [00:05<00:07, 30592.98 examples/s]Generating train split:  45%|████▌     | 178587/392702 [00:06<00:06, 30612.83 examples/s]Generating train split:  47%|████▋     | 183114/392702 [00:06<00:06, 30446.25 examples/s]Generating train split:  47%|████▋     | 186201/392702 [00:06<00:06, 30554.55 examples/s]Generating train split:  49%|████▊     | 190855/392702 [00:06<00:06, 30720.63 examples/s]Generating train split:  50%|████▉     | 195409/392702 [00:06<00:06, 30596.77 examples/s]Generating train split:  51%|█████     | 198561/392702 [00:06<00:06, 30616.29 examples/s]Generating train split:  51%|█████▏    | 201647/392702 [00:06<00:06, 30677.30 examples/s]Generating train split:  53%|█████▎    | 206248/392702 [00:06<00:06, 30674.63 examples/s]Generating train split:  53%|█████▎    | 209362/392702 [00:07<00:05, 30789.22 examples/s]Generating train split:  54%|█████▍    | 212457/392702 [00:07<00:05, 30830.91 examples/s]Generating train split:  55%|█████▍    | 215582/392702 [00:07<00:05, 30743.59 examples/s]Generating train split:  56%|█████▌    | 220098/392702 [00:07<00:05, 30506.49 examples/s]Generating train split:  57%|█████▋    | 223180/392702 [00:07<00:05, 30586.25 examples/s]Generating train split:  58%|█████▊    | 226264/392702 [00:07<00:05, 30652.33 examples/s]Generating train split:  59%|█████▉    | 230906/392702 [00:07<00:05, 30755.90 examples/s]Generating train split:  60%|█████▉    | 235505/392702 [00:07<00:05, 30718.96 examples/s]Generating train split:  61%|██████    | 239984/392702 [00:08<00:05, 30431.52 examples/s]Generating train split:  62%|██████▏   | 244579/392702 [00:08<00:04, 30301.80 examples/s]Generating train split:  63%|██████▎   | 247621/392702 [00:08<00:04, 30328.19 examples/s]Generating train split:  64%|██████▍   | 250670/392702 [00:08<00:04, 30365.76 examples/s]Generating train split:  65%|██████▍   | 253718/392702 [00:08<00:04, 30393.76 examples/s]Generating train split:  65%|██████▌   | 256853/392702 [00:08<00:04, 30652.48 examples/s]Generating train split:  66%|██████▌   | 259940/392702 [00:08<00:04, 30710.77 examples/s]Generating train split:  67%|██████▋   | 264581/392702 [00:08<00:04, 30630.37 examples/s]Generating train split:  69%|██████▊   | 269103/392702 [00:08<00:04, 30460.72 examples/s]Generating train split:  69%|██████▉   | 272159/392702 [00:09<00:03, 30483.93 examples/s]Generating train split:  70%|███████   | 275240/392702 [00:09<00:03, 30567.87 examples/s]Generating train split:  71%|███████▏  | 279847/392702 [00:09<00:03, 30618.71 examples/s]Generating train split:  72%|███████▏  | 284356/392702 [00:09<00:03, 30427.60 examples/s]Generating train split:  73%|███████▎  | 287405/392702 [00:09<00:03, 30439.11 examples/s]Generating train split:  74%|███████▍  | 290460/392702 [00:09<00:03, 30464.67 examples/s]Generating train split:  75%|███████▍  | 293568/392702 [00:09<00:03, 30535.80 examples/s]Generating train split:  76%|███████▌  | 296628/392702 [00:09<00:03, 30552.56 examples/s]Generating train split:  77%|███████▋  | 301163/392702 [00:10<00:03, 30426.94 examples/s]Generating train split:  77%|███████▋  | 304222/392702 [00:10<00:02, 30466.05 examples/s]Generating train split:  78%|███████▊  | 307344/392702 [00:10<00:02, 30669.04 examples/s]Generating train split:  79%|███████▉  | 311954/392702 [00:10<00:02, 30690.77 examples/s]Generating train split:  81%|████████  | 316587/392702 [00:10<00:02, 30568.57 examples/s]Generating train split:  82%|████████▏ | 321133/392702 [00:10<00:02, 30478.81 examples/s]Generating train split:  83%|████████▎ | 324210/392702 [00:10<00:02, 30546.03 examples/s]Generating train split:  83%|████████▎ | 327339/392702 [00:10<00:02, 30732.59 examples/s]Generating train split:  84%|████████▍ | 330453/392702 [00:10<00:02, 30840.19 examples/s]Generating train split:  85%|████████▍ | 333553/392702 [00:11<00:01, 30692.88 examples/s]Generating train split:  86%|████████▌ | 338107/392702 [00:11<00:01, 30564.26 examples/s]Generating train split:  87%|████████▋ | 341227/392702 [00:11<00:01, 30728.07 examples/s]Generating train split:  88%|████████▊ | 344321/392702 [00:11<00:01, 30785.01 examples/s]Generating train split:  89%|████████▉ | 348928/392702 [00:11<00:01, 30753.59 examples/s]Generating train split:  90%|█████████ | 353441/392702 [00:11<00:01, 30521.86 examples/s]Generating train split:  91%|█████████ | 356574/392702 [00:11<00:01, 30545.40 examples/s]Generating train split:  92%|█████████▏| 361096/392702 [00:11<00:01, 30405.22 examples/s]Generating train split:  93%|█████████▎| 364143/392702 [00:12<00:00, 30419.48 examples/s]Generating train split:  94%|█████████▎| 367221/392702 [00:12<00:00, 30510.19 examples/s]Generating train split:  95%|█████████▍| 371830/392702 [00:12<00:00, 30584.99 examples/s]Generating train split:  95%|█████████▌| 374962/392702 [00:12<00:00, 30769.70 examples/s]Generating train split:  97%|█████████▋| 379587/392702 [00:12<00:00, 30579.05 examples/s]Generating train split:  97%|█████████▋| 382679/392702 [00:12<00:00, 30663.67 examples/s]Generating train split:  99%|█████████▊| 387210/392702 [00:12<00:00, 30502.46 examples/s]Generating train split: 100%|█████████▉| 391867/392702 [00:12<00:00, 30680.41 examples/s]                                                                                         Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split:   0%|          | 1/5010 [00:00<13:39,  6.11 examples/s]Generating test sDataset xnli downloaded and prepared to /home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd. Subsequent calls will reuse this data.
-plit:  56%|█████▌    | 2797/5010 [00:00<00:00, 13034.72 examples/s]Generating test split: 100%|██████████| 5010/5010 [00:00<00:00, 6796.74 examples/s]                                                                                    Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split:  58%|█████▊    | 1449/2490 [00:00<00:00, 11541.13 examples/s]                                                                                            0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  5.43it/s]100%|██████████| 3/3 [00:00<00:00, 15.54it/s]
-NLI dataset loaded
-len dataset  100
-Batch: 0 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes']
-pred_answer ['yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes'] , label: ('maybe', 'no', 'no', 'no', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'no', 'maybe', 'yes', 'yes', 'no', 'maybe', 'yes')
-Batch: 1 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'yes']
-pred_answer ['yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'yes'] , label: ('maybe', 'no', 'maybe', 'no', 'no', 'no', 'maybe', 'maybe', 'yes', 'maybe', 'yes', 'maybe', 'maybe', 'maybe', 'yes', 'maybe')
-Batch: 2 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes']
-pred_answer ['no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes'] , label: ('no', 'maybe', 'maybe', 'no', 'maybe', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'maybe', 'maybe', 'no', 'yes', 'yes')
-Batch: 3 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'no', 'no']
-pred_answer ['yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'no', 'yes', 'no', 'no'] , label: ('maybe', 'yes', 'maybe', 'yes', 'yes', 'maybe', 'no', 'no', 'maybe', 'no', 'no', 'no', 'no', 'yes', 'maybe', 'maybe')
-Batch: 4 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no']
-pred_answer ['yes', 'no', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no'] , label: ('maybe', 'no', 'yes', 'yes', 'no', 'maybe', 'no', 'yes', 'no', 'no', 'maybe', 'yes', 'no', 'no', 'no', 'no')
-Batch: 5 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['no', 'no', 'no', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes']
-pred_answer ['no', 'no', 'no', 'no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes'] , label: ('no', 'maybe', 'no', 'maybe', 'maybe', 'no', 'no', 'no', 'maybe', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes')
-Batch: 6 , batch size: 16, sample_size: 100
-{'input_ids': [4273, 1], 'attention_mask': [1, 1]}
-id: [4273, 1] -> [4273]
-{'input_ids': [150, 1], 'attention_mask': [1, 1]}
-id: [150, 1] -> [150]
-{'input_ids': [2087, 1], 'attention_mask': [1, 1]}
-id: [2087, 1] -> [2087]
-pred_answer ['no', 'yes', 'no', 'yes']
-pred_answer ['no', 'yes', 'no', 'yes'] , label: ('maybe', 'yes', 'no', 'maybe')
-acc:  0.61

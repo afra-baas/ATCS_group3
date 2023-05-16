@@ -37,11 +37,10 @@ model = {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloomz-560m"       # model name for huggingface
         },
-        # "t0pp": {
-        #     "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
-        #     # "model_name": 'bigscience/T0pp'  # model name for huggingface
-        #     "model_name": 'bigscience/T0_single_prompt'  # model name for huggingface
-        # },
+        "alpaca": {
+            "model_constructor": AutoModelForCausalLM.from_pretrained,
+            "model_name": 'chainyo/alpaca-lora-7b'  # model name for huggingface
+        },
         "flan": {
             "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
             "model_name": 'google/flan-t5-base'  # model name for huggingface
@@ -62,6 +61,7 @@ task_config = {
             "possible_answers": ['yes', 'no', 'maybe'],
             "prompt_class": NLIPrompt
         }  # ,
+        # MARC 'topic'
         # "Topic_Classification": {
         #     "label_map": {'0': 'true', '1': 'neither', '2': 'false'},
         #     "possible_answers": ['true', 'false','neither'],
