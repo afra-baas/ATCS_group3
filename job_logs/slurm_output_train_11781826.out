@@ -1,0 +1,9 @@
+----------- llama NLI --------------
+pad token added
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:08<00:08,  8.47s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:11<00:00,  5.39s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:11<00:00,  5.85s/it]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+Model huggyllama/llama-7b loaded
+Moving model to cuda
+Loading NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  6.09it/s]100%|██████████| 3/3 [00:00<00:00, 17.42it/s]

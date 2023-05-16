@@ -1,0 +1,29 @@
+----------- alpaca SA --------------
+pad token added
+Loading model chainyo/alpaca-lora-7b
+Loading checkpoint shards:   0%|          | 0/39 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/39 [00:00<00:17,  2.18it/s]Loading checkpoint shards:   5%|▌         | 2/39 [00:00<00:15,  2.33it/s]Loading checkpoint shards:   8%|▊         | 3/39 [00:01<00:15,  2.39it/s]Loading checkpoint shards:  10%|█         | 4/39 [00:01<00:14,  2.42it/s]Loading checkpoint shards:  13%|█▎        | 5/39 [00:02<00:13,  2.44it/s]Loading checkpoint shards:  15%|█▌        | 6/39 [00:02<00:12,  2.55it/s]Loading checkpoint shards:  18%|█▊        | 7/39 [00:02<00:12,  2.63it/s]Loading checkpoint shards:  21%|██        | 8/39 [00:03<00:11,  2.68it/s]Loading checkpoint shards:  23%|██▎       | 9/39 [00:03<00:11,  2.62it/s]Loading checkpoint shards:  26%|██▌       | 10/39 [00:03<00:11,  2.57it/s]Loading checkpoint shards:  28%|██▊       | 11/39 [00:04<00:11,  2.54it/s]Loading checkpoint shards:  31%|███       | 12/39 [00:04<00:10,  2.52it/s]Loading checkpoint shards:  33%|███▎      | 13/39 [00:05<00:10,  2.60it/s]Loading checkpoint shards:  36%|███▌      | 14/39 [00:05<00:09,  2.65it/s]Loading checkpoint shards:  38%|███▊      | 15/39 [00:05<00:08,  2.69it/s]Loading checkpoint shards:  41%|████      | 16/39 [00:06<00:08,  2.62it/s]Loading checkpoint shards:  44%|████▎     | 17/39 [00:06<00:08,  2.57it/s]Loading checkpoint shards:  46%|████▌     | 18/39 [00:07<00:08,  2.53it/s]Loading checkpoint shards:  49%|████▊     | 19/39 [00:07<00:07,  2.50it/s]Loading checkpoint shards:  51%|█████▏    | 20/39 [00:07<00:07,  2.58it/s]Loading checkpoint shards:  54%|█████▍    | 21/39 [00:08<00:06,  2.64it/s]Loading checkpoint shards:  56%|█████▋    | 22/39 [00:08<00:07,  2.36it/s]Loading checkpoint shards:  59%|█████▉    | 23/39 [00:09<00:06,  2.36it/s]Loading checkpoint shards:  62%|██████▏   | 24/39 [00:09<00:06,  2.36it/s]Loading checkpoint shards:  64%|██████▍   | 25/39 [00:09<00:05,  2.36it/s]Loading checkpoint shards:  67%|██████▋   | 26/39 [00:10<00:05,  2.35it/s]Loading checkpoint shards:  69%|██████▉   | 27/39 [00:10<00:04,  2.44it/s]Loading checkpoint shards:  72%|███████▏  | 28/39 [00:11<00:04,  2.50it/s]Loading checkpoint shards:  74%|███████▍  | 29/39 [00:11<00:03,  2.55it/s]Loading checkpoint shards:  77%|███████▋  | 30/39 [00:11<00:03,  2.48it/s]Loading checkpoint shards:  79%|███████▉  | 31/39 [00:12<00:03,  2.44it/s]Loading checkpoint shards:  82%|████████▏ | 32/39 [00:12<00:02,  2.41it/s]Loading checkpoint shards:  85%|████████▍ | 33/39 [00:13<00:02,  2.39it/s]Loading checkpoint shards:  87%|████████▋ | 34/39 [00:13<00:02,  2.47it/s]Loading checkpoint shards:  90%|████████▉ | 35/39 [00:13<00:01,  2.53it/s]Loading checkpoint shards:  92%|█████████▏| 36/39 [00:14<00:01,  2.57it/s]Loading checkpoint shards:  95%|█████████▍| 37/39 [00:14<00:00,  2.50it/s]Loading checkpoint shards:  97%|█████████▋| 38/39 [00:15<00:00,  2.57it/s]Loading checkpoint shards: 100%|██████████| 39/39 [00:15<00:00,  2.72it/s]Loading checkpoint shards: 100%|██████████| 39/39 [00:15<00:00,  2.52it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Model chainyo/alpaca-lora-7b loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 367.47it/s]
+MARC dataset loaded
+len dataset  4
+Batch: 0 , batch size: 2, sample_size: 4
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 75, in <module>
+    pipeline(args)
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 42, in pipeline
+    answers_probs_batch, pred_answer_batch = LM(
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 51, in __call__
+    inputs = self.tokenizer(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2538, in __call__
+    encodings = self._call_one(text=text, text_pair=text_pair, **all_kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2624, in _call_one
+    return self.batch_encode_plus(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2806, in batch_encode_plus
+    padding_strategy, truncation_strategy, max_length, kwargs = self._get_padding_truncation_strategies(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/tokenization_utils_base.py", line 2443, in _get_padding_truncation_strategies
+    raise ValueError(
+ValueError: Asking to pad but the tokenizer does not have a padding token. Please select a token to use as `pad_token` `(tokenizer.pad_token = tokenizer.eos_token e.g.)` or add a new pad token via `tokenizer.add_special_tokens({'pad_token': '[PAD]'})`.
+srun: error: r28n2: task 0: Exited with exit code 1

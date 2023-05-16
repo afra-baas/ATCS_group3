@@ -1,0 +1,103 @@
+----------- llama SA --------------
+pad token added
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:09<00:09,  9.39s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  5.43s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:12<00:00,  6.03s/it]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+Model huggyllama/llama-7b loaded
+Moving model to cuda
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 326.07it/s]
+MARC dataset loaded
+len dataset  200
+Batch: 0 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'yes')
+Batch: 1 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'no')
+Batch: 2 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no')
+Batch: 3 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'yes', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'no', 'yes', 'yes')
+Batch: 4 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'yes', 'yes', 'no', 'no', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'yes')
+Batch: 5 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'yes')
+Batch: 6 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'yes')
+Batch: 7 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'no', 'no', 'no', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no', 'no')
+Batch: 8 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'no', 'no', 'yes', 'no', 'no', 'yes', 'no', 'yes', 'yes', 'no', 'yes', 'yes', 'no', 'no', 'yes')
+Batch: 9 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'no', 'no', 'no', 'yes', 'no', 'no', 'no', 'yes')
+Batch: 10 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes', 'yes')
+Batch: 11 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__16.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('no', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'no', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'no')
+Batch: 12 , batch size: 16, sample_size: 200
+answer  {'input_ids': [1, 4874], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 4874] -> [4874]
+answer  {'input_ids': [1, 694], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 694] -> [694]
+Logits saved to saved_logits/huggyllama/llama-7b__SA__8.txt
+pred_answer ['yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'] , label: ('yes', 'yes', 'yes', 'yes', 'no', 'no', 'no', 'yes')
+acc:  0.58

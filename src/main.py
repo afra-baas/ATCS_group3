@@ -7,10 +7,10 @@ from eval import evaluate
 import torch
 
 
-# def pipeline(args):
-#     LM_model = args.LM_model
-#     task = args.task
-def pipeline(LM_model, task):
+def pipeline(args):
+    LM_model = args.LM_model
+    task = args.task
+# def pipeline(LM_model, task):
     print("-----------", LM_model, task, '--------------')
 
     # Initilize model
@@ -67,16 +67,16 @@ if __name__ == "__main__":
     # DEFAULT_MODEL = model["DEFAULT_MODEL"]
     # DEFAULT_TASK = task["DEFAULT_TASK"]
 
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("--LM_model", type=str,
-    #                     default='llama')
-    # parser.add_argument("--task", type=str, default='SA')
-    # args = parser.parse_args()
-    # pipeline(args)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--LM_model", type=str,
+                        default='alpaca')
+    parser.add_argument("--task", type=str, default='SA')
+    args = parser.parse_args()
+    pipeline(args)
 
-    LM_models = ['bloom', 'bloomz', 'flan', 'llama', 'alpaca']
+    # LM_models = ['bloom', 'bloomz', 'flan', 'llama', 'alpaca']
     # LM_models = ['llama']
     # LM_models = ['alpaca']
-    for LM_model in LM_models:
-        for task in ['SA', 'NLI']:
-            pipeline(LM_model, task)
+    # for LM_model in LM_models:
+    #     for task in ['SA', 'NLI']:
+    #         pipeline(LM_model, task)
