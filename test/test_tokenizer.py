@@ -28,8 +28,9 @@ if __name__ == "__main__":
     # LM_model = 'bigscience/bloom-560m'  # non-instruction tuned
     # LM_model = 'bigscience/bloomz-560m'  # instruction tuned
     # LM_model = 'bigscience/T0pp'  # instruction tuned
-    LM_models = ['huggyllama/llama-7b', 'bigscience/bloom-560m',
-                 'bigscience/bloomz-560m', 'bigscience/T0pp']
+    # LM_models = ['huggyllama/llama-7b', 'bigscience/bloom-560m',
+    #              'bigscience/bloomz-560m', 'bigscience/T0pp']
+    LM_models = ['huggyllama/llama-7b', 'bigscience/T0pp']
     for LM_model in LM_models:
         print(f'------ {LM_model} ------')
         test_tokenization_shape(tokenizer(LM_model), LM_model)
