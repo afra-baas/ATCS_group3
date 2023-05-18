@@ -1,0 +1,8 @@
+Answer 0:
+Answer ID: [68]
+Logits: tensor([419.9099])
+
+Answer 1:
+Answer ID: [69]
+Logits: tensor([422.9738])
+

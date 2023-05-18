@@ -1,5 +1,6 @@
-from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForCausalLM
+import os
 import torch
+from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForCausalLM, LlamaTokenizer
 from typing import List
 import os
 from config import model
@@ -19,12 +20,15 @@ class Model:
                 f"Model {model_name} not supported. Please use one of the following models: {model['SUPPORTED_MODELS'].keys()}"
             )
         self.model_name = model_config["model_name"]
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        print(self.model_name)
+        if model_name != "llama":
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        else:
+            self.tokenizer = LlamaTokenizer.from_pretrained(self.model_name)
         if model_name == 'llama':
             self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
             self.tokenizer.pad_token = self.tokenizer.eos_token
             print('pad token added')
-
         # elif model_name == 'alpaca':
         #     self.tokenizer.pad_token = self.tokenizer.eos_token
         #     print('pad token added')
@@ -35,15 +39,21 @@ class Model:
             print('pad token added')
 
         print(f"Loading model {self.model_name}")
-        self.model = model_config["model_constructor"](self.model_name)
+        if model_name == "llama":
+            self.model = model_config["model_constructor"](self.model_name, torch_dtype = torch.float16)
+        else:
+            self.model = model_config["model_constructor"](self.model_name)
         print(f"Model {self.model_name} loaded")
 
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
+        
         # print('summary: ', torch.cuda.memory_summary(device=self.device))
         # self.model.to(self.device) # -> gives OOM error
         print(f"Moving model to {self.device}")
-
+        if torch.cuda.is_available():
+            self.model = self.model.cuda()
+        # print(f"model device: {self.model.get_device()}")
     def __call__(self, prompt: List[str], possible_answers):
         """
         Generate probabilites for each promt and each possible answer.
@@ -60,7 +70,8 @@ class Model:
         inputs = self.tokenizer(
             prompt, return_tensors="pt", padding=True)  # .to(self.device)
         # inputs = {key: value.to(self.device) for key, value in inputs.items()}
-
+        # print(type(inputs))
+        inputs.to(self.device)
         possible_answers_ids = [self.tokenizer(
             answer) for answer in possible_answers]
 
@@ -70,9 +81,9 @@ class Model:
             if self.model_name == 'huggyllama/llama-7b' or self.model_name == 'chainyo/alpaca-lora-7b':
                 outputs = self.model(
                     inputs["input_ids"], attention_mask=inputs["attention_mask"])
+                
             else:
                 outputs = self.model(**inputs, labels=inputs["input_ids"])
-
         # get the logits of the last token
         logits = outputs.logits[:, -1]
 
