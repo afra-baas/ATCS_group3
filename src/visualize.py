@@ -10,7 +10,8 @@ class AccuracyVisualizer:
     def __init__(self, data, models, languages, prompts):
         self.data = data
         self.models = models
-        self.languages = languages
+        lang_map = {'en': 'English', 'de': 'German'}
+        self.languages = [lang_map[lang] for lang in languages]
         self.prompts = prompts
 
     def visualize(self, file=f'./ATCS_group3/saved_outputs/Accuracies_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.png'):
@@ -111,8 +112,8 @@ def save_dict_to_txt(dictionary, file_path):
             file.write(f"{key}: {value}\n")
 
 
-def get_acc_plot(languages, models, prompt_types, task, seed):
-    with open('./ATCS_group3/saved_outputs/logits_dict.pickle', 'rb') as f:
+def get_acc_plot(languages, models, prompt_types, task, seed, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+    with open(file_path, 'rb') as f:
         data = pickle.load(f)
 
     # save_dict_to_txt(data, './ATCS_group3/saved_outputs/logits_dict.txt')
@@ -120,8 +121,6 @@ def get_acc_plot(languages, models, prompt_types, task, seed):
     # sample_size
     batch = data['42']['en']['bloom']['SA']['active']['prompt_id_1']
     print('batch', batch)
-
-    lang_map = {'English': 'en', 'German': 'de'}
 
     plot_data = {}
     for lang in languages:
@@ -131,11 +130,11 @@ def get_acc_plot(languages, models, prompt_types, task, seed):
                 if key in plot_data:
                     # Append data to existing key
                     plot_data[key].extend(get_acc_from_logits(
-                        data, model=LM_model, task=task, lang=lang_map[lang], seed=seed, prompt_type=prompt_type))
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
                 else:
                     # Create new key and assign data
                     plot_data[key] = get_acc_from_logits(
-                        data, model=LM_model, task=task, lang=lang_map[lang], seed=seed, prompt_type=prompt_type)
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)
 
     visualizer = AccuracyVisualizer(plot_data, models, languages, prompt_types)
     visualizer.visualize()
@@ -149,11 +148,11 @@ def get_acc_plot(languages, models, prompt_types, task, seed):
                 if key in plot_data:
                     # Append data to existing key
                     plot_data[key].extend(get_acc_from_logits2(
-                        data, model=LM_model, task=task, lang=lang_map[lang], seed=seed, prompt_type=prompt_type))
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
                 else:
                     # Create new key and assign data
                     plot_data[key] = get_acc_from_logits2(
-                        data, model=LM_model, task=task, lang=lang_map[lang], seed=seed, prompt_type=prompt_type)
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)
 
     visualizer = AccuracyVisualizer(plot_data, models, languages, prompt_types)
     visualizer.visualize(
@@ -234,9 +233,9 @@ def conditioned_all_sentence_boxplot(data, model='bloom', task='SA', lang='en', 
     return var_for_each_prompt
 
 
-def get_box_plot(boxplots, box_plot_names):
-    # this function expects a list of dictionaries
-    with open('./ATCS_group3/saved_outputs/logits_dict.pickle', 'rb') as f:
+def get_box_plot(boxplots, box_plot_names, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+    # this function expects boxplots to be a list of dictionaries
+    with open(file_path, 'rb') as f:
         data = pickle.load(f)
 
     plot_data = []
@@ -258,3 +257,44 @@ def get_box_plot(boxplots, box_plot_names):
     num_plots = [i+1 for i in range(len(box_plot_names))]
     visualizer = BoxPlotVisualizer(plot_data)
     visualizer.visualize(box_plot_names, num_plots)
+
+
+# if __name__ == "__main__":
+
+#     models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
+#     # LM_models = ['bloom']
+#     tasks = ['SA', 'NLI']
+#     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
+#     # prompt_types = ['active', 'passive']
+#     # languages = ['en', 'de']
+#     languages = ['en']
+#     # seeds = ['42', '33', '50']
+#     seeds = ['42']
+
+#     batch_size = 16
+#     sample_size = 50
+#     num_prompts = 3
+
+#     task = 'SA'
+#     seed = '42'
+#     file_path=f'./ATCS_group3/saved_outputs/logits_dict_seed_{42}_lang_en_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
+
+    # get_acc_plot(languages, models, prompt_types, task, seed, file_path=file_path)
+
+    # # list of dictionaries
+    # boxplots = [{'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
+    #              'seed': '42', 'prompt_type': 'active', 'condition': 'yes'},
+
+    #             {'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
+    #              'seed': '42', 'prompt_type': 'active', 'condition': 'no'},
+
+    #             {'type': 'all', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
+    #              'seed': '42', 'prompt_type': 'active'},
+
+    #             {'type': 'one', 'sen_id': 1, 'model': 'bloom', 'task': 'SA', 'lang': 'en',
+    #              'seed': '42', 'prompt_type': 'active'}]
+
+    # box_plot_names = ['Diff conditioned yes', 'Diff conditioned no',
+    #                   'Diff all sentences', 'Diff one sentence']
+
+    # get_box_plot(boxplots, box_plot_names, file_path=file_path)

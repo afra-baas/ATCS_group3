@@ -93,41 +93,33 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
 
 def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'):
 
+    # Create the directory if it doesn't exist
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
     # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
     logits_dict = {}
     for seed in seeds:
-        logits_dict_per_lang = {}
         for lang in languages:
-            logits_dict_per_model = {}
             for LM_model in LM_models:
                 # Initilize model
                 LM = Model(LM_model)
-                logits_dict_per_task = {}
                 for task in tasks:
                     # with this we look at different charactistics in a prompt
-                    logits_dict_per_prompt_type = {}
                     for prompt_type in prompt_types:
                         # with this we will look at variability in the prompt type
-                        logits_dict_per_prompt_id = {}
                         for prompt_id in range(num_prompts):
+
                             logits_dict_for_prompt = get_prompt_acc(
                                 seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
+                            logits_dict[seed][lang][LM_model][task][prompt_type][
+                                f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
+                        logits_dict = detach_dict_from_device(logits_dict)
 
-                            logits_dict_per_prompt_id[f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
-                        logits_dict_per_prompt_type[prompt_type] = logits_dict_per_prompt_id
-                    logits_dict_per_task[task] = logits_dict_per_prompt_type
-                logits_dict_per_model[LM_model] = logits_dict_per_task
-            logits_dict_per_lang[lang] = logits_dict_per_model
-        logits_dict[seed] = logits_dict_per_lang
-
-    logits_dict = detach_dict_from_device(logits_dict)
-
-    # Create the directory if it doesn't exist
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    # Open the file in binary mode and save the dictionary
-    with open(file_path, 'wb') as file:
-        pickle.dump(logits_dict, file)
-    print(f"Dictionary saved to '{file_path}' as a pickle file.")
+                        # Open the file in binary mode and save the dictionary
+                        with open(file_path, 'wb') as file:
+                            pickle.dump(logits_dict, file)
+                        print(
+                            f"Dictionary saved to '{file_path}' as a pickle file.")
 
 
 def detach_dict_from_device(dictionary):
@@ -189,20 +181,23 @@ if __name__ == "__main__":
     # seeds = ['42', '33', '50']
     seeds = ['42']
 
-    batch_size = 16
-    sample_size = 50
-    num_prompts = 3
+    batch_size = 2
+    sample_size = 4
+    num_prompts = 1
+    file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{42}_lang_en_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
 
     pipeline(seeds, languages, models, tasks, prompt_types,
-             batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict_seed_{42}_lang_en_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle')
+             batch_size, sample_size, num_prompts, file_path=file_path)
 
-    languages = ['English', 'German']
+    # NOTE: dont give a list here
     task = 'SA'
     seed = '42'
-    get_acc_plot(languages, models, prompt_types, task, seed)
+
+    get_acc_plot(languages, models, prompt_types,
+                 task, seed, file_path=file_path)
 
     # list of dictionaries
     boxplots = [{'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
@@ -220,7 +215,7 @@ if __name__ == "__main__":
     box_plot_names = ['Diff conditioned yes', 'Diff conditioned no',
                       'Diff all sentences', 'Diff one sentence']
 
-    get_box_plot(boxplots, box_plot_names)
+    get_box_plot(boxplots, box_plot_names, file_path=file_path)
 
     end_time = datetime.now()
     duration = end_time - start_time
