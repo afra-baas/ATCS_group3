@@ -21,7 +21,7 @@ class Model:
             )
         self.model_name = model_config["model_name"]
         print(self.model_name)
-        if model_name != "llama":
+        if model_name != "llama" and model_name !="alpaca":
             self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
         else:
             self.tokenizer = LlamaTokenizer.from_pretrained(self.model_name)
@@ -34,12 +34,11 @@ class Model:
         #     print('pad token added')
 
         elif model_name == 'alpaca':
-            self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
-            self.tokenizer.pad_token = '[PAD]'
+            self.tokenizer.pad_token = " "
             print('pad token added')
 
         print(f"Loading model {self.model_name}")
-        if model_name == "llama":
+        if model_name == "llama" or model_name == "alpaca":
             self.model = model_config["model_constructor"](self.model_name, torch_dtype = torch.float16)
         else:
             self.model = model_config["model_constructor"](self.model_name)
@@ -79,6 +78,8 @@ class Model:
         # print('summary: ', torch.cuda.memory_summary(device=self.device))
         with torch.no_grad():
             if self.model_name == 'huggyllama/llama-7b' or self.model_name == 'chainyo/alpaca-lora-7b':
+                print(inputs["attention_mask"].size())
+                print(inputs["input_ids"].size())
                 outputs = self.model(
                     inputs["input_ids"], attention_mask=inputs["attention_mask"])
                 
