@@ -7,7 +7,7 @@ class HFDataset:
     language = ""
     dataset_name = ""
 
-    def __init__(self, language="en", num_samples=200, data_type="train"):
+    def __init__(self, language="en"):
         # :param dataset: dataset to use
         # :param tokenizer: tokenizer to use
         self.language = language

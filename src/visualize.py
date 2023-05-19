@@ -255,19 +255,6 @@ def get_box_plot(boxplots, box_plot_names):
         else:
             print(f'There is no boxplot definition for {plot_type}')
 
-    # data_task1_active_all_conditioned_yes = conditioned_all_sentence_boxplot(
-    #     data)
-    # data_task1_active_all_conditioned_no = conditioned_all_sentence_boxplot(
-    #     data, condition='no')
-    # data_task1_active_all = all_sentence_boxplot(data)
-    # data_task1_active_first = one_sentence_boxplot(data, 1)
-
-    # data = [data_task1_active_first, data_task1_active_all,
-    #         data_task1_active_all_conditioned_yes, data_task1_active_all_conditioned_no]
-
-    # box_plot_names= ['Task 1 - First', 'Task 1 - All',
-    #                        'Task 2 - First', 'Task 2 - All']
-
     num_plots = [i+1 for i in range(len(box_plot_names))]
     visualizer = BoxPlotVisualizer(plot_data)
     visualizer.visualize(box_plot_names, num_plots)

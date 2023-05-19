@@ -80,7 +80,6 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
         mapped_labels_all.extend(mapped_labels)
         i += 1
 
-    # torch.cuda.empty_cache()
     # Evaluation
     acc = evaluate(pred_answer_all, mapped_labels_all)
     print('acc: ', acc)
@@ -149,12 +148,6 @@ def detach_dict_from_device(dictionary):
 
 
 if __name__ == "__main__":
-    # Args
-    #   prompt_instructions: list of strings
-    #   prompt_querry: list of strings
-    #   label_map: dict
-    #   LM_model: string
-    #   task: string
 
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--seed", type=str,
