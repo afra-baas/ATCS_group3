@@ -28,9 +28,9 @@ class MARCDataLoader(HFDataloader):
 
     def filter_data(self):
         pos_reviews = [{"review_body": row["review_body"], "stars": row["stars"]}
-                       for row in self.dataset if row["stars"] == 5 and len(row["review_body"]) <= 100]
+                       for row in self.dataset if row["stars"] == 5 and len(row["review_body"].split()) <= 100]
         neg_reviews = [{"review_body": row["review_body"], "stars": row["stars"]}
-                       for row in self.dataset if row["stars"] == 1 and len(row["review_body"]) <= 100]
+                       for row in self.dataset if row["stars"] == 1 and len(row["review_body"].split()) <= 100]
 
         # Calculate average length of review_body for rows with stars equal to 1
         review_lengths = [len(row["review_body"])

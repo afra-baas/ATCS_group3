@@ -1,0 +1,62 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-19_22-41-08
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+----------- 42 de bigscience/bloom-560m SA active 0 50 16 --------------
+Loading MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  8.60it/s]100%|██████████| 3/3 [00:00<00:00, 24.11it/s]
+/home/lcur1101/ATCS_group3/src/models/model.py:103: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  logits = torch.nn.functional.softmax(logits)
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+MARC dataset loaded
+Average length of review_body for rows with 1 star: 199.5979
+Average length of review_body for rows with 5 star: 177.19965
+len of lowest cat:  38908
+len dataset  77816
+len dataset  50
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 3 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+acc:  0.36
+Time taken to execute the de SA task with prompt type active, variation 0 and batchsize 16: 0:03:12.456227
+----------- 42 de bigscience/bloom-560m SA active 1 50 16 --------------
+Loading MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 411.81it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+MARC dataset loaded
+Average length of review_body for rows with 1 star: 199.5979
+Average length of review_body for rows with 5 star: 177.19965
+len of lowest cat:  38908
+len dataset  77816
+len dataset  50
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 3 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+acc:  0.38
+Time taken to execute the de SA task with prompt type active, variation 1 and batchsize 16: 0:03:12.437416
+----------- 42 de bigscience/bloom-560m SA active 2 50 16 --------------
+Loading MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 350.01it/s]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 11798852.0 ON r28n3 CANCELLED AT 2023-05-19T22:48:55 ***
+slurmstepd: error: *** JOB 11798852 ON r28n3 CANCELLED AT 2023-05-19T22:48:55 ***

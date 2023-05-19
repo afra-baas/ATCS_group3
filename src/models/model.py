@@ -100,6 +100,7 @@ class Model:
 
         # get the logits of the last token
         logits = outputs.logits[:, -1]
+        logits = torch.nn.functional.softmax(logits)
 
         # loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(

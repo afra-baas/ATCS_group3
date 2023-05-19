@@ -7,17 +7,20 @@ from datetime import datetime
 
 
 class AccuracyVisualizer:
-    def __init__(self, data, models, languages, prompts):
+    def __init__(self, data, models, languages, prompts, task):
         self.data = data
         self.models = models
         lang_map = {'en': 'English', 'de': 'German'}
         self.languages = [lang_map[lang] for lang in languages]
         self.prompts = prompts
+        self.task = task
 
-    def visualize(self, file=f'./ATCS_group3/saved_outputs/Accuracies_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.png'):
-        bar_width = 0.2
+    def visualize(self, file=f'./ATCS_group3/saved_outputs/Accuracies_v1.png'):
+        space_between_bars = 0.15  # Adjust the value as needed
         opacity = 0.8
         x_pos = np.arange(len(self.models))
+        model_offset = space_between_bars * \
+            (len(self.languages) * len(self.prompts) - 1)
 
         fig, ax = plt.subplots(figsize=(10, 6))
 
@@ -25,15 +28,18 @@ class AccuracyVisualizer:
             for j, prompt in enumerate(self.prompts):
                 accuracies = self.data[(language, prompt)]
                 offsets = x_pos + \
-                    (i * bar_width * len(self.prompts)) + (j * bar_width)
-                ax.bar(offsets, accuracies, bar_width, alpha=opacity,
+                    (i * model_offset) + (j * space_between_bars)
+                ax.bar(offsets, accuracies, space_between_bars, alpha=opacity,
                        label=f'{language} - {prompt} prompt')
 
-        ax.set_xticks(x_pos + (bar_width * len(self.prompts) / 2))
+        ax.set_xticks(x_pos + (model_offset / 2))
         ax.set_xticklabels(self.models, rotation=45)
         ax.set_xlabel('Models')
         ax.set_ylabel('Accuracy')
-        ax.set_title('Accuracy Comparison')
+        ax.set_title(f'Accuracy Comparison for Task {self.task}')
+
+        # Move the legend outside the plot
+        # ax.legend(bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0.)
         ax.legend()
 
         plt.tight_layout()
@@ -53,7 +59,6 @@ def get_acc_from_logits(data, model='bloom', task='SA', lang='en', seed='42', pr
     path = [seed, lang, model, task, prompt_type]
     all_prompt_vars = reduce(lambda d, k: d[k], path, data)
     num_prompt_vars = len(all_prompt_vars.keys())
-    print('num_prompt_vars', num_prompt_vars)
 
     targets = []
     predictions = []
@@ -91,7 +96,6 @@ def get_acc_from_logits2(data, model='bloom', task='SA', lang='en', seed='42', p
     path = [seed, lang, model, task, prompt_type]
     all_prompt_vars = reduce(lambda d, k: d[k], path, data)
     num_prompt_vars = len(all_prompt_vars.keys())
-    print('num_prompt_vars', num_prompt_vars)
 
     mean_prompt_type_acc = 0
     for i in range(num_prompt_vars):
@@ -112,51 +116,54 @@ def save_dict_to_txt(dictionary, file_path):
             file.write(f"{key}: {value}\n")
 
 
-def get_acc_plot(languages, models, prompt_types, task, seed, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def get_acc_plot(languages, models, prompt_types, task, seed, version, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
-
     # save_dict_to_txt(data, './ATCS_group3/saved_outputs/logits_dict.txt')
 
     # sample_size
     batch = data['42']['en']['bloom']['SA']['active']['prompt_id_1']
     print('batch', batch)
+    lang_map = {'en': 'English', 'de': 'German'}
 
     plot_data = {}
     for lang in languages:
         for LM_model in models:
             for prompt_type in prompt_types:
-                key = (lang, prompt_type)
+                key = (lang_map[lang], prompt_type)
                 if key in plot_data:
                     # Append data to existing key
-                    plot_data[key].extend(get_acc_from_logits(
+                    plot_data[key].append(get_acc_from_logits(
                         data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
                 else:
                     # Create new key and assign data
-                    plot_data[key] = get_acc_from_logits(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)
+                    plot_data[key] = [get_acc_from_logits(
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)]
 
-    visualizer = AccuracyVisualizer(plot_data, models, languages, prompt_types)
-    visualizer.visualize()
+    visualizer = AccuracyVisualizer(
+        plot_data, models, languages, prompt_types, task)
+    visualizer.visualize(
+        file=f'./ATCS_group3/saved_outputs/Accuracies_v{version}.png')
 
 ##
     plot_data = {}
     for lang in languages:
         for LM_model in models:
             for prompt_type in prompt_types:
-                key = (lang, prompt_type)
+                key = (lang_map[lang], prompt_type)
                 if key in plot_data:
                     # Append data to existing key
-                    plot_data[key].extend(get_acc_from_logits2(
+                    plot_data[key].append(get_acc_from_logits2(
                         data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
                 else:
                     # Create new key and assign data
-                    plot_data[key] = get_acc_from_logits2(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)
+                    plot_data[key] = [get_acc_from_logits2(
+                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)]
 
-    visualizer = AccuracyVisualizer(plot_data, models, languages, prompt_types)
+    visualizer = AccuracyVisualizer(
+        plot_data, models, languages, prompt_types, task)
     visualizer.visualize(
-        file=f'./ATCS_group3/saved_outputs/Accuracies2_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.png')
+        file=f'./ATCS_group3/saved_outputs/Accuracies2_v{version}.png')
 
 
 ############################### GET BOX PLOT INFO ########################################
@@ -166,7 +173,7 @@ class BoxPlotVisualizer:
     def __init__(self, data):
         self.data = data
 
-    def visualize(self, box_plot_names, num_plots, file=f'./ATCS_group3/saved_outputs/Box_plots_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.png'):
+    def visualize(self, box_plot_names, num_plots, file=f'./ATCS_group3/saved_outputs/Box_plots_v1.png'):
         fig, ax = plt.subplots()
         ax.boxplot(self.data)
         ax.set_xlabel('Tasks and Sentence Types')
@@ -233,7 +240,7 @@ def conditioned_all_sentence_boxplot(data, model='bloom', task='SA', lang='en', 
     return var_for_each_prompt
 
 
-def get_box_plot(boxplots, box_plot_names, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def get_box_plot(boxplots, box_plot_names, version, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
     # this function expects boxplots to be a list of dictionaries
     with open(file_path, 'rb') as f:
         data = pickle.load(f)
@@ -241,7 +248,7 @@ def get_box_plot(boxplots, box_plot_names, file_path='./ATCS_group3/saved_output
     plot_data = []
     for boxplot in boxplots:
         plot_type = boxplot['type']
-        print(boxplot)
+        # print(boxplot)
         if plot_type == 'conditioned':
             plot_data.append(conditioned_all_sentence_boxplot(data, model=boxplot['model'], task=boxplot['task'], lang=boxplot[
                 'lang'], seed=boxplot['seed'], prompt_type=boxplot['prompt_type'], condition=boxplot['condition']))
@@ -256,7 +263,8 @@ def get_box_plot(boxplots, box_plot_names, file_path='./ATCS_group3/saved_output
 
     num_plots = [i+1 for i in range(len(box_plot_names))]
     visualizer = BoxPlotVisualizer(plot_data)
-    visualizer.visualize(box_plot_names, num_plots)
+    visualizer.visualize(box_plot_names, num_plots,
+                         file=f'./ATCS_group3/saved_outputs/Box_plots_v{version}.png')
 
 
 # if __name__ == "__main__":
