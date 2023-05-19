@@ -851,3 +851,27 @@ Time taken to execute the en SA task with prompt type passive, variation 1 and b
 ----------- 42 en bigscience/bloomz-560m SA passive 2 50 16 --------------
 Loading MARC dataset for en
   0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 352.08it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+MARC dataset loaded
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  16446
+len dataset  32892
+len dataset  50
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+Batch: 3 , batch size: 16, sample_size: 50
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+acc:  0.94
+Time taken to execute the en SA task with prompt type passive, variation 2 and batchsize 16: 0:03:03.730051
+----------- 42 en bigscience/bloomz-560m SA auxiliary 0 50 16 --------------
+Loading MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 354.41it/s]
