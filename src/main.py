@@ -50,7 +50,6 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
 
         if task == 'SA':
             for sent_id, probs in enumerate(answers_probs_batch):
-                # print('sample_id', sample_id)
                 logits_dict_for_prompt[sample_id] = {
                     'yes': probs[0].item(),
                     'no': probs[1].item(),
@@ -72,9 +71,6 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
                 }
                 sample_id += 1
 
-        # print('logits_dict_for_prompt', logits_dict_for_prompt)
-        # print(f'pred_answer {pred_answer_batch} , label: {mapped_labels}')
-
         answers_probs_all.extend(answers_probs_batch)
         pred_answer_all.extend(pred_answer_batch)
         mapped_labels_all.extend(mapped_labels)
@@ -84,7 +80,7 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
     acc = evaluate(pred_answer_all, mapped_labels_all)
     print('acc: ', acc)
 
-    # also aad the acc after all sentences to needing another nested dict
+    # also add the acc after all sentences to needing another nested dict
     logits_dict_for_prompt['acc'] = acc
 
     end_time = datetime.now()
@@ -95,7 +91,7 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
     return logits_dict_for_prompt
 
 
-def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts):
+def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'):
 
     # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
     logits_dict = {}
@@ -126,7 +122,6 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
 
     logits_dict = detach_dict_from_device(logits_dict)
 
-    file_path = f'./ATCS_group3/saved_outputs/logits_dict_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
     # Open the file in binary mode and save the dictionary
@@ -149,6 +144,10 @@ def detach_dict_from_device(dictionary):
 
 if __name__ == "__main__":
 
+    #####################################################################
+    ##### one very specific experiment only one seed, lang, task etc ####
+    #####################################################################
+
     # parser = argparse.ArgumentParser()
     # parser.add_argument("--seed", type=str,
     #                     default='42')
@@ -163,16 +162,30 @@ if __name__ == "__main__":
     # parser.add_argument("--sample_size", type=str, default='100')
     # parser.add_argument("--batch_size", type=str, default='8')
     # args = parser.parse_args()
-    # get_prompt_acc(args.seed, args.lang, args.LM_model, args.task,
+    # logits_dict_for_prompt= get_prompt_acc(args.seed, args.lang, args.LM_model, args.task,
     #                args.prompt_type, args.prompt_id, args.sample_size, args.batch_size)
+
+    # file_path = f'./ATCS_group3/saved_outputs/logits_dict_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
+    # logits_dict_for_prompt = detach_dict_from_device(logits_dict_for_prompt)
+
+    # # Create the directory if it doesn't exist
+    # os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    # # Open the file in binary mode and save the dictionary
+    # with open(file_path, 'wb') as file:
+    #     pickle.dump(logits_dict_for_prompt, file)
+    # print(f"Dictionary saved to '{file_path}' as a pickle file.")
+
+    #####################################################################
+    ###### the whole or parts of the experiment through for loops #######
+    #####################################################################
 
     models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
     # LM_models = ['bloom']
     tasks = ['SA', 'NLI']
     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
     # prompt_types = ['active', 'passive']
-    languages = ['en', 'de']
-    # languages = ['en']
+    # languages = ['en', 'de']
+    languages = ['en']
     # seeds = ['42', '33', '50']
     seeds = ['42']
 
@@ -184,7 +197,7 @@ if __name__ == "__main__":
     start_time = datetime.now()
 
     pipeline(seeds, languages, models, tasks, prompt_types,
-             batch_size, sample_size, num_prompts)
+             batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict_seed_{42}_lang_en_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle')
 
     languages = ['English', 'German']
     task = 'SA'

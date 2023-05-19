@@ -5,7 +5,7 @@
 #SBATCH --job-name=AddPackageJob
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
-#SBATCH --time=4:00:00
+#SBATCH --time=12:00:00
 #SBATCH --mem=125000M
 #SBATCH --output=job_logs/slurm_output_train_%A.out
 
