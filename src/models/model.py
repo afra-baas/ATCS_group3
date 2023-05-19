@@ -1,4 +1,4 @@
-from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForCausalLM
+from transformers import AutoTokenizer, LlamaTokenizer
 import torch
 from typing import List
 import os
@@ -19,30 +19,58 @@ class Model:
                 f"Model {model_name} not supported. Please use one of the following models: {model['SUPPORTED_MODELS'].keys()}"
             )
         self.model_name = model_config["model_name"]
-        self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+
+        print(f"Loading model {self.model_name}")
+        if model_name == "llama":
+            self.model = model_config["model_constructor"](
+                self.model_name, torch_dtype=torch.float16)
+        else:
+            self.model = model_config["model_constructor"](self.model_name)
+        print(f"Model {self.model_name} loaded")
+
+        try:
+            self.tokenizer = AutoTokenizer.from_pretrained(self.model_name)
+        except Exception as e:
+            try:
+                self.tokenizer = LlamaTokenizer.from_pretrained(
+                    self.model_name)
+            except Exception as e:
+                # Handle the exception here
+                print("An error occurred while creating the tokenizer:", str(e))
+
         if model_name == 'llama':
             self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
             self.tokenizer.pad_token = self.tokenizer.eos_token
             print('pad token added')
 
         # elif model_name == 'alpaca':
-        #     self.tokenizer.pad_token = self.tokenizer.eos_token
-        #     print('pad token added')
+        #     print('vocab: ', len(self.tokenizer.vocab),
+        #           '[PAD]' in self.tokenizer.vocab)
+        #     self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+        #     print('Model embedding layer vocab size:',
+        #           self.model.config.vocab_size)
+        #     print('Tokenizer vocab size:', len(self.tokenizer))
 
-        elif model_name == 'alpaca':
-            self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
-            self.tokenizer.pad_token = '[PAD]'
-            print('pad token added')
+        #     self.tokenizer = self.tokenizer.__class__.from_pretrained(
+        #         self.model_name,
+        #         vocab_size=len(self.tokenizer)+1
+        #     )
 
-        print(f"Loading model {self.model_name}")
-        self.model = model_config["model_constructor"](self.model_name)
-        print(f"Model {self.model_name} loaded")
+        #     print('Model embedding layer vocab size:',
+        #           self.model.config.vocab_size)
+        #     self.tokenizer.pad_token_id = self.tokenizer.vocab['[PAD]']
+        #     print('pad token added', self.tokenizer.pad_token_id)
+        #     print(len(self.tokenizer.vocab), '[PAD]' in self.tokenizer.vocab)
 
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
+        print(f"Available device is {self.device}")
+
         # print('summary: ', torch.cuda.memory_summary(device=self.device))
-        # self.model.to(self.device) # -> gives OOM error
-        print(f"Moving model to {self.device}")
+        # self.model.to(self.device)
+        if torch.cuda.is_available():
+            self.model = self.model.cuda()
+        print(f"Model device: {self.model.device}")
 
     def __call__(self, prompt: List[str], possible_answers):
         """
@@ -56,11 +84,8 @@ class Model:
         for param in self.model.parameters():
             param.requires_grad = False
 
-        # tokenize input and possible answers
         inputs = self.tokenizer(
-            prompt, return_tensors="pt", padding=True)  # .to(self.device)
-        # inputs = {key: value.to(self.device) for key, value in inputs.items()}
-
+            prompt, return_tensors="pt", padding=True).to(self.device)
         possible_answers_ids = [self.tokenizer(
             answer) for answer in possible_answers]
 
@@ -90,32 +115,17 @@ class Model:
             if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
                 print(f'id: {id} -> {[id[1]]}')
                 id = [id[1]]
-            elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
-                print(f'id: {id} -> {[id[1]]}')
-                id = [id[1]]
+            # elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
+            #     print(f'id: {id} -> {[id[1]]}')
+                # id = [id[1]]
             elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                 print(f'id: {id} -> {[id[0]]}')
                 id = [id[0]]
             probs = logits[:, id]
             answers_probs[:, idx] = probs.T
 
-        # Save logits to a text file
-        task = 'SA' if len(possible_answers) == 2 else 'NLI'
-        log_file = f"saved_logits/{self.model_name}__{task}__{len(prompt)}.txt"
-
-        # Create the directory if it doesn't exist
-        os.makedirs(os.path.dirname(log_file), exist_ok=True)
-
-        with open(log_file, "w+") as f:
-            for idx, answer in enumerate(possible_answers_ids):
-                f.write(f"Answer {idx}:\n")
-                f.write(f"Answer ID: {answer['input_ids']}\n")
-                f.write(f"Logits: {answers_probs[:, idx]}\n\n")
-        print(f"Logits saved to {log_file}")
-
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
-        # print("pred_answer", pred_answer)
 
         torch.cuda.empty_cache()
         return answers_probs, pred_answer

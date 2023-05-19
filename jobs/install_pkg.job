@@ -27,4 +27,6 @@ source activate dl2022
 # pip show transformers
 # pip install datasets
 # pip install torchtext
-pip install sentencepiece
+# pip install sentencepiece
+# conda env export > environment_droplet.yml
+pip install pyparsing

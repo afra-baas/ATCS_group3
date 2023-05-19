@@ -4,12 +4,13 @@ from prompts.prompt import Prompt
 
 
 class NLIPrompt(Prompt):
-    prompt_instructions = ""
-    prompt_query = ""
 
-    def __call__(self, sentences: List[str]) -> str:
-        # :param sentences: a list with all the input sentences
+    def __call__(self, sentences: List[str], prompt_type, prompt_id) -> str:
+        # :param sentences: a list with all the input sentences ## ??
         # :return: a string transformed to the desired prompt.
-        # prompt = f"{sentences[0]} \n Question: {sentences[1]} true, false, or neither?"
-        prompt = f"{sentences[0]} \n Question: {sentences[1]} \n Possible answers: \n yes:entailment \n no:contradiction \n maybe: neutral"
+
+        template = self.dict_sa_prompt[prompt_type][prompt_id]
+        premise = sentences[0]
+        hypothesis = sentences[1]
+        prompt = template.format(premise=premise, hypothesis=hypothesis)
         return prompt

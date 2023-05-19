@@ -20,7 +20,7 @@ cd $HOME
 source activate dl2022
 
 #run
-# srun python ATCS_group3/src/main.py 
+srun python ATCS_group3/src/main.py 
 
 # srun python ATCS_group3/src/main.py --LM_model bloom --task SA
 # srun python ATCS_group3/src/main.py --LM_model bloom --task NLI
@@ -29,7 +29,7 @@ source activate dl2022
 # srun env CUDA_VISIBLE_DEVICES=0 python ATCS_group3/src/main.py --LM_model llama --task SA
 # srun env CUDA_VISIBLE_DEVICES=0 python ATCS_group3/src/main.py --LM_model llama --task NLI
 
-srun env CUDA_VISIBLE_DEVICES=0 python ATCS_group3/src/main.py --LM_model alpaca --task SA
+# srun env CUDA_VISIBLE_DEVICES=0 python ATCS_group3/src/main.py --LM_model alpaca --task SA
 
 # srun python ATCS_group3/src/main.py --LM_model llama --task NLI
 # srun python ATCS_group3/src/main.py --LM_model flan --task SA
