@@ -29,7 +29,7 @@ class HFDataloader:
             print(f"Task {task} not supported for {self.data_name}")
             raise ValueError
         try:
-            self.task_config = task_config["SUPPORTED_TASKS"][task]
+            self.task_config = task_config["SUPPORTED_TASKS"][task][self.language]
         except KeyError:
             print(f"Task {task} not supported")
             raise KeyError
@@ -57,12 +57,12 @@ class HFDataloader:
         # To be implemented in child class
         raise NotImplementedError
 
-    def get_random_sample(self):
-        # Gets a random sample from the dataset
-        # :param sample_size: number of samples to get
-        # :param seed: random seed
-        random.seed(self.seed)
-        sample_indices = random.sample(
-            range(len(self.dataset)), min(self.sample_size, len(self.dataset)))
-        dataset = [self.dataset[i] for i in sample_indices]
-        return dataset
+    # def get_random_sample(self):
+    #     # Gets a random sample from the dataset
+    #     # :param sample_size: number of samples to get
+    #     # :param seed: random seed
+    #     random.seed(self.seed)
+    #     sample_indices = random.sample(
+    #         range(len(self.dataset)), min(self.sample_size, len(self.dataset)))
+    #     dataset = [self.dataset[i] for i in sample_indices]
+    #     return dataset

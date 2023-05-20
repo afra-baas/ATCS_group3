@@ -25,3 +25,33 @@ class NLIDataLoader(HFDataloader):
         batch = [(self.prompt([row["premise"], row["hypothesis"]], self.prompt_type, self.prompt_id),
                   self.label_map[row["label"].item()]) for row in x]
         return zip(*batch)
+
+    def get_random_sample(self):
+        # Gets a random sample from the dataset
+        # :param sample_size: number of samples to get
+        # :param seed: random seed
+        random.seed(self.seed)
+
+        self.entail_examples = [self.dataset[row]
+                                for row in self.dataset if row["label"] == 0]
+        self.neutral_examples = [self.dataset[row]
+                                 for row in self.dataset if row["label"] == 1]
+        self.contra_examples = [self.dataset[row]
+                                for row in self.dataset if row["label"] == 2]
+
+        sample_indices = random.sample(
+            range(len(self.entail_examples)), min(int(self.sample_size/3), len(self.entail_examples)))
+        entail_examples = [self.entail_examples[i] for i in sample_indices]
+
+        sample_indices = random.sample(
+            range(len(self.neutral_examples)), min(int(self.sample_size/3), len(self.neutral_examples)))
+        neutral_examples = [self.neutral_examples[i] for i in sample_indices]
+
+        sample_indices = random.sample(
+            range(len(self.contra_examples)), min(int(self.sample_size/3), len(self.contra_examples)))
+        contra_examples = [self.contra_examples[i] for i in sample_indices]
+
+        print('len of entail_examples , neutral_examples, contra_examples: ',
+              len(entail_examples), len(neutral_examples), len(contra_examples))
+        data = entail_examples + neutral_examples+contra_examples
+        return data

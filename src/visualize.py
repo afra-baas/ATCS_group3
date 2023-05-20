@@ -4,6 +4,24 @@ from functools import reduce
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
+import torch
+import io
+from scipy.stats import friedmanchisquare
+from scipy.stats import wilcoxon
+
+
+class CPU_Unpickler(pickle.Unpickler):
+    def find_class(self, module, name):
+        if module == 'torch.storage' and name == '_load_from_bytes':
+            return lambda b: torch.load(io.BytesIO(b), map_location='cpu')
+        return super().find_class(module, name)
+
+
+def open_data_pickle(filename='logits_dict_seed_42_lang_de_v1.pickle'):
+    with open(filename, 'rb') as f:
+        # data = CPU_Unpickler(f).load() # if you run locally without gpu
+        data = pickle.load(f)
+    return data
 
 
 class AccuracyVisualizer:
@@ -15,7 +33,7 @@ class AccuracyVisualizer:
         self.prompts = prompts
         self.task = task
 
-    def visualize(self, file=f'./ATCS_group3/saved_outputs/Accuracies_v1.png'):
+    def visualize(self, file='./ATCS_group3/saved_outputs/Accuracies_v1.png'):
         space_between_bars = 0.15  # Adjust the value as needed
         opacity = 0.8
         x_pos = np.arange(len(self.models))
@@ -110,20 +128,31 @@ def get_acc_from_logits2(data, model='bloom', task='SA', lang='en', seed='42', p
     return mean_prompt_type_acc
 
 
-def save_dict_to_txt(dictionary, file_path):
-    with open(file_path, 'w+') as file:
-        for key, value in dictionary.items():
-            file.write(f"{key}: {value}\n")
+def get_acc_from_logits3(data, model='bloom', task='SA', lang='en', seed='42', prompt_type='active'):
+    """
+    Computes accuracy per prompt type and per prompt id within
+    input:
+        predictions: a list of predicted labels
+        targets: a list of true labels
+    output:
+        accuracy: float value of the classification accuracy
+    """
+    path = [seed, lang, model, task, prompt_type]
+    all_prompt_vars = reduce(lambda d, k: d[k], path, data)
+    num_prompt_vars = len(all_prompt_vars.keys())
+
+    list_prompt_type_acc = []
+    for i in range(num_prompt_vars):
+        prompt_dict = reduce(
+            lambda d, k: d[k], path + [f'prompt_id_{i}'], data)
+        acc = prompt_dict['acc']
+        list_prompt_type_acc.append(acc)
+
+    return list_prompt_type_acc
 
 
-def get_acc_plot(languages, models, prompt_types, task, seed, version, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
-    with open(file_path, 'rb') as f:
-        data = pickle.load(f)
-    # save_dict_to_txt(data, './ATCS_group3/saved_outputs/logits_dict.txt')
-
-    # sample_size
-    batch = data['42']['en']['bloom']['SA']['active']['prompt_id_1']
-    print('batch', batch)
+def get_acc_plot(languages, models, prompt_types, task, seed, version, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle', fn=get_acc_from_logits):
+    data = open_data_pickle(filename=file_path)
     lang_map = {'en': 'English', 'de': 'German'}
 
     plot_data = {}
@@ -132,48 +161,35 @@ def get_acc_plot(languages, models, prompt_types, task, seed, version, file_path
             for prompt_type in prompt_types:
                 key = (lang_map[lang], prompt_type)
                 if key in plot_data:
-                    # Append data to existing key
-                    plot_data[key].append(get_acc_from_logits(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
+                    print('key', key)
+                    if fn == get_acc_from_logits3:
+                        plot_data[key].extend(fn(
+                            data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
+                    else:
+                        # Append data to existing key
+                        plot_data[key].append(fn(
+                            data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
                 else:
-                    # Create new key and assign data
-                    plot_data[key] = [get_acc_from_logits(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)]
+                    if fn == get_acc_from_logits3:
+                        plot_data[key] = fn(
+                            data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)
+                    else:
+                        # Create new key and assign data
+                        plot_data[key] = [fn(
+                            data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)]
 
     visualizer = AccuracyVisualizer(
         plot_data, models, languages, prompt_types, task)
-    visualizer.visualize(
-        file=f'./ATCS_group3/saved_outputs/Accuracies_v{version}.png')
-
-##
-    plot_data = {}
-    for lang in languages:
-        for LM_model in models:
-            for prompt_type in prompt_types:
-                key = (lang_map[lang], prompt_type)
-                if key in plot_data:
-                    # Append data to existing key
-                    plot_data[key].append(get_acc_from_logits2(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type))
-                else:
-                    # Create new key and assign data
-                    plot_data[key] = [get_acc_from_logits2(
-                        data, model=LM_model, task=task, lang=lang, seed=seed, prompt_type=prompt_type)]
-
-    visualizer = AccuracyVisualizer(
-        plot_data, models, languages, prompt_types, task)
-    visualizer.visualize(
-        file=f'./ATCS_group3/saved_outputs/Accuracies2_v{version}.png')
+    visualizer.visualize(file=f'Accuracies_v{version}_{fn}.png')
 
 
 ############################### GET BOX PLOT INFO ########################################
-
 
 class BoxPlotVisualizer:
     def __init__(self, data):
         self.data = data
 
-    def visualize(self, box_plot_names, num_plots, file=f'./ATCS_group3/saved_outputs/Box_plots_v1.png'):
+    def visualize(self, box_plot_names, num_plots, file=f'Box_plots_v1.png'):
         fig, ax = plt.subplots()
         ax.boxplot(self.data)
         ax.set_xlabel('Tasks and Sentence Types')
@@ -181,10 +197,10 @@ class BoxPlotVisualizer:
         ax.set_title(
             'Comparison of Differences between yes and no probability')
         ax.set_xticks(num_plots)
-        ax.set_xticklabels(box_plot_names)
+        ax.set_xticklabels(box_plot_names, rotation=45)
 
         plt.tight_layout()
-        plt.savefig(file)
+        plt.show()
         plt.close()  # Close the figure to free up memory
 
 
@@ -199,6 +215,26 @@ def one_sentence_boxplot(data, sen_id, model='bloom', task='SA', lang='en', seed
             lambda d, k: d[k], path + [f'prompt_id_{i}', sen_id], data)
         var = sentence['diff']
         var_for_each_prompt.append(var)
+    print('len(var_for_each_prompt)', len(var_for_each_prompt))
+    return var_for_each_prompt
+
+
+def one_sentence_per_type_boxplot(data, sen_id, model='bloom', task='SA', lang='en', seed='42'):
+    path = [seed, lang, model, task]
+    all_prompt_types = reduce(lambda d, k: d[k], path, data)
+    num_prompt_types = len(all_prompt_types.keys())
+
+    var_for_each_prompt = []
+    for i in range(num_prompt_types):
+        prompt_type = num_prompt_types[i]
+        num_prompt_vars = len(
+            reduce(lambda d, k: d[k], path + [prompt_type], data))
+        for i in range(num_prompt_vars):
+            sentence = reduce(
+                lambda d, k: d[k], path + [f'prompt_id_{i}', sen_id], data)
+            var = sentence['diff']
+            var_for_each_prompt.append(var)
+
     print('len(var_for_each_prompt)', len(var_for_each_prompt))
     return var_for_each_prompt
 
@@ -240,10 +276,9 @@ def conditioned_all_sentence_boxplot(data, model='bloom', task='SA', lang='en', 
     return var_for_each_prompt
 
 
-def get_box_plot(boxplots, box_plot_names, version, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def get_box_plot(boxplots, box_plot_names, version, file_path='logits_dict.pickle'):
     # this function expects boxplots to be a list of dictionaries
-    with open(file_path, 'rb') as f:
-        data = pickle.load(f)
+    data = open_data_pickle(filename=file_path)
 
     plot_data = []
     for boxplot in boxplots:
@@ -258,51 +293,101 @@ def get_box_plot(boxplots, box_plot_names, version, file_path='./ATCS_group3/sav
         elif plot_type == 'one':
             plot_data.append(one_sentence_boxplot(data, sen_id=boxplot['sen_id'], model=boxplot['model'],
                                                   task=boxplot['task'], lang=boxplot['lang'], seed=boxplot['seed'], prompt_type=boxplot['prompt_type']))
+        elif plot_type == 'one_per':
+            plot_data.append(one_sentence_per_type_boxplot(data, sen_id=boxplot['sen_id'], model=boxplot['model'],
+                                                           task=boxplot['task'], lang=boxplot['lang'], seed=boxplot['seed'], prompt_type=boxplot['prompt_type']))
         else:
             print(f'There is no boxplot definition for {plot_type}')
 
     num_plots = [i+1 for i in range(len(box_plot_names))]
     visualizer = BoxPlotVisualizer(plot_data)
     visualizer.visualize(box_plot_names, num_plots,
-                         file=f'./ATCS_group3/saved_outputs/Box_plots_v{version}.png')
+                         file=f'Box_plots_v{version}.png')
 
 
-# if __name__ == "__main__":
+# friedmanchisquare is for testing significance between prompts in same prompt type
+def get_friedman_test(file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+    data = open_data_pickle(filename=file_path)
+    all_acc_for_prompt_type = one_sentence_boxplot(
+        data, 1, model='bloom', task='SA', lang='de', seed='42', prompt_type='active')
+    acc_list_of_lists = [[acc] for acc in all_acc_for_prompt_type]
+    print(acc_list_of_lists)
+    score, p_value = friedmanchisquare(*acc_list_of_lists)
 
-#     models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
-#     # LM_models = ['bloom']
-#     tasks = ['SA', 'NLI']
-#     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
-#     # prompt_types = ['active', 'passive']
-#     # languages = ['en', 'de']
-#     languages = ['en']
-#     # seeds = ['42', '33', '50']
-#     seeds = ['42']
+    print("Friedman chi-square score:", score)
+    print("p-value:", p_value)
 
-#     batch_size = 16
-#     sample_size = 50
-#     num_prompts = 3
+    return score, p_value
 
-#     task = 'SA'
-#     seed = '42'
-#     file_path=f'./ATCS_group3/saved_outputs/logits_dict_seed_{42}_lang_en_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
 
-    # get_acc_plot(languages, models, prompt_types, task, seed, file_path=file_path)
+def get_acc_per_model(lang, LM_model, prompt_type, task, seed, file_path='./ATCS_group3/saved_outputs/logits_dict.pickle', fn=get_acc_from_logits):
+    data = open_data_pickle(filename=file_path)
+    acc = fn(data, model=LM_model, task=task, lang=lang,
+             seed=seed, prompt_type=prompt_type)
+    print('acc', acc)
 
-    # # list of dictionaries
-    # boxplots = [{'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-    #              'seed': '42', 'prompt_type': 'active', 'condition': 'yes'},
+    return acc
 
-    #             {'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-    #              'seed': '42', 'prompt_type': 'active', 'condition': 'no'},
 
-    #             {'type': 'all', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-    #              'seed': '42', 'prompt_type': 'active'},
+def get_wilcoxon_test(file_path='./ATCS_group3/saved_outputs/logits_dict.pickle'):
+    acc_active = get_acc_per_model('de', 'bloom', 'active',
+                                   'SA', '42', file_path=file_path, fn=get_acc_from_logits)
+    acc_passive = get_acc_per_model('de', 'bloom', 'passive',
+                                    'SA', '42', file_path=file_path, fn=get_acc_from_logits)
 
-    #             {'type': 'one', 'sen_id': 1, 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-    #              'seed': '42', 'prompt_type': 'active'}]
+    statistic, p_value = wilcoxon([acc_active], [acc_passive])
 
-    # box_plot_names = ['Diff conditioned yes', 'Diff conditioned no',
-    #                   'Diff all sentences', 'Diff one sentence']
+    print("Test Statistic:", statistic)
+    print("p-value:", p_value)
+    return statistic, p_value
 
-    # get_box_plot(boxplots, box_plot_names, file_path=file_path)
+
+if __name__ == "__main__":
+    models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
+    # models = ['bloom']
+    tasks = ['SA', 'NLI']
+    prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
+    # prompt_types = ['active', 'passive']
+    # languages = ['en', 'de']
+    languages = ['de']
+    # seeds = ['42', '33', '50']
+    seeds = ['42']
+
+    # # NOTE: dont give a list here
+    task = 'SA'
+    seed = '42'
+    lang = 'en'
+    version = 1
+    file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
+
+    ######## ACC plots ##########
+    get_acc_plot(languages, models, prompt_types,
+                 task, seed, version, file_path=file_path, fn=get_acc_from_logits)
+
+    ####### Box Plots #########
+
+    # list of dictionaries
+    boxplots = [{'type': 'conditioned', 'model': 'bloom', 'task': task, 'lang': lang,
+                 'seed': '42', 'prompt_type': 'active', 'condition': 'yes'},
+
+                {'type': 'conditioned', 'model': 'bloom', 'task': task, 'lang': lang,
+                    'seed': '42', 'prompt_type': 'active', 'condition': 'no'},
+
+                {'type': 'all', 'model': 'bloom', 'task': task, 'lang': lang,
+                    'seed': '42', 'prompt_type': 'active'},
+
+                {'type': 'one', 'sen_id': 1, 'model': 'bloom', 'task': task, 'lang': lang,
+                    'seed': '42', 'prompt_type': 'active'},
+
+                {'type': 'one_per', 'sen_id': 1, 'model': 'bloom', 'task': task, 'lang': lang,
+                    'seed': '42', 'prompt_type': 'active'}]
+
+    box_plot_names = ['Diff conditioned yes', 'Diff conditioned no',
+                      'Diff all sentences', 'Diff one sentence', 'Diff one sentence per prompt']
+
+    get_box_plot(boxplots, box_plot_names, version, file_path=file_path)
+
+    ##### significance tests #####
+
+    score, p_value = get_friedman_test(file_path=file_path)
+    statistic, p_value = get_wilcoxon_test(file_path=file_path)

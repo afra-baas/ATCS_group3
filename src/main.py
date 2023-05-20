@@ -104,115 +104,43 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
     return logits_dict_for_prompt
 
 
-# def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
-
-#     # Create the directory if it doesn't exist
-#     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-#     # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
-#     logits_dict = makehash()
-#     for seed in seeds:
-#         for lang in languages:
-#             for LM_model in LM_models:
-#                 # Initilize model
-#                 LM = Model(LM_model)
-#                 for task in tasks:
-#                     # with this we look at different charactistics in a prompt
-#                     for prompt_type in prompt_types:
-#                         # with this we will look at variability in the prompt type
-#                         for prompt_id in range(num_prompts):
-
-#                             logits_dict_for_prompt = get_prompt_acc(
-#                                 seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
-#                             path = [seed, lang, LM_model, task,
-#                                     prompt_type, f'prompt_id_{prompt_id}']
-#                             print('path', path)
-#                             logits_dict[seed][lang][LM_model][task][prompt_type][
-#                                 f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
-
-#                         # Open the file in binary mode and save the dictionary
-#                         with open(file_path, 'wb') as file:
-#                             pickle.dump(default_to_regular(logits_dict), file)
-#                         print(
-#                             f"Dictionary saved to '{file_path}' as a pickle file.")
-
-
 def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
-
-    # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
-    logits_dict = {}
-    for seed in seeds:
-        logits_dict_per_lang = {}
-        for lang in languages:
-            logits_dict_per_model = {}
-            for LM_model in LM_models:
-                # Initilize model
-                LM = Model(LM_model)
-                logits_dict_per_task = {}
-                for task in tasks:
-                    # with this we look at different charactistics in a prompt
-                    logits_dict_per_prompt_type = {}
-                    for prompt_type in prompt_types:
-                        # with this we will look at variability in the prompt type
-                        logits_dict_per_prompt_id = {}
-                        for prompt_id in range(num_prompts):
-                            logits_dict_for_prompt = get_prompt_acc(
-                                seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
-
-                            logits_dict_per_prompt_id[f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
-                        logits_dict_per_prompt_type[prompt_type] = logits_dict_per_prompt_id
-                    logits_dict_per_task[task] = logits_dict_per_prompt_type
-                logits_dict_per_model[LM_model] = logits_dict_per_task
-            logits_dict_per_lang[lang] = logits_dict_per_model
-        logits_dict[seed] = logits_dict_per_lang
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    # Open the file in binary mode and save the dictionary
-    with open(file_path, 'wb') as file:
-        pickle.dump(logits_dict, file)
-    print(f"Dictionary saved to '{file_path}' as a pickle file.")
+
+    # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
+    logits_dict = makehash()
+    for seed in seeds:
+        for lang in languages:
+            for LM_model in LM_models:
+                # Initilize model
+                LM = Model(LM_model)
+                for task in tasks:
+                    # with this we look at different charactistics in a prompt
+                    for prompt_type in prompt_types:
+                        # with this we will look at variability in the prompt type
+                        for prompt_id in range(num_prompts):
+
+                            logits_dict_for_prompt = get_prompt_acc(
+                                seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
+                            path = [seed, lang, LM_model, task,
+                                    prompt_type, f'prompt_id_{prompt_id}']
+                            print('path', path)
+                            logits_dict[seed][lang][LM_model][task][prompt_type][
+                                f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
+
+                        # Open the file in binary mode and save the dictionary
+                        with open(file_path, 'wb') as file:
+                            pickle.dump(default_to_regular(logits_dict), file)
+                        print(
+                            f"Dictionary saved to '{file_path}' as a pickle file.")
 
 
 if __name__ == "__main__":
 
-    #####################################################################
-    ##### one very specific experiment only one seed, lang, task etc ####
-    #####################################################################
-
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("--seed", type=str,
-    #                     default='42')
-    # parser.add_argument("--lang", type=str,
-    #                     default='en')
-    # parser.add_argument("--LM_model", type=str,
-    #                     default='alpaca')
-    # parser.add_argument("--task", type=str, default='SA')
-    # parser.add_argument("--prompt_type", type=str, default='active')
-    # parser.add_argument("--prompt_id", type=str,
-    #                     default='0')
-    # parser.add_argument("--sample_size", type=str, default='100')
-    # parser.add_argument("--batch_size", type=str, default='8')
-    # args = parser.parse_args()
-    # logits_dict_for_prompt= get_prompt_acc(args.seed, args.lang, args.LM_model, args.task,
-    #                args.prompt_type, args.prompt_id, args.sample_size, args.batch_size)
-
-    # file_path = f'./ATCS_group3/saved_outputs/logits_dict_{datetime.now().strftime("%Y-%m-%d_%H-%M-%S")}.pickle'
-    # logits_dict_for_prompt = detach_dict_from_device(logits_dict_for_prompt)
-
-    # # Create the directory if it doesn't exist
-    # os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    # # Open the file in binary mode and save the dictionary
-    # with open(file_path, 'wb') as file:
-    #     pickle.dump(logits_dict_for_prompt, file)
-    # print(f"Dictionary saved to '{file_path}' as a pickle file.")
-
-    #####################################################################
-    ###### the whole or parts of the experiment through for loops #######
-    #####################################################################
-
-    models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
-    # LM_models = ['bloom']
+    # models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
+    models = ['alpaca']
     tasks = ['SA', 'NLI']
     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
     # prompt_types = ['active', 'passive']
@@ -240,27 +168,3 @@ if __name__ == "__main__":
             end_time = datetime.now()
             duration = end_time - start_time
             print('****End Time:', end_time, f'Duraction: {duration}')
-
-            # # NOTE: dont give a list here
-            # task = 'SA'
-            # seed = '42'
-            # get_acc_plot(languages, models, prompt_types, version,
-            #              task, seed, file_path=file_path)
-
-            # # list of dictionaries
-            # boxplots = [{'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-            #              'seed': '42', 'prompt_type': 'active', 'condition': 'yes'},
-
-            #             {'type': 'conditioned', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-            #              'seed': '42', 'prompt_type': 'active', 'condition': 'no'},
-
-            #             {'type': 'all', 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-            #              'seed': '42', 'prompt_type': 'active'},
-
-            #             {'type': 'one', 'sen_id': 1, 'model': 'bloom', 'task': 'SA', 'lang': 'en',
-            #              'seed': '42', 'prompt_type': 'active'}]
-
-            # box_plot_names = ['Diff conditioned yes', 'Diff conditioned no',
-            #                   'Diff all sentences', 'Diff one sentence']
-
-            # get_box_plot(boxplots, box_plot_names, version, file_path=file_path)

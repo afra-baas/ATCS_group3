@@ -49,18 +49,39 @@ model = {
 
 task_config = {
     "DEFAULT_TASK": "SA",
-    "SUPPORTED_TASKS": {
-        "SA": {
-            # "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
-            "label_map": {5: 'yes',  1: 'no'},
-            "possible_answers": ['yes', 'no'],
-            "prompt_class": SAPrompt
-        },
-        "NLI": {
-            "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
-            "possible_answers": ['yes', 'no', 'maybe'],
-            "prompt_class": NLIPrompt
-        }
-    }
+    "SUPPORTED_TASKS": {'en':
+                        {"SA": {
+                            # "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
+                            "label_map": {5: 'yes',  1: 'no'},
+                            "possible_answers": ['yes', 'no'],
+                            "prompt_class": SAPrompt
+                        },
+                            "NLI": {
+                            "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
+                            "possible_answers": ['yes', 'no', 'maybe'],
+                            "prompt_class": NLIPrompt
+                        }},
+                        'de': {
+                            "SA": {
+                                "label_map": {5: 'ja',  1: 'nein'},
+                                "possible_answers": ['ja', 'nein'],
+                                "prompt_class": SAPrompt
+                            },
+                            "NLI": {
+                                "label_map": {0: 'ja', 1: 'vielleicht', 2: 'nein'},
+                                "possible_answers": ['ja', 'nein', 'vielleicht'],
+                                "prompt_class": NLIPrompt
+                            }},
+                        'fr': {
+                            "SA": {
+                                "label_map": {5: 'oui',  1: 'non'},
+                                "possible_answers": ['oui', 'non'],
+                                "prompt_class": SAPrompt
+                            },
+                            "NLI": {
+                                "label_map": {0: 'oui', 1: 'peut-être', 2: 'non'},
+                                "possible_answers": ['oui', 'non', 'peut-être'],
+                                "prompt_class": NLIPrompt
+                            }}
+                        }
 }
-

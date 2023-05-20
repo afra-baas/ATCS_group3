@@ -45,7 +45,25 @@ class MARCDataLoader(HFDataloader):
         # balanced data, take the same lowest amount of both reviews
         lowest = min(len(pos_reviews), len(neg_reviews))
         print('len of lowest cat: ', lowest)
-        pos_reviews = pos_reviews[:lowest]
-        neg_reviews = neg_reviews[:lowest]
+        self.pos_reviews = pos_reviews[:lowest]
+        self.neg_reviews = neg_reviews[:lowest]
+        data = pos_reviews + neg_reviews
+        print('len of  pos_reviews, neg_reviews: ',
+              len(pos_reviews), len(neg_reviews))
+        return data
+
+    def get_random_sample(self):
+        # Gets a random sample from the dataset
+        # :param sample_size: number of samples to get
+        # :param seed: random seed
+        random.seed(self.seed)
+
+        sample_indices = random.sample(
+            range(len(self.pos_reviews)), min(int(self.sample_size/2), len(self.pos_reviews)))
+        pos_reviews = [self.pos_reviews[i] for i in sample_indices]
+
+        sample_indices = random.sample(
+            range(len(self.neg_reviews)), min(int(self.sample_size/2), len(self.neg_reviews)))
+        neg_reviews = [self.neg_reviews[i] for i in sample_indices]
         data = pos_reviews + neg_reviews
         return data
