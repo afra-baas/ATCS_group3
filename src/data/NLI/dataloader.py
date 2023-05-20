@@ -32,12 +32,9 @@ class NLIDataLoader(HFDataloader):
         # :param seed: random seed
         random.seed(self.seed)
 
-        self.entail_examples = [self.dataset[row]
-                                for row in self.dataset if row["label"] == 0]
-        self.neutral_examples = [self.dataset[row]
-                                 for row in self.dataset if row["label"] == 1]
-        self.contra_examples = [self.dataset[row]
-                                for row in self.dataset if row["label"] == 2]
+        self.entail_examples = [row for row in self.dataset if row["label"] == 0]
+        self.neutral_examples = [row for row in self.dataset if row["label"] == 1]
+        self.contra_examples = [row for row in self.dataset if row["label"] == 2]
 
         sample_indices = random.sample(
             range(len(self.entail_examples)), min(int(self.sample_size/3), len(self.entail_examples)))
