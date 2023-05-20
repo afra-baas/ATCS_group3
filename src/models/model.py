@@ -43,24 +43,9 @@ class Model:
             self.tokenizer.pad_token = self.tokenizer.eos_token
             print('pad token added')
 
-        # elif model_name == 'alpaca':
-        #     print('vocab: ', len(self.tokenizer.vocab),
-        #           '[PAD]' in self.tokenizer.vocab)
-        #     self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
-        #     print('Model embedding layer vocab size:',
-        #           self.model.config.vocab_size)
-        #     print('Tokenizer vocab size:', len(self.tokenizer))
-
-        #     self.tokenizer = self.tokenizer.__class__.from_pretrained(
-        #         self.model_name,
-        #         vocab_size=len(self.tokenizer)+1
-        #     )
-
-        #     print('Model embedding layer vocab size:',
-        #           self.model.config.vocab_size)
-        #     self.tokenizer.pad_token_id = self.tokenizer.vocab['[PAD]']
-        #     print('pad token added', self.tokenizer.pad_token_id)
-        #     print(len(self.tokenizer.vocab), '[PAD]' in self.tokenizer.vocab)
+        elif model_name == 'alpaca':
+            self.tokenizer.pad_token = " "
+            print('pad token added')
 
         self.device = torch.device(
             "cuda" if torch.cuda.is_available() else "cpu")
@@ -116,9 +101,9 @@ class Model:
             if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
                 print(f'id: {id} -> {[id[1]]}')
                 id = [id[1]]
-            # elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
-            #     print(f'id: {id} -> {[id[1]]}')
-                # id = [id[1]]
+            elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
+                print(f'id: {id} -> {[id[1]]}')
+                id = [id[1]]
             elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                 print(f'id: {id} -> {[id[0]]}')
                 id = [id[0]]
