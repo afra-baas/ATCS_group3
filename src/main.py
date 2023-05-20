@@ -54,7 +54,7 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
 
         # Classification
         answers_probs_batch, pred_answer_batch = LM(
-            prompts, possible_answers)
+            prompts, possible_answers, language=lang)
 
         # save logits per batch (*i+1 so sent_id is from 0 to sent_id*batch_size)
         # NOTE: sample_id, because we want each sentence in the sample sixe the an id (per sen in each batch)

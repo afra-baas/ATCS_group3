@@ -29,7 +29,7 @@ class HFDataloader:
             print(f"Task {task} not supported for {self.data_name}")
             raise ValueError
         try:
-            self.task_config = task_config["SUPPORTED_TASKS"][task][self.language]
+            self.task_config = task_config["SUPPORTED_TASKS"][self.language][task]
         except KeyError:
             print(f"Task {task} not supported")
             raise KeyError

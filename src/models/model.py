@@ -21,7 +21,7 @@ class Model:
         self.model_name = model_config["model_name"]
 
         print(f"Loading model {self.model_name}")
-        if model_name == "llama":
+        if model_name == "llama" or model_name == "alpaca":
             self.model = model_config["model_constructor"](
                 self.model_name, torch_dtype=torch.float16)
         else:
@@ -57,7 +57,7 @@ class Model:
             self.model = self.model.cuda()
         print(f"Model device: {self.model.device}")
 
-    def __call__(self, prompt: List[str], possible_answers):
+    def __call__(self, prompt: List[str], possible_answers, language):
         """
         Generate probabilites for each promt and each possible answer.
         :param prompt: a list of strings with the prompts
@@ -96,19 +96,38 @@ class Model:
             if len(answer) == 0:
                 print('len answer was 0')
                 continue
+            
+            if language =='en':
+                id = answer["input_ids"]
+                if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
+                    print(f'id: {id} -> {[id[1]]}')
+                    id = [id[1]]
+                elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
+                    print(f'id: {id} -> {[id[1]]}')
+                    id = [id[1]]
+                elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
+                    print(f'id: {id} -> {[id[0]]}')
+                    id = [id[0]]
+                probs = logits[:, id]
+                answers_probs[:, idx] = probs.T
 
-            id = answer["input_ids"]
-            if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
-                print(f'id: {id} -> {[id[1]]}')
-                id = [id[1]]
-            elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
-                print(f'id: {id} -> {[id[1]]}')
-                id = [id[1]]
-            elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
-                print(f'id: {id} -> {[id[0]]}')
-                id = [id[0]]
-            probs = logits[:, id]
-            answers_probs[:, idx] = probs.T
+            else:
+                id = answer["input_ids"]
+                if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
+                    print(f'id: {id} -> {[id[1]]}')
+                    id = [id[1]]
+                elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
+                    print(f'id: {id} -> {[id[1]]}')
+                    id = [id[1]]
+                elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
+                    print(f'id: {id} -> {[id[0]]}')
+                    id = [id[0]]
+                elif len(id) > 1:
+                    # TO DO: betere oplossing bedenken hiervoor
+                    print(f'id: {id} -> {[id[0]]}')
+                    id = [id[0]]
+                probs = logits[:, id]
+                answers_probs[:, idx] = probs.T
 
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [possible_answers[i] for i in pred_answer_indices]

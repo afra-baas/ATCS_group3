@@ -1,0 +1,32 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-20_18-01-04
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+----------- 42 de bigscience/bloom-560m SA active 0 50 16 --------------
+Loading MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  9.33it/s]100%|██████████| 3/3 [00:00<00:00, 25.84it/s]
+/home/lcur1101/ATCS_group3/src/models/model.py:88: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  logits = torch.nn.functional.softmax(logits)
+MARC dataset loaded
+Average length of review_body for rows with 1 star: 199.5979
+Average length of review_body for rows with 5 star: 177.19965
+len of lowest cat:  38908
+len of  pos_reviews, neg_reviews:  39080 38908
+len dataset  77988
+len dataset  50
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 165, in <module>
+    pipeline(seeds, languages, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 125, in pipeline
+    logits_dict_for_prompt = get_prompt_acc(
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 56, in get_prompt_acc
+    answers_probs_batch, pred_answer_batch = LM(
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 111, in __call__
+    answers_probs[:, idx] = probs.T
+RuntimeError: expand(torch.cuda.FloatTensor{[2, 16]}, size=[16]): the number of sizes provided (1) must be greater or equal to the number of dimensions in the tensor (2)
+srun: error: r34n4: task 0: Exited with exit code 1
