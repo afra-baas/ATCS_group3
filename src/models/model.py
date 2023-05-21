@@ -85,7 +85,7 @@ class Model:
 
         # get the logits of the last token
         logits = outputs.logits[:, -1]
-        logits = torch.nn.functional.softmax(logits)
+        logits = torch.nn.functional.softmax(logits, dim=1)
 
         # loop over all possible answers for every promt and store the logits
         answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(
@@ -114,55 +114,68 @@ class Model:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs}/{probs.T}')
                 elif len(id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []
                     for part in id:
                         part_id = [part]
                         probs.append(logits[:, part_id])
-                    answers_probs[:, idx] = torch.cat(
-                        probs, dim=1).mean(dim=1).T
+                    probs_ = torch.cat(
+                        probs, dim=1).mean(dim=1)
+                    print('probs_ shape', probs_.shape)
+                    # answers_probs[:, idx] = probs_.T
+                    # answers_probs[:, idx] = probs_.transpose(0, 1)
+                    answers_probs[:, idx] = probs_
+                    # print(f'id: {id} -> {probs_.transpose(0, 1)}, {(probs_.transpose(0, 1)).shape}')
+                    print(f'id: {id} -> {probs_}, {(probs_).shape}')
             else:
                 id = answer["input_ids"]
                 if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs.T}')
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs.T}')
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs.T}')
+                    answers_probs[:, idx] = probs
+                    print(f'id: {id} -> {probs} / {probs.T}')
                 elif len(id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []
                     for part in id:
                         part_id = [part]
                         probs.append(logits[:, part_id])
-                    answers_probs[:, idx] = torch.cat(
-                        probs, dim=1).mean(dim=1).T
-                    print(
-                        f'id: {id} -> {torch.cat(probs, dim=1).mean(dim=1).T}')
+                    probs_ = torch.cat(
+                        probs, dim=1).mean(dim=1)
+                    print('probs_ shape', probs_.shape)
+                    # answers_probs[:, idx] = probs_.T
+                    # answers_probs[:, idx] = probs_.transpose(0, 1)
+                    answers_probs[:, idx] = probs_
+                    # print(f'id: {id} -> {probs_.transpose(0, 1)}, {(probs_.transpose(0, 1)).shape}')
+                    print(f'id: {id} -> {probs_}, {(probs_).shape}')
                 # elif len(id) > 1:
                 #     # TO DO: test if this is the best solution
                 #     id = torch.tensor(id).to(self.device)
