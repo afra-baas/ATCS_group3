@@ -47,9 +47,9 @@ class MARCDataLoader(HFDataloader):
         print('len of lowest cat: ', lowest)
         self.pos_reviews = pos_reviews[:lowest]
         self.neg_reviews = neg_reviews[:lowest]
-        data = pos_reviews + neg_reviews
-        print('len of  pos_reviews, neg_reviews: ',
-              len(pos_reviews), len(neg_reviews))
+        data = self.pos_reviews + self.neg_reviews
+        print('len of pos_reviews, neg_reviews: ',
+              len(self.pos_reviews), len(self.neg_reviews))
         return data
 
     def get_random_sample(self):
