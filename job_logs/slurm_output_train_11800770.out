@@ -65,3 +65,375 @@ path ['42', 'de', 'bloom', 'NLI', 'active', 'prompt_id_1']
 ----------- 42 de bigscience/bloom-560m NLI active 2 50 16 --------------
 Loading NLI dataset for de
   0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 325.23it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.2916666666666667
+Time taken to execute the de NLI task with prompt type active, variation 2 and batchsize 16: 0:03:06.021211
+path ['42', 'de', 'bloom', 'NLI', 'active', 'prompt_id_2']
+Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v2.pickle' as a pickle file.
+----------- 42 de bigscience/bloom-560m NLI passive 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 306.41it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type passive, variation 0 and batchsize 16: 0:03:07.685195
+path ['42', 'de', 'bloom', 'NLI', 'passive', 'prompt_id_0']
+----------- 42 de bigscience/bloom-560m NLI passive 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 311.37it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.375
+Time taken to execute the de NLI task with prompt type passive, variation 1 and batchsize 16: 0:03:06.181360
+path ['42', 'de', 'bloom', 'NLI', 'passive', 'prompt_id_1']
+----------- 42 de bigscience/bloom-560m NLI passive 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 308.14it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.2916666666666667
+Time taken to execute the de NLI task with prompt type passive, variation 2 and batchsize 16: 0:03:06.196963
+path ['42', 'de', 'bloom', 'NLI', 'passive', 'prompt_id_2']
+Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v2.pickle' as a pickle file.
+----------- 42 de bigscience/bloom-560m NLI auxiliary 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 338.18it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.375
+Time taken to execute the de NLI task with prompt type auxiliary, variation 0 and batchsize 16: 0:03:05.849501
+path ['42', 'de', 'bloom', 'NLI', 'auxiliary', 'prompt_id_0']
+----------- 42 de bigscience/bloom-560m NLI auxiliary 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 327.16it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3541666666666667
+Time taken to execute the de NLI task with prompt type auxiliary, variation 1 and batchsize 16: 0:03:06.498616
+path ['42', 'de', 'bloom', 'NLI', 'auxiliary', 'prompt_id_1']
+----------- 42 de bigscience/bloom-560m NLI auxiliary 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 294.16it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3541666666666667
+Time taken to execute the de NLI task with prompt type auxiliary, variation 2 and batchsize 16: 0:02:48.727776
+path ['42', 'de', 'bloom', 'NLI', 'auxiliary', 'prompt_id_2']
+Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v2.pickle' as a pickle file.
+----------- 42 de bigscience/bloom-560m NLI modal 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 158.00it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3541666666666667
+Time taken to execute the de NLI task with prompt type modal, variation 0 and batchsize 16: 0:03:06.484337
+path ['42', 'de', 'bloom', 'NLI', 'modal', 'prompt_id_0']
+----------- 42 de bigscience/bloom-560m NLI modal 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 302.57it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type modal, variation 1 and batchsize 16: 0:03:05.874524
+path ['42', 'de', 'bloom', 'NLI', 'modal', 'prompt_id_1']
+----------- 42 de bigscience/bloom-560m NLI modal 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 295.56it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.375
+Time taken to execute the de NLI task with prompt type modal, variation 2 and batchsize 16: 0:03:06.075783
+path ['42', 'de', 'bloom', 'NLI', 'modal', 'prompt_id_2']
+Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v2.pickle' as a pickle file.
+----------- 42 de bigscience/bloom-560m NLI rare_synonyms 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 328.04it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type rare_synonyms, variation 0 and batchsize 16: 0:03:08.350847
+path ['42', 'de', 'bloom', 'NLI', 'rare_synonyms', 'prompt_id_0']
+----------- 42 de bigscience/bloom-560m NLI rare_synonyms 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 321.59it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type rare_synonyms, variation 1 and batchsize 16: 0:03:11.167430
+path ['42', 'de', 'bloom', 'NLI', 'rare_synonyms', 'prompt_id_1']
+----------- 42 de bigscience/bloom-560m NLI rare_synonyms 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 170.55it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id: [951, 265] -> [951]
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+id: [89, 25898, 18508] -> [89]
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type rare_synonyms, variation 2 and batchsize 16: 0:02:46.388289
+path ['42', 'de', 'bloom', 'NLI', 'rare_synonyms', 'prompt_id_2']
+Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v2.pickle' as a pickle file.
+----------- 42 de bigscience/bloom-560m SA active 0 50 16 --------------
+Loading MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 278.15it/s]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 11800770 ON r28n2 CANCELLED AT 2023-05-21T00:08:51 ***
+slurmstepd: error: *** STEP 11800770.0 ON r28n2 CANCELLED AT 2023-05-21T00:08:51 ***

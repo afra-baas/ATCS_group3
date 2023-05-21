@@ -1,0 +1,78 @@
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+****Start Time: 2023-05-21_11-15-47
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+----------- 42 de bigscience/bloom-560m NLI active 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 270.58it/s]
+/home/lcur1101/ATCS_group3/src/models/model.py:88: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  logits = torch.nn.functional.softmax(logits)
+/home/lcur1101/ATCS_group3/src/models/model.py:160: UserWarning: The use of `x.T` on tensors of dimension other than 2 to reverse their shape is deprecated and it will throw an error in a future release. Consider `x.mT` to transpose batches of matrices or `x.permute(*torch.arange(x.ndim - 1, -1, -1))` to reverse the dimensions of a tensor. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3571.)
+  probs, dim=1).mean(dim=1).T
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type active, variation 0 and batchsize 16: 0:02:51.869553
+path ['42', 'de', 'bloom', 'NLI', 'active', 'prompt_id_0']
+----------- 42 de bigscience/bloom-560m NLI active 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 314.50it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+language de
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+language de
+answer  {'input_ids': [89, 25898, 18508], 'attention_mask': [1, 1, 1]}
+language de
+acc:  0.3333333333333333
+Time taken to execute the de NLI task with prompt type active, variation 1 and batchsize 16: 0:02:51.706929
+path ['42', 'de', 'bloom', 'NLI', 'active', 'prompt_id_1']
+----------- 42 de bigscience/bloom-560m NLI active 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 290.83it/s]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 11801465.0 ON r28n2 CANCELLED AT 2023-05-21T11:23:46 ***
+slurmstepd: error: *** JOB 11801465 ON r28n2 CANCELLED AT 2023-05-21T11:23:46 ***

@@ -96,39 +96,81 @@ class Model:
             if len(answer) == 0:
                 print('len answer was 0')
                 continue
-            
-            if language =='en':
+
+            # TO DO: check if this is the correct shoter version
+            # id = answer["input_ids"]
+            # probs = []
+            # if language == 'en':
+            #     id = [id[1]] if self.model_name in ['huggyllama/llama-7b', 'chainyo/alpaca-lora-7b'] and len(id) == 2 else id
+            #     probs = [logits[:, id]] if len(id) == 1 else [logits[:, [part]] for part in id]
+            # else:
+            #     id = [id[1]] if self.model_name in ['huggyllama/llama-7b', 'chainyo/alpaca-lora-7b'] and len(id) == 2 else id
+            #     probs = [logits[:, id]] if len(id) == 1 else [logits[:, [part]] for part in id]
+            # answers_probs[:, idx] = torch.cat(probs, dim=1).mean(dim=1).T
+
+            if language == 'en':
                 id = answer["input_ids"]
                 if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
                 elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
-                probs = logits[:, id]
-                answers_probs[:, idx] = probs.T
-
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
+                elif len(id) > 1:
+                    # TO DO: test if this is the best solution
+                    probs = []
+                    for part in id:
+                        part_id = [part]
+                        probs.append(logits[:, part_id])
+                    answers_probs[:, idx] = torch.cat(
+                        probs, dim=1).mean(dim=1).T
             else:
                 id = answer["input_ids"]
                 if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
+                    print(f'id: {id} -> {probs.T}')
                 elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
+                    print(f'id: {id} -> {probs.T}')
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
+                    probs = logits[:, id]
+                    answers_probs[:, idx] = probs.T
+                    print(f'id: {id} -> {probs.T}')
                 elif len(id) > 1:
-                    # TO DO: betere oplossing bedenken hiervoor
-                    print(f'id: {id} -> {[id[0]]}')
-                    id = [id[0]]
-                probs = logits[:, id]
-                answers_probs[:, idx] = probs.T
+                    # TO DO: test if this is the best solution
+                    probs = []
+                    for part in id:
+                        part_id = [part]
+                        probs.append(logits[:, part_id])
+                    answers_probs[:, idx] = torch.cat(
+                        probs, dim=1).mean(dim=1).T
+                    print(
+                        f'id: {id} -> {torch.cat(probs, dim=1).mean(dim=1).T}')
+                # elif len(id) > 1:
+                #     # TO DO: test if this is the best solution
+                #     id = torch.tensor(id).to(self.device)
+                #     probs = torch.index_select(logits, dim=1, index=id)
+                #     answers_probs[:, idx] = probs.T.squeeze(1)
+                #     print(f'id: {id} -> {probs.T} -> {probs.T.squeeze(1)}')
 
+        print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [possible_answers[i] for i in pred_answer_indices]
 

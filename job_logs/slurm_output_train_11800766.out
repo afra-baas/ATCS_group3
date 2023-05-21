@@ -1,44 +1,0 @@
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-****Start Time: 2023-05-20_23-16-04
-Loading model bigscience/bloom-560m
-Model bigscience/bloom-560m loaded
-Available device is cuda
-Model device: cuda:0
------------ 42 de bigscience/bloom-560m SA active 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 269.40it/s]
-/home/lcur1101/ATCS_group3/src/models/model.py:88: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
-  logits = torch.nn.functional.softmax(logits)
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len of  pos_reviews, neg_reviews:  39080 38908
-len dataset  77988
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [1650], 'attention_mask': [1]}
-answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
-id: [951, 265] -> [951]
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [1650], 'attention_mask': [1]}
-answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
-id: [951, 265] -> [951]
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [1650], 'attention_mask': [1]}
-answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
-id: [951, 265] -> [951]
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [1650], 'attention_mask': [1]}
-answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
-id: [951, 265] -> [951]
-acc:  0.54
-Time taken to execute the de SA task with prompt type active, variation 0 and batchsize 16: 0:03:42.976694
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA active 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 320.31it/s]
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** JOB 11800766 ON r28n2 CANCELLED AT 2023-05-20T23:22:13 ***
-slurmstepd: error: *** STEP 11800766.0 ON r28n2 CANCELLED AT 2023-05-20T23:22:13 ***

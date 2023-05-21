@@ -133,6 +133,10 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
                         # Open the file in binary mode and save the dictionary
                         with open(file_path, 'wb') as file:
                             pickle.dump(default_to_regular(logits_dict), file)
+                        # Save the code snippet to the text file
+                        with open(file_path.replace('.pickle', '.txt'), 'w+') as file:
+                            for key, value in default_to_regular(logits_dict).items():
+                                file.write(f'{key}: {value}\n')
                         print(
                             f"Dictionary saved to '{file_path}' as a pickle file.")
 
@@ -140,7 +144,7 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
 if __name__ == "__main__":
 
     # models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
-    models = ['bloom']
+    models = ['llama']
     tasks = ['NLI', 'SA']
     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
     # prompt_types = ['active', 'passive']
