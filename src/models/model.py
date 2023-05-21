@@ -114,20 +114,17 @@ class Model:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs
-                    print(f'id: {id} -> {probs}/{probs.T}')
-                elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
-                    print(f'id: {id} -> {[id[1]]}')
-                    id = [id[1]]
-                    probs = logits[:, id]
-                    answers_probs[:, idx] = probs
+                    print('probs_ shape', probs.shape)
+                    answers_probs[:, idx] = probs.T
                     print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs
+                    print('probs_ shape', probs.shape)
+                    answers_probs[:, idx] = probs.T
                     print(f'id: {id} -> {probs}/{probs.T}')
+
                 elif len(id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []
@@ -148,20 +145,17 @@ class Model:
                     print(f'id: {id} -> {[id[1]]}')
                     id = [id[1]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs
-                    print(f'id: {id} -> {probs}/{probs.T}')
-                elif self.model_name == 'chainyo/alpaca-lora-7b' and len(id) == 2:
-                    print(f'id: {id} -> {[id[1]]}')
-                    id = [id[1]]
-                    probs = logits[:, id]
-                    answers_probs[:, idx] = probs
+                    print('probs_ shape', probs.shape)
+                    answers_probs[:, idx] = probs.T
                     print(f'id: {id} -> {probs}/{probs.T}')
                 elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
                     print(f'id: {id} -> {[id[0]]}')
                     id = [id[0]]
                     probs = logits[:, id]
-                    answers_probs[:, idx] = probs
+                    print('probs_ shape', probs.shape)
+                    answers_probs[:, idx] = probs.T
                     print(f'id: {id} -> {probs} / {probs.T}')
+
                 elif len(id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []

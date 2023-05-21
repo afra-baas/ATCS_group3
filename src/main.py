@@ -143,7 +143,7 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
 
 if __name__ == "__main__":
 
-    models = ['bloom', 'bloomz', 'flan', 'llama']  # , 'alpaca']
+    models = [ 'flan', 'llama']  # 'bloom', 'bloomz', , 'alpaca']
     # models = ['llama']
     tasks = ['NLI', 'SA']
     prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
@@ -158,7 +158,7 @@ if __name__ == "__main__":
     num_prompts = 3
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 3
+    version = 4
     for seed in seeds:
         for lang in languages:
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
