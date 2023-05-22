@@ -141,13 +141,13 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
 if __name__ == "__main__":
 
     # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
-    models = ['bloom', 'bloomz']
-    # models = ['llama']
+    # models = ['llama', 'flan']
+    models = ['llama']
     tasks = ['SA', 'NLI']
     prompt_types = ['active', 'passive', 'auxiliary',
                     'modal', 'common', 'rare_synonyms', 'identical_modal']
     # prompt_types = ['active', 'passive']
-    # languages = ['en', 'de']
+    # languages = ['en', 'de', 'fr']
     languages = ['en']
     # seeds = ['42', '33', '50']
     seeds = ['42']
@@ -156,8 +156,27 @@ if __name__ == "__main__":
     sample_size = 200
     num_prompts = 6
 
+
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 8
+    version = 10
+    directory = "./ATCS_group3/saved_outputs"
+    files = os.listdir(directory)
+    while True:
+        version_exists = False
+
+        for file in files:
+            if f"v{version}" in file:
+                print(f"!!!! A file with version {version} already exists.")
+                version += 1
+                version_exists = True
+                break
+            else:
+                print(f"No file with version {version} exists.")
+
+        if not version_exists:
+            break
+
+
     for seed in seeds:
         for lang in languages:
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'

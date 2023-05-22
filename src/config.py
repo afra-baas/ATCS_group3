@@ -58,7 +58,7 @@ task_config = {
                         },
                             "NLI": {
                             "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
-                            "possible_answers": ['yes', 'no', 'maybe'],
+                            "possible_answers": ['yes', 'no', 'maybe'], #unclear? instead of maybe 
                             "prompt_class": NLIPrompt
                         }},
                         'de': {
