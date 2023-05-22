@@ -44,17 +44,15 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
     answers_probs_all = []
     pred_answer_all = []
     mapped_labels_all = []
-    i = 0
-    possible_answers = train_dataloader.possible_answers
     sample_id = 0
-    for batch in train_dataloader:
+    for i, batch in enumerate(train_dataloader):
         print(
             f'Batch: {i} , batch size: {batch_size}, sample_size: {sample_size}')
         prompts, mapped_labels = batch
 
         # Classification
         answers_probs_batch, pred_answer_batch = LM(
-            prompts, possible_answers, language=lang)
+            prompts, train_dataloader.possible_answers, language=lang)
 
         # save logits per batch (*i+1 so sent_id is from 0 to sent_id*batch_size)
         # NOTE: sample_id, because we want each sentence in the sample sixe the an id (per sen in each batch)
@@ -87,7 +85,6 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
         answers_probs_all.extend(answers_probs_batch)
         pred_answer_all.extend(pred_answer_batch)
         mapped_labels_all.extend(mapped_labels)
-        i += 1
 
     # Evaluation
     acc = evaluate(pred_answer_all, mapped_labels_all)
@@ -143,10 +140,12 @@ def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sampl
 
 if __name__ == "__main__":
 
-    models = ['bloom', 'bloomz']  # 'flan', 'llama' , 'alpaca']
+    # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
+    models = ['bloom', 'bloomz']
     # models = ['llama']
-    tasks = ['NLI', 'SA']
-    prompt_types = ['active', 'passive', 'auxiliary', 'modal', 'rare_synonyms']
+    tasks = ['SA', 'NLI']
+    prompt_types = ['active', 'passive', 'auxiliary',
+                    'modal', 'common', 'rare_synonyms', 'identical_modal']
     # prompt_types = ['active', 'passive']
     # languages = ['en', 'de']
     languages = ['en']
@@ -158,7 +157,7 @@ if __name__ == "__main__":
     num_prompts = 6
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 5
+    version = 8
     for seed in seeds:
         for lang in languages:
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
