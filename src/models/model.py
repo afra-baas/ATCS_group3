@@ -5,7 +5,7 @@ from config import model
 
 
 class Model:
-    def __init__(self, model_name: str):
+    def __init__(self, model_name: str, possible_answers: list):
         """
         :param model_name: name of the model to use
         :param device: device to use
@@ -49,7 +49,28 @@ class Model:
             self.model = self.model.cuda()
         print(f"Model device: {self.model.device}")
 
-    def __call__(self, prompt: List[str], possible_answers, language):
+        self.possible_answers = possible_answers
+        possible_answers_ids_before = [self.tokenizer(
+            answer) for answer in self.possible_answers]
+        self.possible_answers_ids = []
+        for answer in possible_answers_ids_before:
+            print('answer ', answer)
+            if len(answer) == 0:
+                print('len answer was 0')
+                continue
+
+            id = answer["input_ids"]
+            if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
+                print(f'id: {id} -> {[id[1]]}')
+                id = [id[1]]
+            elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
+                print(f'id: {id} -> {[id[0]]}')
+                id = [id[0]]
+            else:
+                print(f'id:{id}')
+            self.possible_answers_ids.append(id)
+
+    def __call__(self, prompt: List[str]):
         """
         Generate probabilites for each promt and each possible answer.
         :param prompt: a list of strings with the prompts
@@ -65,8 +86,6 @@ class Model:
 
             inputs = self.tokenizer(
                 prompt, return_tensors="pt", padding=True).to(self.device)
-            possible_answers_ids = [self.tokenizer(
-                answer) for answer in possible_answers]
 
             # generate outputs
             if self.model_name == 'huggyllama/llama-7b':
@@ -80,77 +99,35 @@ class Model:
             logits = torch.nn.functional.softmax(logits, dim=1)
 
             # loop over all possible answers for every promt and store the logits
-            answers_probs = torch.zeros(len(prompt), len(possible_answers_ids)).to(
+            answers_probs = torch.zeros(len(prompt), len(self.possible_answers_ids)).to(
                 self.device)
 
-            # # shorter version, but without logs!
-            # for idx, answer in enumerate(possible_answers_ids):
-            #     if len(answer) == 0:
-            #         continue
-            #     id = answer["input_ids"]
-            #     if len(id) == 2 and self.model_name == 'huggyllama/llama-7b':
-            #         id = [id[1]]
-            #         probs = logits[:, id].T
-            #     elif len(id) == 2 and self.model_name == 'google/flan-t5-base':
-            #         id = [id[0]]
-            #         probs = logits[:, id].T
-            #     elif len(id) > 1:
-            #         probs = torch.cat([logits[:, [part]]
-            #                           for part in id], dim=1).mean(dim=1)
-            #     else:
-            #         probs = logits[:, id].T
-
-            #     answers_probs[:, idx] = probs
-
-            #######################################################
-
-            for idx, answer in enumerate(possible_answers_ids):
-                print('answer ', answer)
-                if len(answer) == 0:
-                    print('len answer was 0')
-                    continue
-
-                id = answer["input_ids"]
-                if self.model_name == 'huggyllama/llama-7b' and len(id) == 2:
-                    print(f'id: {id} -> {[id[1]]}')
-                    id = [id[1]]
-                    probs = logits[:, id]
-                    print('probs_ shape', probs.shape)
-                    answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs}/{probs.T}, {(probs.T).shape}')
-                elif self.model_name == 'google/flan-t5-base' and len(id) == 2:
-                    print(f'id: {id} -> {[id[0]]}')
-                    id = [id[0]]
-                    probs = logits[:, id]
-                    print('probs_ shape', probs.shape)
-                    answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs}/{probs.T}, {(probs.T).shape}')
-
-                elif len(id) > 1:
+            for idx, answer_id in enumerate(self.possible_answers_ids):
+                if len(answer_id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []
-                    for part in id:
+                    for part in answer_id:
                         part_id = [part]
                         probs.append(logits[:, part_id])
                     probs_ = torch.cat(
                         probs, dim=1).mean(dim=1)
-                    print('probs_ shape', probs_.shape)
+
+                    # print('probs_ shape', probs.T, (probs.T).shape)
                     # answers_probs[:, idx] = probs_.T
                     # answers_probs[:, idx] = probs_.transpose(0, 1)
                     answers_probs[:, idx] = probs_
-                    # print(f'id: {id} -> {probs_.transpose(0, 1)}, {(probs_.transpose(0, 1)).shape}')
-                    print(f'id: {id} -> {probs_}, {(probs_).shape}')
+                    # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
 
                 else:
                     # cases where token id has len 1
-                    probs = logits[:, id]
-                    print('probs_ shape', probs.shape)
+                    probs = logits[:, answer_id]
+                    # print('probs_ shape', probs.T, (probs.T).shape)
                     answers_probs[:, idx] = probs.T
-                    print(f'id: {id} -> {probs}/{probs.T}, {(probs.T).shape}')
+                    # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        print('answers_probs:', answers_probs)
+        # print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
-        pred_answer = [possible_answers[i] for i in pred_answer_indices]
+        pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
 
         torch.cuda.empty_cache()
         return answers_probs, pred_answer

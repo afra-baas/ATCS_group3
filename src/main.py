@@ -3,6 +3,8 @@ import argparse
 from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
+from prompts.prompt import prompt_templates
+
 from eval import evaluate
 import torch
 from datetime import datetime
@@ -22,7 +24,7 @@ def default_to_regular(d):
     return d
 
 
-def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size):
+def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size):
 
     # if this function is called directly, instead of through the pipeline
     if type(LM) == str:
@@ -30,29 +32,40 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
 
     print("-----------", seed, lang, LM.model_name, task, prompt_type,
           prompt_id, sample_size, batch_size, '--------------')
-    logits_dict_for_prompt = {}
-    start_time = datetime.now()
-    if task == 'SA':
-        train_dataloader = MARCDataLoader(prompt_type, prompt_id, language=lang, task=task,
-                                          sample_size=sample_size, batch_size=batch_size, seed=seed)
-    elif task == 'NLI':
-        train_dataloader = NLIDataLoader(prompt_type, prompt_id, language=lang, task=task,
-                                         sample_size=sample_size, batch_size=batch_size, seed=seed)
-    else:
-        print('This task evaluation is not implemented')
+    start_time1 = datetime.now()
 
+    logits_dict_for_prompt = {}
     answers_probs_all = []
     pred_answer_all = []
     mapped_labels_all = []
     sample_id = 0
     for i, batch in enumerate(train_dataloader):
         print(
-            f'Batch: {i} , batch size: {batch_size}, sample_size: {sample_size}')
-        prompts, mapped_labels = batch
+            f'Batch: {i} of {prompt_type} , batch size: {batch_size}, sample_size: {sample_size}')
+        sentences, labels = batch
 
+        start_time = datetime.now()
+        prompts = [train_dataloader.prompt(
+            sentence, prompt_type, prompt_id) for sentence in sentences]
+
+        end_time = datetime.now()
+        duration = end_time - start_time
+        print(f'filling in prompts labels Duration: {duration}')
+
+        start_time = datetime.now()
+        mapped_labels = [train_dataloader.label_map[label] for label in labels]
+
+        end_time = datetime.now()
+        duration = end_time - start_time
+        print(f'mapping labels Duration: {duration}')
+
+        start_time = datetime.now()
         # Classification
-        answers_probs_batch, pred_answer_batch = LM(
-            prompts, train_dataloader.possible_answers, language=lang)
+        answers_probs_batch, pred_answer_batch = LM(prompts)
+
+        end_time = datetime.now()
+        duration = end_time - start_time
+        print(f'classification Duration: {duration}')
 
         # save logits per batch (*i+1 so sent_id is from 0 to sent_id*batch_size)
         # NOTE: sample_id, because we want each sentence in the sample sixe the an id (per sen in each batch)
@@ -94,88 +107,84 @@ def get_prompt_acc(seed, lang, LM, task, prompt_type, prompt_id, sample_size, ba
     logits_dict_for_prompt['acc'] = acc
 
     end_time = datetime.now()
-    duration = end_time - start_time
+    duration = end_time - start_time1
     print(
         f"Time taken to execute the {lang} {task} task with prompt type {prompt_type}, variation {prompt_id} and batchsize {batch_size}: {duration}")
 
     return logits_dict_for_prompt
 
 
-def pipeline(seeds, languages, LM_models, tasks, prompt_types, batch_size, sample_size, num_prompts, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size, data_type='train', file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
     # logits_dict structure: specify seed, lang, model, task, prompt_type, prompt_id (,sentence_num, answer)
     logits_dict = makehash()
-    for seed in seeds:
-        for lang in languages:
-            for LM_model in LM_models:
-                # Initilize model
-                LM = Model(LM_model)
-                for task in tasks:
-                    # with this we look at different charactistics in a prompt
-                    for prompt_type in prompt_types:
-                        # with this we will look at variability in the prompt type
-                        for prompt_id in range(num_prompts):
+    for task in tasks:
+        start_time = datetime.now()
+        if task == 'SA':
+            train_dataloader = MARCDataLoader(language=lang, task=task,
+                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type)
+        else:
+            train_dataloader = NLIDataLoader(language=lang, task=task,
+                                             sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type)
+        end_time = datetime.now()
+        duration = end_time - start_time
+        print(f'create dataloader Duration: {duration}')
+        for LM_model in LM_models:
+            start_time = datetime.now()
+            # Initilize model
+            LM = Model(LM_model, train_dataloader.possible_answers)
+            end_time = datetime.now()
+            duration = end_time - start_time
+            print(f'load model Duration: {duration}')
+            # with this we look at different charactistics in a prompt
+            for prompt_type in prompt_types:
+                # with this we will look at variability in the prompt type
+                num_prompts = len(prompt_templates[lang][task][prompt_type])
+                print(
+                    f'prompt_type {prompt_type} has {num_prompts} prompts in it')
+                for prompt_id in range(num_prompts):
 
-                            logits_dict_for_prompt = get_prompt_acc(
-                                seed, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
-                            path = [seed, lang, LM_model, task,
-                                    prompt_type, f'prompt_id_{prompt_id}']
-                            print('path', path)
-                            logits_dict[seed][lang][LM_model][task][prompt_type][
-                                f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
+                    logits_dict_for_prompt = get_prompt_acc(
+                        seed, train_dataloader, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
+                    path = [seed, lang, LM_model, task,
+                            prompt_type, f'prompt_id_{prompt_id}']
+                    print('path', path)
+                    logits_dict[seed][lang][LM_model][task][prompt_type][
+                        f'prompt_id_{prompt_id}'] = logits_dict_for_prompt
 
-                        # Open the file in binary mode and save the dictionary
-                        with open(file_path, 'wb') as file:
-                            pickle.dump(default_to_regular(logits_dict), file)
-                        # Save the code snippet to the text file
-                        with open(file_path.replace('.pickle', '.txt'), 'w+') as file:
-                            for key, value in default_to_regular(logits_dict).items():
-                                file.write(f'{key}: {value}\n')
-                        print(
-                            f"Dictionary saved to '{file_path}' as a pickle file.")
+                # Open the file in binary mode and save the dictionary
+                with open(file_path, 'wb') as file:
+                    pickle.dump(default_to_regular(logits_dict), file)
+                # Save the code snippet to the text file
+                with open(file_path.replace('.pickle', '.txt'), 'w+') as file:
+                    for key, value in default_to_regular(logits_dict).items():
+                        file.write(f'{key}: {value}\n')
+                print(
+                    f"Dictionary saved to '{file_path}' as a pickle file.")
 
 
 if __name__ == "__main__":
 
     # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
-    # models = ['llama', 'flan']
-    models = ['llama']
+    models = ['bloom', 'bloomz', 'flan', 'llama']
+    # models = ['flan']
     tasks = ['SA', 'NLI']
     prompt_types = ['active', 'passive', 'auxiliary',
                     'modal', 'common', 'rare_synonyms', 'identical_modal']
     # prompt_types = ['active', 'passive']
-    # languages = ['en', 'de', 'fr']
-    languages = ['en']
+    languages = ['en', 'de', 'fr']
+    # languages = ['fr']
     # seeds = ['42', '33', '50']
     seeds = ['42']
 
-    batch_size = 16
+    batch_size = 32
     sample_size = 200
-    num_prompts = 6
-
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 10
-    directory = "./ATCS_group3/saved_outputs"
-    files = os.listdir(directory)
-    while True:
-        version_exists = False
-
-        for file in files:
-            if f"v{version}" in file:
-                print(f"!!!! A file with version {version} already exists.")
-                version += 1
-                version_exists = True
-                break
-            else:
-                print(f"No file with version {version} exists.")
-
-        if not version_exists:
-            break
-
+    version = 15
 
     for seed in seeds:
         for lang in languages:
@@ -184,9 +193,9 @@ if __name__ == "__main__":
             print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
             start_time = datetime.now()
 
-            pipeline(seeds, languages, models, tasks, prompt_types,
-                     batch_size, sample_size, num_prompts, file_path=file_path)
+            pipeline(seed, lang, models, tasks, prompt_types,
+                     batch_size, sample_size, file_path=file_path)
 
             end_time = datetime.now()
             duration = end_time - start_time
-            print('****End Time:', end_time, f'Duraction: {duration}')
+            print('****End Time:', end_time, f'Duration: {duration}')

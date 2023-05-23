@@ -1,0 +1,18 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/fr/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-23_21-03-01
+Using MARC dataset for fr
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 333.79it/s]
+Average length of review_body for rows with 1 star: 155.920675
+Average length of review_body for rows with 5 star: 144.119575
+len of lowest cat:  39333
+len of pos_reviews, neg_reviews:  39333 39333
+len dataset  78666
+len dataset  200
+making first dict Duraction: 0:03:40.962607
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 199, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 143, in pipeline
+    LM = Model(LM_model)
+TypeError: Model.__init__() missing 1 required positional argument: 'possible_answers'
+srun: error: r29n2: task 0: Exited with exit code 1

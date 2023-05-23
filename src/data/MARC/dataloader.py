@@ -1,18 +1,13 @@
-from torch.utils.data import DataLoader
 from data.hf_dataloader import HFDataloader
-from data.MARC.dataset import MARCDataset
 import random
 
 
 class MARCDataLoader(HFDataloader):
     data_name = "MARC"
-    language = "en"
-    supported_tasks = ["SA"]
-    dataset_class = MARCDataset
-    default_task = "SA"
+    dataset_name = "amazon_reviews_multi"
 
-    def __init__(self, prompt_type, prompt_id, language="en", task='SA', batch_size=32, sample_size=100, seed=42, data_type='train'):
-        super().__init__(prompt_type, prompt_id, language=language, task=task,
+    def __init__(self, language="en", task='SA', batch_size=32, sample_size=200, seed=42, data_type='train'):
+        super().__init__(language=language, task=task,
                          batch_size=batch_size, sample_size=sample_size, seed=seed, data_type=data_type)
         # filter only 5 or 0 star results and reviews with <=40 tokens
         self.dataset = self.filter_data()
@@ -21,9 +16,13 @@ class MARCDataLoader(HFDataloader):
         self.dataset = self.get_random_sample()
         print('len dataset ', len(self.dataset))
 
+    # def collate_fn(self, x):
+    #     batch = [(self.prompt([row["review_body"]], self.prompt_type, self.prompt_id),
+    #               self.label_map[row["stars"].item()]) for row in x]
+    #     return zip(*batch)
+
     def collate_fn(self, x):
-        batch = [(self.prompt([row["review_body"]], self.prompt_type, self.prompt_id),
-                  self.label_map[row["stars"].item()]) for row in x]
+        batch = [([row["review_body"]], row["stars"].item()) for row in x]
         return zip(*batch)
 
     def filter_data(self):
