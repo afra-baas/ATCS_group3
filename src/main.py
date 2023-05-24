@@ -129,6 +129,8 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
         else:
             train_dataloader = NLIDataLoader(language=lang, task=task,
                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type)
+        # TO DO:
+        # saved the sampled sentences, in a dict?
         end_time = datetime.now()
         duration = end_time - start_time
         print(f'create dataloader Duration: {duration}')
@@ -158,10 +160,6 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
                 # Open the file in binary mode and save the dictionary
                 with open(file_path, 'wb') as file:
                     pickle.dump(default_to_regular(logits_dict), file)
-                # Save the code snippet to the text file
-                with open(file_path.replace('.pickle', '.txt'), 'w+') as file:
-                    for key, value in default_to_regular(logits_dict).items():
-                        file.write(f'{key}: {value}\n')
                 print(
                     f"Dictionary saved to '{file_path}' as a pickle file.")
 
@@ -178,24 +176,24 @@ if __name__ == "__main__":
     languages = ['en', 'de', 'fr']
     # languages = ['fr']
     # seeds = ['42', '33', '50']
-    seeds = ['42']
+    seeds = ['50']
 
-    batch_size = 32
+    batch_size = 16
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 15
+    version = 19
+
+    print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
+    start_time = datetime.now()
 
     for seed in seeds:
         for lang in languages:
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
 
-            print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
-            start_time = datetime.now()
-
             pipeline(seed, lang, models, tasks, prompt_types,
                      batch_size, sample_size, file_path=file_path)
 
-            end_time = datetime.now()
-            duration = end_time - start_time
-            print('****End Time:', end_time, f'Duration: {duration}')
+    end_time = datetime.now()
+    duration = end_time - start_time
+    print('****End Time:', end_time, f'Duration: {duration}')
