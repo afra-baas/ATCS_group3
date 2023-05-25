@@ -14,7 +14,7 @@ class NLIDataLoader(HFDataloader):
 
         start_time = datetime.now()
         use_neutral = True
-        if use_neutral:
+        if use_neutral == False:
             self.dataset = self.filter_data()
             print('len dataset ', len(self.dataset))
 

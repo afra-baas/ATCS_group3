@@ -172,7 +172,7 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 24
+    version = 50
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
