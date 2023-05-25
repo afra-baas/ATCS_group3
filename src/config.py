@@ -43,7 +43,10 @@ model = {
         "flan": {
             "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
             "model_name": 'google/flan-t5-base'  # model name for huggingface
-        }
+        },
+        "t0": {"model_constructor": AutoModelForCausalLM.from_pretrained,
+               "model_name": 'bigscience/mt0-small'
+               }
     }
 }
 
@@ -54,33 +57,40 @@ task_config = {
                             # "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
                             "label_map": {5: 'yes',  1: 'no'},
                             "possible_answers": ['yes', 'no'],
+                            # "possible_answers": ['no', 'yes'],
                             "prompt_class": SAPrompt
                         },
                             "NLI": {
                             "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
-                            "possible_answers": ['yes', 'no', 'maybe'], #unclear? instead of maybe 
+                            # unclear? instead of maybe
+                            "possible_answers": ['yes', 'no', 'maybe'],
+                            # "possible_answers": ['maybe', 'yes', 'no'],
                             "prompt_class": NLIPrompt
                         }},
                         'de': {
                             "SA": {
                                 "label_map": {5: 'ja',  1: 'nein'},
                                 "possible_answers": ['ja', 'nein'],
+                                # "possible_answers": ['nein', 'ja'],
                                 "prompt_class": SAPrompt
                             },
                             "NLI": {
                                 "label_map": {0: 'ja', 1: 'vielleicht', 2: 'nein'},
                                 "possible_answers": ['ja', 'nein', 'vielleicht'],
+                                # "possible_answers": ['vielleicht', 'ja', 'nein'],
                                 "prompt_class": NLIPrompt
                             }},
                         'fr': {
                             "SA": {
                                 "label_map": {5: 'oui',  1: 'non'},
                                 "possible_answers": ['oui', 'non'],
+                                # "possible_answers": ['non', 'oui'],
                                 "prompt_class": SAPrompt
                             },
                             "NLI": {
                                 "label_map": {0: 'oui', 1: 'peut-être', 2: 'non'},
                                 "possible_answers": ['oui', 'non', 'peut-être'],
+                                # "possible_answers": ['peut-être', 'oui', 'non'],
                                 "prompt_class": NLIPrompt
                             }}
                         }

@@ -49,27 +49,39 @@ class NLIDataLoader(HFDataloader):
         if use_neutral:
             self.neutral_examples = [
                 row for row in self.dataset if row["label"] == 1]
+            print(' the amount of neutral are in the whole dataset: ',
+                  len(self.neutral_examples))
         self.contra_examples = [
             row for row in self.dataset if row["label"] == 2]
 
-        sample_indices = random.sample(
-            range(len(self.entail_examples)), min(int(self.sample_size/3), len(self.entail_examples)))
-        entail_examples = [self.entail_examples[i] for i in sample_indices]
-
+        print('use_neutral is ', use_neutral)
         if use_neutral:
+            sample_indices = random.sample(
+                range(len(self.entail_examples)), min(int(self.sample_size/3), len(self.entail_examples)))
+            entail_examples = [self.entail_examples[i] for i in sample_indices]
+
             sample_indices = random.sample(
                 range(len(self.neutral_examples)), min(int(self.sample_size/3), len(self.neutral_examples)))
             neutral_examples = [self.neutral_examples[i]
                                 for i in sample_indices]
 
-        sample_indices = random.sample(
-            range(len(self.contra_examples)), min(int(self.sample_size/3), len(self.contra_examples)))
-        contra_examples = [self.contra_examples[i] for i in sample_indices]
+            sample_indices = random.sample(
+                range(len(self.contra_examples)), min(int(self.sample_size/3), len(self.contra_examples)))
+            contra_examples = [self.contra_examples[i] for i in sample_indices]
 
-        if use_neutral:
             print('len of entail_examples , neutral_examples, contra_examples: ',
                   len(entail_examples), len(neutral_examples), len(contra_examples))
             data = entail_examples + neutral_examples+contra_examples
         else:
+            sample_indices = random.sample(
+                range(len(self.entail_examples)), min(int(self.sample_size/2), len(self.entail_examples)))
+            entail_examples = [self.entail_examples[i] for i in sample_indices]
+
+            sample_indices = random.sample(
+                range(len(self.contra_examples)), min(int(self.sample_size/2), len(self.contra_examples)))
+            contra_examples = [self.contra_examples[i] for i in sample_indices]
+
+            print('len we only take entail_examples , contra_examples: ',
+                  len(entail_examples), len(contra_examples))
             data = entail_examples+contra_examples
         return data

@@ -40,24 +40,11 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
     mapped_labels_all = []
     sample_id = 0
     for i, batch in enumerate(train_dataloader):
-        print(
-            f'Batch: {i} of {prompt_type} , batch size: {batch_size}, sample_size: {sample_size}')
-        sentences, labels = batch
 
-        start_time = datetime.now()
+        sentences, labels = batch
         prompts = [train_dataloader.prompt(
             sentence, prompt_type, prompt_id) for sentence in sentences]
-
-        end_time = datetime.now()
-        duration = end_time - start_time
-        print(f'filling in prompts labels Duration: {duration}')
-
-        start_time = datetime.now()
         mapped_labels = [train_dataloader.label_map[label] for label in labels]
-
-        end_time = datetime.now()
-        duration = end_time - start_time
-        print(f'mapping labels Duration: {duration}')
 
         start_time = datetime.now()
         # Classification
@@ -65,7 +52,8 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
 
         end_time = datetime.now()
         duration = end_time - start_time
-        print(f'classification Duration: {duration}')
+        print(
+            f' Batch: {i} of {prompt_type} classification Duration: {duration}')
 
         # save logits per batch (*i+1 so sent_id is from 0 to sent_id*batch_size)
         # NOTE: sample_id, because we want each sentence in the sample sixe the an id (per sen in each batch)
@@ -162,13 +150,14 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
                     pickle.dump(default_to_regular(logits_dict), file)
                 print(
                     f"Dictionary saved to '{file_path}' as a pickle file.")
+                print()
 
 
 if __name__ == "__main__":
 
     # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
-    models = ['bloom', 'bloomz', 'flan', 'llama']
-    # models = ['flan']
+    # models = ['bloom', 'llama']  # 'bloomz', 'flan',
+    models = ['t0']
     tasks = ['SA', 'NLI']
     prompt_types = ['active', 'passive', 'auxiliary',
                     'modal', 'common', 'rare_synonyms', 'identical_modal']
@@ -176,13 +165,13 @@ if __name__ == "__main__":
     languages = ['en', 'de', 'fr']
     # languages = ['fr']
     # seeds = ['42', '33', '50']
-    seeds = ['50']
+    seeds = ['42']
 
     batch_size = 16
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 19
+    version = 22
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
