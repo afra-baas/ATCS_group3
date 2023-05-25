@@ -44,7 +44,7 @@ model = {
             "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
             "model_name": 'google/flan-t5-base'  # model name for huggingface
         },
-        "t0": {"model_constructor": AutoModelForCausalLM.from_pretrained,
+        "t0": {"model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
                "model_name": 'bigscience/mt0-small'
                }
     }

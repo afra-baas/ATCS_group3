@@ -13,15 +13,17 @@ class NLIDataLoader(HFDataloader):
                          batch_size=batch_size, sample_size=sample_size, seed=seed, data_type=data_type)
 
         start_time = datetime.now()
-        self.dataset = self.filter_data()
-        print('len dataset ', len(self.dataset))
+        use_neutral = True
+        if use_neutral:
+            self.dataset = self.filter_data()
+            print('len dataset ', len(self.dataset))
 
         end_time = datetime.now()
         duration = end_time - start_time
         print(f'filter data Duraction: {duration}')
 
         start_time = datetime.now()
-        self.dataset = self.get_random_sample()
+        self.dataset = self.get_random_sample(use_neutral=use_neutral)
         print('len dataset ', len(self.dataset))
 
         end_time = datetime.now()
@@ -43,14 +45,11 @@ class NLIDataLoader(HFDataloader):
         # :param sample_size: number of samples to get
         # :param seed: random seed
         random.seed(self.seed)
-
         self.entail_examples = [
             row for row in self.dataset if row["label"] == 0]
         if use_neutral:
             self.neutral_examples = [
                 row for row in self.dataset if row["label"] == 1]
-            print(' the amount of neutral are in the whole dataset: ',
-                  len(self.neutral_examples))
         self.contra_examples = [
             row for row in self.dataset if row["label"] == 2]
 

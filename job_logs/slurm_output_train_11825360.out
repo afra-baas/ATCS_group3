@@ -1,0 +1,60 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-25_15-37-04
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 30.07it/s]
+loading model Duration: 0:00:01.274217
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  200
+create dataloader Duration: 0:03:18.894652
+Loading model bigscience/mt0-small
+Downloading pytorch_model.bin:   0%|          | 0.00/1.20G [00:00<?, ?B/s]Downloading pytorch_model.bin:   1%|          | 10.5M/1.20G [00:00<00:15, 75.6MB/s]Downloading pytorch_model.bin:   3%|▎         | 31.5M/1.20G [00:00<00:08, 137MB/s] Downloading pytorch_model.bin:   5%|▌         | 62.9M/1.20G [00:00<00:05, 203MB/s]Downloading pytorch_model.bin:   8%|▊         | 94.4M/1.20G [00:00<00:04, 240MB/s]Downloading pytorch_model.bin:  10%|█         | 126M/1.20G [00:00<00:04, 251MB/s] Downloading pytorch_model.bin:  13%|█▎        | 157M/1.20G [00:00<00:03, 267MB/s]Downloading pytorch_model.bin:  16%|█▌        | 189M/1.20G [00:00<00:03, 274MB/s]Downloading pytorch_model.bin:  19%|█▉        | 231M/1.20G [00:00<00:03, 294MB/s]Downloading pytorch_model.bin:  23%|██▎       | 273M/1.20G [00:01<00:03, 298MB/s]Downloading pytorch_model.bin:  26%|██▌       | 315M/1.20G [00:01<00:02, 319MB/s]Downloading pytorch_model.bin:  30%|██▉       | 357M/1.20G [00:01<00:02, 324MB/s]Downloading pytorch_model.bin:  34%|███▍      | 409M/1.20G [00:01<00:02, 356MB/s]Downloading pytorch_model.bin:  38%|███▊      | 451M/1.20G [00:01<00:02, 348MB/s]Downloading pytorch_model.bin:  41%|████      | 493M/1.20G [00:01<00:02, 343MB/s]Downloading pytorch_model.bin:  45%|████▍     | 535M/1.20G [00:01<00:02, 325MB/s]Downloading pytorch_model.bin:  48%|████▊     | 577M/1.20G [00:01<00:01, 317MB/s]Downloading pytorch_model.bin:  52%|█████▏    | 619M/1.20G [00:02<00:01, 325MB/s]Downloading pytorch_model.bin:  55%|█████▌    | 661M/1.20G [00:02<00:01, 328MB/s]Downloading pytorch_model.bin:  59%|█████▊    | 703M/1.20G [00:02<00:01, 341MB/s]Downloading pytorch_model.bin:  62%|██████▏   | 744M/1.20G [00:02<00:01, 346MB/s]Downloading pytorch_model.bin:  65%|██████▌   | 786M/1.20G [00:02<00:01, 347MB/s]Downloading pytorch_model.bin:  69%|██████▉   | 828M/1.20G [00:02<00:01, 349MB/s]Downloading pytorch_model.bin:  72%|███████▏  | 870M/1.20G [00:02<00:00, 357MB/s]Downloading pytorch_model.bin:  76%|███████▌  | 912M/1.20G [00:02<00:00, 359MB/s]Downloading pytorch_model.bin:  79%|███████▉  | 954M/1.20G [00:02<00:00, 373MB/s]Downloading pytorch_model.bin:  83%|████████▎ | 996M/1.20G [00:03<00:00, 370MB/s]Downloading pytorch_model.bin:  86%|████████▋ | 1.04G/1.20G [00:03<00:00, 353MB/s]Downloading pytorch_model.bin:  90%|████████▉ | 1.08G/1.20G [00:03<00:00, 326MB/s]Downloading pytorch_model.bin:  93%|█████████▎| 1.12G/1.20G [00:03<00:00, 328MB/s]Downloading pytorch_model.bin:  97%|█████████▋| 1.16G/1.20G [00:03<00:00, 331MB/s]Downloading pytorch_model.bin: 100%|██████████| 1.20G/1.20G [00:03<00:00, 337MB/s]Downloading pytorch_model.bin: 100%|██████████| 1.20G/1.20G [00:03<00:00, 320MB/s]
+Model bigscience/mt0-small loaded
+Downloading (…)okenizer_config.json:   0%|          | 0.00/430 [00:00<?, ?B/s]Downloading (…)okenizer_config.json: 100%|██████████| 430/430 [00:00<00:00, 1.57MB/s]
+Downloading spiece.model:   0%|          | 0.00/4.31M [00:00<?, ?B/s]Downloading spiece.model: 100%|██████████| 4.31M/4.31M [00:00<00:00, 352MB/s]
+Downloading tokenizer.json:   0%|          | 0.00/16.3M [00:00<?, ?B/s]Downloading tokenizer.json: 100%|██████████| 16.3M/16.3M [00:00<00:00, 409MB/s]
+Downloading (…)cial_tokens_map.json:   0%|          | 0.00/74.0 [00:00<?, ?B/s]Downloading (…)cial_tokens_map.json: 100%|██████████| 74.0/74.0 [00:00<00:00, 277kB/s]
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [36339, 1], 'attention_mask': [1, 1]}
+id:[36339, 1]
+answer  {'input_ids': [375, 1], 'attention_mask': [1, 1]}
+id:[375, 1]
+load model Duration: 0:00:14.854914
+prompt_type active has 10 prompts in it
+----------- 42 en bigscience/mt0-small SA active 0 200 16 --------------
+inputs:  {'input_ids': tensor([[10382,   267,   336,  ...,     0,     0,     0],
+        [10382,   267,  1385,  ...,     0,     0,     0],
+        [10382,   267,   259,  ...,     0,     0,     0],
+        ...,
+        [10382,   267,   259,  ...,     0,     0,     0],
+        [10382,   267,   336,  ...,     0,     0,     0],
+        [10382,   267, 10266,  ...,     0,     0,     0]], device='cuda:0'), 'attention_mask': tensor([[1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        ...,
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0],
+        [1, 1, 1,  ..., 0, 0, 0]], device='cuda:0')}
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 183, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 140, in pipeline
+    logits_dict_for_prompt = get_prompt_acc(
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 51, in get_prompt_acc
+    answers_probs_batch, pred_answer_batch = LM(prompts)
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 99, in __call__
+    outputs = self.model(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/mt5/modeling_mt5.py", line 1748, in forward
+    decoder_outputs = self.decoder(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/mt5/modeling_mt5.py", line 952, in forward
+    raise ValueError(f"You have to specify either {err_msg_prefix}input_ids or {err_msg_prefix}inputs_embeds")
+ValueError: You have to specify either decoder_input_ids or decoder_inputs_embeds
+srun: error: r35n1: task 0: Exited with exit code 1

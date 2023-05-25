@@ -158,7 +158,8 @@ if __name__ == "__main__":
     # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
     # models = ['bloom', 'llama']  # 'bloomz', 'flan',
     models = ['t0']
-    tasks = ['SA', 'NLI']
+    # tasks = ['SA', 'NLI']
+    tasks = ['NLI']
     prompt_types = ['active', 'passive', 'auxiliary',
                     'modal', 'common', 'rare_synonyms', 'identical_modal']
     # prompt_types = ['active', 'passive']
@@ -171,7 +172,7 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 22
+    version = 24
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
