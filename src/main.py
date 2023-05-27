@@ -155,16 +155,16 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
 
 if __name__ == "__main__":
 
-    # 'flan', 'llama']  # 'bloom', 'bloomz'] 'alpaca']
-    # models = ['bloom', 'llama']  # 'bloomz', 'flan',
-    models = ['t0']
-    # tasks = ['SA', 'NLI']
-    tasks = ['NLI']
-    prompt_types = ['active', 'passive', 'auxiliary',
-                    'modal', 'common', 'rare_synonyms', 'identical_modal']
+    # models = ['bloom']
+    models = ['bloom', 'bloomz', 'flan', 'llama', 't0']
+    tasks = ['SA', 'NLI']
+    # tasks = ['SA']
+    # prompt_types = ['active', 'passive', 'auxiliary',
+    #                 'modal', 'common', 'rare_synonyms', 'identical_modal']
     # prompt_types = ['active', 'passive']
+    prompt_types = ['null']
     languages = ['en', 'de', 'fr']
-    # languages = ['fr']
+    # languages = ['en', 'de']
     # seeds = ['42', '33', '50']
     seeds = ['42']
 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 50
+    version = 56
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()

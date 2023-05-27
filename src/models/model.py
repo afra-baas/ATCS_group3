@@ -86,7 +86,7 @@ class Model:
 
             inputs = self.tokenizer(
                 prompt, return_tensors="pt", padding=True).to(self.device)
-            print('inputs: ', inputs)
+            # print('inputs: ', inputs)
 
             # generate outputs
             if self.model_name == 'huggyllama/llama-7b':
@@ -161,7 +161,7 @@ class Model:
                     answers_probs[:, idx] = probs.T
                     print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        print('answers_probs:', answers_probs)
+        # print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
 

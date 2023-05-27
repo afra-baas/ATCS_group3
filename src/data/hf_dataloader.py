@@ -21,7 +21,6 @@ class HFDataloader:
 
         start_time = datetime.now()
         print(f"Using {self.data_name} dataset for {self.language}")
-        # self.dataset = self.dataset_class(language).dataset[data_type]
         self.dataset = load_dataset(
             self.dataset_name, self.language).with_format("torch")[data_type]
 

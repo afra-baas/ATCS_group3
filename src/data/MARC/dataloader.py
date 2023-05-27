@@ -16,11 +16,6 @@ class MARCDataLoader(HFDataloader):
         self.dataset = self.get_random_sample()
         print('len dataset ', len(self.dataset))
 
-    # def collate_fn(self, x):
-    #     batch = [(self.prompt([row["review_body"]], self.prompt_type, self.prompt_id),
-    #               self.label_map[row["stars"].item()]) for row in x]
-    #     return zip(*batch)
-
     def collate_fn(self, x):
         batch = [([row["review_body"]], row["stars"].item()) for row in x]
         return zip(*batch)
