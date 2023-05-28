@@ -1,0 +1,114 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-28_08-45-22
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 67%|██████▋   | 2/3 [00:00<00:00, 19.61it/s]100%|██████████| 3/3 [00:00<00:00, 28.30it/s]
+loading model Duration: 0:00:01.399301
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  210
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+id:[18260]
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+id:[1936]
+summ of probs approach
+prompt_type active has 10 prompts in it
+21
+Review: I thought it would be to light but its just right 
+ Is this review positive? Possible answers: 
+ A yes 
+ B no 
+ Answer: yes
+ 
+Review: {content} 
+ Is this review positive? 
+ Answer:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+prompt_type identical_modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+Loading model bigscience/bloomz-560m
+Model bigscience/bloomz-560m loaded
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+id:[18260]
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+id:[1936]
+summ of probs approach
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/make_one_shot.py", line 81, in <module>
+    num_prompts = len(
+TypeError: object of type 'int' has no len()
+srun: error: r28n5: task 0: Exited with exit code 1

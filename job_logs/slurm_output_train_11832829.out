@@ -1,0 +1,567 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-28_09-08-30
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 29.15it/s]100%|██████████| 3/3 [00:00<00:00, 29.07it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/en/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+loading model Duration: 0:00:01.405179
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  210
+path: enSAactive
+prompt_type active has 10 prompts in it
+21
+Review: Does not work . Won’t spay . Waste of money !! 
+ Is this review positive? Possible answers: 
+ A yes 
+ B no 
+ Answer: no
+ 
+Review: {content} 
+ Is this review positive? 
+ Answer:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enSApassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enSAauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enSAmodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enSAcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: enSArare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: enSAidentical_modal
+prompt_type identical_modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+Using NLI dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  3.49it/s]100%|██████████| 3/3 [00:00<00:00,  8.03it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+loading model Duration: 0:00:01.512731
+filter data Duraction: 0:00:00.000002
+use_neutral is  True
+len of entail_examples , neutral_examples, contra_examples:  70 70 70
+len dataset  210
+random sample Duraction: 0:02:41.238542
+path: enNLIactive
+prompt_type active has 10 prompts in it
+21
+Premise: But she had a duplicate key ? 
+ Take this premise as truth. Does this truth entail the following statement: She had a duplicate phone ?? Possible answers: 
+ A yes 
+ B no 
+ C maybe 
+ Answer: no
+ 
+Premise: {premise} 
+ Take this premise as truth. Does this truth entail the following statement: {hypothesis}? 
+ Answer:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enNLIpassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enNLIauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enNLImodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: enNLIcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: enNLIrare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: enNLIidentical_modal
+prompt_type identical_modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+Using MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  3.01it/s]100%|██████████| 3/3 [00:00<00:00,  7.52it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+loading model Duration: 0:00:02.745832
+Average length of review_body for rows with 1 star: 199.5979
+Average length of review_body for rows with 5 star: 177.19965
+len of lowest cat:  38908
+len of pos_reviews, neg_reviews:  38908 38908
+len dataset  77816
+len dataset  210
+path: deSAactive
+prompt_type active has 10 prompts in it
+21
+Bewertung: Die Haube machte auf den ersten Blick einen soliden Eindruck. Passt auch genau. Leider hat sie nach wenigen Wochen Nutzung die komplette schwarze Farbe verloren. Es sieht einfach nur noch grau und schmutzig aus. Für ein Produkt welches für den Außenbereich gemacht ist, erwarte ich etwas mehr Farbechtheit. Mal sehen was der Hersteller sagt? Auf dem 2, Foto sieht man die Originalfarbe von der Rückseite! 
+ Ist diese Bewertung positiv? Mögliche Antworten: 
+ A ja 
+ B nein 
+ Antwort: nein
+ 
+Bewertung: {content} 
+ Ist diese Bewertung positiv? 
+ Antwort:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deSApassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deSAauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deSAmodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deSAcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: deSArare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: deSAidentical_modal
+prompt_type identical_modal has 6 prompts in it
+21
+42
+63
+84
+105
+126
+Using NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  3.28it/s]100%|██████████| 3/3 [00:00<00:00,  7.64it/s]
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/fr/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+loading model Duration: 0:00:01.459995
+filter data Duraction: 0:00:00.000002
+use_neutral is  True
+len of entail_examples , neutral_examples, contra_examples:  70 70 70
+len dataset  210
+random sample Duraction: 0:02:42.477551
+path: deNLIactive
+prompt_type active has 10 prompts in it
+21
+Prämisse: Richtig gut mein Abschluss ist im Unterricht so 
+ Nehmen Sie diese Prämisse als Wahrheit an. Impliziert diese Wahrheit die folgende Aussage: Ich habe keinen Abschluss .? Mögliche Antworten: 
+ A ja 
+ B nein 
+ C vielleicht 
+ Antwort: nein
+ 
+Prämisse: {premise} 
+ Nehmen Sie diese Prämisse als Wahrheit an. Impliziert diese Wahrheit die folgende Aussage: {hypothesis}? 
+ Antwort:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deNLIpassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deNLIauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deNLImodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: deNLIcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: deNLIrare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: deNLIidentical_modal
+prompt_type identical_modal has 6 prompts in it
+21
+42
+63
+84
+105
+126
+Using MARC dataset for fr
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  4.29it/s]100%|██████████| 3/3 [00:00<00:00,  9.89it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/fr/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+loading model Duration: 0:00:01.419228
+Average length of review_body for rows with 1 star: 155.920675
+Average length of review_body for rows with 5 star: 144.119575
+len of lowest cat:  39333
+len of pos_reviews, neg_reviews:  39333 39333
+len dataset  78666
+len dataset  210
+path: frSAactive
+prompt_type active has 10 prompts in it
+21
+Critique: J’ai acheté 5 de ces caméras. 2 seulement fonctionnent normalement. YI a remplacé plusieurs fois les caméras défectueuses mais je doute que les caméras qui me sont envoyées en remplacement soient neuves car j’ai toujours des problèmes. L’une d’elle ne se connecte plus à ma WIFI, et l’autre ne fonctionne pas la nuit! J’abandonne! J’ai tenté de commander deux caméras neuves en me disant que celle-ci fonctionneraient, mais même pas, impossible de les connecter à ma WIFI. retour à l’expéditeur! 
+ Cette critique est-elle positive? Réponses possibles: 
+ A oui 
+ B non 
+ Reponse: non
+ 
+Critique: {content} 
+ Cette critique est-elle positive? 
+ Reponse:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frSApassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frSAauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frSAmodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frSAcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: frSArare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: frSAidentical_modal
+prompt_type identical_modal has 6 prompts in it
+21
+42
+63
+84
+105
+126
+Using NLI dataset for fr
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  5.53it/s]100%|██████████| 3/3 [00:00<00:00, 15.94it/s]
+loading model Duration: 0:00:01.495767
+filter data Duraction: 0:00:00.000001
+use_neutral is  True
+len of entail_examples , neutral_examples, contra_examples:  70 70 70
+len dataset  210
+random sample Duraction: 0:02:41.810496
+path: frNLIactive
+prompt_type active has 10 prompts in it
+21
+Prémisse: L' epa a reconnu ces intérêts des parties prenantes dans un rapport succinct de ses objectifs révisés qu' elle a transmis au congrès et à ses autres parties prenantes en février 1995 . 
+ Prends cette prémisse comme vérité. Cette vérité implique-t-elle l'affirmation suivante: L' epa n' a reconnu ces intérêts qu' après une manifestation organisée .? Réponses possibles: 
+ A oui 
+ B non 
+ C peut-être 
+ Réponse: peut-être
+ 
+Prémisse: {premise} 
+ Prends cette prémisse comme vérité. Cette vérité implique-t-elle l'affirmation suivante: {hypothesis}? 
+ Réponse:
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frNLIpassive
+prompt_type passive has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frNLIauxiliary
+prompt_type auxiliary has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frNLImodal
+prompt_type modal has 10 prompts in it
+21
+42
+63
+84
+105
+126
+147
+168
+189
+210
+path: frNLIcommon
+prompt_type common has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: frNLIrare_synonyms
+prompt_type rare_synonyms has 7 prompts in it
+21
+42
+63
+84
+105
+126
+147
+path: frNLIidentical_modal
+prompt_type identical_modal has 5 prompts in it
+21
+42
+63
+84
+105
+****End Time: 2023-05-28 09:26:12.456621 Duration: 0:02:43.499219

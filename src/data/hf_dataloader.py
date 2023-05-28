@@ -10,7 +10,7 @@ class HFDataloader:
     Abstract class for dataloader
     """
 
-    def __init__(self, language="en", task='SA', batch_size=32, sample_size=200, seed=42, data_type='train'):
+    def __init__(self, language="en", task='SA', batch_size=32, sample_size=200, seed=42, data_type='train',make_one_hot=False):
         # :param language: language to load
         # :param batch_size: batch size
         self.seed = seed

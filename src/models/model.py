@@ -69,6 +69,7 @@ class Model:
             else:
                 print(f'id:{id}')
             self.possible_answers_ids.append(id)
+        print('summ of probs approach')
 
     def __call__(self, prompt: List[str]):
         """
@@ -125,7 +126,6 @@ class Model:
                 #     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
 
                 # summ
-                print('summ of probs approach')
                 if len(answer_id) > 1:
                     # TO DO: test if this is the best solution
                     probs = []
@@ -135,7 +135,7 @@ class Model:
                     probs_ = torch.cat(
                         probs, dim=1).sum(dim=1)
 
-                    print('probs_ shape', probs_, (probs_).shape)
+                    # print('probs_ shape', probs_, (probs_).shape)
                     # answers_probs[:, idx] = probs_.T
                     answers_probs[:, idx] = probs_
                     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
@@ -159,7 +159,7 @@ class Model:
                 else:
                     probs = logits[:, answer_id]
                     answers_probs[:, idx] = probs.T
-                    print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
+                    # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
         # print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
