@@ -1,5 +1,5 @@
 import argparse
-from models.model import Model
+from models.model_full_sentence import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
 from prompts.prompt import prompt_templates
