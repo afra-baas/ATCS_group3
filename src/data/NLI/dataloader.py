@@ -2,16 +2,15 @@
 import random
 from data.hf_dataloader import HFDataloader
 from datetime import datetime
-import pickle
 
 
 class NLIDataLoader(HFDataloader):
     data_name = "NLI"
     dataset_name = "xnli"
 
-    def __init__(self, language="en", task='SA', batch_size=32, sample_size=100, seed=42, data_type='train', make_one_hot=False):
+    def __init__(self, language="en", task='SA', batch_size=32, sample_size=100, seed=42, data_type='train', use_oneshot=False):
         super().__init__(language=language, task=task,
-                         batch_size=batch_size, sample_size=sample_size, seed=seed, data_type=data_type, make_one_hot=make_one_hot)
+                         batch_size=batch_size, sample_size=sample_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
 
         start_time = datetime.now()
         use_neutral = True
@@ -25,7 +24,7 @@ class NLIDataLoader(HFDataloader):
 
         start_time = datetime.now()
         self.dataset = self.get_random_sample(
-            use_neutral=use_neutral, make_one_hot=make_one_hot)
+            use_neutral=use_neutral, use_oneshot=use_oneshot)
         print('len dataset ', len(self.dataset))
 
         end_time = datetime.now()
@@ -42,7 +41,7 @@ class NLIDataLoader(HFDataloader):
         reviews = [row for row in self.dataset if row["label"] != 1]
         return reviews
 
-    def get_random_sample(self, use_neutral=True, make_one_hot=False):
+    def get_random_sample(self, use_neutral=True, use_oneshot=False):
         # Gets a random sample from the dataset
         # :param sample_size: number of samples to get
         # :param seed: random seed
@@ -55,10 +54,12 @@ class NLIDataLoader(HFDataloader):
         self.contra_examples = [
             row for row in self.dataset if row["label"] == 2]
 
-        if make_one_hot == False:
+        if use_oneshot:
             version = 2
-            with open(f"./ATCS_group3/src/list_indices_one_shot_{self.seed}_{self.language}_{self.task}_{version}.py", 'rb') as f:
-                list_indices = pickle.load(f)
+            # filename = f"list_indices_one_shot_3_{self.language}_{self.task}_{version}.py"
+            module_name = f"list_indices_one_shot_3_{self.language}_{self.task}_{version}"
+            module = __import__(module_name)
+            list_indices = getattr(module, "list_indices")
             one_shot_ent_ids, one_shot_neut_ids, one_shot_cont_ids = list_indices
         else:
             one_shot_ent_ids, one_shot_neut_ids, one_shot_cont_ids = [

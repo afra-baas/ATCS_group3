@@ -102,7 +102,7 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
     return logits_dict_for_prompt
 
 
-def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size, data_type='train', file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size, data_type='train', use_oneshot=False, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -113,10 +113,10 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
         start_time = datetime.now()
         if task == 'SA':
             train_dataloader = MARCDataLoader(language=lang, task=task,
-                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type)
+                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
         else:
             train_dataloader = NLIDataLoader(language=lang, task=task,
-                                             sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type)
+                                             sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
         # TO DO:
         # saved the sampled sentences, in a dict?
         end_time = datetime.now()
@@ -164,6 +164,7 @@ if __name__ == "__main__":
     # prompt_types = ['active', 'passive']
     # prompt_types = ['null']
     languages = ['en', 'de', 'fr']
+    # languages = ['de']
     # languages = ['en', 'de']
     # seeds = ['42', '33', '50']
     seeds = ['42']
@@ -172,7 +173,7 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 59
+    version = 63
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()

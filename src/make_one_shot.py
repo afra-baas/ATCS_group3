@@ -49,7 +49,7 @@ if __name__ == "__main__":
     version = 2
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
-    start_time = datetime.now()
+    start_time1 = datetime.now()
 
     for seed in seeds:
         for lang in languages:
@@ -57,12 +57,12 @@ if __name__ == "__main__":
                 start_time = datetime.now()
                 if task == 'SA':
                     train_dataloader = MARCDataLoader(language=lang, task=task,
-                                                      sample_size=sample_size, batch_size=batch_size, seed=seed, data_type='train', make_one_hot=True)
+                                                      sample_size=sample_size, batch_size=batch_size, seed=seed, data_type='train', use_oneshot=False)
                     list_indices = [
                         train_dataloader.pos_sample_indices, train_dataloader.neg_sample_indices]
                 else:
                     train_dataloader = NLIDataLoader(language=lang, task=task,
-                                                     sample_size=sample_size, batch_size=batch_size, seed=seed, data_type='train', make_one_hot=True)
+                                                     sample_size=sample_size, batch_size=batch_size, seed=seed, data_type='train', use_oneshot=False)
                     list_indices = [train_dataloader.ent_sample_indices,
                                     train_dataloader.neut_sample_indices, train_dataloader.cont_sample_indices]
 
@@ -107,5 +107,5 @@ if __name__ == "__main__":
         file.write("prompt_templates = " + str(prompt_templates))
 
     end_time = datetime.now()
-    duration = end_time - start_time
+    duration = end_time - start_time1
     print('****End Time:', end_time, f'Duration: {duration}')
