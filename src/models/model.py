@@ -87,7 +87,6 @@ class Model:
 
             inputs = self.tokenizer(
                 prompt, return_tensors="pt", padding=True).to(self.device)
-            # print('inputs: ', inputs)
 
             # generate outputs
             if self.model_name == 'huggyllama/llama-7b':
@@ -95,10 +94,6 @@ class Model:
                     inputs["input_ids"], attention_mask=inputs["attention_mask"])
             else:
                 outputs = self.model(**inputs, labels=inputs["input_ids"])
-
-            # # generate outputs
-            # outputs = self.model(
-            #     inputs["input_ids"], attention_mask=inputs["attention_mask"])
 
             # get the logits of the last token
             logits = outputs.logits[:, -1]
@@ -109,22 +104,6 @@ class Model:
                 self.device)
 
             for idx, answer_id in enumerate(self.possible_answers_ids):
-
-                # avg version
-                # if len(answer_id) > 1:
-                #     # TO DO: test if this is the best solution
-                #     probs = []
-                #     for part in answer_id:
-                #         part_id = [part]
-                #         probs.append(logits[:, part_id])
-                #     probs_ = torch.cat(
-                #         probs, dim=1).mean(dim=1)
-
-                #     print('probs_ shape', probs_, (probs_).shape)
-                #     # answers_probs[:, idx] = probs_.T
-                #     answers_probs[:, idx] = probs_
-                #     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
-
                 # summ
                 if len(answer_id) > 1:
                     # TO DO: test if this is the best solution
@@ -140,28 +119,20 @@ class Model:
                     answers_probs[:, idx] = probs_
                     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
 
-                # # max
-                # print('max of probs approach')
-                # if len(answer_id) > 1:
-                #     # TO DO: test if this is the best solution
-                #     probs = []
-                #     for part in answer_id:
-                #         part_id = [part]
-                #         probs.append(logits[:, part_id])
-                #     max_prob, max_token_id = torch.max(
-                #         torch.cat(probs, dim=1), dim=1)
-                #     probs_ = max_prob
-                #     print('probs_ shape', probs_, (probs_).shape)
-                #     # answers_probs[:, idx] = probs_.T
-                #     answers_probs[:, idx] = probs_
-                #     print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
+                    # normalize answer probs over dim 0
+                    answers_probs = torch.nn.functional.softmax(
+                        answers_probs, dim=0)
 
                 else:
                     probs = logits[:, answer_id]
                     answers_probs[:, idx] = probs.T
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        # print('answers_probs:', answers_probs)
+                    # normalize answer probs over dim 0
+                    answers_probs = torch.nn.functional.softmax(
+                        answers_probs, dim=0)
+
+        print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
 
