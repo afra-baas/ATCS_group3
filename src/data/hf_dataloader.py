@@ -1,5 +1,6 @@
 from torch.utils.data import DataLoader
-from config import task_config
+# from config import task_config
+from config import task_config_ABC
 import random
 from datasets import load_dataset
 from datetime import datetime
@@ -29,7 +30,7 @@ class HFDataloader:
         print(f'loading model Duration: {duration}')
 
         try:
-            self.task_config = task_config["SUPPORTED_TASKS"][self.language][task]
+            self.task_config = task_config_ABC["SUPPORTED_TASKS"][self.language][task]
         except KeyError:
             print(f"Task {task} not supported")
             raise KeyError

@@ -119,18 +119,22 @@ class Model:
                     answers_probs[:, idx] = probs_
                     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
 
-                    # normalize answer probs over dim 0
-                    answers_probs = torch.nn.functional.softmax(
-                        answers_probs, dim=0)
-
                 else:
                     probs = logits[:, answer_id]
                     answers_probs[:, idx] = probs.T
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-                    # normalize answer probs over dim 0
-                    answers_probs = torch.nn.functional.softmax(
-                        answers_probs, dim=0)
+        print('answers_probs1:', answers_probs)
+        # Calculate row-wise sums
+        row_sums = answers_probs.sum(dim=1)
+
+        # Normalize each row by dividing by its sum
+        normalized_probs = answers_probs / row_sums.view(-1, 1)
+
+        # Apply softmax function along dim=1 to obtain normalized probabilities
+        # print(normalized_probs.softmax(dim=1))
+        print(normalized_probs.softmax(dim=0))
+        answers_probs = normalized_probs.softmax(dim=1)
 
         print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)

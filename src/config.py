@@ -46,7 +46,11 @@ model = {
         },
         "t0": {"model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
                "model_name": 'bigscience/mt0-small'
-               }
+               },
+        "t5": {
+            "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
+            "model_name": 't5-base'  # model name for huggingface
+        }
     }
 }
 
@@ -110,28 +114,27 @@ task_config_ABC = {
                             "possible_answers": ['A', 'B', 'C'],
                             "prompt_class": NLIPrompt
                         }},
-                        # or
-                        'de': {
-                            "SA": {
-                                "label_map": {5: 'A ja',  1: 'B nein'},
-                                "possible_answers": ['A ja', 'B nein'],
-                                "prompt_class": SAPrompt
-                            },
+                        'de':
+                        {"SA": {
+                            "label_map": {5: 'A',  1: 'B'},
+                            "possible_answers": ['A', 'B'],
+                            "prompt_class": SAPrompt
+                        },
                             "NLI": {
-                                "label_map": {0: 'A ja', 1: 'B vielleicht', 2: 'C nein'},
-                                "possible_answers": ['A ja', 'B nein', 'C vielleicht'],
-                                "prompt_class": NLIPrompt
-                            }},
-                        'fr': {
-                            "SA": {
-                                "label_map": {5: 'oui',  1: 'non'},
-                                "possible_answers": ['oui', 'non'],
-                                "prompt_class": SAPrompt
-                            },
+                            "label_map": {0: 'A', 1: 'B', 2: 'C'},
+                            "possible_answers": ['A', 'B', 'C'],
+                            "prompt_class": NLIPrompt
+                        }},
+                        'fr':
+                        {"SA": {
+                            "label_map": {5: 'A',  1: 'B'},
+                            "possible_answers": ['A', 'B'],
+                            "prompt_class": SAPrompt
+                        },
                             "NLI": {
-                                "label_map": {0: 'oui', 1: 'peut-être', 2: 'non'},
-                                "possible_answers": ['oui', 'non', 'peut-être'],
-                                "prompt_class": NLIPrompt
-                            }}
+                            "label_map": {0: 'A', 1: 'B', 2: 'C'},
+                            "possible_answers": ['A', 'B', 'C'],
+                            "prompt_class": NLIPrompt
+                        }}
                         }
 }

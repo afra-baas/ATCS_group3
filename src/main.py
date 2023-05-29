@@ -1,5 +1,4 @@
 import argparse
-# from config import data, model, task_config
 from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
@@ -173,7 +172,7 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 63
+    version = 65
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
