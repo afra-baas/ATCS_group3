@@ -136,6 +136,13 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
                     f'prompt_type {prompt_type} has {num_prompts} prompts in it')
                 for prompt_id in range(num_prompts):
 
+                    # the the instruction bias, to scale normalize
+                    answers_probs_batch, pred_answer_batch = LM(
+                        train_dataloader.prompt.dict_sa_prompt[prompt_type][prompt_id])
+                    scale = answers_probs_batch[0][0] / \
+                        answers_probs_batch[0][1]  # yes/ no
+                    LM.scale = scale
+
                     logits_dict_for_prompt = get_prompt_acc(
                         seed, train_dataloader, lang, LM, task, prompt_type, prompt_id, sample_size, batch_size)
                     path = [seed, lang, LM_model, task,
@@ -154,7 +161,7 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
 
 if __name__ == "__main__":
 
-    models = ['flan', 't5']
+    models = ['bloom', 'llama', 'flan', 't5']
     # models = ['bloom', 'bloomz', 'flan', 'llama', 't0']
     tasks = ['SA', 'NLI']
     # tasks = ['SA']

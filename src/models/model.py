@@ -72,6 +72,8 @@ class Model:
             self.possible_answers_ids.append(id)
         print('summ of probs approach')
 
+        self.scale = 1
+
     def __call__(self, prompt: List[str]):
         """
         Generate probabilites for each promt and each possible answer.
@@ -128,19 +130,25 @@ class Model:
                     answers_probs[:, idx] = probs.T
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        print('answers_probs before norm:', answers_probs)
+        print('answers_probs before norm:', answers_probs, answers_probs.shape)
+        answers_probs[:, 1] = answers_probs[:, 1]*self.scale
+        print('* scale ', answers_probs, answers_probs.shape)
+
+        print('answers_probs just softmax dim 0:',
+              answers_probs.softmax(dim=0))
+
         # Calculate row-wise sums
         row_sums = answers_probs.sum(dim=1)
-
         # Normalize each row by dividing by its sum
         normalized_probs = answers_probs / row_sums.view(-1, 1)
 
         # Apply softmax function along dim=1 to obtain normalized probabilities
         # print(normalized_probs.softmax(dim=1))
-        # print(normalized_probs.softmax(dim=0))
-        answers_probs = normalized_probs.softmax(dim=0)
+        # answers_probs = normalized_probs.softmax(dim=0)
+        print(normalized_probs.softmax(dim=0))
+        print(torch.nn.functional.softmax(normalized_probs, dim=0))
 
-        print('answers_probs:', answers_probs)
+        # print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
 
