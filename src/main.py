@@ -181,6 +181,14 @@ if __name__ == "__main__":
     # MAKE sure the change this if you dont want to overwrite previous results
     version = 67
 
+
+    module_name = f"prompt_structure_ABC"
+    module = __import__(module_name)
+    prompt_templates = getattr(module, "prompt_templates")
+
+    answer_type_ABC = True
+
+
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
 

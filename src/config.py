@@ -4,6 +4,8 @@ from transformers import AutoModelForMaskedLM, AutoModelForCausalLM, AutoModelFo
 from prompts.nli_prompt import NLIPrompt
 from prompts.sa_prompt import SAPrompt
 
+from main import answer_type_ABC
+
 data = {
     "NLI": {
         "dataset": "NLI",
@@ -54,88 +56,88 @@ model = {
     }
 }
 
-
-task_config = {
-    "DEFAULT_TASK": "SA",
-    "SUPPORTED_TASKS": {'en':
-                        {"SA": {
-                            # "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
-                            "label_map": {5: 'yes',  1: 'no'},
-                            "possible_answers": ['yes', 'no'],
-                            # "possible_answers": ['no', 'yes'],
-                            "prompt_class": SAPrompt
-                        },
-                            "NLI": {
-                            "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
-                            # unclear? instead of maybe
-                            "possible_answers": ['yes', 'no', 'maybe'],
-                            # "possible_answers": ['maybe', 'yes', 'no'],
-                            "prompt_class": NLIPrompt
-                        }},
-                        'de': {
-                            "SA": {
-                                "label_map": {5: 'ja',  1: 'nein'},
-                                "possible_answers": ['ja', 'nein'],
-                                # "possible_answers": ['nein', 'ja'],
+if answer_type_ABC:
+    task_config = {
+        "DEFAULT_TASK": "SA",
+        "SUPPORTED_TASKS": {'en':
+                            {"SA": {
+                                "label_map": {5: 'A',  1: 'B'},
+                                "possible_answers": ['A', 'B'],
                                 "prompt_class": SAPrompt
                             },
-                            "NLI": {
-                                "label_map": {0: 'ja', 1: 'vielleicht', 2: 'nein'},
-                                "possible_answers": ['ja', 'nein', 'vielleicht'],
-                                # "possible_answers": ['vielleicht', 'ja', 'nein'],
+                                "NLI": {
+                                "label_map": {0: 'A', 1: 'B', 2: 'C'},
+                                "possible_answers": ['A', 'B', 'C'],
                                 "prompt_class": NLIPrompt
                             }},
-                        'fr': {
-                            "SA": {
-                                "label_map": {5: 'oui',  1: 'non'},
-                                "possible_answers": ['oui', 'non'],
-                                # "possible_answers": ['non', 'oui'],
+                            'de':
+                            {"SA": {
+                                "label_map": {5: 'A',  1: 'B'},
+                                "possible_answers": ['A', 'B'],
                                 "prompt_class": SAPrompt
                             },
-                            "NLI": {
-                                "label_map": {0: 'oui', 1: 'peut-être', 2: 'non'},
-                                "possible_answers": ['oui', 'non', 'peut-être'],
-                                # "possible_answers": ['peut-être', 'oui', 'non'],
+                                "NLI": {
+                                "label_map": {0: 'A', 1: 'B', 2: 'C'},
+                                "possible_answers": ['A', 'B', 'C'],
+                                "prompt_class": NLIPrompt
+                            }},
+                            'fr':
+                            {"SA": {
+                                "label_map": {5: 'A',  1: 'B'},
+                                "possible_answers": ['A', 'B'],
+                                "prompt_class": SAPrompt
+                            },
+                                "NLI": {
+                                "label_map": {0: 'A', 1: 'B', 2: 'C'},
+                                "possible_answers": ['A', 'B', 'C'],
                                 "prompt_class": NLIPrompt
                             }}
-                        }
-}
+                            }
+    }
 
-
-# task_config = {
-#     "DEFAULT_TASK": "SA",
-#     "SUPPORTED_TASKS": {'en':
-#                         {"SA": {
-#                             "label_map": {5: 'A',  1: 'B'},
-#                             "possible_answers": ['A', 'B'],
-#                             "prompt_class": SAPrompt
-#                         },
-#                             "NLI": {
-#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
-#                             "possible_answers": ['A', 'B', 'C'],
-#                             "prompt_class": NLIPrompt
-#                         }},
-#                         'de':
-#                         {"SA": {
-#                             "label_map": {5: 'A',  1: 'B'},
-#                             "possible_answers": ['A', 'B'],
-#                             "prompt_class": SAPrompt
-#                         },
-#                             "NLI": {
-#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
-#                             "possible_answers": ['A', 'B', 'C'],
-#                             "prompt_class": NLIPrompt
-#                         }},
-#                         'fr':
-#                         {"SA": {
-#                             "label_map": {5: 'A',  1: 'B'},
-#                             "possible_answers": ['A', 'B'],
-#                             "prompt_class": SAPrompt
-#                         },
-#                             "NLI": {
-#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
-#                             "possible_answers": ['A', 'B', 'C'],
-#                             "prompt_class": NLIPrompt
-#                         }}
-#                         }
-# }
+else:
+    task_config = {
+        "DEFAULT_TASK": "SA",
+        "SUPPORTED_TASKS": {'en':
+                            {"SA": {
+                                # "label_map": {5: 'yes', 4: 'yes', 3: 'yes', 2: 'no', 1: 'no',  0: 'no'},
+                                "label_map": {5: 'yes',  1: 'no'},
+                                "possible_answers": ['yes', 'no'],
+                                # "possible_answers": ['no', 'yes'],
+                                "prompt_class": SAPrompt
+                            },
+                                "NLI": {
+                                "label_map": {0: 'yes', 1: 'maybe', 2: 'no'},
+                                # unclear? instead of maybe
+                                "possible_answers": ['yes', 'no', 'maybe'],
+                                # "possible_answers": ['maybe', 'yes', 'no'],
+                                "prompt_class": NLIPrompt
+                            }},
+                            'de': {
+                                "SA": {
+                                    "label_map": {5: 'ja',  1: 'nein'},
+                                    "possible_answers": ['ja', 'nein'],
+                                    # "possible_answers": ['nein', 'ja'],
+                                    "prompt_class": SAPrompt
+                                },
+                                "NLI": {
+                                    "label_map": {0: 'ja', 1: 'vielleicht', 2: 'nein'},
+                                    "possible_answers": ['ja', 'nein', 'vielleicht'],
+                                    # "possible_answers": ['vielleicht', 'ja', 'nein'],
+                                    "prompt_class": NLIPrompt
+                                }},
+                            'fr': {
+                                "SA": {
+                                    "label_map": {5: 'oui',  1: 'non'},
+                                    "possible_answers": ['oui', 'non'],
+                                    # "possible_answers": ['non', 'oui'],
+                                    "prompt_class": SAPrompt
+                                },
+                                "NLI": {
+                                    "label_map": {0: 'oui', 1: 'peut-être', 2: 'non'},
+                                    "possible_answers": ['oui', 'non', 'peut-être'],
+                                    # "possible_answers": ['peut-être', 'oui', 'non'],
+                                    "prompt_class": NLIPrompt
+                                }}
+                            }
+    }

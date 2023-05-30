@@ -1,5 +1,5 @@
 from typing import List
-from prompt_structure_no_yes import prompt_templates
+from main import prompt_templates
 
 
 class Prompt:
