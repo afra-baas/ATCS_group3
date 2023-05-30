@@ -54,6 +54,7 @@ model = {
     }
 }
 
+
 task_config = {
     "DEFAULT_TASK": "SA",
     "SUPPORTED_TASKS": {'en':
@@ -101,40 +102,40 @@ task_config = {
 }
 
 
-task_config_ABC = {
-    "DEFAULT_TASK": "SA",
-    "SUPPORTED_TASKS": {'en':
-                        {"SA": {
-                            "label_map": {5: 'A',  1: 'B'},
-                            "possible_answers": ['A', 'B'],
-                            "prompt_class": SAPrompt
-                        },
-                            "NLI": {
-                            "label_map": {0: 'A', 1: 'B', 2: 'C'},
-                            "possible_answers": ['A', 'B', 'C'],
-                            "prompt_class": NLIPrompt
-                        }},
-                        'de':
-                        {"SA": {
-                            "label_map": {5: 'A',  1: 'B'},
-                            "possible_answers": ['A', 'B'],
-                            "prompt_class": SAPrompt
-                        },
-                            "NLI": {
-                            "label_map": {0: 'A', 1: 'B', 2: 'C'},
-                            "possible_answers": ['A', 'B', 'C'],
-                            "prompt_class": NLIPrompt
-                        }},
-                        'fr':
-                        {"SA": {
-                            "label_map": {5: 'A',  1: 'B'},
-                            "possible_answers": ['A', 'B'],
-                            "prompt_class": SAPrompt
-                        },
-                            "NLI": {
-                            "label_map": {0: 'A', 1: 'B', 2: 'C'},
-                            "possible_answers": ['A', 'B', 'C'],
-                            "prompt_class": NLIPrompt
-                        }}
-                        }
-}
+# task_config = {
+#     "DEFAULT_TASK": "SA",
+#     "SUPPORTED_TASKS": {'en':
+#                         {"SA": {
+#                             "label_map": {5: 'A',  1: 'B'},
+#                             "possible_answers": ['A', 'B'],
+#                             "prompt_class": SAPrompt
+#                         },
+#                             "NLI": {
+#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
+#                             "possible_answers": ['A', 'B', 'C'],
+#                             "prompt_class": NLIPrompt
+#                         }},
+#                         'de':
+#                         {"SA": {
+#                             "label_map": {5: 'A',  1: 'B'},
+#                             "possible_answers": ['A', 'B'],
+#                             "prompt_class": SAPrompt
+#                         },
+#                             "NLI": {
+#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
+#                             "possible_answers": ['A', 'B', 'C'],
+#                             "prompt_class": NLIPrompt
+#                         }},
+#                         'fr':
+#                         {"SA": {
+#                             "label_map": {5: 'A',  1: 'B'},
+#                             "possible_answers": ['A', 'B'],
+#                             "prompt_class": SAPrompt
+#                         },
+#                             "NLI": {
+#                             "label_map": {0: 'A', 1: 'B', 2: 'C'},
+#                             "possible_answers": ['A', 'B', 'C'],
+#                             "prompt_class": NLIPrompt
+#                         }}
+#                         }
+# }

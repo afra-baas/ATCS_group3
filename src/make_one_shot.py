@@ -1,37 +1,14 @@
 from prompts.prompt import Prompt
 from typing import List
-from prompt_structure_without_one_shot import prompt_templates
+from prompt_structure_without import prompt_templates
 from datetime import datetime
 from data.hf_dataloader import HFDataloader
 from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
+from prompts.sa_prompt import SAPrompt
+from prompts.nli_prompt import NLIPrompt
 import os
-
-
-class SAPrompt(Prompt):
-
-    def __call__(self, sentences: List[str], prompt_type, prompt_id) -> str:
-        # :param sentences: a list with all the input sentences ## ??
-        # :return: a string transformed to the desired prompt.
-
-        template = self.dict_sa_prompt[prompt_type][prompt_id]
-        content = sentences[0]
-        prompt = template.format(content=content)
-        return prompt
-
-
-class NLIPrompt(Prompt):
-
-    def __call__(self, sentences: List[str], prompt_type, prompt_id) -> str:
-        # :param sentences: a list with all the input sentences ## ??
-        # :return: a string transformed to the desired prompt.
-
-        template = self.dict_sa_prompt[prompt_type][prompt_id]
-        premise = sentences[0]
-        hypothesis = sentences[1]
-        prompt = template.format(premise=premise, hypothesis=hypothesis)
-        return prompt
 
 
 if __name__ == "__main__":
@@ -46,7 +23,7 @@ if __name__ == "__main__":
     sample_size = 210
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 2
+    version = 3
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time1 = datetime.now()
@@ -68,10 +45,10 @@ if __name__ == "__main__":
 
                 # Create the directory if it doesn't exist
                 os.makedirs(os.path.dirname(
-                    f"./ATCS_group3/src/list_indices_one_shot_{seed}_{lang}_{task}_{version}.py"), exist_ok=True)
+                    f"./ATCS_group3/src/one_shot/list_indices_one_shot_{seed}_{lang}_{task}_{version}.py"), exist_ok=True)
 
                 # Write the string representation to a Python file
-                with open(f"./ATCS_group3/src/list_indices_one_shot_{seed}_{lang}_{task}_{version}.py", "w+") as file:
+                with open(f"./ATCS_group3/src/one_shot/list_indices_one_shot_{seed}_{lang}_{task}_{version}.py", "w+") as file:
                     file.write("list_indices = " + str(list_indices))
 
                 for prompt_type in prompt_types:
@@ -100,10 +77,10 @@ if __name__ == "__main__":
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(
-        f'./ATCS_group3/src/prompt_structure_one_shot{version}.py'), exist_ok=True)
+        f'./ATCS_group3/src/one_shot/prompt_structure_one_shot{version}.py'), exist_ok=True)
 
     # Write the string representation to a Python file
-    with open(f"./ATCS_group3/src/prompt_structure_one_shot{version}.py", "w+") as file:
+    with open(f"./ATCS_group3/src/one_shot/prompt_structure_one_shot{version}.py", "w+") as file:
         file.write("prompt_templates = " + str(prompt_templates))
 
     end_time = datetime.now()

@@ -1,6 +1,5 @@
 from data.hf_dataloader import HFDataloader
 import random
-import pickle
 
 
 class MARCDataLoader(HFDataloader):
@@ -54,9 +53,10 @@ class MARCDataLoader(HFDataloader):
         random.seed(self.seed)
 
         if use_oneshot:
-            version = 2
+            print('*** using one shot approach')
+            version = self.version
             # filename = f"list_indices_one_shot_3_{self.language}_{self.task}_{version}.py"
-            module_name = f"list_indices_one_shot_3_{self.language}_{self.task}_{version}"
+            module_name = f"one_shot.list_indices_one_shot_3_{self.language}_{self.task}_{version}"
             module = __import__(module_name)
             list_indices = getattr(module, "list_indices")
             one_shot_pos_ids, one_shot_neg_ids = list_indices

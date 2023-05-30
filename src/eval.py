@@ -14,8 +14,4 @@ def evaluate(predictions, targets):
         if predictions[i] == targets[i]:
             correct += 1
     accuracy = correct / total
-
-    # To do : significance measure
-    # Save results somewhere -> there in the job_logs
-
     return accuracy

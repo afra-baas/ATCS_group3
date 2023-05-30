@@ -49,6 +49,7 @@ class Model:
             self.model = self.model.cuda()
         print(f"Model device: {self.model.device}")
 
+        print('possible_answers:', possible_answers)
         self.possible_answers = possible_answers
         possible_answers_ids_before = [self.tokenizer(
             answer) for answer in self.possible_answers]
@@ -115,16 +116,19 @@ class Model:
                         probs, dim=1).sum(dim=1)
 
                     # print('probs_ shape', probs_, (probs_).shape)
+                    print('probs_ shape 1', (probs_).shape)
                     # answers_probs[:, idx] = probs_.T
                     answers_probs[:, idx] = probs_
                     # print(f'id: {answer_id} -> {probs_}, {(probs_).shape}')
 
                 else:
+
                     probs = logits[:, answer_id]
+                    print('probs_ shape 2', (probs.T).shape)
                     answers_probs[:, idx] = probs.T
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        print('answers_probs1:', answers_probs)
+        print('answers_probs before norm:', answers_probs)
         # Calculate row-wise sums
         row_sums = answers_probs.sum(dim=1)
 
@@ -133,8 +137,8 @@ class Model:
 
         # Apply softmax function along dim=1 to obtain normalized probabilities
         # print(normalized_probs.softmax(dim=1))
-        print(normalized_probs.softmax(dim=0))
-        answers_probs = normalized_probs.softmax(dim=1)
+        # print(normalized_probs.softmax(dim=0))
+        answers_probs = normalized_probs.softmax(dim=0)
 
         print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
