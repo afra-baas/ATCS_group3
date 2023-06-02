@@ -4,7 +4,9 @@ from transformers import AutoModelForMaskedLM, AutoModelForCausalLM, AutoModelFo
 from prompts.nli_prompt import NLIPrompt
 from prompts.sa_prompt import SAPrompt
 
-from main import answer_type_ABC
+
+# specify if you want the probabilities on ABC (then = True) or yes no maybe
+answer_type_ABC = True
 
 data = {
     "NLI": {
@@ -30,6 +32,10 @@ model = {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "huggyllama/llama-7b"       # model name for huggingface
         },
+        "flan": {
+            "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
+            "model_name": 'google/flan-t5-base'  # model name for huggingface
+        },
         "bloom": {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloom-560m"       # model name for huggingface
@@ -38,20 +44,21 @@ model = {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
             "model_name": "bigscience/bloomz-560m"       # model name for huggingface
         },
-        "alpaca": {
+        "bloom-big": {
             "model_constructor": AutoModelForCausalLM.from_pretrained,
-            "model_name": 'chainyo/alpaca-lora-7b'  # model name for huggingface
+            "model_name": "bigscience/bloom-7b1"       # model name for huggingface
         },
-        "flan": {
-            "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
-            "model_name": 'google/flan-t5-base'  # model name for huggingface
+        "bloomz-mt": {
+            "model_constructor": AutoModelForCausalLM.from_pretrained,
+            "model_name": "bigscience/bloomz-7b1-mt"  # Multilingual prompts
         },
         "t0": {"model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
-               "model_name": 'bigscience/mt0-small'
+               #    "model_name": 'bigscience/mt0-small'
+               "model_name": 'bigscience/mt0-base'  # English prompts
                },
         "t5": {
             "model_constructor": AutoModelForSeq2SeqLM.from_pretrained,
-            "model_name": 't5-base'  # model name for huggingface
+            "model_name": 'google/mt5-base'  # model name for huggingface
         }
     }
 }

@@ -10,7 +10,7 @@ class HFDataloader:
     Abstract class for dataloader
     """
 
-    def __init__(self, language="en", task='SA', batch_size=32, sample_size=200, seed=42, data_type='train', use_oneshot=False):
+    def __init__(self, prompt_templates, language="en", task='SA', batch_size=32, sample_size=200, seed=42, data_type='train', use_oneshot=False):
         # :param language: language to load
         # :param batch_size: batch size
         self.seed = seed
@@ -36,7 +36,7 @@ class HFDataloader:
             raise KeyError
 
         self.prompt = self.task_config["prompt_class"](
-            self.language, self.task)
+            self.language, self.task, prompt_templates)
         self.label_map = self.task_config["label_map"]
         self.possible_answers = self.task_config["possible_answers"]
 

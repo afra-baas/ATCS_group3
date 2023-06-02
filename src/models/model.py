@@ -16,10 +16,11 @@ class Model:
             raise KeyError(
                 f"Model {model_name} not supported. Please use one of the following models: {model['SUPPORTED_MODELS'].keys()}"
             )
-        self.model_name = model_config["model_name"]
 
-        print(f"Loading model {self.model_name}")
-        if model_name == "llama":
+        self.model_name = model_config["model_name"]
+        print(f"Loading model {model_name}")
+        if model_name == "llama" or model_name == 'bloomz-mt' or model_name == 'bloom-big':
+            print('big model to load')
             self.model = model_config["model_constructor"](
                 self.model_name, torch_dtype=torch.float16)
         else:
@@ -87,7 +88,6 @@ class Model:
             param.requires_grad = False
 
         with torch.no_grad():
-
             inputs = self.tokenizer(
                 prompt, return_tensors="pt", padding=True).to(self.device)
 
@@ -100,7 +100,12 @@ class Model:
 
             # get the logits of the last token
             logits = outputs.logits[:, -1]
-            logits = torch.nn.functional.softmax(logits, dim=1)
+            # logits = torch.nn.functional.softmax(logits, dim=1)
+
+            # Calculate row-wise sums
+            # row_sums = logits.sum(dim=1)
+            # Normalize each row by dividing by its sum
+            # logits = logits / row_sums.view(-1, 1)
 
             # loop over all possible answers for every promt and store the logits
             answers_probs = torch.zeros(len(prompt), len(self.possible_answers_ids)).to(
@@ -130,23 +135,24 @@ class Model:
                     answers_probs[:, idx] = probs.T
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
-        print('answers_probs before norm:', answers_probs, answers_probs.shape)
+        # print('answers_probs before norm:', answers_probs, answers_probs.shape)
+        print('answers_probs just softmax dim 1:',answers_probs.softmax(dim=1))
+
         answers_probs[:, 1] = answers_probs[:, 1]*self.scale
         print('* scale ', answers_probs, answers_probs.shape)
 
-        print('answers_probs just softmax dim 0:',
-              answers_probs.softmax(dim=0))
+        # print('answers_probs just softmax dim 0:',
+        #       answers_probs.softmax(dim=0))
 
         # Calculate row-wise sums
-        row_sums = answers_probs.sum(dim=1)
+        # row_sums = answers_probs.sum(dim=1)
         # Normalize each row by dividing by its sum
-        normalized_probs = answers_probs / row_sums.view(-1, 1)
+        # normalized_probs = answers_probs / row_sums.view(-1, 1)
 
         # Apply softmax function along dim=1 to obtain normalized probabilities
         # print(normalized_probs.softmax(dim=1))
         # answers_probs = normalized_probs.softmax(dim=0)
-        print(normalized_probs.softmax(dim=0))
-        print(torch.nn.functional.softmax(normalized_probs, dim=0))
+        # print(normalized_probs.softmax(dim=0))
 
         # print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)

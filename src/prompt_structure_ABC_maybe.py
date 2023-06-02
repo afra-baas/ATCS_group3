@@ -14,7 +14,7 @@ prompt_templates = {"en": {"SA": {"active": ['Review: {content} \n Is this revie
                                               'Review: {content} \n Was this review written positively by the user? Possible answers: \n A yes \n B no \n Answer:',
                                               'Review: {content} \n Is this product review characterized by positivity? Possible answers: \n A yes \n B no \n Answer:',
                                               'Review: {content} \n Is the review written by the user to recommend the product? Possible answers: \n A yes \n B no \n Answer:',
-                                              'Review: {content} \n Is positive sentiment conveyed by this product review? Possible answers: \n A yes \n B no \n Answer:',
+                                              'Review: {content} \n Is a positive sentiment conveyed by this product review? Possible answers: \n A yes \n B no \n Answer:',
                                               'Review: {content} \n Is this review written with a positive tone? Possible answers: \n A yes \n B no \n Answer:',
                                               'Review: {content} \n Here is a review of a product left by a customer. Is this review considered to be positive? Possible answers: \n A yes \n B no \n Answer:',
                                               'Review: {content} \n Can you say the product in this review is depicted in a positive light? Possible answers: \n A yes \n B no \n Answer:',

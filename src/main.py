@@ -2,10 +2,8 @@ import argparse
 from models.model import Model
 from data.MARC.dataloader import MARCDataLoader
 from data.NLI.dataloader import NLIDataLoader
-from prompts.prompt import prompt_templates
 
 from eval import evaluate
-import torch
 from datetime import datetime
 import os
 import pickle
@@ -47,6 +45,7 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
 
         start_time = datetime.now()
         # Classification
+        print('len prompts', len(prompts))
         answers_probs_batch, pred_answer_batch = LM(prompts)
 
         end_time = datetime.now()
@@ -101,7 +100,7 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
     return logits_dict_for_prompt
 
 
-def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size, data_type='train', use_oneshot=False, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def pipeline(seed, lang, LM_models, tasks, prompt_types, prompt_templates, batch_size, sample_size, data_type='train', use_oneshot=False, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -111,10 +110,10 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
     for task in tasks:
         start_time = datetime.now()
         if task == 'SA':
-            train_dataloader = MARCDataLoader(language=lang, task=task,
+            train_dataloader = MARCDataLoader(prompt_templates, language=lang, task=task,
                                               sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
         else:
-            train_dataloader = NLIDataLoader(language=lang, task=task,
+            train_dataloader = NLIDataLoader(prompt_templates, language=lang, task=task,
                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
         # TO DO:
         # saved the sampled sentences, in a dict?
@@ -161,8 +160,8 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, batch_size, sample_size
 
 if __name__ == "__main__":
 
-    models = ['bloom', 'llama', 'flan', 't5']
-    # models = ['bloom', 'bloomz', 'flan', 'llama', 't0']
+    # models = ['flan', 't5']
+    models = ['bloom', 'bloomz', 'flan', 'llama', 't0', 't5']
     tasks = ['SA', 'NLI']
     # tasks = ['SA']
     prompt_types = ['active', 'passive', 'auxiliary',
@@ -170,7 +169,7 @@ if __name__ == "__main__":
     # prompt_types = ['active', 'passive']
     # prompt_types = ['null']
     languages = ['en', 'de', 'fr']
-    # languages = ['de']
+    # languages = ['en']
     # languages = ['en', 'de']
     # seeds = ['42', '33', '50']
     seeds = ['42']
@@ -179,16 +178,15 @@ if __name__ == "__main__":
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 67
+    version = 83
 
-
-    module_name = f"prompt_structure_ABC"
+    # specify here which prompt structure you want to import
+    module_name = f"prompt_structure"
     module = __import__(module_name)
-    prompt_templates = getattr(module, "prompt_templates")
+    prompt_templates = getattr(module, "prompt_templates_ABC_maybe")
 
-    answer_type_ABC = True
-
-
+    print(
+        f'experiment: logits scaling, ABC maybe -> pickle {version}, ({models}; {tasks}; {prompt_types}; {languages})')
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
 
@@ -196,7 +194,7 @@ if __name__ == "__main__":
         for lang in languages:
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
 
-            pipeline(seed, lang, models, tasks, prompt_types,
+            pipeline(seed, lang, models, tasks, prompt_types, prompt_templates,
                      batch_size, sample_size, file_path=file_path)
 
     end_time = datetime.now()

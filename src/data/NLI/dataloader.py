@@ -8,8 +8,8 @@ class NLIDataLoader(HFDataloader):
     data_name = "NLI"
     dataset_name = "xnli"
 
-    def __init__(self, language="en", task='SA', batch_size=32, sample_size=100, seed=42, data_type='train', use_oneshot=False):
-        super().__init__(language=language, task=task,
+    def __init__(self, prompt_templates, language="en", task='SA', batch_size=32, sample_size=100, seed=42, data_type='train', use_oneshot=False):
+        super().__init__(prompt_templates, language=language, task=task,
                          batch_size=batch_size, sample_size=sample_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
 
         start_time = datetime.now()

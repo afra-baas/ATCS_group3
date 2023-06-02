@@ -1,5 +1,4 @@
 from typing import List
-
 from prompts.prompt import Prompt
 
 

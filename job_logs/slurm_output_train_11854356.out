@@ -1,0 +1,64 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-06-02_00-58-36
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 192.88it/s]
+loading model Duration: 0:00:01.145542
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  200
+create dataloader Duration: 0:03:09.832389
+Loading model bloom
+Traceback (most recent call last):
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 259, in hf_raise_for_status
+    response.raise_for_status()
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/requests/models.py", line 1021, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://huggingface.co/bloom/resolve/main/config.json
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/utils/hub.py", line 409, in cached_file
+    resolved_file = hf_hub_download(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 120, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1195, in hf_hub_download
+    metadata = get_hf_file_metadata(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 120, in _inner_fn
+    return fn(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/file_download.py", line 1541, in get_hf_file_metadata
+    hf_raise_for_status(r)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/huggingface_hub/utils/_errors.py", line 291, in hf_raise_for_status
+    raise RepositoryNotFoundError(message, response) from e
+huggingface_hub.utils._errors.RepositoryNotFoundError: 401 Client Error. (Request ID: Root=1-6479235a-17b3440c1d5559b52f09fe22)
+
+Repository Not Found for url: https://huggingface.co/bloom/resolve/main/config.json.
+Please make sure you specified the correct `repo_id` and `repo_type`.
+If you are trying to access a private or gated repo, make sure you are authenticated.
+Invalid username or password.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 197, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types, prompt_templates,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 125, in pipeline
+    LM = Model(LM_model, train_dataloader.possible_answers)
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 27, in __init__
+    self.model = model_config["model_constructor"](model_name)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 441, in from_pretrained
+    config, kwargs = AutoConfig.from_pretrained(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/auto/configuration_auto.py", line 916, in from_pretrained
+    config_dict, unused_kwargs = PretrainedConfig.get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/configuration_utils.py", line 573, in get_config_dict
+    config_dict, kwargs = cls._get_config_dict(pretrained_model_name_or_path, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/configuration_utils.py", line 628, in _get_config_dict
+    resolved_config_file = cached_file(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/utils/hub.py", line 424, in cached_file
+    raise EnvironmentError(
+OSError: bloom is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo with `use_auth_token` or log in with `huggingface-cli login` and pass `use_auth_token=True`.
+srun: error: r28n5: task 0: Exited with exit code 1

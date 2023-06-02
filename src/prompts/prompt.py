@@ -1,5 +1,5 @@
 from typing import List
-from main import prompt_templates
+# from main import prompt_templates
 
 
 class Prompt:
@@ -7,7 +7,7 @@ class Prompt:
     Generates a promt for every sentence according to the instructions provided
     """
 
-    def __init__(self, language, task):
+    def __init__(self, language, task, prompt_templates):
         self.language = language
         self.task = task
         self.dict_sa_prompt = prompt_templates[language][task]
