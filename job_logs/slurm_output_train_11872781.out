@@ -1,0 +1,8 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+experiment: first softmax over vocab, No yes -> pickle 85, (['bloom', 'bloomz', 'flan', 'llama', 't0', 't5']; ['SA', 'NLI']; ['active', 'passive', 'auxiliary', 'modal', 'common', 'rare_synonyms', 'identical_modal']; ['en', 'de', 'fr'])
+****Start Time: 2023-06-03_15-22-08
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 30.57it/s]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** JOB 11872781 ON r28n5 CANCELLED AT 2023-06-03T15:22:12 ***
+slurmstepd: error: *** STEP 11872781.0 ON r28n5 CANCELLED AT 2023-06-03T15:22:12 ***

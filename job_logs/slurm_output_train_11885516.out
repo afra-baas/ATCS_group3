@@ -1,0 +1,11 @@
+experiment: first softmax over vocab other seeds, ABC maybe -> pickle 96, (['bloom', 'bloomz', 'flan', 'llama', 'mt0', 't5']; ['SA', 'NLI']; ['active', 'passive', 'auxiliary', 'modal', 'common', 'rare_synonyms', 'identical_modal']; ['en', 'de', 'fr'])
+****Start Time: 2023-06-04_11-26-56
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 198, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types, prompt_templates,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 112, in pipeline
+    train_dataloader = MARCDataLoader(prompt_templates, language=lang, task=task,
+  File "/home/lcur1101/ATCS_group3/src/data/MARC/dataloader.py", line 10, in __init__
+    super().__init__(prompt_templates, language=language, task=task,
+TypeError: HFDataloader.__init__() got an unexpected keyword argument 'answer_type_AB'
+srun: error: r28n2: task 0: Exited with exit code 1

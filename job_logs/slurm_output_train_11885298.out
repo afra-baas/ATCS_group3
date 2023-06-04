@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 184, in <module>
+    prompt_templates = getattr(module, "prompt_templates")
+AttributeError: module 'prompts' has no attribute 'prompt_templates'
+srun: error: r28n5: task 0: Exited with exit code 1
