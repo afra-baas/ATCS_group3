@@ -19,6 +19,7 @@ A more in depth discription of the research can be found in our paper (report.pd
 
 
 '''
+
 (srun) python ATCS_group3/src/main.py  --models bloom bloomz flan llama t0 --tasks SA NLI --languages en de fr --seeds 42 33 50 --sample_size 200 --version 96 --prompt_structure_name "prompt_structure_ABC_maybe" --answer_type_ABC True
 
 '''
