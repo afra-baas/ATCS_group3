@@ -17,16 +17,19 @@ module load Anaconda3/2021.05
 cd $HOME
 # Activate your environment
 source activate dl2022
+
 # Install the package using conda
 # conda install -y my_package
 # conda install nltk
 # conda install -c anaconda scikit-learn
-# pip install pytorch-lightning
 # conda install -c conda-forge transformers
+# conda env export > environment_atcs.yml
+
+# Install with pip
+# pip install pytorch-lightning
 # pip install transformers
 # pip show transformers
 # pip install datasets
 # pip install torchtext
 # pip install sentencepiece
-# conda env export > environment_droplet.yml
 pip install pyparsing

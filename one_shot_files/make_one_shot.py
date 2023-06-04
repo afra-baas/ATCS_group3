@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     # specify here which prompt structure you want to import
     module_name = f"prompts.templates.prompt_without"
-    module = __import__(module_name)
+    module = __import__(module_name, fromlist=["prompt_templates"])
     prompt_templates = getattr(module, "prompt_templates")
 
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))

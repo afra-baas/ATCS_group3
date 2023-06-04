@@ -5,21 +5,17 @@
 #SBATCH --job-name=AddPackageJob
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=3
-#SBATCH --time=2:00:00
-#SBATCH --mem=125000M
-#SBATCH --output=job_logs/slurm_output_train_%A.out
+#SBATCH --time=00:30:00
+#SBATCH --mem=4000M
+#SBATCH --output=job_logs/slurm_output_install_package_%A.out
 
 module purge
 module load 2021
 module load Anaconda3/2021.05
 
 # Your job starts in the directory where you call sbatch
-# cd $HOME/ATCS_group3/jobs
-cd $HOME
-# Activate your environment
-source activate dl2022
+# cd $HOME
+cd $HOME/ATCS_group3
 
-#run
-srun python ATCS_group3/src/visualize.py 
-
-
+#create env
+conda env create -f dl2022_gpu.yml

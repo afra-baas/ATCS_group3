@@ -159,35 +159,69 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, prompt_templates, batch
 
 if __name__ == "__main__":
 
-    # models = ['flan', 't5']
-    models = ['bloom', 'bloomz', 'flan', 'llama', 't0', 't5']
-    tasks = ['SA', 'NLI']
-    # tasks = ['SA']
+    # models = ['bloom', 'bloomz', 'flan', 'llama', 't0', 't5']
+    # tasks = ['SA', 'NLI']
+    # prompt_types = ['active', 'passive', 'auxiliary',
+    #                 'modal', 'common', 'rare_synonyms', 'identical_modal']
+    # languages = ['en', 'de', 'fr']
+    # seeds = ['33', '50'] #42
+
+    # batch_size = 16
+    # sample_size = 200
+
+    # # MAKE sure the change this if you dont want to overwrite previous results
+    # version = 96
+
+    # # specify here which prompt structure you want to import
+    # module_name = f"prompts.templates.prompt_structure_ABC_maybe"
+    # module = __import__(module_name, fromlist=["prompt_templates"])
+    # prompt_templates = getattr(module, "prompt_templates")
+
+    # # specify if you want the probabilities on ABC (then = True) or yes no maybe
+    # answer_type_ABC = True
+
+    parser = argparse.ArgumentParser(description='Argument Parser')
+    parser.add_argument('--models', nargs='+', help='List of models',
+                        default=['bloom', 'bloomz', 'flan', 'llama', 't0'])
+    parser.add_argument('--tasks', nargs='+',
+                        help='List of tasks', default=['SA', 'NLI'])
+    # parser.add_argument('--prompt_types', nargs='+', help='List of prompt types')
+    parser.add_argument('--languages', nargs='+',
+                        help='List of languages', default=['en', 'de', 'fr'])
+    parser.add_argument('--seeds', nargs='+',
+                        help='List of seeds', default=['42', '33', '50'])
+    # parser.add_argument('--batch_size', type=int, help='Batch size')
+    parser.add_argument('--sample_size', type=int,
+                        help='Sample size', default=200)
+    parser.add_argument('--version', type=int,
+                        help='Run version (to avoid previous output being overwritten)')
+    parser.add_argument('--prompt_structure_name', type=str,
+                        help='Name of prompt_structure file you want to use', default='prompt_structure_ABC_maybe')
+    parser.add_argument('--answer_type_ABC', type=bool,
+                        help='Answer type (True for ABC)', default=True)
+
+    args = parser.parse_args()
+
+    models = args.models
+    tasks = args.tasks
+    # prompt_types = args.prompt_types
     prompt_types = ['active', 'passive', 'auxiliary',
                     'modal', 'common', 'rare_synonyms', 'identical_modal']
-    # prompt_types = ['active', 'passive']
-    # prompt_types = ['null']
-    languages = ['en', 'de', 'fr']
-    # languages = ['en']
-    seeds = ['33', '50']
-    # seeds = ['42']
-
-    batch_size = 16
-    sample_size = 200
-
-    # MAKE sure the change this if you dont want to overwrite previous results
-    version = 96
+    languages = args.languages
+    seeds = args.seeds
+    # batch_size = args.batch_size
+    batch_size = 16  # fixed to avoid OOM error
+    sample_size = args.sample_size
+    version = args.version
+    answer_type_ABC = args.answer_type_ABC
 
     # specify here which prompt structure you want to import
-    module_name = f"prompts.templates.prompt_structure_ABC_maybe"
-    module = __import__(module_name)
+    module_name = f"prompts.templates.{args.prompt_structure_name}"
+    module = __import__(module_name, fromlist=["prompt_templates"])
     prompt_templates = getattr(module, "prompt_templates")
 
-    # specify if you want the probabilities on ABC (then = True) or yes no maybe
-    answer_type_ABC = True
-
     print(
-        f'experiment: first softmax over vocab other seeds, ABC maybe -> pickle {version}, ({models}; {tasks}; {prompt_types}; {languages})')
+        'experiment: first softmax over vocab other seeds, ABC maybe -> pickle {version}, ({models}; {tasks}; {prompt_types}; {languages})')
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
 
