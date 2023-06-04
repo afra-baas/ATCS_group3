@@ -1,409 +1,0 @@
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-****Start Time: 2023-05-19_22-51-04
-Loading model bigscience/bloom-560m
-Model bigscience/bloom-560m loaded
-Available device is cuda
-Model device: cuda:0
------------ 42 de bigscience/bloom-560m SA active 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 326.74it/s]
-/home/lcur1101/ATCS_group3/src/models/model.py:103: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
-  logits = torch.nn.functional.softmax(logits)
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type active, variation 0 and batchsize 16: 0:03:15.907799
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA active 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 353.43it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.38
-Time taken to execute the de SA task with prompt type active, variation 1 and batchsize 16: 0:03:15.620133
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA active 2 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 349.70it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type active, variation 2 and batchsize 16: 0:03:16.548734
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA passive 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 356.31it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type passive, variation 0 and batchsize 16: 0:03:16.249808
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA passive 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 381.29it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type passive, variation 1 and batchsize 16: 0:03:15.153443
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA passive 2 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 365.54it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type passive, variation 2 and batchsize 16: 0:03:17.697018
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA auxiliary 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 359.94it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type auxiliary, variation 0 and batchsize 16: 0:03:16.239294
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA auxiliary 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 275.40it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type auxiliary, variation 1 and batchsize 16: 0:03:14.733277
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA auxiliary 2 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 330.81it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type auxiliary, variation 2 and batchsize 16: 0:03:15.646322
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA modal 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 380.03it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type modal, variation 0 and batchsize 16: 0:03:14.232117
-path ['42', 'de', 'bloom', 'SA', 'modal', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA modal 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 367.06it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type modal, variation 1 and batchsize 16: 0:03:15.720336
-path ['42', 'de', 'bloom', 'SA', 'modal', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA modal 2 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 314.08it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.38
-Time taken to execute the de SA task with prompt type modal, variation 2 and batchsize 16: 0:03:15.587513
-path ['42', 'de', 'bloom', 'SA', 'modal', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA rare_synonyms 0 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 364.98it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type rare_synonyms, variation 0 and batchsize 16: 0:03:15.996083
-path ['42', 'de', 'bloom', 'SA', 'rare_synonyms', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA rare_synonyms 1 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 370.70it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type rare_synonyms, variation 1 and batchsize 16: 0:03:17.125258
-path ['42', 'de', 'bloom', 'SA', 'rare_synonyms', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA rare_synonyms 2 50 16 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 194.85it/s]
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 2 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 3 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  0.36
-Time taken to execute the de SA task with prompt type rare_synonyms, variation 2 and batchsize 16: 0:03:14.932250
-path ['42', 'de', 'bloom', 'SA', 'rare_synonyms', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m NLI active 0 50 16 --------------
-Loading NLI dataset for de
-Downloading and preparing dataset xnli/de to /home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd...
-Downloading data files:   0%|          | 0/2 [00:00<?, ?it/s]Downloading data files: 100%|██████████| 2/2 [00:00<00:00, 1973.33it/s]
-Extracting data files:   0%|          | 0/2 [00:00<?, ?it/s]Extracting data files: 100%|██████████| 2/2 [00:00<00:00, 14.07it/s]Extracting data files: 100%|██████████| 2/2 [00:00<00:00, 14.03it/s]
-Generating train split:   0%|          | 0/392702 [00:00<?, ? examples/s]Generating train split:   0%|          | 1000/392702 [00:00<00:52, 7525.12 examples/s]Generating train split:   1%|          | 4193/392702 [00:00<00:19, 20164.41 examples/s]Generating train split:   2%|▏         | 7588/392702 [00:00<00:14, 26024.63 examples/s]Generating train split:   3%|▎         | 11000/392702 [00:00<00:13, 28835.53 examples/s]Generating train split:   4%|▎         | 14326/392702 [00:00<00:12, 30377.44 examples/s]Generating train split:   5%|▍         | 17761/392702 [00:00<00:11, 31595.13 examples/s]Generating train split:   5%|▌         | 21071/392702 [00:00<00:11, 32077.70 examples/s]Generating train split:   6%|▌         | 24456/392702 [00:00<00:11, 32630.78 examples/s]Generating train split:   7%|▋         | 27878/392702 [00:00<00:11, 33119.77 examples/s]Generating train split:   8%|▊         | 32900/392702 [00:01<00:10, 33259.28 examples/s]Generating train split:  10%|▉         | 37752/392702 [00:01<00:10, 32922.21 examples/s]Generating train split:  11%|█         | 42809/392702 [00:01<00:10, 33187.90 examples/s]Generating train split:  12%|█▏        | 46133/392702 [00:01<00:10, 33199.53 examples/s]Generating train split:  13%|█▎        | 49549/392702 [00:01<00:10, 33445.93 examples/s]Generating train split:  13%|█▎        | 52933/392702 [00:01<00:10, 33549.04 examples/s]Generating train split:  15%|█▍        | 57979/392702 [00:01<00:09, 33578.65 examples/s]Generating train split:  16%|█▌        | 63000/392702 [00:01<00:09, 33441.95 examples/s]Generating train split:  17%|█▋        | 68000/392702 [00:02<00:09, 33369.39 examples/s]Generating train split:  18%|█▊        | 71416/392702 [00:02<00:09, 33556.10 examples/s]Generating train split:  19%|█▉        | 76384/392702 [00:02<00:09, 33245.54 examples/s]Generating train split:  20%|██        | 79746/392702 [00:02<00:09, 33335.93 examples/s]Generating train split:  22%|██▏       | 84776/392702 [00:02<00:09, 33399.97 examples/s]Generating train split:  23%|██▎       | 89840/392702 [00:02<00:09, 33515.13 examples/s]Generating train split:  24%|██▍       | 94914/392702 [00:02<00:08, 33612.51 examples/s]Generating train split:  25%|██▌       | 99991/392702 [00:03<00:08, 33681.39 examples/s]Generating train split:  27%|██▋       | 105000/392702 [00:03<00:08, 33499.06 examples/s]Generating train split:  28%|██▊       | 108376/392702 [00:03<00:08, 33555.98 examples/s]Generating train split:  28%|██▊       | 111778/392702 [00:03<00:08, 33666.08 examples/s]Generating train split:  30%|██▉       | 116484/392702 [00:03<00:08, 32873.75 examples/s]Generating train split:  31%|███       | 119872/392702 [00:03<00:08, 33120.21 examples/s]Generating train split:  32%|███▏      | 124947/392702 [00:03<00:08, 33364.48 examples/s]Generating train split:  33%|███▎      | 130000/392702 [00:03<00:07, 33340.48 examples/s]Generating train split:  34%|███▍      | 133399/392702 [00:04<00:07, 33495.10 examples/s]Generating train split:  35%|███▍      | 136786/392702 [00:04<00:07, 33588.62 examples/s]Generating train split:  36%|███▌      | 141878/392702 [00:04<00:07, 33710.04 examples/s]Generating train split:  37%|███▋      | 146847/392702 [00:04<00:07, 33512.52 examples/s]Generating train split:  39%|███▊      | 151229/392702 [00:04<00:09, 26103.39 examples/s]Generating train split:  39%|███▉      | 154602/392702 [00:04<00:08, 27628.87 examples/s]Generating train split:  40%|████      | 158000/392702 [00:04<00:08, 28888.03 examples/s]Generating train split:  41%|████      | 161407/392702 [00:05<00:07, 30131.26 examples/s]Generating train split:  42%|████▏     | 164782/392702 [00:05<00:07, 31052.59 examples/s]Generating train split:  43%|████▎     | 168089/392702 [00:05<00:07, 31589.87 examples/s]Generating train split:  44%|████▎     | 171513/392702 [00:05<00:06, 32318.19 examples/s]Generating train split:  45%|████▍     | 174923/392702 [00:05<00:06, 32820.01 examples/s]Generating train split:  46%|████▌     | 180000/392702 [00:05<00:06, 33012.36 examples/s]Generating train split:  47%|████▋     | 183384/392702 [00:05<00:06, 33228.79 examples/s]Generating train split:  48%|████▊     | 186793/392702 [00:05<00:06, 33461.95 examples/s]Generating train split:  49%|████▉     | 191870/392702 [00:05<00:05, 33600.23 examples/s]Generating train split:  50%|█████     | 196925/392702 [00:06<00:05, 33634.37 examples/s]Generating train split:  51%|█████▏    | 201966/392702 [00:06<00:05, 33621.96 examples/s]Generating train split:  53%|█████▎    | 207000/392702 [00:06<00:05, 33490.71 examples/s]Generating train split:  54%|█████▎    | 210399/392702 [00:06<00:05, 33605.66 examples/s]Generating train split:  54%|█████▍    | 213806/392702 [00:06<00:05, 33719.94 examples/s]Generating train split:  56%|█████▌    | 218858/392702 [00:06<00:05, 33703.61 examples/s]Generating train split:  57%|█████▋    | 223824/392702 [00:06<00:05, 33502.14 examples/s]Generating train split:  58%|█████▊    | 228872/392702 [00:07<00:04, 33547.27 examples/s]Generating train split:  60%|█████▉    | 233901/392702 [00:07<00:04, 33539.18 examples/s]Generating train split:  61%|██████    | 238907/392702 [00:07<00:04, 33484.24 examples/s]Generating train split:  62%|██████▏   | 243980/392702 [00:07<00:04, 33584.98 examples/s]Generating train split:  63%|██████▎   | 249000/392702 [00:07<00:04, 33483.46 examples/s]Generating train split:  64%|██████▍   | 252424/392702 [00:07<00:04, 33649.89 examples/s]Generating train split:  65%|██████▌   | 255842/392702 [00:07<00:04, 33776.62 examples/s]Generating train split:  66%|██████▋   | 260902/392702 [00:08<00:03, 33758.93 examples/s]Generating train split:  68%|██████▊   | 265938/392702 [00:08<00:03, 33695.76 examples/s]Generating train split:  69%|██████▉   | 270963/392702 [00:08<00:03, 33630.71 examples/s]Generating train split:  70%|███████   | 276000/392702 [00:08<00:03, 33519.80 examples/s]Generating train split:  71%|███████   | 279424/392702 [00:08<00:03, 33681.63 examples/s]Generating train split:  72%|███████▏  | 282815/392702 [00:08<00:03, 33736.51 examples/s]Generating train split:  73%|███████▎  | 287893/392702 [00:08<00:03, 33773.49 examples/s]Generating train split:  75%|███████▍  | 292976/392702 [00:08<00:02, 33805.75 examples/s]Generating train split:  76%|███████▌  | 297930/392702 [00:09<00:02, 33554.75 examples/s]Generating train split:  77%|███████▋  | 302956/392702 [00:09<00:02, 33537.94 examples/s]Generating train split:  78%|███████▊  | 307989/392702 [00:09<00:02, 33541.35 examples/s]Generating train split:  80%|███████▉  | 313000/392702 [00:09<00:02, 33472.16 examples/s]Generating train split:  81%|████████  | 316405/392702 [00:09<00:02, 33601.89 examples/s]Generating train split:  81%|████████▏ | 319833/392702 [00:09<00:02, 33763.14 examples/s]Generating train split:  83%|████████▎ | 324910/392702 [00:09<00:02, 33783.96 examples/s]Generating train split:  84%|████████▍ | 329943/392702 [00:10<00:01, 33703.80 examples/s]Generating train split:  85%|████████▌ | 334904/392702 [00:10<00:01, 33500.81 examples/s]Generating train split:  87%|████████▋ | 339962/392702 [00:10<00:01, 33565.58 examples/s]Generating train split:  88%|████████▊ | 345000/392702 [00:10<00:01, 33485.97 examples/s]Generating train split:  89%|████████▊ | 348419/392702 [00:10<00:01, 33644.79 examples/s]Generating train split:  90%|████████▉ | 351842/392702 [00:10<00:01, 33786.22 examples/s]Generating train split:  91%|█████████ | 356924/392702 [00:10<00:01, 33815.18 examples/s]Generating train split:  92%|█████████▏| 361999/392702 [00:11<00:00, 33818.00 examples/s]Generating train split:  93%|█████████▎| 367000/392702 [00:11<00:00, 33598.86 examples/s]Generating train split:  94%|█████████▍| 370392/392702 [00:11<00:00, 33671.09 examples/s]Generating train split:  95%|█████████▌| 374963/392702 [00:11<00:00, 28139.76 examples/s]Generating train split:  96%|█████████▋| 378276/392702 [00:11<00:00, 29211.83 examples/s]Generating train split:  97%|█████████▋| 381764/392702 [00:11<00:00, 30403.02 examples/s]Generating train split:  98%|█████████▊| 385088/392702 [00:11<00:00, 31113.21 examples/s]Generating train split:  99%|█████████▉| 388501/392702 [00:11<00:00, 31905.25 examples/s]Generating train split: 100%|█████████▉| 391911/392702 [00:11<00:00, 32504.41 examples/s]                                                                                         Generating test split:   0%|          | 0/5010 [00:00<?, ? examples/s]Generating test split:   0%|          | 1/5010 [00:00<14:23,  5.80 examples/s]Generating test split:  59%|█████▉    | 2955/5010 [00:00<00:00, 13386.89 examples/s]Generating test split: 100%|██████████| 5010/5010 [00:00<00:00, 6370.88 examples/s]                                                                                    Generating validation split:   0%|          | 0/2490 [00:00<?, ? examples/s]Generating validation split:   0%|          | 1/2490 [00:00<04:29,  9.25 examples/s]Generating validation split: 100%|██████████| 2490/2490 [00:00<00:00, 6658.31 examples/s]                                        Dataset xnli downloaded and prepared to /home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd. Subsequent calls will reuse this data.
-                                                   0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  6.34it/s]100%|██████████| 3/3 [00:00<00:00, 18.41it/s]
-NLI dataset loaded
-len dataset  50
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-answer  {'input_ids': [137111], 'attention_mask': [1]}
-Traceback (most recent call last):
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 236, in <module>
-    pipeline(seeds, languages, models, tasks, prompt_types,
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 124, in pipeline
-    logits_dict_for_prompt = get_prompt_acc(
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 80, in get_prompt_acc
-    'diff': abs(sorted_list[0]-sorted_list[1]),
-TypeError: 'NoneType' object is not subscriptable
-srun: error: r28n3: task 0: Exited with exit code 1

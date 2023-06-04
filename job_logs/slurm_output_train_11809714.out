@@ -1,34 +1,0 @@
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/fr/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-****Start Time: 2023-05-23_21-10-26
-Using MARC dataset for fr
-  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  9.87it/s]100%|██████████| 3/3 [00:00<00:00, 27.28it/s]
-loading model Duraction: 0:00:01.441189
-Average length of review_body for rows with 1 star: 155.920675
-Average length of review_body for rows with 5 star: 144.119575
-len of lowest cat:  39333
-len of pos_reviews, neg_reviews:  39333 39333
-len dataset  78666
-len dataset  200
-making first dict Duraction: 0:03:09.803649
-Loading model bigscience/bloom-560m
-Model bigscience/bloom-560m loaded
-Available device is cuda
-Model device: cuda:0
-answer  {'input_ids': [92000], 'attention_mask': [1]}
-id:[92000]
-answer  {'input_ids': [25490], 'attention_mask': [1]}
-id:[25490]
-making first dict Duraction: 0:00:17.542494
------------ 42 fr bigscience/bloom-560m SA active 0 200 64 --------------
-Batch: 0 , batch size: 64, sample_size: 200
-Traceback (most recent call last):
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 198, in <module>
-    pipeline(seed, lang, models, tasks, prompt_types,
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 151, in pipeline
-    logits_dict_for_prompt = get_prompt_acc(
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 48, in get_prompt_acc
-    prompts = [train_dataloader.prompt(sentence) for sentence in sentences]
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 48, in <listcomp>
-    prompts = [train_dataloader.prompt(sentence) for sentence in sentences]
-TypeError: SAPrompt.__call__() missing 2 required positional arguments: 'prompt_type' and 'prompt_id'
-srun: error: r34n4: task 0: Exited with exit code 1

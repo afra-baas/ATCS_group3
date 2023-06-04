@@ -1,28 +1,0 @@
-****Start Time: 2023-05-20_17-51-17
-Loading model chainyo/alpaca-lora-7b
-Loading checkpoint shards:   0%|          | 0/39 [00:00<?, ?it/s]Loading checkpoint shards:   3%|▎         | 1/39 [00:01<00:59,  1.57s/it]Loading checkpoint shards:   5%|▌         | 2/39 [00:02<00:53,  1.45s/it]Loading checkpoint shards:   8%|▊         | 3/39 [00:04<00:51,  1.42s/it]Loading checkpoint shards:  10%|█         | 4/39 [00:05<00:48,  1.38s/it]Loading checkpoint shards:  13%|█▎        | 5/39 [00:06<00:43,  1.28s/it]Loading checkpoint shards:  15%|█▌        | 6/39 [00:07<00:40,  1.22s/it]Loading checkpoint shards:  18%|█▊        | 7/39 [00:09<00:39,  1.22s/it]Loading checkpoint shards:  21%|██        | 8/39 [00:10<00:36,  1.17s/it]Loading checkpoint shards:  23%|██▎       | 9/39 [00:11<00:35,  1.18s/it]Loading checkpoint shards:  26%|██▌       | 10/39 [00:12<00:35,  1.21s/it]Loading checkpoint shards:  28%|██▊       | 11/39 [00:14<00:35,  1.27s/it]Loading checkpoint shards:  31%|███       | 12/39 [00:15<00:33,  1.24s/it]Loading checkpoint shards:  33%|███▎      | 13/39 [00:16<00:31,  1.21s/it]Loading checkpoint shards:  36%|███▌      | 14/39 [00:17<00:29,  1.17s/it]Loading checkpoint shards:  38%|███▊      | 15/39 [00:18<00:27,  1.14s/it]Loading checkpoint shards:  41%|████      | 16/39 [00:19<00:27,  1.19s/it]Loading checkpoint shards:  44%|████▎     | 17/39 [00:21<00:27,  1.24s/it]Loading checkpoint shards:  46%|████▌     | 18/39 [00:22<00:26,  1.27s/it]Loading checkpoint shards:  49%|████▊     | 19/39 [00:23<00:25,  1.29s/it]Loading checkpoint shards:  51%|█████▏    | 20/39 [00:24<00:22,  1.16s/it]Loading checkpoint shards:  54%|█████▍    | 21/39 [00:25<00:20,  1.12s/it]Loading checkpoint shards:  56%|█████▋    | 22/39 [00:26<00:18,  1.11s/it]Loading checkpoint shards:  59%|█████▉    | 23/39 [00:28<00:18,  1.15s/it]Loading checkpoint shards:  62%|██████▏   | 24/39 [00:29<00:17,  1.20s/it]Loading checkpoint shards:  64%|██████▍   | 25/39 [00:30<00:17,  1.23s/it]Loading checkpoint shards:  67%|██████▋   | 26/39 [00:31<00:15,  1.22s/it]Loading checkpoint shards:  69%|██████▉   | 27/39 [00:33<00:14,  1.23s/it]Loading checkpoint shards:  72%|███████▏  | 28/39 [00:34<00:13,  1.18s/it]Loading checkpoint shards:  74%|███████▍  | 29/39 [00:35<00:11,  1.14s/it]Loading checkpoint shards:  77%|███████▋  | 30/39 [00:36<00:10,  1.19s/it]Loading checkpoint shards:  79%|███████▉  | 31/39 [00:37<00:09,  1.22s/it]Loading checkpoint shards:  82%|████████▏ | 32/39 [00:39<00:08,  1.24s/it]Loading checkpoint shards:  85%|████████▍ | 33/39 [00:40<00:07,  1.27s/it]Loading checkpoint shards:  87%|████████▋ | 34/39 [00:41<00:05,  1.19s/it]Loading checkpoint shards:  90%|████████▉ | 35/39 [00:42<00:04,  1.22s/it]Loading checkpoint shards:  92%|█████████▏| 36/39 [00:43<00:03,  1.20s/it]Loading checkpoint shards:  95%|█████████▍| 37/39 [00:44<00:02,  1.18s/it]Loading checkpoint shards:  97%|█████████▋| 38/39 [00:45<00:01,  1.13s/it]Loading checkpoint shards: 100%|██████████| 39/39 [00:46<00:00,  1.08s/it]Loading checkpoint shards: 100%|██████████| 39/39 [00:46<00:00,  1.20s/it]
-Model chainyo/alpaca-lora-7b loaded
-pad token added
-Available device is cuda
-Traceback (most recent call last):
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 165, in <module>
-    pipeline(seeds, languages, models, tasks, prompt_types,
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 118, in pipeline
-    LM = Model(LM_model)
-  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 57, in __init__
-    self.model = self.model.cuda()
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 905, in cuda
-    return self._apply(lambda t: t.cuda(device))
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
-    module._apply(fn)
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
-    module._apply(fn)
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 797, in _apply
-    module._apply(fn)
-  [Previous line repeated 2 more times]
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 820, in _apply
-    param_applied = fn(param)
-  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 905, in <lambda>
-    return self._apply(lambda t: t.cuda(device))
-torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 172.00 MiB (GPU 0; 23.65 GiB total capacity; 23.00 GiB already allocated; 121.56 MiB free; 23.00 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
-srun: error: r34n4: task 0: Exited with exit code 1

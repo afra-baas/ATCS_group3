@@ -1,207 +1,0 @@
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-****Start Time: 2023-05-19_21-57-59
-Loading model bigscience/bloom-560m
-Model bigscience/bloom-560m loaded
-Available device is cuda
-Model device: cuda:0
------------ 42 de bigscience/bloom-560m SA active 0 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 291.73it/s]
-/home/lcur1101/ATCS_group3/src/models/model.py:103: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
-  logits = torch.nn.functional.softmax(logits)
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type active, variation 0 and batchsize 1: 0:03:43.500439
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA active 1 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 392.14it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type active, variation 1 and batchsize 1: 0:03:43.596581
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA active 2 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 181.93it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type active, variation 2 and batchsize 1: 0:03:10.473541
-path ['42', 'de', 'bloom', 'SA', 'active', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA passive 0 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 354.05it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type passive, variation 0 and batchsize 1: 0:03:12.666808
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA passive 1 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 381.34it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type passive, variation 1 and batchsize 1: 0:03:10.782639
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA passive 2 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 317.09it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type passive, variation 2 and batchsize 1: 0:03:07.044152
-path ['42', 'de', 'bloom', 'SA', 'passive', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA auxiliary 0 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 312.91it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type auxiliary, variation 0 and batchsize 1: 0:03:07.316989
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA auxiliary 1 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 415.37it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type auxiliary, variation 1 and batchsize 1: 0:03:06.058995
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_1']
------------ 42 de bigscience/bloom-560m SA auxiliary 2 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 389.61it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type auxiliary, variation 2 and batchsize 1: 0:03:05.797105
-path ['42', 'de', 'bloom', 'SA', 'auxiliary', 'prompt_id_2']
-Dictionary saved to './ATCS_group3/saved_outputs/logits_dict_seed_42_lang_de_v1.pickle' as a pickle file.
------------ 42 de bigscience/bloom-560m SA modal 0 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 379.70it/s]
-Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
-MARC dataset loaded
-Average length of review_body for rows with 1 star: 199.5979
-Average length of review_body for rows with 5 star: 177.19965
-len of lowest cat:  38908
-len dataset  77816
-len dataset  2
-Batch: 0 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-Batch: 1 , batch size: 1, sample_size: 2
-answer  {'input_ids': [18260], 'attention_mask': [1]}
-answer  {'input_ids': [1936], 'attention_mask': [1]}
-acc:  1.0
-Time taken to execute the de SA task with prompt type modal, variation 0 and batchsize 1: 0:03:04.381058
-path ['42', 'de', 'bloom', 'SA', 'modal', 'prompt_id_0']
------------ 42 de bigscience/bloom-560m SA modal 1 2 1 --------------
-Loading MARC dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 380.06it/s]
-srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
-slurmstepd: error: *** STEP 11798786.0 ON r36n5 CANCELLED AT 2023-05-19T22:31:12 ***
-slurmstepd: error: *** JOB 11798786 ON r36n5 CANCELLED AT 2023-05-19T22:31:12 ***

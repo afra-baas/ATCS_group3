@@ -1,35 +1,0 @@
-****Start Time: 2023-05-21_14-04-54
-Loading model huggyllama/llama-7b
-Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:05<00:05,  5.29s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.12s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:06<00:00,  3.45s/it]
-Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
-Model huggyllama/llama-7b loaded
-pad token added
-Available device is cuda
-Model device: cuda:0
------------ 42 de huggyllama/llama-7b NLI active 0 50 16 --------------
-Loading NLI dataset for de
-  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 295.35it/s]
-/home/lcur1101/ATCS_group3/src/models/model.py:88: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
-  logits = torch.nn.functional.softmax(logits)
-NLI dataset loaded
-len of entail_examples , neutral_examples, contra_examples:  16 16 16
-len dataset  48
-Batch: 0 , batch size: 16, sample_size: 50
-answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
-id: [1, 12337] -> [12337]
-id: [12337] -> tensor([[4.6194e-05, 6.2585e-05, 4.8280e-05, 8.7202e-05, 1.1557e-04, 4.5180e-05,
-         1.3864e-04, 1.0157e-04, 6.5422e-04, 6.1035e-05, 2.0206e-04, 1.4889e-04,
-         1.5426e-04, 3.1412e-05, 1.3888e-05, 3.2187e-05]], device='cuda:0',
-       dtype=torch.float16)
-answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
-Traceback (most recent call last):
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 169, in <module>
-    pipeline(seeds, languages, models, tasks, prompt_types,
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 125, in pipeline
-    logits_dict_for_prompt = get_prompt_acc(
-  File "/home/lcur1101/ATCS_group3/src/main.py", line 56, in get_prompt_acc
-    answers_probs_batch, pred_answer_batch = LM(
-  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 169, in __call__
-    probs = torch.index_select(logits[:, id], dim=1, index=id)
-RuntimeError: Expected all tensors to be on the same device, but found at least two devices, cuda:0 and cpu! (when checking argument for argument index in method wrapper_CUDA__index_select)
-srun: error: r29n3: task 0: Exited with exit code 1
