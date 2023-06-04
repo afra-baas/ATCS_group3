@@ -20,7 +20,7 @@ cd $HOME
 source activate dl2022
 
 #run
-srun python ATCS_group3/src/main.py 
+srun python ATCS_group3/src/main.py --models bloom bloomz flan llama t0 --tasks SA NLI --languages en de fr --seeds 33 50 --sample_size 200 --version 96 --prompt_structure_name "prompt_structure_ABC_maybe" --answer_type_ABC True
 
 # srun python ATCS_group3/src/main.py --LM_model bloom --task SA
 # srun python ATCS_group3/src/main.py --LM_model bloom --task NLI
