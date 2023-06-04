@@ -38,7 +38,7 @@ class Model:
                 print("An error occurred while creating the tokenizer:", str(e))
 
         if model_name == 'llama':
-            self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+            # self.tokenizer.add_special_tokens({'pad_token': '[PAD]'})
             self.tokenizer.pad_token = self.tokenizer.eos_token
             print('pad token added')
 
@@ -55,6 +55,7 @@ class Model:
         possible_answers_ids_before = [self.tokenizer(
             answer) for answer in self.possible_answers]
         self.possible_answers_ids = []
+
         for answer in possible_answers_ids_before:
             print('answer ', answer)
             if len(answer) == 0:
@@ -71,7 +72,6 @@ class Model:
             else:
                 print(f'id:{id}')
             self.possible_answers_ids.append(id)
-        print('summ of probs approach')
 
         self.scale = 1
 
@@ -100,7 +100,7 @@ class Model:
 
             # get the logits of the last token
             logits = outputs.logits[:, -1]
-            # logits = torch.nn.functional.softmax(logits, dim=1)
+            logits = torch.nn.functional.softmax(logits, dim=1)
 
             # Calculate row-wise sums
             # row_sums = logits.sum(dim=1)
@@ -136,10 +136,12 @@ class Model:
                     # print(f'id: {answer_id} -> {probs.T}, {(probs.T).shape}')
 
         # print('answers_probs before norm:', answers_probs, answers_probs.shape)
-        print('answers_probs just softmax dim 1:',answers_probs.softmax(dim=1))
+        # print('answers_probs just softmax dim 1:',
+        #       answers_probs.softmax(dim=1))
+        # answers_probs = answers_probs.softmax(dim=1)
 
-        answers_probs[:, 1] = answers_probs[:, 1]*self.scale
-        print('* scale ', answers_probs, answers_probs.shape)
+        # answers_probs[:, 1] = answers_probs[:, 1]*self.scale
+        # print('* scale ', answers_probs, answers_probs.shape)
 
         # print('answers_probs just softmax dim 0:',
         #       answers_probs.softmax(dim=0))
@@ -154,7 +156,7 @@ class Model:
         # answers_probs = normalized_probs.softmax(dim=0)
         # print(normalized_probs.softmax(dim=0))
 
-        # print('answers_probs:', answers_probs)
+        print('answers_probs:', answers_probs)
         pred_answer_indices = answers_probs.argmax(dim=1)
         pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
 

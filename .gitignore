@@ -1,13 +1,14 @@
 # Ignore data files
-data/train/
-data/validation/
-data/test/
+# data/train/
+# data/validation/
+# data/test/
 
 # Ignore model files
-/models/
+# /models/
 
 # Ignore output files
-output/
+job_logs/
+saved_outputs/
 
 # Ignore notebooks checkpoints
 notebooks/.ipynb_checkpoints/

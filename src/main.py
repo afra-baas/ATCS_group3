@@ -7,7 +7,6 @@ from eval import evaluate
 from datetime import datetime
 import os
 import pickle
-from visualize import get_acc_plot, get_box_plot
 import collections
 
 
@@ -100,7 +99,7 @@ def get_prompt_acc(seed, train_dataloader, lang, LM, task, prompt_type, prompt_i
     return logits_dict_for_prompt
 
 
-def pipeline(seed, lang, LM_models, tasks, prompt_types, prompt_templates, batch_size, sample_size, data_type='train', use_oneshot=False, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
+def pipeline(seed, lang, LM_models, tasks, prompt_types, prompt_templates, batch_size, sample_size, answer_type_ABC, data_type='train', use_oneshot=False, file_path=f'./ATCS_group3/saved_outputs/logits_dict.pickle'):
 
     # Create the directory if it doesn't exist
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
@@ -111,10 +110,10 @@ def pipeline(seed, lang, LM_models, tasks, prompt_types, prompt_templates, batch
         start_time = datetime.now()
         if task == 'SA':
             train_dataloader = MARCDataLoader(prompt_templates, language=lang, task=task,
-                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
+                                              sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot, answer_type_ABC=answer_type_ABC)
         else:
             train_dataloader = NLIDataLoader(prompt_templates, language=lang, task=task,
-                                             sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot)
+                                             sample_size=sample_size, batch_size=batch_size, seed=seed, data_type=data_type, use_oneshot=use_oneshot, answer_type_ABC=answer_type_ABC)
         # TO DO:
         # saved the sampled sentences, in a dict?
         end_time = datetime.now()
@@ -170,23 +169,25 @@ if __name__ == "__main__":
     # prompt_types = ['null']
     languages = ['en', 'de', 'fr']
     # languages = ['en']
-    # languages = ['en', 'de']
-    # seeds = ['42', '33', '50']
-    seeds = ['42']
+    seeds = ['33', '50']
+    # seeds = ['42']
 
     batch_size = 16
     sample_size = 200
 
     # MAKE sure the change this if you dont want to overwrite previous results
-    version = 83
+    version = 96
 
     # specify here which prompt structure you want to import
-    module_name = f"prompt_structure"
+    module_name = f"prompts.templates.prompt_structure_ABC_maybe"
     module = __import__(module_name)
-    prompt_templates = getattr(module, "prompt_templates_ABC_maybe")
+    prompt_templates = getattr(module, "prompt_templates")
+
+    # specify if you want the probabilities on ABC (then = True) or yes no maybe
+    answer_type_ABC = True
 
     print(
-        f'experiment: logits scaling, ABC maybe -> pickle {version}, ({models}; {tasks}; {prompt_types}; {languages})')
+        f'experiment: first softmax over vocab other seeds, ABC maybe -> pickle {version}, ({models}; {tasks}; {prompt_types}; {languages})')
     print('****Start Time:', datetime.now().strftime("%Y-%m-%d_%H-%M-%S"))
     start_time = datetime.now()
 
@@ -195,7 +196,7 @@ if __name__ == "__main__":
             file_path = f'./ATCS_group3/saved_outputs/logits_dict_seed_{seed}_lang_{lang}_v{version}.pickle'
 
             pipeline(seed, lang, models, tasks, prompt_types, prompt_templates,
-                     batch_size, sample_size, file_path=file_path)
+                     batch_size, sample_size, answer_type_ABC, file_path=file_path)
 
     end_time = datetime.now()
     duration = end_time - start_time
