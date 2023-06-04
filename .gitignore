@@ -41,3 +41,5 @@ venv/
 pytest_cache/
 
 poetry.lock
+
+ignore_readme.txt
