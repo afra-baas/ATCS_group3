@@ -1,0 +1,236 @@
+****Start Time: 2023-05-21_15-53-01
+Loading model huggyllama/llama-7b
+Loading checkpoint shards:   0%|          | 0/2 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 1/2 [00:06<00:06,  6.52s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.07s/it]Loading checkpoint shards: 100%|██████████| 2/2 [00:08<00:00,  4.44s/it]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+Model huggyllama/llama-7b loaded
+pad token added
+Available device is cuda
+Model device: cuda:0
+----------- 42 de huggyllama/llama-7b NLI active 0 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 294.80it/s]
+/home/lcur1101/ATCS_group3/src/models/model.py:88: UserWarning: Implicit dimension choice for softmax has been deprecated. Change the call to include dim=X as an argument.
+  logits = torch.nn.functional.softmax(logits)
+/home/lcur1101/ATCS_group3/src/models/model.py:163: UserWarning: The use of `x.T` on tensors of dimension other than 2 to reverse their shape is deprecated and it will throw an error in a future release. Consider `x.mT` to transpose batches of matrices or `x.permute(*torch.arange(x.ndim - 1, -1, -1))` to reverse the dimensions of a tensor. (Triggered internally at ../aten/src/ATen/native/TensorShape.cpp:3571.)
+  probs, dim=1).mean(dim=1).T
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[4.8280e-05, 1.3888e-05, 6.5279e-04, 1.1575e-04, 3.1292e-05, 9.5785e-05,
+         6.0976e-05, 3.3617e-04, 9.6142e-05, 4.5121e-05, 1.6463e-04, 1.0151e-04,
+         4.6992e-04, 9.8407e-05, 7.1228e-05, 2.0027e-04]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([3.7432e-05, 2.1577e-05, 1.7381e-04, 5.2392e-05, 2.0027e-05, 7.4923e-05,
+        4.8637e-05, 1.2422e-04, 4.6968e-05, 3.6418e-05, 5.5015e-05, 2.9087e-05,
+        7.4208e-05, 4.9531e-05, 7.5340e-05, 7.8559e-05], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([1.5378e-05, 1.0073e-05, 6.9678e-05, 2.6703e-05, 8.2254e-06, 2.6584e-05,
+        1.1861e-05, 6.3121e-05, 3.2842e-05, 1.6093e-05, 4.8101e-05, 2.4796e-05,
+        2.3067e-05, 2.0981e-05, 2.0206e-05, 5.0426e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[4.8280e-05, 3.7432e-05, 1.5378e-05],
+        [1.3888e-05, 2.1577e-05, 1.0073e-05],
+        [6.5279e-04, 1.7381e-04, 6.9678e-05],
+        [1.1575e-04, 5.2392e-05, 2.6703e-05],
+        [3.1292e-05, 2.0027e-05, 8.2254e-06],
+        [9.5785e-05, 7.4923e-05, 2.6584e-05],
+        [6.0976e-05, 4.8637e-05, 1.1861e-05],
+        [3.3617e-04, 1.2422e-04, 6.3121e-05],
+        [9.6142e-05, 4.6968e-05, 3.2842e-05],
+        [4.5121e-05, 3.6418e-05, 1.6093e-05],
+        [1.6463e-04, 5.5015e-05, 4.8101e-05],
+        [1.0151e-04, 2.9087e-05, 2.4796e-05],
+        [4.6992e-04, 7.4208e-05, 2.3067e-05],
+        [9.8407e-05, 4.9531e-05, 2.0981e-05],
+        [7.1228e-05, 7.5340e-05, 2.0206e-05],
+        [2.0027e-04, 7.8559e-05, 5.0426e-05]], device='cuda:0')
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[2.0707e-04, 6.2883e-05, 8.7023e-05, 2.0421e-04, 1.3947e-04, 3.2544e-05,
+         2.1362e-04, 2.4843e-04, 5.7280e-05, 1.4913e-04, 1.7965e-04, 9.5963e-05,
+         2.3842e-05, 3.2902e-05, 2.7895e-05, 1.5438e-04]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([9.6202e-05, 4.7326e-05, 4.5061e-05, 7.9930e-05, 5.4061e-05, 2.4021e-05,
+        9.1016e-05, 1.1230e-04, 4.8876e-05, 7.4148e-05, 5.7995e-05, 7.6652e-05,
+        3.7730e-05, 2.1696e-05, 1.9789e-05, 6.8665e-05], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([7.4327e-05, 5.0843e-05, 2.6226e-05, 3.5524e-05, 5.6148e-05, 1.2040e-05,
+        4.3273e-05, 1.1873e-04, 2.7537e-05, 4.0412e-05, 4.7445e-05, 4.4942e-05,
+        9.0599e-06, 6.2585e-06, 1.2398e-05, 2.5988e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[2.0707e-04, 9.6202e-05, 7.4327e-05],
+        [6.2883e-05, 4.7326e-05, 5.0843e-05],
+        [8.7023e-05, 4.5061e-05, 2.6226e-05],
+        [2.0421e-04, 7.9930e-05, 3.5524e-05],
+        [1.3947e-04, 5.4061e-05, 5.6148e-05],
+        [3.2544e-05, 2.4021e-05, 1.2040e-05],
+        [2.1362e-04, 9.1016e-05, 4.3273e-05],
+        [2.4843e-04, 1.1230e-04, 1.1873e-04],
+        [5.7280e-05, 4.8876e-05, 2.7537e-05],
+        [1.4913e-04, 7.4148e-05, 4.0412e-05],
+        [1.7965e-04, 5.7995e-05, 4.7445e-05],
+        [9.5963e-05, 7.6652e-05, 4.4942e-05],
+        [2.3842e-05, 3.7730e-05, 9.0599e-06],
+        [3.2902e-05, 2.1696e-05, 6.2585e-06],
+        [2.7895e-05, 1.9789e-05, 1.2398e-05],
+        [1.5438e-04, 6.8665e-05, 2.5988e-05]], device='cuda:0')
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[2.4498e-05, 4.6134e-05, 6.1512e-05, 4.2260e-05, 2.9504e-05, 1.3804e-04,
+         4.0352e-05, 4.2319e-05, 1.0270e-04, 7.2479e-05, 3.4332e-05, 7.3075e-05,
+         7.4327e-05, 1.4555e-04, 2.9802e-05, 1.0532e-04]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([3.0518e-05, 2.3901e-05, 2.4974e-05, 4.5180e-05, 1.7881e-05, 3.9160e-05,
+        4.6074e-05, 2.9981e-05, 4.1842e-05, 3.4451e-05, 3.8505e-05, 4.2796e-05,
+        5.6148e-05, 7.5459e-05, 2.9325e-05, 4.7863e-05], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([1.3947e-05, 1.0967e-05, 2.3365e-05, 3.0398e-05, 7.2718e-06, 1.1444e-05,
+        1.3053e-05, 3.0041e-05, 3.8385e-05, 1.2279e-05, 1.0252e-05, 1.7285e-05,
+        2.9683e-05, 5.3167e-05, 6.6757e-06, 2.9027e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[2.4498e-05, 3.0518e-05, 1.3947e-05],
+        [4.6134e-05, 2.3901e-05, 1.0967e-05],
+        [6.1512e-05, 2.4974e-05, 2.3365e-05],
+        [4.2260e-05, 4.5180e-05, 3.0398e-05],
+        [2.9504e-05, 1.7881e-05, 7.2718e-06],
+        [1.3804e-04, 3.9160e-05, 1.1444e-05],
+        [4.0352e-05, 4.6074e-05, 1.3053e-05],
+        [4.2319e-05, 2.9981e-05, 3.0041e-05],
+        [1.0270e-04, 4.1842e-05, 3.8385e-05],
+        [7.2479e-05, 3.4451e-05, 1.2279e-05],
+        [3.4332e-05, 3.8505e-05, 1.0252e-05],
+        [7.3075e-05, 4.2796e-05, 1.7285e-05],
+        [7.4327e-05, 5.6148e-05, 2.9683e-05],
+        [1.4555e-04, 7.5459e-05, 5.3167e-05],
+        [2.9802e-05, 2.9325e-05, 6.6757e-06],
+        [1.0532e-04, 4.7863e-05, 2.9027e-05]], device='cuda:0')
+acc:  0.2916666666666667
+Time taken to execute the de NLI task with prompt type active, variation 0 and batchsize 16: 0:02:54.337296
+path ['42', 'de', 'llama', 'NLI', 'active', 'prompt_id_0']
+----------- 42 de huggyllama/llama-7b NLI active 1 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 309.54it/s]
+Found cached dataset xnli (/home/lcur1101/.cache/huggingface/datasets/xnli/de/1.1.0/818164464f9c9fd15776ca8a00423b074344c3e929d00a2c1a84aa5a50c928bd)
+NLI dataset loaded
+len of entail_examples , neutral_examples, contra_examples:  16 16 16
+len dataset  48
+Batch: 0 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[4.5538e-05, 1.3590e-05, 6.4313e-05, 3.1710e-05, 2.2292e-05, 3.0577e-05,
+         6.8605e-05, 6.5804e-05, 1.7798e-04, 7.0989e-05, 6.1572e-05, 5.0247e-05,
+         2.7955e-05, 6.0380e-05, 5.0426e-05, 5.6565e-05]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([2.4557e-05, 8.8215e-06, 2.8670e-05, 1.7047e-05, 1.4544e-05, 2.3901e-05,
+        7.1228e-05, 4.0293e-05, 5.2333e-05, 2.6405e-05, 3.3677e-05, 2.9743e-05,
+        2.5213e-05, 3.1292e-05, 3.6120e-05, 4.6194e-05], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([8.4639e-06, 2.3246e-06, 1.5020e-05, 5.2452e-06, 3.5167e-06, 6.8545e-06,
+        1.1206e-05, 1.1444e-05, 2.6345e-05, 1.3053e-05, 1.2279e-05, 4.0531e-06,
+        4.8280e-06, 1.5080e-05, 8.5831e-06, 1.4663e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[4.5538e-05, 2.4557e-05, 8.4639e-06],
+        [1.3590e-05, 8.8215e-06, 2.3246e-06],
+        [6.4313e-05, 2.8670e-05, 1.5020e-05],
+        [3.1710e-05, 1.7047e-05, 5.2452e-06],
+        [2.2292e-05, 1.4544e-05, 3.5167e-06],
+        [3.0577e-05, 2.3901e-05, 6.8545e-06],
+        [6.8605e-05, 7.1228e-05, 1.1206e-05],
+        [6.5804e-05, 4.0293e-05, 1.1444e-05],
+        [1.7798e-04, 5.2333e-05, 2.6345e-05],
+        [7.0989e-05, 2.6405e-05, 1.3053e-05],
+        [6.1572e-05, 3.3677e-05, 1.2279e-05],
+        [5.0247e-05, 2.9743e-05, 4.0531e-06],
+        [2.7955e-05, 2.5213e-05, 4.8280e-06],
+        [6.0380e-05, 3.1292e-05, 1.5080e-05],
+        [5.0426e-05, 3.6120e-05, 8.5831e-06],
+        [5.6565e-05, 4.6194e-05, 1.4663e-05]], device='cuda:0')
+Batch: 1 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[4.8161e-05, 6.0856e-05, 3.7730e-05, 7.0095e-05, 4.2796e-05, 3.7968e-05,
+         7.5936e-05, 8.1480e-05, 4.3094e-05, 2.7895e-05, 4.2498e-05, 1.6272e-05,
+         1.3864e-04, 3.5226e-05, 4.5478e-05, 6.0976e-05]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([4.0233e-05, 5.4121e-05, 2.9445e-05, 4.6849e-05, 2.5392e-05, 2.7239e-05,
+        9.0778e-05, 5.5552e-05, 3.4034e-05, 3.2663e-05, 3.3617e-05, 1.1086e-05,
+        6.5684e-05, 2.8968e-05, 3.0398e-05, 4.6253e-05], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([7.0333e-06, 1.5616e-05, 8.7023e-06, 1.3709e-05, 8.0466e-06, 6.1989e-06,
+        3.1531e-05, 2.6464e-05, 8.6427e-06, 9.7752e-06, 1.3053e-05, 3.0994e-06,
+        8.0705e-05, 7.0333e-06, 8.1062e-06, 1.3709e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[4.8161e-05, 4.0233e-05, 7.0333e-06],
+        [6.0856e-05, 5.4121e-05, 1.5616e-05],
+        [3.7730e-05, 2.9445e-05, 8.7023e-06],
+        [7.0095e-05, 4.6849e-05, 1.3709e-05],
+        [4.2796e-05, 2.5392e-05, 8.0466e-06],
+        [3.7968e-05, 2.7239e-05, 6.1989e-06],
+        [7.5936e-05, 9.0778e-05, 3.1531e-05],
+        [8.1480e-05, 5.5552e-05, 2.6464e-05],
+        [4.3094e-05, 3.4034e-05, 8.6427e-06],
+        [2.7895e-05, 3.2663e-05, 9.7752e-06],
+        [4.2498e-05, 3.3617e-05, 1.3053e-05],
+        [1.6272e-05, 1.1086e-05, 3.0994e-06],
+        [1.3864e-04, 6.5684e-05, 8.0705e-05],
+        [3.5226e-05, 2.8968e-05, 7.0333e-06],
+        [4.5478e-05, 3.0398e-05, 8.1062e-06],
+        [6.0976e-05, 4.6253e-05, 1.3709e-05]], device='cuda:0')
+Batch: 2 , batch size: 16, sample_size: 50
+answer  {'input_ids': [1, 12337], 'token_type_ids': [0, 0], 'attention_mask': [1, 1]}
+id: [1, 12337] -> [12337]
+id: [12337] -> tensor([[9.1374e-05, 1.3661e-04, 8.6784e-05, 1.6868e-05, 3.5346e-05, 2.0373e-04,
+         3.9458e-05, 5.8293e-05, 4.3035e-05, 2.8372e-05, 2.2292e-05, 7.3910e-05,
+         2.8968e-05, 3.3879e-04, 2.5094e-05, 2.5940e-04]], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 452, 262], 'token_type_ids': [0, 0, 0], 'attention_mask': [1, 1, 1]}
+id: [1, 452, 262] -> tensor([6.7532e-05, 5.3465e-05, 3.2365e-05, 2.2352e-05, 3.1471e-05, 9.5367e-05,
+        4.2439e-05, 4.2796e-05, 2.8908e-05, 1.9848e-05, 1.1802e-05, 7.7963e-05,
+        1.4484e-05, 1.8311e-04, 1.7226e-05, 1.0854e-04], device='cuda:0',
+       dtype=torch.float16)
+answer  {'input_ids': [1, 325, 11381, 1428], 'token_type_ids': [0, 0, 0, 0], 'attention_mask': [1, 1, 1, 1]}
+id: [1, 325, 11381, 1428] -> tensor([1.3292e-05, 3.3736e-05, 1.5259e-05, 4.8876e-06, 7.8082e-06, 4.6611e-05,
+        6.6757e-06, 9.4771e-06, 1.1683e-05, 5.5432e-06, 3.6359e-06, 1.2875e-05,
+        5.8413e-06, 3.9577e-05, 4.2915e-06, 4.1187e-05], device='cuda:0',
+       dtype=torch.float16)
+answers_probs: tensor([[9.1374e-05, 6.7532e-05, 1.3292e-05],
+        [1.3661e-04, 5.3465e-05, 3.3736e-05],
+        [8.6784e-05, 3.2365e-05, 1.5259e-05],
+        [1.6868e-05, 2.2352e-05, 4.8876e-06],
+        [3.5346e-05, 3.1471e-05, 7.8082e-06],
+        [2.0373e-04, 9.5367e-05, 4.6611e-05],
+        [3.9458e-05, 4.2439e-05, 6.6757e-06],
+        [5.8293e-05, 4.2796e-05, 9.4771e-06],
+        [4.3035e-05, 2.8908e-05, 1.1683e-05],
+        [2.8372e-05, 1.9848e-05, 5.5432e-06],
+        [2.2292e-05, 1.1802e-05, 3.6359e-06],
+        [7.3910e-05, 7.7963e-05, 1.2875e-05],
+        [2.8968e-05, 1.4484e-05, 5.8413e-06],
+        [3.3879e-04, 1.8311e-04, 3.9577e-05],
+        [2.5094e-05, 1.7226e-05, 4.2915e-06],
+        [2.5940e-04, 1.0854e-04, 4.1187e-05]], device='cuda:0')
+acc:  0.3541666666666667
+Time taken to execute the de NLI task with prompt type active, variation 1 and batchsize 16: 0:02:53.843496
+path ['42', 'de', 'llama', 'NLI', 'active', 'prompt_id_1']
+----------- 42 de huggyllama/llama-7b NLI active 2 50 16 --------------
+Loading NLI dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 290.12it/s]
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 11801632.0 ON r29n3 CANCELLED AT 2023-05-21T16:02:16 ***
+slurmstepd: error: *** JOB 11801632 ON r29n3 CANCELLED AT 2023-05-21T16:02:16 ***

@@ -1,0 +1,51 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/de/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-23_23-31-06
+Using MARC dataset for de
+  0%|          | 0/3 [00:00<?, ?it/s] 33%|███▎      | 1/3 [00:00<00:00,  8.49it/s]100%|██████████| 3/3 [00:00<00:00, 23.56it/s]
+loading model Duration: 0:00:01.249989
+Average length of review_body for rows with 1 star: 199.5979
+Average length of review_body for rows with 5 star: 177.19965
+len of lowest cat:  38908
+len of pos_reviews, neg_reviews:  38908 38908
+len dataset  77816
+len dataset  200
+create dataloader Duration: 0:03:10.515859
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [1650], 'attention_mask': [1]}
+id:[1650]
+answer  {'input_ids': [951, 265], 'attention_mask': [1, 1]}
+id:[951, 265]
+load model Duration: 0:00:10.573497
+prompt_type active has 10 prompts in it
+----------- 42 de bigscience/bloom-560m SA active 0 200 32 --------------
+Batch: 0 of active , batch size: 32, sample_size: 200
+filling in prompts labels Duration: 0:00:00.000114
+mapping labels Duration: 0:00:00.000005
+classification Duration: 0:00:01.554674
+Batch: 1 of active , batch size: 32, sample_size: 200
+filling in prompts labels Duration: 0:00:00.000115
+mapping labels Duration: 0:00:00.000004
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 196, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 150, in pipeline
+    logits_dict_for_prompt = get_prompt_acc(
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 64, in get_prompt_acc
+    answers_probs_batch, pred_answer_batch = LM(prompts)
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 95, in __call__
+    outputs = self.model(**inputs, labels=inputs["input_ids"])
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/bloom/modeling_bloom.py", line 938, in forward
+    loss = loss_fct(
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/modules/loss.py", line 1174, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/torch/nn/functional.py", line 3029, in cross_entropy
+    return torch._C._nn.cross_entropy_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index, label_smoothing)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 5.47 GiB (GPU 0; 23.65 GiB total capacity; 14.18 GiB already allocated; 3.12 GiB free; 19.78 GiB reserved in total by PyTorch) If reserved memory is >> allocated memory try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+srun: error: r34n4: task 0: Exited with exit code 1

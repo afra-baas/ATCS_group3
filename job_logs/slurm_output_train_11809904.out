@@ -1,0 +1,146 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/fr/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-23_21-28-58
+Using MARC dataset for fr
+  0%|          | 0/3 [00:00<?, ?it/s] 67%|██████▋   | 2/3 [00:00<00:00, 19.43it/s]100%|██████████| 3/3 [00:00<00:00, 28.09it/s]
+loading model Duraction: 0:00:01.242522
+Average length of review_body for rows with 1 star: 155.920675
+Average length of review_body for rows with 5 star: 144.119575
+len of lowest cat:  39333
+len of pos_reviews, neg_reviews:  39333 39333
+len dataset  78666
+len dataset  200
+create dataloader Duraction: 0:03:07.330227
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [92000], 'attention_mask': [1]}
+id:[92000]
+answer  {'input_ids': [25490], 'attention_mask': [1]}
+id:[25490]
+load model Duraction: 0:00:10.528333
+----------- 42 fr bigscience/bloom-560m SA active 0 200 32 --------------
+Batch: 0 , batch size: 32, sample_size: 200
+filling in prompts labelsDuraction: 0:00:00.000126
+mapping labels Duraction: 0:00:00.000006
+probs_ shape torch.Size([32, 1])
+id: [92000] -> tensor([[6.5432e-06],
+        [1.7541e-05],
+        [1.3537e-05],
+        [8.6472e-06],
+        [2.2240e-05],
+        [2.7231e-05],
+        [7.8799e-06],
+        [4.1579e-06],
+        [9.6634e-06],
+        [7.8419e-06],
+        [1.1432e-05],
+        [3.5615e-05],
+        [2.7255e-05],
+        [1.4227e-05],
+        [1.1835e-05],
+        [2.2661e-05],
+        [5.3882e-06],
+        [5.5420e-06],
+        [5.2792e-05],
+        [7.3240e-06],
+        [2.4167e-05],
+        [1.2848e-05],
+        [1.7510e-05],
+        [1.8624e-05],
+        [9.0700e-06],
+        [1.1254e-05],
+        [7.7750e-06],
+        [1.9791e-05],
+        [8.3820e-05],
+        [2.4103e-05],
+        [7.3808e-05],
+        [1.1930e-05]], device='cuda:0')/tensor([[6.5432e-06, 1.7541e-05, 1.3537e-05, 8.6472e-06, 2.2240e-05, 2.7231e-05,
+         7.8799e-06, 4.1579e-06, 9.6634e-06, 7.8419e-06, 1.1432e-05, 3.5615e-05,
+         2.7255e-05, 1.4227e-05, 1.1835e-05, 2.2661e-05, 5.3882e-06, 5.5420e-06,
+         5.2792e-05, 7.3240e-06, 2.4167e-05, 1.2848e-05, 1.7510e-05, 1.8624e-05,
+         9.0700e-06, 1.1254e-05, 7.7750e-06, 1.9791e-05, 8.3820e-05, 2.4103e-05,
+         7.3808e-05, 1.1930e-05]], device='cuda:0'), torch.Size([1, 32])
+probs_ shape torch.Size([32, 1])
+id: [25490] -> tensor([[2.7144e-06],
+        [1.0528e-05],
+        [8.0153e-06],
+        [4.9168e-06],
+        [2.4183e-05],
+        [4.0112e-05],
+        [3.0603e-06],
+        [2.9243e-06],
+        [1.0366e-05],
+        [3.5787e-06],
+        [5.1928e-06],
+        [1.6482e-05],
+        [1.3290e-05],
+        [4.9817e-06],
+        [4.4796e-06],
+        [1.7260e-05],
+        [2.9886e-06],
+        [1.9467e-06],
+        [3.1850e-05],
+        [5.3453e-06],
+        [1.5568e-05],
+        [9.9574e-06],
+        [1.2595e-05],
+        [9.7289e-06],
+        [3.5306e-06],
+        [4.9753e-06],
+        [1.0712e-05],
+        [8.2828e-06],
+        [5.1615e-05],
+        [8.2271e-06],
+        [3.0375e-05],
+        [1.0288e-05]], device='cuda:0')/tensor([[2.7144e-06, 1.0528e-05, 8.0153e-06, 4.9168e-06, 2.4183e-05, 4.0112e-05,
+         3.0603e-06, 2.9243e-06, 1.0366e-05, 3.5787e-06, 5.1928e-06, 1.6482e-05,
+         1.3290e-05, 4.9817e-06, 4.4796e-06, 1.7260e-05, 2.9886e-06, 1.9467e-06,
+         3.1850e-05, 5.3453e-06, 1.5568e-05, 9.9574e-06, 1.2595e-05, 9.7289e-06,
+         3.5306e-06, 4.9753e-06, 1.0712e-05, 8.2828e-06, 5.1615e-05, 8.2271e-06,
+         3.0375e-05, 1.0288e-05]], device='cuda:0'), torch.Size([1, 32])
+answers_probs: tensor([[6.5432e-06, 2.7144e-06],
+        [1.7541e-05, 1.0528e-05],
+        [1.3537e-05, 8.0153e-06],
+        [8.6472e-06, 4.9168e-06],
+        [2.2240e-05, 2.4183e-05],
+        [2.7231e-05, 4.0112e-05],
+        [7.8799e-06, 3.0603e-06],
+        [4.1579e-06, 2.9243e-06],
+        [9.6634e-06, 1.0366e-05],
+        [7.8419e-06, 3.5787e-06],
+        [1.1432e-05, 5.1928e-06],
+        [3.5615e-05, 1.6482e-05],
+        [2.7255e-05, 1.3290e-05],
+        [1.4227e-05, 4.9817e-06],
+        [1.1835e-05, 4.4796e-06],
+        [2.2661e-05, 1.7260e-05],
+        [5.3882e-06, 2.9886e-06],
+        [5.5420e-06, 1.9467e-06],
+        [5.2792e-05, 3.1850e-05],
+        [7.3240e-06, 5.3453e-06],
+        [2.4167e-05, 1.5568e-05],
+        [1.2848e-05, 9.9574e-06],
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 199, in <module>
+        [1.7510e-05, 1.2595e-05],
+        [1.8624e-05, 9.7289e-06],
+        [9.0700e-06, 3.5306e-06],
+        [1.1254e-05, 4.9753e-06],
+        [7.7750e-06, 1.0712e-05],
+        [1.9791e-05, 8.2828e-06],
+        [8.3820e-05, 5.1615e-05],
+        [2.4103e-05, 8.2271e-06],
+        [7.3808e-05, 3.0375e-05],
+        [1.1930e-05, 1.0288e-05]], device='cuda:0')
+    pipeline(seed, lang, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 152, in pipeline
+    logits_dict_for_prompt = get_prompt_acc(
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 64, in get_prompt_acc
+    answers_probs_batch, pred_answer_batch = LM(prompts)
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 129, in __call__
+    pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 129, in <listcomp>
+    pred_answer = [self.possible_answers[i] for i in pred_answer_indices]
+AttributeError: 'Model' object has no attribute 'possible_answers'. Did you mean: 'possible_answers_ids'?
+srun: error: r28n2: task 0: Exited with exit code 1

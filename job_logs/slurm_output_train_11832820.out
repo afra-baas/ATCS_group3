@@ -1,0 +1,26 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-28_08-28-53
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 320.22it/s]
+loading model Duration: 0:00:01.400055
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  210
+Loading model bigscience/bloom-560m
+Model bigscience/bloom-560m loaded
+Available device is cuda
+Model device: cuda:0
+answer  {'input_ids': [18260], 'attention_mask': [1]}
+id:[18260]
+answer  {'input_ids': [1936], 'attention_mask': [1]}
+id:[1936]
+summ of probs approach
+prompt_type active has 10 prompts in it
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/make_one_shot.py", line 92, in <module>
+    one_shot = " ".join(train_dataloader.prompt(
+TypeError: str.join() takes exactly one argument (2 given)
+srun: error: r28n2: task 0: Exited with exit code 1

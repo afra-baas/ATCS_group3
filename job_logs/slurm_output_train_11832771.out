@@ -1,0 +1,19 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-28_08-09-30
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 377.73it/s]
+loading model Duration: 0:00:01.387615
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/make_one_shot.py", line 59, in <module>
+    train_dataloader = MARCDataLoader(language=lang, task=task,
+  File "/home/lcur1101/ATCS_group3/src/data/MARC/dataloader.py", line 17, in __init__
+    self.dataset = self.get_random_sample()
+  File "/home/lcur1101/ATCS_group3/src/data/MARC/dataloader.py", line 56, in get_random_sample
+    with open(f"./ATCS_group3/src/list_indices_one_shot_{self.seed}_{self.language}_{self.task}_{version}.py", 'rb') as f:
+FileNotFoundError: [Errno 2] No such file or directory: './ATCS_group3/src/list_indices_one_shot_3_en_SA_1.py'
+srun: error: r28n2: task 0: Exited with exit code 1

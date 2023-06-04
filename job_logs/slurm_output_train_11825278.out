@@ -1,0 +1,26 @@
+Found cached dataset amazon_reviews_multi (/home/lcur1101/.cache/huggingface/datasets/amazon_reviews_multi/en/1.0.0/724e94f4b0c6c405ce7e476a6c5ef4f87db30799ad49f765094cf9770e0f7609)
+****Start Time: 2023-05-25_15-17-37
+Using MARC dataset for en
+  0%|          | 0/3 [00:00<?, ?it/s] 67%|██████▋   | 2/3 [00:00<00:00, 19.70it/s]100%|██████████| 3/3 [00:00<00:00, 28.44it/s]
+loading model Duration: 0:00:01.451478
+Average length of review_body for rows with 1 star: 170.985525
+Average length of review_body for rows with 5 star: 151.0092
+len of lowest cat:  38553
+len of pos_reviews, neg_reviews:  38553 38553
+len dataset  77106
+len dataset  200
+create dataloader Duration: 0:03:11.567202
+Loading model bigscience/mt0-small
+Downloading (…)lve/main/config.json:   0%|          | 0.00/773 [00:00<?, ?B/s]Downloading (…)lve/main/config.json: 100%|██████████| 773/773 [00:00<00:00, 2.19MB/s]
+Traceback (most recent call last):
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 183, in <module>
+    pipeline(seed, lang, models, tasks, prompt_types,
+  File "/home/lcur1101/ATCS_group3/src/main.py", line 128, in pipeline
+    LM = Model(LM_model, train_dataloader.possible_answers)
+  File "/home/lcur1101/ATCS_group3/src/models/model.py", line 26, in __init__
+    self.model = model_config["model_constructor"](self.model_name)
+  File "/home/lcur1101/.conda/envs/dl2022/lib/python3.10/site-packages/transformers/models/auto/auto_factory.py", line 474, in from_pretrained
+    raise ValueError(
+ValueError: Unrecognized configuration class <class 'transformers.models.mt5.configuration_mt5.MT5Config'> for this kind of AutoModel: AutoModelForCausalLM.
+Model type should be one of BartConfig, BertConfig, BertGenerationConfig, BigBirdConfig, BigBirdPegasusConfig, BioGptConfig, BlenderbotConfig, BlenderbotSmallConfig, BloomConfig, CamembertConfig, CodeGenConfig, CpmAntConfig, CTRLConfig, Data2VecTextConfig, ElectraConfig, ErnieConfig, GitConfig, GPT2Config, GPT2Config, GPTBigCodeConfig, GPTNeoConfig, GPTNeoXConfig, GPTNeoXJapaneseConfig, GPTJConfig, LlamaConfig, MarianConfig, MBartConfig, MegaConfig, MegatronBertConfig, MvpConfig, OpenAIGPTConfig, OPTConfig, PegasusConfig, PLBartConfig, ProphetNetConfig, QDQBertConfig, ReformerConfig, RemBertConfig, RobertaConfig, RobertaPreLayerNormConfig, RoCBertConfig, RoFormerConfig, Speech2Text2Config, TransfoXLConfig, TrOCRConfig, XGLMConfig, XLMConfig, XLMProphetNetConfig, XLMRobertaConfig, XLMRobertaXLConfig, XLNetConfig, XmodConfig.
+srun: error: r36n3: task 0: Exited with exit code 1
