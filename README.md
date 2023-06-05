@@ -39,8 +39,8 @@ Download the "final_results" folder from this repository and upload it to your G
 ### Individual Contributions
 General contributions of each of our team members:
 
-- Afra: codebase, unit tests, debugging, experiments/ablation studies, results notebook, research, poster, report
-- Amity: codebase, unit tests, debugging, research, poster, report writing
-- Emile: codebase, experiments, prompt design, debugging, demo notebook, report
-- Fabian: prompt design, notebook text, research, poster, report
-- Karsten: codebase, debugging, ablation studies, research, poster, report
+- Afra: codebase, unit tests, debugging, experiments/ablation studies, results notebook, research, poster, writing paper
+- Amity: codebase, unit tests, debugging, research, poster, writing paper
+- Emile: codebase, experiments, prompt design, debugging, demo notebook, writing paper
+- Fabian: prompt design, notebook text, research, poster, writing paper
+- Karsten: codebase, debugging, ablation studies, research, poster, writing paper
