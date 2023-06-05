@@ -36,5 +36,11 @@ The pickles generated during the evaluation will be saved. To visualize the resu
 The notebook provides instructions and a convenient way to visualize and analyze the results obtained from the evaluation.
 Download the "final_results" folder from this repository and upload it to your Google Drive. Follow the instructions provided in the demo notebook to load the results from the "final_results" folder. You can also upload your own result pickles to your Google Drive and visualize them using the same notebook.
 
+### Individual Contributions
+General contributions of each of our team members:
 
-
+Afra: codebase, unit tests, debugging, experiments/ablation studies, results notebook, research, poster, report
+Amity: codebase, unit tests, debugging, research, poster, report writing
+Emile: codebase, experiments, prompt design, debugging, demo notebook, report
+Fabian: prompt design, notebook text, research, poster, report
+Karsten: codebase, debugging, ablation studies, research, poster, report
