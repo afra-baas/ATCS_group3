@@ -32,7 +32,7 @@ To run the evaluation, use the run_pipeline.job script. You can specify differen
 ```
 
 ### 4. Visualization of Results
-The pickles generated during the evaluation will be saved. To visualize the results, you can use our demo.ipynb Colab notebook. You can access the notebook using the following link: [Demo Notebook](https://colab.research.google.com/drive/1fDeS0lVPl8urW68-Zs9VGZZQ5t6BrrLq#scrollTo=oD_Z30TwEOUH)
+The pickles generated during the evaluation will be saved. To visualize the results, you can use our results_analysis.ipynb (Colab) notebook. You can access the notebook using the following link: [Demo Notebook](https://colab.research.google.com/drive/1fDeS0lVPl8urW68-Zs9VGZZQ5t6BrrLq?usp=sharing).
 The notebook provides instructions and a convenient way to visualize and analyze the results obtained from the evaluation.
 Download the "final_results" folder from this repository and upload it to your Google Drive. Follow the instructions provided in the demo notebook to load the results from the "final_results" folder. You can also upload your own result pickles to your Google Drive and visualize them using the same notebook.
 
